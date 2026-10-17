@@ -18,7 +18,7 @@ style: |
   h1, h2 { color: #ececec; letter-spacing: -0.03em; }
   h1 { font-size: 64px; line-height: 1.1; }
   h2 { font-size: 40px; line-height: 1.18; }
-  strong { color: #a8c8f0; }
+  strong { color: #b9d0ee; }
   code { background: #121720; color: #b9d0ee; padding: .12em .3em; border-radius: 4px; }
   pre { background: #0d0f14; border: 1px solid #23324a; border-radius: 8px; }
   pre code { background: transparent; color: #d6e2f3; padding: 0; }
@@ -41,7 +41,7 @@ style: |
   }
   .lead { text-align: center; justify-content: center; }
   section.lead h1, section.lead h2, section.lead p { text-align: center; }
-  .muted { color: #8b9199; font-size: 20px; line-height: 1.4; }
+  .muted { color: #a3a3a3; font-size: 20px; line-height: 1.4; }
   .todo { color: #e9a35c; font-size: 20px; }
   .stat { font-size: 120px; font-weight: 700; color: #b9d0ee; line-height: 1; letter-spacing: -0.04em; }
 ---
@@ -118,7 +118,7 @@ Older backup if challenged: about two-thirds of 45 developers agreed docs are "a
 
 <style scoped>h2 { margin-bottom: 12px; } p { margin: 10px 0; } ul { font-size: 25px; margin: 10px 0; } .muted { font-size: 20px; }</style>
 
-![Autonomy ladder from L1 Operator to L5 Observer, with gh-aw at L4 Approver w:1136 h:255](img/autonomy-ladder.svg)
+![Autonomy ladder from L1 Operator to L5 Observer, with gh-aw at L4 Approver w:1136](img/autonomy-ladder.svg)
 
 - **43.2 million** pull requests merged per month, up 23% year over year.
 - **Nearly 1 billion** commits pushed in 2025, up 25.1%.
@@ -176,13 +176,15 @@ Transition: before I show you the file, the question everyone is already asking.
 
 ---
 
+<!-- header: Is it safe? -->
+
 ## It will get things wrong, so it is built to be checked, not trusted
 
 <style scoped>h2 { margin-bottom: 20px; } p { font-size: 24px; margin: 16px 0; } .muted { font-size: 20px; }</style>
 
 **Wrong edits →** it can only open a **draft** pull request, and a human reviews it. `draft: true` is a policy, not a default: the agent cannot override it. <span class="muted">Never merged automatically: GitHub Blog guidance, not a hard limit.</span>
 
-**Prompt injection →** read-only by default, every write checked, threat detection on automatically.
+**Prompt injection →** the agent is read-only and fenced in. The next two slides show how.
 
 **Cost →** capped per run: 1,000 AI Credits (~$10) by default, and you choose the model. <span class="todo">TODO: our own measured cost per run.</span>
 
@@ -204,11 +206,11 @@ Transition: so trust is the real question. Here is what the design does about it
 
 <style scoped>h2 { margin-bottom: 14px; } p { margin: 10px 0; } ul { font-size: 24px; margin: 10px 0; } .muted { font-size: 20px; }</style>
 
-![Activation, then a read-only Agent job, then a Detection job with no write access, then a Safe outputs job with a scoped write token, then a draft PR a human reviews w:1136 h:245](img/run-jobs.svg)
+![Activation, then a read-only Agent job, then a Detection job with no write access, then a Safe outputs job with a scoped write token, then a draft PR a human reviews w:1136](img/run-jobs.svg)
 
 - Detection scans every proposed output before anything is written. <span class="muted">A failed check defaults to a caution notice, not a hard block (continue-on-error is true).</span>
 
-<span class="muted">gh-aw architecture documentation; four of its six jobs shown. Status: public preview since 11 Jun 2026 (GitHub changelog).</span>
+<span class="muted">gh-aw architecture documentation; four of its six jobs shown.</span>
 
 <!--
 Plain version: the intern drafts it, a checker reviews it, and only then does the post room send it.
@@ -367,7 +369,7 @@ Transition: thank you; these slides stay up for questions.
 ## You debug it like any Action: every run leaves logs you can audit
 
 1. **Review the change:** the `.md` workflow and generated `.lock.yml` in the pull request.
-2. **Watch the run:** Activation, Agent, Detection, and Safe outputs jobs.
+2. **Watch the run:** the Activation, Agent, Detection and Safe outputs jobs — four of the six.
 3. **Dig in:** `gh aw logs <workflow>` across runs, `gh aw audit <run-id>` for one run.
 
 > “Treat the workflow Markdown as code. Review changes, keep it small, and evolve it intentionally.”
@@ -396,7 +398,7 @@ For managers: there's a receipt for every run.
 Update the docs to match the code that changed, and open a draft PR.
 ```
 
-![update-docs.md compiled by gh aw compile into update-docs.lock.yml, which GitHub Actions runs w:1136 h:205](img/compile-flow.svg)
+![update-docs.md compiled by gh aw compile into update-docs.lock.yml, which GitHub Actions runs w:1136](img/compile-flow.svg)
 
 <span class="muted">Body paraphrased; the real file’s instructions are longer.</span>
 
@@ -414,7 +416,7 @@ Transition: so when does it run?
 
 <style scoped>h2 { margin-bottom: 14px; } p { margin: 10px 0; } ul { font-size: 23px; margin: 10px 0; }</style>
 
-![Four trigger routes converge on one workflow run w:1136 h:225](img/trigger-routes.svg)
+![Four trigger routes converge on one workflow run w:1136](img/trigger-routes.svg)
 
 **Try it safely first**
 
@@ -441,10 +443,9 @@ li code { background: #0d0f14; border: 1px solid #8fb0dc; border-radius: 6px; bo
 ## Try it yourself: my examples and the official docs
 
 - <span class="todo">TODO: My sites and example repository URLs</span>
-- `github.github.com/gh-aw`
-- `github.github.com/gh-aw/gallery`
-- `github.com/githubnext/agentics`
-- GitHub Blog announcement and public-preview changelog
+- `https://github.github.com/gh-aw` — the docs, and `/gallery` for ready-made workflows
+- `https://github.com/githubnext/agentics` — where slide 9's `update-docs.md` comes from
+- <span class="muted">`https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview`</span>
 
 <!--
 Leave this up during questions.
