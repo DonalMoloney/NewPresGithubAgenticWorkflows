@@ -111,7 +111,7 @@ Plain line to say: this is the job description for one teammate out of 98 — an
 Callback to the teammate model from slide 5: purpose is the job description, triggers is the shift, access is the badge, writes is the outbox. Same four chips, now on a real page.
 Technical detail: every one of the 98 docs pages uses this same required-fields table — purpose, triggers, writes, required secrets, shared imports, customization points, owner, maturity. The frontmatter backs it: permissions is contents: read only, and the single safe-output is capped at max: 1, so one run cannot open a pile of pull requests.
 Numbers and sources: the table is trimmed from the repo's own docs page and workflow file, verified 17 Oct 2026. All 98 docs pages carry "Maturity: Experimental" — that is the library's own label on itself, not modesty for this room.
-Careful wording: this file does NOT set draft: true. Slide 7's draft claim came from GitHub's update-docs.md, not from this file. Do not say "and it opens a draft" about this workflow. TODO: check gh-aw's default for create-pull-request and either add draft: true to the file or drop the subject.
+On draft: this file does not set draft: true, but it does not need to. sources.md line 60 records the safe-outputs-pull-requests page as saying draft is "a policy, not a default" with default true (verified 17 Oct 2026), so an omitted draft still yields a draft PR. Safe to say "it opens a draft" about this workflow.
 Careful wording: the owner on the page is @acme-org/platform-devex, a placeholder, and the install command on that page points at a namespace that does not exist. Say "placeholder" if it is visible on screen. Never show that install line as if someone could run it.
 Q: "Could this have written to our README already?" No. It has never run anywhere, and permissions are read-only — the pull request would be a proposal, reviewed like any other.
 Q: "Why the README and not our real docs?" Same mechanism, different target path. The pilot picks the page.
@@ -187,12 +187,12 @@ Independently checked; not taken from the briefing.
 
 ### One real inconsistency with the current deck
 
-Slide 7 (`It will get things wrong...`) tells the room an agentic workflow "can only open
-a **draft** pull request" and that `draft: true` is a policy the agent cannot override.
-`workflows/readme-auto-updater.md` **does not set `draft: true`** — it sets only
-`create-pull-request: max: 1`. Slide 7's claim is sourced to GitHub's `update-docs.md`
-(slide 8), so the deck is not wrong, but showing a library workflow near that claim
-invites an audience member to spot the difference. I did not verify what gh-aw does by
-default when `draft` is omitted, and the deck's own notes say the docs call draft "a
-policy, not a default" — ambiguous enough that it should be checked rather than asserted.
-Logged as a TODO in Slide B's notes.
+**RESOLVED 17 Oct 2026 — not an inconsistency.** The concern was that slide 7 says a
+workflow "can only open a **draft** pull request" while `workflows/readme-auto-updater.md`
+sets only `create-pull-request: max: 1`, with no `draft: true`.
+
+`deck-v2/sources.md` line 60 already settles it: the safe-outputs-pull-requests page says
+"`draft` is a **policy**, not a default, so the agent cannot override it at runtime", and
+records the **default as `true`**. So omitting `draft` still produces a draft pull request,
+and slide 7's claim holds for the library workflow as well. No slide change needed, and the
+TODO in Slide B's notes has been closed.
