@@ -345,18 +345,22 @@ Transition: so the decision I need is small. Pick one page, and let one of these
 
 ## Pick one stale page, and let an agent keep it current for a month
 
-**Decision I need:** <span class="todo">TODO: pilot repository, owner, one-month timeframe, and success measure.</span>
+<style scoped>h2 { margin-bottom: 16px; } p { font-size: 24px; margin: 14px 0; }</style>
 
-1. **Choose** one stale page and its repository.
-2. **Try it staged:** `staged: true` runs it for real and writes nothing to our repo.
-3. **Review** every pull request it opens, for a month.
-4. **Decide:** keep, change, or stop.
+**Hypothesis.** An agent can keep one page current at a quality we would merge.
 
-**Would we get 96%?** Unknown; that is what the pilot measures.
+**Method.** One page, one repository, four weeks. Staged first — `staged: true` runs it for real and writes nothing — then draft pull requests only, every one reviewed.
+
+**Measure.** The share of its pull requests we merge without edits. <span class="muted">GitHub reports 96% for its own docs workflow: a number to test, not to assume.</span>
+
+**Decision rule.** <span class="todo">TODO: the result that means keep, the result that means stop.</span>
+
+**What I need today:** <span class="todo">TODO: the pilot repository, its owner, and a budget.</span>
 
 <!--
-Callback to slide 2: "a page is wrong right now". Let's pick one and fix it for good.
-The ask: TODO (pilot repo, owner, timeframe, success measure, and the decision I need from this room).
+Callback to slide 2: "a page is wrong right now". Let's pick one and settle it.
+Frame it as an experiment, not a project: one hypothesis, one method, one measure, one decision rule. That is also the honest framing — we do not know the answer yet, and this is the cheapest way to find out.
+The ask: TODO (pilot repo, owner, budget, and the decision rule). Do not present the 96% as a target we expect to hit; it is GitHub's figure for GitHub's repos, reported by them, on a small sample.
 Commands for engineers, if asked: gh extension install github/gh-aw; gh aw init, then gh aw new update-docs; gh aw trial, then staged: true; approve the first PR. The first two take minutes.
 Supporting guidance: "Start with low-risk outputs such as comments, drafts, or reports before enabling pull request creation." (GitHub Blog)
 Q: "What does it cost?" The per-run default is 1,000 AI Credits (about $10); TODO: the pilot budget.
