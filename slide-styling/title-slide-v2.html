@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Title Slide v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* GitHub dark (Primer) palette. The slide is always dark, so light and dark tokens match. */
+  :root {
+    --page: #010409; --bg: #0d1117; --panel: #161b22; --line: #30363d;
+    --ink: #e6edf3; --muted: #7d8590; --key: #79c0ff; --str: #a5d6ff;
+    --agent: #a371f7; --pr: #3fb950; --pr-bg: #238636; --warn: #e9a35c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page: #010409; --bg: #0d1117; --panel: #161b22; --line: #30363d;
+      --ink: #e6edf3; --muted: #7d8590; --key: #79c0ff; --str: #a5d6ff;
+      --agent: #a371f7; --pr: #3fb950; --pr-bg: #238636; --warn: #e9a35c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page: #010409; --bg: #0d1117; --panel: #161b22; --line: #30363d;
+    --ink: #e6edf3; --muted: #7d8590; --key: #79c0ff; --str: #a5d6ff;
+    --agent: #a371f7; --pr: #3fb950; --pr-bg: #238636; --warn: #e9a35c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page); color: var(--ink);
+    font: 16px/1.5 "Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  main { max-width: 1000px; margin: 0 auto; padding: 40px 16px; }
+
+  .frame { container-type: inline-size; }
+  .slide {
+    aspect-ratio: 16 / 9; width: 100%; overflow: hidden; position: relative;
+    border-radius: 12px; border: 1px solid var(--line);
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4cqw; align-items: center;
+    padding: 0 5cqw;
+    background:
+      radial-gradient(40% 55% at 78% 45%, color-mix(in srgb, var(--agent) 16%, transparent), transparent 70%),
+      var(--bg);
+  }
+
+  /* Left: brand and title */
+  .brand { display: flex; align-items: center; gap: 1cqw; font-size: 1.9cqw; font-weight: 600; color: var(--ink); }
+  .brand svg { width: 2.8cqw; height: 2.8cqw; fill: currentColor; }
+  h1 {
+    margin: 4cqw 0 0; font-size: 6.2cqw; line-height: .98; letter-spacing: -.035em;
+    font-weight: 850; font-stretch: 112%;
+  }
+  .sub { margin: 2.6cqw 0 0; font-size: 1.9cqw; line-height: 1.35; color: var(--muted); font-weight: 450; max-width: 30ch; }
+
+  /* Right: the workflow file and what it produces */
+  .flow { display: grid; gap: 1.6cqw; }
+  .file {
+    background: var(--panel); border: 1px solid var(--line); border-radius: .9cqw; overflow: hidden;
+    box-shadow: 0 2cqw 5cqw rgba(1, 4, 9, .6);
+  }
+  .tab {
+    display: flex; align-items: center; gap: .8cqw; padding: .9cqw 1.4cqw;
+    border-bottom: 1px solid var(--line); font-size: 1.15cqw; color: var(--muted);
+  }
+  .tab b { color: var(--ink); font-weight: 600; }
+  .tab svg { width: 1.3cqw; height: 1.3cqw; fill: var(--muted); }
+  pre {
+    margin: 0; padding: 1.4cqw 1.6cqw; counter-reset: ln;
+    font: 1.18cqw/1.75 "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: var(--ink); white-space: pre;
+  }
+  pre span.l { display: block; counter-increment: ln; }
+  pre span.l::before { content: counter(ln); display: inline-block; width: 2.4ch; margin-right: 1.6ch; text-align: right; color: var(--line); }
+  .d { color: var(--muted); }
+  .k { color: var(--key); }
+  .s { color: var(--str); }
+  .h { color: var(--agent); font-weight: 600; }
+
+  .out { display: flex; align-items: center; gap: 1.2cqw; font-size: 1.2cqw; color: var(--muted); }
+  .out .agent { display: inline-flex; align-items: center; gap: .6cqw; color: var(--agent); font-weight: 600; }
+  .out .agent i { width: .8cqw; height: .8cqw; border-radius: 50%; background: var(--agent); box-shadow: 0 0 1cqw var(--agent); }
+  .out .line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--agent), var(--pr)); }
+  .pr {
+    display: inline-flex; align-items: center; gap: .7cqw; padding: .6cqw 1.2cqw;
+    border-radius: 99px; background: var(--pr-bg); color: #fff; font-weight: 600;
+  }
+  .pr svg { width: 1.3cqw; height: 1.3cqw; fill: currentColor; }
+
+  .note { margin: 10px 0 0; font-size: .85rem; color: var(--muted); }
+  .note .fc { color: var(--warn); text-decoration: underline; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .out .agent i { animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: .35; } }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="frame">
+    <section class="slide" aria-label="Title slide: Getting started with GitHub Agentic Workflows">
+      <div>
+        <div class="brand">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </div>
+        <h1>Getting started with GitHub Agentic Workflows</h1>
+        <p class="sub">From AI that suggests to AI that does.</p>
+      </div>
+
+      <div class="flow" role="img" aria-label="An example agentic workflow: a markdown file with settings and plain-English instructions, which an AI agent runs to open a pull request">
+        <div class="file">
+          <div class="tab">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"/></svg>
+            .github/workflows/<b>docs-sync.md</b>
+          </div>
+<pre><span class="l d">---</span><span class="l"><span class="k">on</span>:</span><span class="l">  <span class="k">pull_request</span>:</span><span class="l"><span class="k">permissions</span>: <span class="s">read-all</span></span><span class="l"><span class="k">safe-outputs</span>:</span><span class="l">  <span class="k">create-pull-request</span>:</span><span class="l d">---</span><span class="l"> </span><span class="l"><span class="h"># Keep the docs in step with the code</span></span><span class="l"> </span><span class="l">When a pull request changes behaviour,</span><span class="l">update the matching docs pages and</span><span class="l">open a pull request with the changes.</span></pre>
+        </div>
+        <div class="out">
+          <span class="agent"><i></i>Agent runs</span>
+          <span class="line"></span>
+          <span class="pr">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
+            Pull request opened
+          </span>
+        </div>
+      </div>
+    </section>
+  </div>
+  <p class="note"><span class="fc">Example workflow is illustrative:</span> the file name and settings need checking against github.github.com/gh-aw, or swapping for a real workflow from the repo collection (slide 8).</p>
+</main>
+</body>
+</html>

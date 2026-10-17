@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide Styling Preview</title>
+<style>
+  :root {
+    --bg: #f5f5f4; --surface: #ffffff; --surface-2: #efefee;
+    --ink: #1f1f1f; --muted: #5c5c5c; --line: #d6d6d6;
+    --accent: #96151d; --accent-soft: #f7e8e9; --on-accent: #ffffff;
+    --good: #2e7458; --good-soft: #e3efe9;
+    --warn: #b45309; --warn-soft: #fcf0e1;
+    --code-bg: #222222; --code-ink: #e2e2e2; --code-key: #f0a9ad; --code-rule: #444444;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121212; --surface: #1b1b1b; --surface-2: #252525;
+      --ink: #ececec; --muted: #a3a3a3; --line: #3b3b3b;
+      --accent: #e8868b; --accent-soft: #3a1c1f; --on-accent: #121212;
+      --good: #72b896; --good-soft: #182c24;
+      --warn: #e9a35c; --warn-soft: #362816;
+      --code-bg: #0c0c0c; --code-ink: #e2e2e2; --code-key: #f0a9ad; --code-rule: #333333;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121212; --surface: #1b1b1b; --surface-2: #252525;
+    --ink: #ececec; --muted: #a3a3a3; --line: #3b3b3b;
+    --accent: #e8868b; --accent-soft: #3a1c1f; --on-accent: #121212;
+    --good: #72b896; --good-soft: #182c24;
+    --warn: #e9a35c; --warn-soft: #362816;
+    --code-bg: #0c0c0c; --code-ink: #e2e2e2; --code-key: #f0a9ad; --code-rule: #333333;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  header, main { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+  header { padding-top: 40px; }
+  header h1 { margin: 0 0 6px; font-size: 1.6rem; }
+  header p { margin: 0; color: var(--muted); }
+  .label { margin: 32px 0 8px; font-size: .8rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .todo { background: var(--warn-soft); color: var(--warn); padding: 1px 6px; border-radius: 4px; font-size: .85em; }
+
+  /* 16:9 slide frame; type scales with frame width. Slides are always dark, terminal-style
+     (gh-aw docs look) with the corporate red as the glow/accent. */
+  .frame { container-type: inline-size; }
+  .slide {
+    --s-ink: var(--code-ink); --s-muted: color-mix(in srgb, var(--code-ink) 62%, transparent);
+    --s-hi: var(--code-key); --s-line: var(--code-rule);
+    aspect-ratio: 16 / 9; width: 100%; color: var(--s-ink); overflow: hidden;
+    border: 1px solid var(--s-line); border-radius: 14px; position: relative;
+    display: flex; flex-direction: column; padding: 5cqw 6cqw;
+    background:
+      radial-gradient(60% 80% at 100% 0%, color-mix(in srgb, var(--accent) 45%, transparent), transparent 70%),
+      linear-gradient(var(--s-line) 1px, transparent 1px) 0 0 / 4cqw 4cqw,
+      linear-gradient(90deg, var(--s-line) 1px, transparent 1px) 0 0 / 4cqw 4cqw,
+      var(--code-bg);
+    background-blend-mode: normal, soft-light, soft-light, normal;
+  }
+  .kicker { display: flex; align-items: center; gap: 1cqw; font: 600 1.5cqw ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--s-hi); }
+  .kicker::before { content: ""; width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: var(--accent); box-shadow: 0 0 1.6cqw var(--accent); }
+  .slide h2 { margin: 1.2cqw 0 0; font-size: 4.4cqw; line-height: 1.12; letter-spacing: -.02em; max-width: 20ch; }
+  .slide h2 em { font-style: normal; color: var(--s-hi); }
+  .sub { margin: 1.4cqw 0 0; font-size: 1.9cqw; color: var(--s-muted); max-width: 40ch; }
+  .foot { margin-top: auto; display: flex; justify-content: space-between; font: 1.3cqw ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--s-muted); }
+  .slide svg { width: 100%; height: auto; display: block; }
+  .slide .axis { stroke: var(--s-line); }
+  .slide .ln { stroke: var(--s-muted); }
+  .slide .ln-a { stroke: var(--s-hi); filter: drop-shadow(0 0 6px var(--accent)); }
+  .slide .ta { fill: var(--s-hi); }
+  .slide .tm { fill: var(--s-muted); }
+
+  /* Slide 1: text left, chart in a terminal-style card right */
+  .first .body { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3cqw; align-items: center; flex: 1; }
+  .card { border: 1px solid var(--s-line); border-radius: 1.2cqw; background: color-mix(in srgb, var(--code-bg) 80%, transparent); overflow: hidden; }
+  .card .bar { display: flex; align-items: center; gap: .6cqw; padding: .9cqw 1.4cqw; border-bottom: 1px solid var(--s-line); font: 1.2cqw ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--s-muted); }
+  .card .bar i { width: .9cqw; height: .9cqw; border-radius: 50%; background: var(--s-line); }
+  .card .pad { padding: 1.4cqw; }
+
+  /* Last slide: workflow-file card + the ask */
+  .last .body { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3.5cqw; align-items: center; flex: 1; }
+  .last h2 { font-size: 4.8cqw; }
+  .ask { margin-top: 2.4cqw; display: inline-flex; align-items: center; gap: 1cqw; padding: 1.2cqw 2.2cqw; background: var(--accent); color: var(--on-accent); border-radius: 1cqw; font-size: 2cqw; font-weight: 600; box-shadow: 0 0 3cqw color-mix(in srgb, var(--accent) 60%, transparent); }
+  .code { margin: 0; font: 1.45cqw/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre; color: var(--s-ink); }
+  .code .k { color: var(--s-hi); }
+  .code .c { color: var(--s-muted); }
+  .slide .todo { background: var(--warn-soft); color: var(--warn); }
+
+  /* SVG vocabulary (subset of draft-overview.html) */
+  .axis { stroke: var(--line); stroke-width: 1.5; }
+  .ln   { stroke: var(--muted); stroke-width: 1.8; fill: none; }
+  .ln-a { stroke: var(--accent); stroke-width: 3.5; fill: none; }
+  .ln-w { stroke: var(--warn); stroke-width: 3.5; fill: none; }
+  .shade { fill: var(--warn); opacity: .12; }
+  .tm { fill: var(--muted); font-size: 15px; }
+  .ta { fill: var(--accent); font-size: 17px; font-weight: 600; }
+  .tw { fill: var(--warn); font-size: 17px; font-weight: 600; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Slide styling preview</h1>
+  <p>First and last slide of the talk. Same tokens as <code>draft-overview.html</code>; 16:9 frames that scale with width.</p>
+</header>
+<main>
+  <div class="label">First slide (1)</div>
+  <div class="frame">
+    <section class="slide first">
+      <div class="kicker">Part 1 · The problem</div>
+      <div class="body">
+        <div>
+          <h2>We ship faster, so our docs go <em>stale faster</em></h2>
+          <p class="sub">AI agents can now do the work, not just suggest it.</p>
+        </div>
+        <div class="card">
+          <div class="bar"><i></i><i></i><i></i><span>delivery vs docs</span></div>
+          <div class="pad">
+            <svg viewBox="0 0 800 380" role="img" aria-label="Line chart: delivery speed rises sharply after AI adoption while documentation freshness falls, creating a widening gap">
+              <line class="axis" x1="70" y1="320" x2="760" y2="320"/>
+              <line class="axis" x1="70" y1="40" x2="70" y2="320"/>
+              <text class="tm" x="760" y="348" text-anchor="end">time →</text>
+              <line x1="330" y1="40" x2="330" y2="320" class="ln" stroke-dasharray="4 5"/>
+              <text class="tm" x="338" y="56">AI coding tools adopted</text>
+              <path class="shade" d="M330,190 C450,150 580,90 740,55 L740,285 C600,265 460,225 330,190 Z"/>
+              <path class="ln-a" d="M70,230 C170,220 260,205 330,190 C450,150 580,90 740,55"/>
+              <path class="ln-w" d="M70,170 C170,175 260,182 330,190 C460,225 600,265 740,285"/>
+              <text class="ta" x="430" y="120">Speed of delivery</text>
+              <text class="tw" x="560" y="305">Docs freshness</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span>GitHub Agentic Workflows</span><span>01</span></div>
+    </section>
+  </div>
+
+  <div class="label">Last slide (10)</div>
+  <div class="frame">
+    <section class="slide last" style="margin-bottom:40px">
+      <div class="kicker">Part 3 · Getting started</div>
+      <div class="body">
+        <div>
+          <h2>My ask: <em>adopt</em> GitHub Agentic Workflows</h2>
+          <p class="sub">The decision I need from you: <span class="todo">TODO: the ask</span></p>
+          <div class="ask">Next step → <span class="todo">TODO</span></div>
+        </div>
+        <div class="card">
+          <div class="bar"><i></i><i></i><i></i><span>.github/workflows/<span class="todo">TODO</span>.md</span></div>
+          <div class="pad"><pre class="code"><span class="c">---</span>
+<span class="k">on:</span> <span class="todo">TODO</span>
+<span class="k">safe-outputs:</span> <span class="todo">TODO</span>
+<span class="c">---</span>
+
+Describe the task in plain English.
+The agent does it in your repo.</pre></div>
+        </div>
+      </div>
+      <div class="foot"><span>GitHub Agentic Workflows</span><span>10</span></div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

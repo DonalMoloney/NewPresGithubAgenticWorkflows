@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Draft Deck</title>
+<style>
+  /* Primer dark (overview.md). Slides are always dark, so one token set serves light and dark.
+     Token names match draft-overview.html so the diagram classes carry over unchanged. */
+  :root {
+    --page: #010409; --bg: #0d1117; --surface: #0d1117; --surface-2: #161b22; --line: #30363d;
+    --ink: #e6edf3; --muted: #8b949e; --panel: #161b22; --accent: #2f81f7; --agent: #a371f7;
+    --accent-soft: color-mix(in srgb, #2f81f7 16%, #0d1117);
+    --good: #3fb950; --good-soft: color-mix(in srgb, #3fb950 14%, #0d1117);
+    --warn: #e9a35c; --warn-soft: color-mix(in srgb, #e9a35c 14%, #0d1117);
+    --code-bg: #010409; --code-ink: #e6edf3; --code-key: #79c0ff;
+    --mono: SFMono-Regular, Consolas, ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 1000px; margin: 0 auto; padding: 24px 16px; }
+  .frame { container-type: inline-size; margin: 0 0 24px; }
+  .slide {
+    aspect-ratio: 16 / 9; width: 100%; overflow: hidden; position: relative;
+    display: flex; flex-direction: column; padding: 3.2cqw 4.4cqw 2cqw;
+    border: 1px solid var(--line); border-radius: 12px;
+    background: radial-gradient(50% 70% at 100% 0%, color-mix(in srgb, var(--agent) 14%, transparent), transparent 70%), radial-gradient(color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 1.2px) 0 0 / 2.2cqw 2.2cqw, var(--bg);
+  }
+  .kicker { display: flex; align-items: center; gap: 1cqw; font: 600 1.3cqw var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  .kicker::before { content: ""; width: 1cqw; height: 1cqw; border-radius: 50%; background: var(--agent); box-shadow: 0 0 1.4cqw var(--agent); }
+  h2 { margin: .9cqw 0 0; font-size: 2.7cqw; line-height: 1.18; letter-spacing: -.028em; max-width: 30em; text-wrap: balance; font-weight: 720; }
+  h2::after { content: ""; display: block; margin-top: 1.1cqw; width: 5cqw; height: .28cqw; border-radius: 1cqw; background: linear-gradient(90deg, var(--accent), var(--agent)); }
+  .vis { flex: 1; min-height: 0; margin: 1.2cqw 0 1cqw; display: flex; }
+  .vis > .card, .vis > .two { flex: 1; min-width: 0; }
+  .two { display: grid; grid-template-columns: 1.45fr 1fr; gap: 1.6cqw; }
+  .foot { display: flex; justify-content: space-between; padding-top: .9cqw; border-top: 1px solid var(--line); font: 1.1cqw var(--mono); letter-spacing: .04em; color: var(--muted); }
+  .card { border: 1px solid color-mix(in srgb, var(--line) 70%, transparent); border-radius: 1cqw; background: linear-gradient(180deg, color-mix(in srgb, var(--panel) 55%, var(--bg)), var(--bg)); box-shadow: 0 1.2cqw 3cqw rgba(1, 4, 9, .45); overflow: hidden; display: flex; flex-direction: column; }
+  .prog { display: inline-flex; align-items: center; gap: .35cqw; }
+  .prog i { width: 1.6cqw; height: .3cqw; border-radius: 1cqw; background: var(--line); }
+  .prog i.on { background: linear-gradient(90deg, var(--accent), var(--agent)); }
+  .prog b { margin-left: .8cqw; font-weight: 600; color: var(--ink); }
+  .card .pad { padding: .6cqw; flex: 1; min-height: 0; display: flex; align-items: center; }
+  .card .pad svg { width: 100%; height: 100%; max-height: 100%; }
+  .ask { margin: .8cqw 0 0; font-size: 1.8cqw; color: var(--muted); }
+  .todo { background: var(--warn-soft); color: var(--warn); padding: 1px 6px; border-radius: 4px; font-size: .85em; }
+  table { width: 100%; border-collapse: collapse; font-size: 1.25cqw; line-height: 1.35; }
+  th, td { text-align: left; padding: .7cqw .8cqw; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  td:first-child { color: var(--muted); }
+
+  /* Title slide */
+  .title { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; gap: 0 4cqw; align-items: center; padding: 0 5cqw 2.4cqw; }
+  .title .tl { grid-column: 1; }
+  .title .term { grid-column: 2; }
+  .title .foot { grid-column: 1 / -1; }
+  .title { background: radial-gradient(50% 70% at 78% 40%, color-mix(in srgb, var(--agent) 16%, transparent), transparent 70%), radial-gradient(color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 1.2px) 0 0 / 2.2cqw 2.2cqw, var(--bg); }
+  .brand { display: flex; align-items: center; gap: 1cqw; font-size: 1.9cqw; font-weight: 600; }
+  .brand svg { width: 2.8cqw; height: 2.8cqw; fill: currentColor; }
+  h1 { margin: 3cqw 0 0; font-size: 5.6cqw; line-height: 1.02; letter-spacing: -.03em; font-weight: 800; }
+  .title .sub { margin: 2cqw 0 0; font-size: 2cqw; color: var(--muted); }
+  .rule { margin-top: 3cqw; width: 12cqw; height: .4cqw; border-radius: 1cqw; background: linear-gradient(90deg, var(--accent), var(--agent)); }
+  .card .bar { display: flex; align-items: center; gap: .6cqw; padding: .9cqw 1.4cqw; border-bottom: 1px solid var(--line); font: 1.2cqw var(--mono); color: var(--muted); }
+  .card .bar i { width: .9cqw; height: .9cqw; border-radius: 50%; background: var(--line); }
+  .code { margin: 0; padding: 2.4cqw 2cqw; font: 2cqw var(--mono); background: var(--code-bg); color: var(--code-ink); }
+  .code .m { color: var(--code-key); }
+
+  /* SVG vocabulary (from draft-overview.html) */
+  svg { display: block; }
+  .box   { fill: var(--surface-2); stroke: var(--line); stroke-width: 1.25; }
+  .box-a { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.25; }
+  .box-g { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.25; }
+  .box-w { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1.25; }
+  .gap   { fill: none; stroke: var(--warn); stroke-width: 2; stroke-dasharray: 6 5; }
+  .band  { fill: none; stroke: var(--good); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .code  { fill: var(--code-bg); }
+  .ln    { stroke: var(--muted); stroke-width: 1.8; fill: none; }
+  .ln-a  { stroke: var(--accent); stroke-width: 3.5; fill: none; filter: drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 60%, transparent)); }
+  .ln-w  { stroke: var(--warn); stroke-width: 3.5; fill: none; }
+  .axis  { stroke: var(--line); stroke-width: 1.5; }
+  .shade { fill: var(--warn); opacity: .12; }
+  .t     { fill: var(--ink); font-size: 15px; }
+  .tb    { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .tm    { fill: var(--muted); font-size: 13px; }
+  .ta    { fill: var(--accent); font-size: 15px; font-weight: 600; }
+  .tg    { fill: var(--good); font-size: 14px; font-weight: 600; }
+  .tw    { fill: var(--warn); font-size: 15px; font-weight: 600; }
+  .tc, .tck { white-space: pre; }
+  .tc    { fill: var(--code-ink); font: 13px var(--mono); }
+  .tck   { fill: var(--code-key); font: 13px var(--mono); }
+  .dot   { fill: var(--accent); }
+  .dot-n { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
+  .arrowhead { fill: var(--muted); }
+  .chg   { fill: var(--warn) !important; text-decoration: underline; text-decoration-color: var(--warn); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .u { text-decoration: underline; text-decoration-color: var(--warn); text-decoration-thickness: 2px; }
+</style>
+</head>
+<body>
+<main>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="arrowhead"/></marker>
+</defs></svg>
+
+  <div class="frame"><section class="slide title" id="s0" aria-label="Title slide">
+    <div class="tl">
+      <div class="brand"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</div>
+      <h1>GitHub Agentic Workflows</h1>
+      <p class="sub">From AI that suggests to AI that does</p>
+      <div class="rule"></div>
+    </div>
+    <div class="card term"><div class="bar"><i></i><i></i><i></i><span>terminal</span></div>
+      <pre class="code"><span class="m">$</span> gh aw run update-docs</pre></div>
+    <div class="foot"><span><span class="todo">TODO</span> my name</span><span><span class="todo">TODO</span> date</span></div>
+  </section></div>
+  <div class="frame"><section class="slide" id="s1" aria-label="Slide 1">
+    <div class="kicker">Part 1 · The problem</div>
+    <h2>We ship faster, so our docs go stale faster</h2>
+    <div class="vis"><div class="card"><div class="pad"><svg viewBox="24 14 1106 350" role="img" aria-label="Left: line chart in which delivery speed rises sharply after AI adoption while documentation freshness falls, creating a widening gap. Right: five agent autonomy levels from L1 Operator to L5 Observer, with L4 Approver highlighted">
+    <line class="axis" x1="70" y1="320" x2="760" y2="320"/>
+    <line class="axis" x1="70" y1="40" x2="70" y2="320"/>
+    <text class="tm" x="760" y="345" text-anchor="end">time →</text>
+    <text class="tm" x="60" y="40" text-anchor="end">high</text>
+    <text class="tm" x="60" y="320" text-anchor="end">low</text>
+    <!-- AI adoption marker -->
+    <line x1="330" y1="40" x2="330" y2="320" class="ln" stroke-dasharray="4 5"/>
+    <text class="tm" x="338" y="56">AI coding tools adopted</text>
+    <!-- gap shading -->
+    <path class="shade" d="M330,190 C450,150 580,90 740,55 L740,285 C600,265 460,225 330,190 Z"/>
+    <!-- delivery speed -->
+    <path class="ln-a" d="M70,230 C170,220 260,205 330,190 C450,150 580,90 740,55"/>
+    <!-- doc freshness -->
+    <path class="ln-w" d="M70,170 C170,175 260,182 330,190 C460,225 600,265 740,285"/>
+    <text class="ta" x="740" y="36" text-anchor="end">Speed of delivery</text>
+    <text class="tw" x="560" y="300">Docs freshness</text>
+    <text class="tw" x="640" y="175" text-anchor="middle" style="font-size:22px">the gap</text>
+      <!-- autonomy ladder: Feng et al., arXiv 2506.12469 -->
+    <text class="tb" x="850" y="28">Agent autonomy levels</text>
+    <line class="ln" x1="832" y1="330" x2="832" y2="50" marker-end="url(#arr)"/>
+    <rect class="box" x="850" y="46" width="270" height="44" rx="8"/><text class="t" x="868" y="74">L5  Observer</text>
+    <rect class="box-a" x="850" y="100" width="270" height="44" rx="8"/><text class="ta" x="868" y="128">L4  Approver</text><text class="tm" x="1100" y="128" text-anchor="end">gh-aw</text>
+    <rect class="box" x="850" y="154" width="270" height="44" rx="8"/><text class="t" x="868" y="182">L3  Consultant</text>
+    <rect class="box" x="850" y="208" width="270" height="44" rx="8"/><text class="t" x="868" y="236">L2  Collaborator</text>
+    <rect class="box" x="850" y="262" width="270" height="44" rx="8"/><text class="t" x="868" y="290">L1  Operator</text>
+    <text class="tm" x="850" y="334">Levels: Feng et al., arXiv 2506.12469</text>
+    <text class="tm" x="850" y="352">L4: agent proposes a PR, a human approves</text>
+  </svg></div></div></div>
+    <div class="foot"><span>GitHub Agentic Workflows</span><span class="prog" role="img" aria-label="Slide 1 of 10"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b>01</b></span></div>
+  </section></div>
+  <div class="frame"><section class="slide" id="s2" aria-label="Slide 2">
+    <div class="kicker">Part 1 · The problem</div>
+    <h2>AI has moved from suggesting work to doing it</h2>
+    <div class="vis"><div class="two"><div class="card"><div class="pad"><svg viewBox="20 6 705 314" role="img" aria-label="Comparison: traditional AI returns a suggestion the human applies; agentic AI plans, acts and checks in a loop and returns a finished pull request">
+    <text class="tb" x="190" y="30" text-anchor="middle">Traditional AI: assistance</text>
+    <text class="tb" x="600" y="30" text-anchor="middle">Agentic AI: execution</text>
+    <line x1="400" y1="20" x2="400" y2="310" class="axis" stroke-dasharray="3 5"/>
+
+    <!-- left -->
+    <rect class="box" x="40" y="70" width="120" height="56" rx="10"/>
+    <text class="t" x="100" y="103" text-anchor="middle">Human</text>
+    <rect class="box-a" x="230" y="70" width="120" height="56" rx="10"/>
+    <text class="t" x="290" y="103" text-anchor="middle">AI</text>
+    <path class="ln" d="M160,90 L228,90" marker-end="url(#arr)"/>
+    <text class="tm" x="194" y="82" text-anchor="middle">prompt</text>
+    <path class="ln" d="M230,110 L162,110" marker-end="url(#arr)"/>
+    <text class="tm" x="194" y="128" text-anchor="middle">suggestion</text>
+    <path class="ln" d="M100,126 L100,190" marker-end="url(#arr)"/>
+    <rect class="box" x="30" y="192" width="140" height="56" rx="10"/>
+    <text class="t" x="100" y="218" text-anchor="middle">Human copies,</text>
+    <text class="t" x="100" y="237" text-anchor="middle">edits, commits</text>
+    <text class="tw" x="190" y="290" text-anchor="middle">Human does the work</text>
+
+    <!-- right -->
+    <rect class="box" x="440" y="70" width="100" height="56" rx="10"/>
+    <text class="t" x="490" y="103" text-anchor="middle">Goal</text>
+    <path class="ln" d="M540,98 L578,98" marker-end="url(#arr)"/>
+    <circle cx="640" cy="160" r="72" class="box-a"/>
+    <text class="ta" x="640" y="130" text-anchor="middle">Plan</text>
+    <text class="ta" x="640" y="165" text-anchor="middle">Act</text>
+    <text class="ta" x="640" y="200" text-anchor="middle">Check</text>
+    <path class="ln" d="M702,120 A72,72 0 0 1 706,195" marker-end="url(#arr)" style="stroke:var(--accent)"/>
+    <path class="ln" d="M640,232 L640,262" marker-end="url(#arr)"/>
+    <rect class="box-g" x="570" y="264" width="140" height="40" rx="10"/>
+    <text class="t" x="640" y="289" text-anchor="middle">Pull request</text>
+    <text class="tg" x="490" y="290" text-anchor="middle">Human reviews</text>
+  </svg></div></div><div class="card"><div class="pad"><table>
+    <tr><th></th><th>Traditional AI</th><th>Agentic AI</th></tr>
+    <tr><td>Trigger</td><td>A person types a prompt</td><td>An event, schedule or goal</td></tr>
+    <tr><td>Output</td><td>Text or code to paste</td><td>Changes made: PR, issue, comment</td></tr>
+    <tr><td>Steps</td><td>One response</td><td>Many steps with tool use</td></tr>
+    <tr><td>Human role</td><td>Does the work</td><td>Reviews the work</td></tr>
+  </table></div></div></div></div>
+    <div class="foot"><span>GitHub Agentic Workflows</span><span class="prog" role="img" aria-label="Slide 2 of 10"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b>02</b></span></div>
+  </section></div>
+  <div class="frame"><section class="slide" id="s3" aria-label="Slide 3">
+    <div class="kicker">Part 1 · The problem</div>
+    <h2>I tried to fix this before, but it left a gap</h2>
+    <div class="vis"><div class="card"><div class="pad"><svg viewBox="10 57 780 192" role="img" aria-label="Flow of an earlier project: code change leads to a tool that drafts docs, which solved drafting, but triggering and keeping it running stayed manual">
+    <rect class="box" x="20" y="100" width="140" height="64" rx="10"/>
+    <text class="t" x="90" y="128" text-anchor="middle">Code change</text>
+    <text class="tm" x="90" y="148" text-anchor="middle">lands</text>
+
+    <rect class="box-w" x="200" y="100" width="150" height="64" rx="10"/>
+    <text class="t" x="275" y="128" text-anchor="middle">Someone</text>
+    <text class="t" x="275" y="148" text-anchor="middle">remembers to run it</text>
+
+    <rect class="box-g" x="390" y="100" width="170" height="64" rx="10"/>
+    <text class="t" x="475" y="128" text-anchor="middle">[Earlier project]</text>
+    <text class="tm" x="475" y="148" text-anchor="middle">e.g. generates doc drafts</text>
+
+    <rect class="box-w" x="600" y="100" width="170" height="64" rx="10"/>
+    <text class="t" x="685" y="128" text-anchor="middle">Manual copy into</text>
+    <text class="t" x="685" y="148" text-anchor="middle">repo + review</text>
+
+    <path class="ln" d="M160,132 L198,132" marker-end="url(#arr)"/>
+    <path class="ln" d="M350,132 L388,132" marker-end="url(#arr)"/>
+    <path class="ln" d="M560,132 L598,132" marker-end="url(#arr)"/>
+
+    <text class="tg" x="475" y="80" text-anchor="middle">✓ Solved: content</text>
+    <rect class="gap" x="190" y="186" width="170" height="2" rx="1"/>
+    <rect class="gap" x="590" y="186" width="190" height="2" rx="1"/>
+    <text class="tw" x="275" y="215" text-anchor="middle">Gap: not triggered</text>
+    <text class="tw" x="275" y="235" text-anchor="middle">by repo events</text>
+    <text class="tw" x="685" y="215" text-anchor="middle">Gap: lives outside</text>
+    <text class="tw" x="685" y="235" text-anchor="middle">the repo / workflow</text>
+  </svg></div></div></div>
+    <div class="foot"><span>GitHub Agentic Workflows</span><span class="prog" role="img" aria-label="Slide 3 of 10"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b>03</b></span></div>
+  </section></div>
+  <div class="frame"><section class="slide" id="s4" aria-label="Slide 4">
+    <div class="kicker">Part 2 · The solution</div>
+    <h2>GitHub Agentic Workflows: describe a task in plain English, and an AI agent does it in your repo</h2>
+    <div class="vis"><div class="card"><div class="pad"><svg viewBox="10 30 780 260" role="img" aria-label="A markdown instructions file goes into a GitHub repo where an AI agent runs and produces pull requests, issues and comments">
+    <rect class="code" x="20" y="40" width="270" height="240" rx="10"/>
+    <text class="tc" x="38" y="68">update-docs.md</text>
+    <line x1="34" y1="80" x2="276" y2="80" style="stroke:var(--code-rule)"/>
+    <text class="tc" x="38" y="108">When code in src/ changes,</text>
+    <text class="tc" x="38" y="130">check README and docs/</text>
+    <text class="tc" x="38" y="152">for anything now out of</text>
+    <text class="tc" x="38" y="174">date.</text>
+    <text class="tc" x="38" y="208">Open a pull request with</text>
+    <text class="tc" x="38" y="230">the fixes and explain</text>
+    <text class="tc" x="38" y="252">each change.</text>
+
+    <path class="ln" d="M290,160 L352,160" marker-end="url(#arr)"/>
+
+    <rect class="box" x="355" y="40" width="230" height="240" rx="14"/>
+    <text class="tb" x="470" y="70" text-anchor="middle">GitHub repo</text>
+    <circle cx="470" cy="150" r="62" class="box-a"/>
+    <text class="ta" x="470" y="138" text-anchor="middle">AI agent</text>
+    <text class="tm" x="470" y="160" text-anchor="middle">Copilot · Claude</text>
+    <text class="tm" x="470" y="178" text-anchor="middle">Codex · Gemini</text>
+    <text class="tm" x="470" y="230" text-anchor="middle">reads code, docs, issues</text>
+    <text class="tm" x="470" y="250" text-anchor="middle">inside a GitHub Action</text>
+
+    <path class="ln" d="M585,100 L628,80" marker-end="url(#arr)"/>
+    <path class="ln" d="M585,160 L628,160" marker-end="url(#arr)"/>
+    <path class="ln" d="M585,220 L628,240" marker-end="url(#arr)"/>
+    <rect class="box-g" x="630" y="56" width="150" height="44" rx="10"/>
+    <text class="t" x="705" y="83" text-anchor="middle">Pull request</text>
+    <rect class="box-g" x="630" y="138" width="150" height="44" rx="10"/>
+    <text class="t" x="705" y="165" text-anchor="middle">Issue</text>
+    <rect class="box-g" x="630" y="220" width="150" height="44" rx="10"/>
+    <text class="t" x="705" y="247" text-anchor="middle">Comment</text>
+  </svg></div></div></div>
+    <div class="foot"><span>GitHub Agentic Workflows</span><span class="prog" role="img" aria-label="Slide 4 of 10"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><b>04</b></span></div>
+  </section></div>
+  <div class="frame"><section class="slide" id="s5" aria-label="Slide 5">
+    <div class="kicker">Part 2 · The solution</div>
+    <h2>Demo: watch it work</h2>
+    <div class="vis"><div class="card"><div class="pad"><svg viewBox="37 38 734 175" role="img" aria-label="Demo storyboard in four steps: push a code change, workflow triggers, agent reads diff and docs, pull request opened with doc fixes">
+    <line x1="100" y1="70" x2="700" y2="70" class="axis" style="stroke-width:3"/>
+    <g>
+      <circle cx="100" cy="70" r="22" class="dot"/><text x="100" y="76" text-anchor="middle" style="fill:var(--on-accent);font-weight:700">1</text>
+      <text class="tb" x="100" y="128" text-anchor="middle">Push a change</text>
+      <text class="tm" x="100" y="150" text-anchor="middle">rename a CLI flag</text>
+    </g>
+    <g>
+      <circle cx="300" cy="70" r="22" class="dot"/><text x="300" y="76" text-anchor="middle" style="fill:var(--on-accent);font-weight:700">2</text>
+      <text class="tb" x="300" y="128" text-anchor="middle">Workflow triggers</text>
+      <text class="tm" x="300" y="150" text-anchor="middle">Actions tab lights up</text>
+    </g>
+    <g>
+      <circle cx="500" cy="70" r="22" class="dot"/><text x="500" y="76" text-anchor="middle" style="fill:var(--on-accent);font-weight:700">3</text>
+      <text class="tb" x="500" y="128" text-anchor="middle">Agent investigates</text>
+      <text class="tm" x="500" y="150" text-anchor="middle">reads diff + docs</text>
+    </g>
+    <g>
+      <circle cx="700" cy="70" r="22" style="fill:var(--good)"/><text x="700" y="76" text-anchor="middle" style="fill:var(--on-accent);font-weight:700">4</text>
+      <text class="tb" x="700" y="128" text-anchor="middle">PR with doc fixes</text>
+      <text class="tm" x="700" y="150" text-anchor="middle">ready for review</text>
+    </g>
+    <text class="tm" x="400" y="200" text-anchor="middle">Backup: have a finished run's PR open in another tab in case the live run is slow</text>
+  </svg></div></div></div>
+    <div class="foot"><span>GitHub Agentic Workflows</span><span class="prog" role="img" aria-label="Slide 5 of 10"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><b>05</b></span></div>
+  </section></div>
+  <div class="frame"><section class="slide" id="s6" aria-label="Slide 6">
+    <div class="kicker">Part 2 · The solution</div>
+    <h2>How it works: write a markdown file, and GitHub runs it as a workflow with safety limits</h2>
+    <div class="vis"><div class="card"><div class="pad"><svg viewBox="10 10 780 420" role="img" aria-label="Architecture: a markdown workflow with frontmatter is compiled by gh aw compile into a lock.yml GitHub Action; repo events trigger it; the agent runs in a sandbox with read-only permissions and a network firewall; a separate safe-outputs job creates PRs, issues and comments">
+    <!-- md file -->
+    <rect class="code" x="20" y="20" width="250" height="200" rx="10"/>
+    <text class="tc" x="36" y="46">.github/workflows/docs.md</text>
+    <text class="tck" x="36" y="74">---</text>
+    <text class="tck" x="36" y="94">on: push</text>
+    <text class="tck" x="36" y="114">permissions: read-all</text>
+    <text class="tck" x="36" y="134">safe-outputs:</text>
+    <text class="tck" x="36" y="154">  create-pull-request:</text>
+    <text class="tck" x="36" y="174">---</text>
+    <text class="tc" x="36" y="200">Update stale docs…</text>
+
+    <path class="ln" d="M270,120 L330,120" marker-end="url(#arr)"/>
+    <text class="tm" x="300" y="108" text-anchor="middle">gh aw</text>
+    <text class="tm" x="300" y="142" text-anchor="middle">compile</text>
+
+    <rect class="box" x="335" y="80" width="170" height="80" rx="10"/>
+    <text class="tb" x="420" y="114" text-anchor="middle">docs.lock.yml</text>
+    <text class="tm" x="420" y="136" text-anchor="middle">standard GitHub Action</text>
+
+    <!-- triggers -->
+    <text class="tb" x="660" y="40" text-anchor="middle">Triggers</text>
+    <rect class="box-a" x="580" y="54" width="160" height="30" rx="15"/><text class="t" x="660" y="74" text-anchor="middle">push / PR</text>
+    <rect class="box-a" x="580" y="92" width="160" height="30" rx="15"/><text class="t" x="660" y="112" text-anchor="middle">issue opened</text>
+    <rect class="box-a" x="580" y="130" width="160" height="30" rx="15"/><text class="t" x="660" y="150" text-anchor="middle">schedule: daily</text>
+    <rect class="box-a" x="580" y="168" width="160" height="30" rx="15"/><text class="t" x="660" y="188" text-anchor="middle">slash_command</text>
+    <path class="ln" d="M578,120 L507,120" marker-end="url(#arr)"/>
+
+    <path class="ln" d="M420,160 L420,252" marker-end="url(#arr)"/>
+
+    <!-- guardrail band -->
+    <rect class="band" x="20" y="240" width="760" height="180" rx="14"/>
+    <text class="tg" x="36" y="264">Guardrails</text>
+
+    <rect class="box-a" x="60" y="290" width="280" height="110" rx="10"/>
+    <text class="tb" x="200" y="318" text-anchor="middle">Agent job</text>
+    <text class="tm" x="200" y="342" text-anchor="middle">read-only token</text>
+    <text class="tm" x="200" y="362" text-anchor="middle">agent firewall · <tspan>no credentials</tspan></text>
+    <text class="tm" x="200" y="382" text-anchor="middle">Copilot / Claude / Codex / <tspan>Gemini</tspan></text>
+
+    <path class="ln" d="M340,345 L418,345" marker-end="url(#arr)"/>
+    <text class="tm" x="380" y="335" text-anchor="middle">proposed</text>
+
+    <rect class="box" x="420" y="290" width="170" height="110" rx="10"/>
+    <text class="tb" x="505" y="318" text-anchor="middle">Safe-outputs job</text>
+    <text class="tm" x="505" y="342" text-anchor="middle">threat-detection scan</text>
+    <text class="tm" x="505" y="362" text-anchor="middle">then allowed writes only</text>
+
+    <path class="ln" d="M590,345 L628,345" marker-end="url(#arr)"/>
+    <rect class="box-g" x="630" y="300" width="130" height="90" rx="10"/>
+    <text class="t" x="695" y="330" text-anchor="middle">PR</text>
+    <text class="t" x="695" y="352" text-anchor="middle">issue</text>
+    <text class="t" x="695" y="374" text-anchor="middle">comment</text>
+  </svg></div></div></div>
+    <div class="foot"><span>GitHub Agentic Workflows</span><span class="prog" role="img" aria-label="Slide 6 of 10"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><b>06</b></span></div>
+  </section></div>
+  <div class="frame"><section class="slide" id="s7" aria-label="Slide 7">
+    <div class="kicker">Part 2 · The solution</div>
+    <h2>Why it matters: routine work like docs, triage and reports gets done without anyone doing it</h2>
+    <div class="vis"><div class="card"><div class="pad"><svg viewBox="70 8 660 375" role="img" aria-label="Hub and spoke: the repository in the centre surrounded by continuous workflows for docs, issue triage, weekly reports, CI failure analysis and test coverage, with humans reviewing">
+    <circle cx="400" cy="190" r="150" class="ln" stroke-dasharray="5 6"/>
+    <path d="M520,100 A150,150 0 0 1 548,170" class="ln" marker-end="url(#arr)"/>
+    <path d="M280,280 A150,150 0 0 1 252,210" class="ln" marker-end="url(#arr)"/>
+
+    <circle cx="400" cy="190" r="62" class="box-a"/>
+    <text class="ta" x="400" y="186" text-anchor="middle">Your repo</text>
+    <text class="tm" x="400" y="206" text-anchor="middle">always current</text>
+
+    <rect class="box-g" x="330" y="18" width="140" height="44" rx="22"/><text class="t" x="400" y="45" text-anchor="middle">Docs updated</text>
+    <rect class="box-g" x="560" y="110" width="160" height="44" rx="22"/><text class="t" x="640" y="137" text-anchor="middle">Issues triaged</text>
+    <rect class="box-g" x="520" y="280" width="170" height="44" rx="22"/><text class="t" x="605" y="307" text-anchor="middle">Weekly report</text>
+    <rect class="box-g" x="110" y="280" width="170" height="44" rx="22"/><text class="t" x="195" y="307" text-anchor="middle">CI failures explained</text>
+    <rect class="box-g" x="80" y="110" width="160" height="44" rx="22"/><text class="t" x="160" y="137" text-anchor="middle">Tests improved</text>
+
+    <text class="tb" x="400" y="370" text-anchor="middle">People: review &amp; merge, not chase &amp; write</text>
+  </svg></div></div></div>
+    <div class="foot"><span>GitHub Agentic Workflows</span><span class="prog" role="img" aria-label="Slide 7 of 10"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><b>07</b></span></div>
+  </section></div>
+  <div class="frame"><section class="slide" id="s8" aria-label="Slide 8">
+    <div class="kicker">Part 3 · Getting started</div>
+    <h2>You can start today with workflows I’ve already built</h2><p class="ask"><span class="todo">TODO</span> Real repo name and workflow file names</p>
+    <div class="vis"><div class="card"><div class="pad"><svg viewBox="10 10 819 280" role="img" aria-label="Repository of example workflows with three steps to adopt one: pick, add, run">
+    <rect class="code" x="20" y="20" width="330" height="260" rx="10"/>
+    <text class="tc" x="38" y="50">[your-org]/agentic-workflow-examples</text>
+    <text class="tc" x="38" y="84">└─ workflows/</text>
+    <text class="tck" x="38" y="112">   ├─ update-docs.md</text>
+    <text class="tck" x="38" y="138">   ├─ issue-triage.md</text>
+    <text class="tck" x="38" y="164">   ├─ weekly-status-report.md</text>
+    <text class="tck" x="38" y="190">   ├─ ci-doctor.md</text>
+    <text class="tck" x="38" y="216">   └─ test-coverage.md</text>
+    <text class="tc" x="38" y="254">README.md · setup guide</text>
+
+    <path class="ln" d="M350,150 L400,150" marker-end="url(#arr)"/>
+
+    <rect class="box-a" x="405" y="40" width="370" height="64" rx="10"/>
+    <text class="ta" x="425" y="68">1  Pick</text>
+    <text class="tm" x="425" y="90">match a chore, or see githubnext/agentics</text>
+    <rect class="box-a" x="405" y="118" width="370" height="64" rx="10"/>
+    <text class="ta" x="425" y="146">2  Add</text>
+    <text class="tm" x="425" y="168">gh aw add owner/repo/workflow</text>
+    <rect class="box-g" x="405" y="196" width="370" height="64" rx="10"/>
+    <text class="tg" x="425" y="224">3  Run</text>
+    <text class="tm" x="425" y="246">triggers on the next repo event</text>
+  </svg></div></div></div>
+    <div class="foot"><span>GitHub Agentic Workflows</span><span class="prog" role="img" aria-label="Slide 8 of 10"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><b>08</b></span></div>
+  </section></div>
+  <div class="frame"><section class="slide" id="s9" aria-label="Slide 9">
+    <div class="kicker">Part 3 · Getting started</div>
+    <h2>What can go wrong, and how it’s controlled</h2>
+    <div class="vis"><div class="card"><div class="pad"><svg viewBox="10 10 780 280" role="img" aria-label="Three columns: safety limits (read-only agent, firewall with no credentials, safe outputs with threat-detection scan, staged dry run), cost (runs capped by max-ai-credits), and where it is not a good fit (to be filled in)">
+    <rect class="box-g" x="20"  y="20" width="245" height="260" rx="10"/>
+    <rect class="box-a" x="277" y="20" width="245" height="260" rx="10"/>
+    <rect class="box-w" x="535" y="20" width="245" height="260" rx="10"/>
+    <text class="tg" x="142" y="52" text-anchor="middle">Safety limits</text>
+    <text class="t" x="142" y="96" text-anchor="middle">Agent gets a read-only token</text>
+    <text class="t" x="142" y="132" text-anchor="middle">Firewall, no credentials</text>
+    <text class="t" x="142" y="168" text-anchor="middle">Writes only via safe outputs</text>
+    <text class="t" x="142" y="204" text-anchor="middle">Threat-detection scan</text>
+    <text class="t" x="142" y="240" text-anchor="middle">staged: true dry run</text>
+    <text class="ta" x="400" y="52" text-anchor="middle">Cost</text>
+    <text class="t" x="400" y="96" text-anchor="middle">Runs capped by</text>
+    <text class="t" x="400" y="118" text-anchor="middle">max-ai-credits</text>
+    <text class="tm" x="400" y="168" text-anchor="middle">TODO: credits per run,</text>
+    <text class="tm" x="400" y="188" text-anchor="middle">monthly estimate</text>
+    <text class="tw" x="657" y="52" text-anchor="middle">Not a good fit</text>
+    <text class="tm" x="657" y="96" text-anchor="middle">TODO: cases where a</text>
+    <text class="tm" x="657" y="116" text-anchor="middle">plain workflow or a person</text>
+    <text class="tm" x="657" y="136" text-anchor="middle">is the better choice</text>
+  </svg></div></div></div>
+    <div class="foot"><span>GitHub Agentic Workflows</span><span class="prog" role="img" aria-label="Slide 9 of 10"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><b>09</b></span></div>
+  </section></div>
+  <div class="frame"><section class="slide" id="s10" aria-label="Slide 10">
+    <div class="kicker">Part 3 · Getting started</div>
+    <h2>My ask: adopt GitHub Agentic Workflows</h2><p class="ask"><span class="todo">TODO</span> The exact decision I need from you</p>
+    <div class="vis"><div class="card"><div class="pad"><svg viewBox="10 30 780 250" role="img" aria-label="Four-week pilot timeline: set up, run, measure, decide, with success measures underneath">
+    <rect class="box-a" x="20"  y="40" width="180" height="80" rx="10"/>
+    <rect class="box-a" x="210" y="40" width="180" height="80" rx="10"/>
+    <rect class="box-a" x="400" y="40" width="180" height="80" rx="10"/>
+    <rect class="box-g" x="590" y="40" width="190" height="80" rx="10"/>
+    <text class="ta" x="110" y="72" text-anchor="middle">Week 1</text><text class="t" x="110" y="98" text-anchor="middle">Install, staged: true</text>
+    <text class="ta" x="300" y="72" text-anchor="middle">Week 2</text><text class="t" x="300" y="98" text-anchor="middle">Run docs workflow</text>
+    <text class="ta" x="490" y="72" text-anchor="middle">Week 3</text><text class="t" x="490" y="98" text-anchor="middle">Measure &amp; tune</text>
+    <text class="tg" x="685" y="72" text-anchor="middle">Week 4</text><text class="t" x="685" y="98" text-anchor="middle">Review → go / stop</text>
+
+    <text class="tb" x="20" y="170">Success looks like</text>
+    <rect class="box" x="20"  y="186" width="245" height="84" rx="10"/>
+    <rect class="box" x="277" y="186" width="245" height="84" rx="10"/>
+    <rect class="box" x="535" y="186" width="245" height="84" rx="10"/>
+    <text class="tb" x="142" y="220" text-anchor="middle">PRs merged</text>
+    <text class="tm" x="142" y="244" text-anchor="middle">% of agent PRs accepted</text>
+    <text class="tb" x="400" y="220" text-anchor="middle">Docs drift caught</text>
+    <text class="tm" x="400" y="244" text-anchor="middle">stale pages fixed per week</text>
+    <text class="tb" x="657" y="220" text-anchor="middle">Time saved</text>
+    <text class="tm" x="657" y="244" text-anchor="middle">hours saved vs AI credits used</text>
+  </svg></div></div></div>
+    <div class="foot"><span>GitHub Agentic Workflows</span><span class="prog" role="img" aria-label="Slide 10 of 10"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><b>10</b></span></div>
+  </section></div>
+</main>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Title Slide</title>
+<style>
+  /* Slide is always dark (neon look), so light and dark tokens match. Blues from draft-overview.html. */
+  :root {
+    --bg: #121212; --ink: #ececec; --muted: #a3a3a3; --warn: #e9a35c;
+    --slide-bg: #0c0c0c; --neon: #8fb0dc; --neon-hi: #b9d0ee; --neon-soft: #1b2738;
+    --card: #141414; --line: #333333;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121212; --ink: #ececec; --muted: #a3a3a3; --warn: #e9a35c;
+      --slide-bg: #0c0c0c; --neon: #8fb0dc; --neon-hi: #b9d0ee; --neon-soft: #1b2738;
+      --card: #141414; --line: #333333;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121212; --ink: #ececec; --muted: #a3a3a3; --warn: #e9a35c;
+    --slide-bg: #0c0c0c; --neon: #8fb0dc; --neon-hi: #b9d0ee; --neon-soft: #1b2738;
+    --card: #141414; --line: #333333;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 1000px; margin: 0 auto; padding: 40px 16px; }
+
+  .frame { container-type: inline-size; }
+  .slide {
+    aspect-ratio: 16 / 9; width: 100%; overflow: hidden; position: relative;
+    border-radius: 14px; border: 1px solid var(--line);
+    display: grid; grid-template-columns: 1fr 1.2fr; align-items: center;
+    padding: 0 3cqw 0 5cqw;
+    background:
+      radial-gradient(45% 60% at 68% 50%, color-mix(in srgb, var(--neon) 28%, transparent), transparent 70%),
+      radial-gradient(30% 40% at 100% 100%, color-mix(in srgb, var(--neon) 18%, transparent), transparent 70%),
+      var(--slide-bg);
+  }
+  .brand { display: flex; align-items: center; gap: 1.4cqw; font-size: 3.6cqw; font-weight: 700; letter-spacing: -.01em; }
+  .brand svg { width: 5cqw; height: 5cqw; fill: var(--ink); }
+  h1 { margin: 5cqw 0 0; font-size: 5.4cqw; line-height: 1.12; letter-spacing: -.025em; font-weight: 800; }
+  .rule { margin-top: 4cqw; width: 4cqw; height: .5cqw; border-radius: 1cqw; background: var(--neon); box-shadow: 0 0 1.5cqw var(--neon); }
+
+  .loop { width: 100%; height: auto; display: block; }
+  .loop .card { fill: var(--card); stroke: var(--neon); stroke-width: 2; }
+  .loop .ic   { fill: none; stroke: var(--neon-hi); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .loop .tt   { fill: var(--ink); font: 700 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .06em; text-anchor: middle; }
+  .loop .td   { fill: var(--muted); font: 12.5px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-anchor: middle; }
+  .loop .wire { fill: none; stroke: var(--neon); stroke-width: 2.5; }
+  .loop .ring { fill: none; stroke: var(--neon); }
+  .loop .plate { fill: var(--neon-soft); stroke: var(--neon); stroke-width: 2; }
+  .loop .bot  { fill: #dfe7f7; }
+  .loop .glow { filter: url(#glow); }
+  .loop .fc   { fill: var(--warn); text-decoration: underline; }
+  .note { margin: 10px 0 0; font-size: .85rem; color: var(--muted); }
+  .note .fc { color: var(--warn); text-decoration: underline; }
+</style>
+</head>
+<body>
+<main>
+  <div class="frame">
+    <section class="slide">
+      <div>
+        <div class="brand">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </div>
+        <h1>Getting Started with GitHub Agentic Workflows</h1>
+        <div class="rule"></div>
+      </div>
+
+      <svg class="loop" viewBox="0 0 640 520" role="img" aria-label="Cycle diagram: the GitHub Octocat mark at the centre of a loop of six steps, Plan, Code, Test, Review, Open PR and Monitor, connected by glowing arrows">
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="5" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <marker id="arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--neon-hi)"/>
+          </marker>
+        </defs>
+
+        <!-- connectors: Plan→Code→Test→Review→Deploy→Monitor→Plan -->
+        <g class="glow">
+          <path class="wire" marker-end="url(#arr)" d="M175,80 C200,50 220,45 244,60"/>
+          <path class="wire" marker-end="url(#arr)" d="M385,55 C430,55 470,75 492,98"/>
+          <path class="wire" marker-end="url(#arr)" d="M590,220 C610,245 610,270 590,292"/>
+          <path class="wire" marker-end="url(#arr)" d="M470,400 C450,430 430,440 408,440"/>
+          <path class="wire" marker-end="url(#arr)" d="M268,450 C240,460 220,455 200,440"/>
+          <path class="wire" marker-end="url(#arr)" d="M70,330 C20,280 20,210 70,172"/>
+        </g>
+
+        <!-- centre: platform rings + GitHub Octocat mark -->
+        <g class="glow">
+          <ellipse class="ring" cx="320" cy="335" rx="130" ry="34" stroke-width="2" opacity=".55"/>
+          <ellipse class="ring" cx="320" cy="335" rx="95" ry="24" stroke-width="3"/>
+          <ellipse class="plate" cx="320" cy="328" rx="70" ry="16"/>
+          <circle class="ring" cx="320" cy="235" r="88" stroke-width="2.5"/>
+        </g>
+        <path class="bot glow" transform="translate(248,163) scale(9)" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+
+        <!-- step cards -->
+        <g transform="translate(60,40)">
+          <rect class="card glow" width="120" height="122" rx="16"/>
+          <rect class="ic" x="48" y="14" width="24" height="30" rx="3"/><path class="ic" d="M54,24 h12 M54,31 h12 M54,38 h8"/>
+          <text class="tt" x="60" y="72">PLAN</text>
+          <text class="td" x="60" y="92">Understand</text><text class="td" x="60" y="107">requirements</text>
+        </g>
+        <g transform="translate(255,8)">
+          <rect class="card glow" width="120" height="122" rx="16"/>
+          <path class="ic" d="M50,20 l-10,10 l10,10 M70,20 l10,10 l-10,10 M64,16 l-8,28"/>
+          <text class="tt" x="60" y="72">CODE</text>
+          <text class="td" x="60" y="92">Write and</text><text class="td" x="60" y="107">generate code</text>
+        </g>
+        <g transform="translate(490,95)">
+          <rect class="card glow" width="120" height="122" rx="16"/>
+          <circle class="ic" cx="60" cy="30" r="15"/><path class="ic" d="M53,30 l5,5 l9,-10"/>
+          <text class="tt" x="60" y="72">TEST</text>
+          <text class="td" x="60" y="92">Run tests and</text><text class="td" x="60" y="107">validate</text>
+        </g>
+        <g transform="translate(490,298)">
+          <rect class="card glow" width="120" height="122" rx="16"/>
+          <path class="ic" d="M44,16 h32 a4,4 0 0 1 4,4 v18 a4,4 0 0 1 -4,4 h-20 l-8,7 v-7 h-4 a4,4 0 0 1 -4,-4 v-18 a4,4 0 0 1 4,-4 z M50,26 h20 M50,33 h14"/>
+          <text class="tt" x="60" y="72">REVIEW</text>
+          <text class="td" x="60" y="92">Review and get</text><text class="td" x="60" y="107">feedback</text>
+        </g>
+        <g transform="translate(275,388)">
+          <rect class="card glow" width="120" height="122" rx="16"/>
+          <path class="ic" d="M60,12 c9,7 12,18 8,30 h-16 c-4,-12 -1,-23 8,-30 z M52,36 l-7,7 l8,0 M68,36 l7,7 l-8,0"/><circle class="ic" cx="60" cy="26" r="3"/>
+          <text class="tt fc" x="60" y="72">OPEN PR</text>
+          <text class="td fc" x="60" y="92">Writes checked</text><text class="td fc" x="60" y="107">before they land</text>
+        </g>
+        <g transform="translate(70,330)">
+          <rect class="card glow" width="120" height="122" rx="16"/>
+          <path class="ic" d="M44,44 v-8 M54,44 v-14 M64,44 v-20 M74,44 v-28 M42,30 l12,-8 l8,5 l14,-12"/>
+          <text class="tt" x="60" y="72">MONITOR</text>
+          <text class="td" x="60" y="92">Monitor and</text><text class="td" x="60" y="107">improve</text>
+        </g>
+      </svg>
+    </section>
+  </div>
+  <p class="note">Fact-checked 12 Oct 2026 against github.github.com/gh-aw: <span class="fc">Deploy → Open PR</span>. gh-aw sits “beside CI and CD” and does not deploy; agents open pull requests and “every write is checked before it lands”.</p>
+</main>
+</body>
+</html>

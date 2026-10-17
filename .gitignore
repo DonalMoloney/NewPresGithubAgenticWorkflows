@@ -1,0 +1,13 @@
+# Tooling artifacts (see AGENTS.md: do not edit or commit)
+.venv/
+.playwright-mcp/
+.playwright-cli/
+__pycache__/
+*.pyc
+
+# gh aw trial results
+trials/
+
+# Editor and OS
+.idea/
+.DS_Store
