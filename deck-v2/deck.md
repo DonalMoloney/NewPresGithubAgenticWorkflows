@@ -51,13 +51,14 @@ section {
   display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; column-gap: 24px;
   padding: 40px 40px 40px 72px;
   background:
-    radial-gradient(45% 60% at 70% 50%, rgba(143,176,220,.28), transparent 70%),
-    radial-gradient(30% 40% at 100% 100%, rgba(143,176,220,.18), transparent 70%),
-    #050507;
+    radial-gradient(52% 72% at 72% 48%, rgba(56,139,253,.40), transparent 70%),
+    radial-gradient(42% 56% at 8% 8%, rgba(9,105,218,.26), transparent 72%),
+    radial-gradient(28% 40% at 100% 100%, rgba(143,176,220,.22), transparent 70%),
+    linear-gradient(135deg, #050b16 0%, #071b3a 56%, #050507 100%);
 }
-.brand p { display: flex; align-items: center; gap: 16px; margin: 0; font-size: 40px; font-weight: 700; letter-spacing: -.01em; }
-h1 { margin: 48px 0 0; font-size: 60px; line-height: 1.12; letter-spacing: -.025em; font-weight: 800; }
-.rule { margin-top: 32px; width: 52px; height: 6px; border-radius: 12px; background: #8fb0dc; box-shadow: 0 0 18px #8fb0dc; }
+.brand p { display: flex; align-items: center; gap: 16px; margin: 0; font-size: 40px; font-weight: 700; letter-spacing: -.01em; color: #f0f6fc; }
+h1 { margin: 48px 0 0; font-size: 60px; line-height: 1.12; letter-spacing: -.025em; font-weight: 800; color: #f0f6fc; text-shadow: 0 0 32px rgba(88,166,255,.18); }
+.rule { margin-top: 32px; width: 52px; height: 6px; border-radius: 12px; background: linear-gradient(90deg, #58a6ff, #b9d0ee); box-shadow: 0 0 22px rgba(88,166,255,.80); }
 .sub { margin: 32px 0 0; font-size: 24px; line-height: 1.35; color: #b9d0ee; }
 .meta p { margin: 20px 0 0; font-size: 20px; }
 .loop p { margin: 0; }
@@ -159,7 +160,7 @@ End on the gap, because the next part of the talk answers it.
 
 ![Four pairs: job description to the Markdown body, shift to on, access badge to permissions tools and network, outbox you check to safe-outputs; a classic Action is steps you write, an agentic workflow is a brief w:1136](img/teammate-model.svg)
 
-**Typical jobs:** maintain the repo (**docs**, triage, dependencies), improve code (reviews, security), report (metrics). <span class="muted">Teammate mapping is this deck's model, not GitHub terminology. Job groupings from the gh-aw home page and gallery.</span>
+<span class="muted">The teammate mapping is this deck's model, not GitHub terminology.</span>
 
 <!--
 The title is the whole idea. Say it, pause, then: it is still a GitHub Action; the difference is that you brief it instead of scripting it.
@@ -168,7 +169,7 @@ Then the teammate model, which carries the rest of the talk:
 - shift = the trigger, on:
 - access badge = permissions, tools and network
 - outbox you check = safe-outputs. It can't send anything you haven't allowed.
-Typical jobs: three groups from the gh-aw home page, tasks from the gallery; the grouping is mine. Point at docs: that's this talk's job and the lowest-risk place to start.
+Say the typical jobs out loud rather than listing them on the slide: maintain the repo (docs, triage, dependencies), improve code (reviews, security), report (metrics). Those three groups are from the gh-aw home page and the tasks are from the gallery, but the grouping is mine — say so. Then point at docs: that's this talk's job and the lowest-risk place to start.
 Q: "Is this just Copilot in CI?" No: Copilot is one of several engines; what's new is the read-only agent plus checked outputs.
 Aside if asked, not on the slide: the docs also name patterns like ChatOps, IssueOps and LabelOps.
 Transition: before I show you the file, the question everyone is already asking.
@@ -181,6 +182,8 @@ Transition: before I show you the file, the question everyone is already asking.
 ## It will get things wrong, so it is built to be checked, not trusted
 
 <style scoped>h2 { margin-bottom: 20px; } p { font-size: 24px; margin: 16px 0; } .muted { font-size: 20px; }</style>
+
+You would review a new teammate's first pull request. This one cannot skip that step.
 
 **Wrong edits →** it can only open a **draft** pull request, and a human reviews it. `draft: true` is a policy, not a default: the agent cannot override it. <span class="muted">Never merged automatically: GitHub Blog guidance, not a hard limit.</span>
 
@@ -208,12 +211,14 @@ Transition: so trust is the real question. Here is what the design does about it
 
 ![Activation, then a read-only Agent job, then a Detection job with no write access, then a Safe outputs job with a scoped write token, then a draft PR a human reviews w:1136](img/run-jobs.svg)
 
+**The teammate drafts the letter; someone else holds the key to the postbox.**
+
 - Detection scans every proposed output before anything is written. <span class="muted">A failed check defaults to a caution notice, not a hard block (continue-on-error is true).</span>
 
 <span class="muted">gh-aw architecture documentation; four of its six jobs shown.</span>
 
 <!--
-Plain version: the intern drafts it, a checker reviews it, and only then does the post room send it.
+The postbox line is on the slide; say it, then extend it: the checker in the middle is a separate job that reads what the teammate wrote before anyone posts anything.
 Technical version: least privilege by job boundary. "The agent job runs with minimal read-only permissions, while write operations are deferred to separate jobs" (gh-aw architecture docs). The model never runs in a job that has write scopes.
 Detection looks for prompt injection, secret leaks and malicious patches. A detected threat blocks the writes.
 Careful wording: don't say it "always blocks". By default, continue-on-error is true, so a detection warning or failure becomes a caution notice rather than a block.

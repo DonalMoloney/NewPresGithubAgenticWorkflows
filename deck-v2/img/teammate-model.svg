@@ -1,20 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 330" role="img" aria-labelledby="title desc"><title id="title">Hiring a teammate maps to the workflow file</title><desc id="desc">Four pairs. Job description is the Markdown body. Shift, when they work, is on. Access badge, what they may touch, is permissions, tools and network. Outbox you check is safe-outputs. This is the deck's own model, not official GitHub terminology. A classic GitHub Action is steps you write; an agentic workflow is a brief and the agent plans the steps.</desc><style>
-:root{--panel:#141414;--line:#343c49;--ink:#ececec;--muted:#a3a3a3;--blue:#8fb0dc;--hi:#b9d0ee}
-.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#101b29;stroke:var(--blue);stroke-width:2}
-.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.text{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 19px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}.code{fill:var(--hi);font:600 24px ui-monospace,SFMono-Regular,Consolas,monospace}.line{fill:none;stroke:var(--blue);stroke-width:2}.rule{stroke:var(--line);stroke-width:1.5}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 464" role="img" aria-labelledby="title desc"><title id="title">Hiring a teammate maps to the workflow file</title><desc id="desc">Four pairs. Job description is the Markdown body. Shift, when they work, is on. Access badge, what they may touch, is permissions, tools and network. Outbox you check is safe-outputs. This is the deck's own model, not official GitHub terminology. A classic GitHub Action is steps you write; an agentic workflow is a brief and the agent plans the steps.</desc><style>
+:root{--panel:#141414;--line:#343c49;--ink:#ececec;--muted:#a3a3a3;--blue:#8fb0dc;--hi:#b9d0ee;--warn:#e9a35c;--green:#85c58a}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#101b29;stroke:var(--blue);stroke-width:2}.write{fill:#132218;stroke:var(--green);stroke-width:2}.warn{fill:#241b12;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--blue);stroke-width:2}.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}.rule{fill:none;stroke:var(--line);stroke-width:1.5}.boundary{fill:none;stroke:var(--green);stroke-width:1.5;stroke-dasharray:5 6}.zone{fill:none;stroke:var(--blue);stroke-width:1.5;stroke-dasharray:5 6}
 </style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8fb0dc"/></marker></defs>
-<text x="18" y="25" class="label">HIRING A TEAMMATE</text><text x="518" y="25" class="label">IN THE WORKFLOW FILE</text>
-<rect x="12" y="40" width="430" height="58" rx="12" class="box"/><text x="32" y="66" class="heading">Job description</text><text x="32" y="88" class="text">what they are asked to do</text>
-<path d="M442 69 H500" class="line" marker-end="url(#arrow)"/>
-<rect x="504" y="40" width="620" height="58" rx="12" class="focus"/><text x="524" y="66" class="heading">Markdown body</text><text x="524" y="88" class="text">plain-English instructions</text>
-<rect x="12" y="104" width="430" height="58" rx="12" class="box"/><text x="32" y="130" class="heading">Shift</text><text x="32" y="152" class="text">when they work</text>
-<path d="M442 133 H500" class="line" marker-end="url(#arrow)"/>
-<rect x="504" y="104" width="620" height="58" rx="12" class="focus"/><text x="524" y="130" class="code">on:</text><text x="524" y="152" class="text">when the workflow runs</text>
-<rect x="12" y="168" width="430" height="58" rx="12" class="box"/><text x="32" y="194" class="heading">Access badge</text><text x="32" y="216" class="text">what they may touch</text>
-<path d="M442 197 H500" class="line" marker-end="url(#arrow)"/>
-<rect x="504" y="168" width="620" height="58" rx="12" class="focus"/><text x="524" y="194" class="code">permissions, tools, network</text><text x="524" y="216" class="text">what it can read and reach</text>
-<rect x="12" y="232" width="430" height="58" rx="12" class="box"/><text x="32" y="258" class="heading">Outbox you check</text><text x="32" y="280" class="text">what they hand back</text>
-<path d="M442 261 H500" class="line" marker-end="url(#arrow)"/>
-<rect x="504" y="232" width="620" height="58" rx="12" class="focus"/><text x="524" y="258" class="code">safe-outputs</text><text x="524" y="280" class="text">approved writes, reviewed</text>
-<path d="M12 304 H1124" class="rule"/><text x="12" y="326" class="text">Classic Action: you write the steps. Agentic workflow: you write the brief, the agent plans the steps.</text>
+<text x="1" y="24" class="label">HIRING A TEAMMATE</text>
+<text x="491" y="24" class="label">IN THE WORKFLOW FILE</text>
+<rect x="1" y="40" width="430" height="80" rx="12" class="box"/>
+<text x="21" y="74" class="heading">Job description</text>
+<text x="21" y="104" class="text">what they are asked to do</text>
+<path d="M437 80 H490" class="line" marker-end="url(#arrow)"/>
+<rect x="491" y="40" width="644" height="80" rx="12" class="focus"/>
+<text x="511" y="74" class="heading">Markdown body</text>
+<text x="511" y="104" class="text">plain-English instructions</text>
+<rect x="1" y="136" width="430" height="80" rx="12" class="box"/>
+<text x="21" y="170" class="heading">Shift</text>
+<text x="21" y="200" class="text">when they work</text>
+<path d="M437 176 H490" class="line" marker-end="url(#arrow)"/>
+<rect x="491" y="136" width="644" height="80" rx="12" class="focus"/>
+<text x="511" y="170" class="mono-h">on:</text>
+<text x="511" y="200" class="text">when the workflow runs</text>
+<rect x="1" y="232" width="430" height="80" rx="12" class="box"/>
+<text x="21" y="266" class="heading">Access badge</text>
+<text x="21" y="296" class="text">what they may touch</text>
+<path d="M437 272 H490" class="line" marker-end="url(#arrow)"/>
+<rect x="491" y="232" width="644" height="80" rx="12" class="focus"/>
+<text x="511" y="266" class="mono-h">permissions, tools, network</text>
+<text x="511" y="296" class="text">what it can read and reach</text>
+<rect x="1" y="328" width="430" height="80" rx="12" class="box"/>
+<text x="21" y="362" class="heading">Outbox you check</text>
+<text x="21" y="392" class="text">what they hand back</text>
+<path d="M437 368 H490" class="line" marker-end="url(#arrow)"/>
+<rect x="491" y="328" width="644" height="80" rx="12" class="focus"/>
+<text x="511" y="362" class="mono-h">safe-outputs</text>
+<text x="511" y="392" class="text">approved writes, reviewed</text>
+<path d="M1 424 H1135" class="rule"/>
+<text x="1" y="454" class="cap">Classic Action: you write the steps. Agentic workflow: you write the brief, the agent plans the steps.</text>
 </svg>

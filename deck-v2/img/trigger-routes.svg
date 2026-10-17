@@ -1,5 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 260" role="img" aria-labelledby="title desc"><title id="title">Four ways to start the same workflow</title><desc id="desc">Repository events, schedules, manual dispatch and comment commands converge on a workflow run.</desc><style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 207" role="img" aria-labelledby="title desc"><title id="title">Four ways to start the same workflow</title><desc id="desc">Repository events, schedules, manual dispatch and comment commands converge on a workflow run.</desc><style>
 :root{--panel:#141414;--line:#343c49;--ink:#ececec;--muted:#a3a3a3;--blue:#8fb0dc;--hi:#b9d0ee;--warn:#e9a35c;--green:#85c58a}
-.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#101b29;stroke:var(--blue);stroke-width:2}.write{fill:#132218;stroke:var(--green);stroke-width:2}.warn{fill:#241b12;stroke:var(--warn);stroke-width:1.5}
-.heading{fill:var(--ink);font:600 27px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.text{fill:var(--muted);font:23px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 19px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}.code{fill:var(--hi);font:21px ui-monospace,SFMono-Regular,Consolas,monospace}.num{fill:var(--hi);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.line{fill:none;stroke:var(--blue);stroke-width:2}.boundary{fill:none;stroke:var(--green);stroke-width:1.5;stroke-dasharray:5 6}
-</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8fb0dc"/></marker></defs><rect x="12" y="12" width="244" height="100" rx="12" class="box"/><text x="32" y="51" class="heading">Repo event</text><text x="32" y="87" class="code">push / issue / PR</text><path d="M134 113 V142 H560" class="line"/><rect x="292" y="12" width="244" height="100" rx="12" class="box"/><text x="312" y="51" class="heading">Schedule</text><text x="312" y="87" class="code">daily / cron</text><path d="M414 113 V142 H560" class="line"/><rect x="572" y="12" width="244" height="100" rx="12" class="box"/><text x="592" y="51" class="heading">Manual</text><text x="592" y="87" class="code">workflow_dispatch</text><path d="M694 113 V142 H560" class="line"/><rect x="852" y="12" width="244" height="100" rx="12" class="box"/><text x="872" y="51" class="heading">Comment</text><text x="872" y="87" class="code">slash_command</text><path d="M974 113 V142 H560" class="line"/><path d="M560 142 V172" class="line" marker-end="url(#arrow)"/><rect x="380" y="182" width="360" height="66" rx="12" class="focus"/><text x="560" y="224" class="heading" text-anchor="middle">One workflow run</text></svg>
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#101b29;stroke:var(--blue);stroke-width:2}.write{fill:#132218;stroke:var(--green);stroke-width:2}.warn{fill:#241b12;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--blue);stroke-width:2}.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}.rule{fill:none;stroke:var(--line);stroke-width:1.5}.boundary{fill:none;stroke:var(--green);stroke-width:1.5;stroke-dasharray:5 6}.zone{fill:none;stroke:var(--blue);stroke-width:1.5;stroke-dasharray:5 6}
+</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8fb0dc"/></marker></defs>
+<rect x="1" y="1" width="252" height="80" rx="12" class="box"/>
+<text x="21" y="35" class="heading">Repo event</text>
+<text x="21" y="65" class="code">push / issue / PR</text>
+<rect x="295" y="1" width="252" height="80" rx="12" class="box"/>
+<text x="315" y="35" class="heading">Schedule</text>
+<text x="315" y="65" class="code">daily / cron</text>
+<rect x="589" y="1" width="252" height="80" rx="12" class="box"/>
+<text x="609" y="35" class="heading">Manual</text>
+<text x="609" y="65" class="code">workflow_dispatch</text>
+<rect x="883" y="1" width="252" height="80" rx="12" class="box"/>
+<text x="903" y="35" class="heading">Comment</text>
+<text x="903" y="65" class="code">slash_command</text>
+<path d="M127 81 V105 H1009 M421 81 V105 M715 81 V105" class="line"/>
+<path d="M568 105 V140" class="line" marker-end="url(#arrow)"/>
+<rect x="388" y="141" width="360" height="64" rx="12" class="focus"/>
+<text x="568" y="182" class="heading" text-anchor="middle">One workflow run</text>
+</svg>
