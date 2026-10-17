@@ -51,18 +51,21 @@ section {
   display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; column-gap: 24px;
   padding: 40px 40px 40px 72px;
   background:
-    radial-gradient(52% 72% at 72% 48%, rgba(56,139,253,.40), transparent 70%),
-    radial-gradient(42% 56% at 8% 8%, rgba(9,105,218,.26), transparent 72%),
-    radial-gradient(28% 40% at 100% 100%, rgba(143,176,220,.22), transparent 70%),
-    linear-gradient(135deg, #050b16 0%, #071b3a 56%, #050507 100%);
+    radial-gradient(130% 110% at 50% 45%, transparent 40%, rgba(0,0,0,.62) 100%),
+    radial-gradient(64% 3% at 73% 49%, rgba(232,222,255,.40), transparent 70%),
+    radial-gradient(105% 12% at 73% 49%, rgba(163,113,247,.20), transparent 74%),
+    radial-gradient(52% 72% at 72% 48%, rgba(163,113,247,.48), transparent 70%),
+    radial-gradient(42% 56% at 8% 8%, rgba(137,87,229,.28), transparent 72%),
+    radial-gradient(28% 40% at 100% 100%, rgba(210,168,255,.20), transparent 70%),
+    linear-gradient(135deg, #0d061b 0%, #251145 56%, #050507 100%);
 }
 .brand p { display: flex; align-items: center; gap: 16px; margin: 0; font-size: 40px; font-weight: 700; letter-spacing: -.01em; color: #f0f6fc; }
-h1 { margin: 48px 0 0; font-size: 60px; line-height: 1.12; letter-spacing: -.025em; font-weight: 800; color: #f0f6fc; text-shadow: 0 0 32px rgba(88,166,255,.18); }
-.rule { margin-top: 32px; width: 52px; height: 6px; border-radius: 12px; background: linear-gradient(90deg, #58a6ff, #b9d0ee); box-shadow: 0 0 22px rgba(88,166,255,.80); }
-.sub { margin: 32px 0 0; font-size: 24px; line-height: 1.35; color: #b9d0ee; }
+h1 { margin: 48px 0 0; font-size: 60px; line-height: 1.12; letter-spacing: -.025em; font-weight: 800; color: #f0f6fc; text-shadow: 0 0 40px rgba(163,113,247,.28); }
+.rule { margin-top: 32px; width: 52px; height: 6px; border-radius: 12px; background: linear-gradient(90deg, #a371f7, #d2a8ff); box-shadow: 0 0 22px rgba(163,113,247,.80); }
+.sub { margin: 32px 0 0; font-size: 24px; line-height: 1.35; color: #d2a8ff; }
 .meta p { margin: 20px 0 0; font-size: 20px; }
 .loop p { margin: 0; }
-.loop img { width: 100%; height: auto; display: block; }
+.loop img { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 22px rgba(210,168,255,.26)); }
 </style>
 
 <div>

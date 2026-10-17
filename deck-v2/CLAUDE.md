@@ -42,4 +42,6 @@ Run from the project root. `<scratchpad>` is the session scratchpad directory.
 ## Verification
 - After any edit, render and look at every changed slide. Nothing may run off the bottom edge or overlap; table and code text must be readable. Check dense code and data slides at full size and at phone width. Compiling is not a visual check.
 - Confirm every slide has a note.
-- `deck.html` is a separate, older hand-built file and is not generated from `deck.md`. Say it is stale after `deck.md` changes; sync it only when asked.
+- `deck.md` is the only source. `deck.html` is **generated from it** — never hand-edit `deck.html`, and regenerate it after changing `deck.md`:
+  `marp deck-v2/deck.md --allow-local-files -o deck-v2/deck.html </dev/null`
+  It keeps `img/*.svg` as relative links, so `deck.html` must stay in `deck-v2/` beside `img/`. (The `</dev/null` is required: marp hangs waiting on stdin otherwise.)
