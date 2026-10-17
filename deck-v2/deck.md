@@ -55,59 +55,37 @@ section {
     radial-gradient(30% 40% at 100% 100%, rgba(143,176,220,.18), transparent 70%),
     #050507;
 }
-.brand { display: flex; align-items: center; gap: 16px; font-size: 40px; font-weight: 700; letter-spacing: -.01em; }
-.brand svg { width: 56px; height: 56px; fill: #ececec; }
+.brand p { display: flex; align-items: center; gap: 16px; margin: 0; font-size: 40px; font-weight: 700; letter-spacing: -.01em; }
 h1 { margin: 48px 0 0; font-size: 60px; line-height: 1.12; letter-spacing: -.025em; font-weight: 800; }
 .rule { margin-top: 32px; width: 52px; height: 6px; border-radius: 12px; background: #8fb0dc; box-shadow: 0 0 18px #8fb0dc; }
 .sub { margin: 32px 0 0; font-size: 24px; line-height: 1.35; color: #b9d0ee; }
-.meta { margin: 20px 0 0; font-size: 20px; }
-.loop { width: 100%; height: auto; display: block; }
-.loop .card { fill: #141414; stroke: #8fb0dc; stroke-width: 2; }
-.loop .ic { fill: none; stroke: #b9d0ee; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.loop .tt { fill: #ececec; font: 700 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .06em; text-anchor: middle; }
-.loop .td { fill: #a3a3a3; font: 12.5px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-anchor: middle; }
-.loop .wire { fill: none; stroke: #8fb0dc; stroke-width: 2.5; }
-.loop .ring { fill: none; stroke: #8fb0dc; }
-.loop .plate { fill: #1b2738; stroke: #8fb0dc; stroke-width: 2; }
-.loop .bot { fill: #dfe7f7; }
-.loop .glow { filter: url(#t1glow); }
+.meta p { margin: 20px 0 0; font-size: 20px; }
+.loop p { margin: 0; }
+.loop img { width: 100%; height: auto; display: block; }
 </style>
 
 <div>
-<div class="brand"><svg viewBox="0 0 16 16" role="img" aria-label="GitHub mark"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</div>
-<h1>Repos that keep themselves up to date</h1>
-<div class="rule"></div>
-<p class="sub">GitHub Agentic Workflows: from AI that suggests to AI that does</p>
-<p class="meta"><span class="muted">Donal Moloney</span> · <span class="todo">TODO: talk date and audience</span></p>
+<div class="brand">
+
+![GitHub mark w:56 h:56](img/github-mark.svg) GitHub
+
 </div>
 
-<svg class="loop" viewBox="0 0 640 520" role="img" aria-label="Cycle diagram: the GitHub Octocat mark at the centre of a loop of six steps, Plan, Code, Test, Review, Open PR and Monitor, connected by glowing arrows">
-<defs>
-<filter id="t1glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<marker id="t1arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b9d0ee"/></marker>
-</defs>
-<g class="glow">
-<path class="wire" marker-end="url(#t1arr)" d="M175,80 C200,50 220,45 244,60"/>
-<path class="wire" marker-end="url(#t1arr)" d="M385,55 C430,55 470,75 492,98"/>
-<path class="wire" marker-end="url(#t1arr)" d="M590,220 C610,245 610,270 590,292"/>
-<path class="wire" marker-end="url(#t1arr)" d="M470,400 C450,430 430,440 408,440"/>
-<path class="wire" marker-end="url(#t1arr)" d="M268,450 C240,460 220,455 200,440"/>
-<path class="wire" marker-end="url(#t1arr)" d="M70,330 C20,280 20,210 70,172"/>
-</g>
-<g class="glow">
-<ellipse class="ring" cx="320" cy="335" rx="130" ry="34" stroke-width="2" opacity=".55"/>
-<ellipse class="ring" cx="320" cy="335" rx="95" ry="24" stroke-width="3"/>
-<ellipse class="plate" cx="320" cy="328" rx="70" ry="16"/>
-<circle class="ring" cx="320" cy="235" r="88" stroke-width="2.5"/>
-</g>
-<path class="bot glow" transform="translate(248,163) scale(9)" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-<g transform="translate(60,40)"><rect class="card glow" width="120" height="122" rx="16"/><rect class="ic" x="48" y="14" width="24" height="30" rx="3"/><path class="ic" d="M54,24 h12 M54,31 h12 M54,38 h8"/><text class="tt" x="60" y="72">PLAN</text><text class="td" x="60" y="92">Understand</text><text class="td" x="60" y="107">requirements</text></g>
-<g transform="translate(255,8)"><rect class="card glow" width="120" height="122" rx="16"/><path class="ic" d="M50,20 l-10,10 l10,10 M70,20 l10,10 l-10,10 M64,16 l-8,28"/><text class="tt" x="60" y="72">CODE</text><text class="td" x="60" y="92">Write and</text><text class="td" x="60" y="107">generate code</text></g>
-<g transform="translate(490,95)"><rect class="card glow" width="120" height="122" rx="16"/><circle class="ic" cx="60" cy="30" r="15"/><path class="ic" d="M53,30 l5,5 l9,-10"/><text class="tt" x="60" y="72">TEST</text><text class="td" x="60" y="92">Run tests and</text><text class="td" x="60" y="107">validate</text></g>
-<g transform="translate(490,298)"><rect class="card glow" width="120" height="122" rx="16"/><path class="ic" d="M44,16 h32 a4,4 0 0 1 4,4 v18 a4,4 0 0 1 -4,4 h-20 l-8,7 v-7 h-4 a4,4 0 0 1 -4,-4 v-18 a4,4 0 0 1 4,-4 z M50,26 h20 M50,33 h14"/><text class="tt" x="60" y="72">REVIEW</text><text class="td" x="60" y="92">Review and get</text><text class="td" x="60" y="107">feedback</text></g>
-<g transform="translate(275,388)"><rect class="card glow" width="120" height="122" rx="16"/><path class="ic" d="M60,12 c9,7 12,18 8,30 h-16 c-4,-12 -1,-23 8,-30 z M52,36 l-7,7 l8,0 M68,36 l7,7 l-8,0"/><circle class="ic" cx="60" cy="26" r="3"/><text class="tt" x="60" y="72">OPEN PR</text><text class="td" x="60" y="92">Writes checked</text><text class="td" x="60" y="107">before they land</text></g>
-<g transform="translate(70,330)"><rect class="card glow" width="120" height="122" rx="16"/><path class="ic" d="M44,44 v-8 M54,44 v-14 M64,44 v-20 M74,44 v-28 M42,30 l12,-8 l8,5 l14,-12"/><text class="tt" x="60" y="72">MONITOR</text><text class="td" x="60" y="92">Monitor and</text><text class="td" x="60" y="107">improve</text></g>
-</svg>
+# Repos that keep themselves up to date
+
+<div class="rule"></div>
+<div class="sub">GitHub Agentic Workflows: from AI that suggests to AI that does</div>
+<div class="meta">
+
+<span class="muted">Donal Moloney</span> · <span class="todo">TODO: talk date and audience</span>
+
+</div>
+</div>
+<div class="loop">
+
+![Cycle diagram: the GitHub Octocat mark at the centre of a loop of six steps, Plan, Code, Test, Review, Open PR and Monitor, connected by glowing arrows](img/title-loop.svg)
+
+</div>
 
 <!--
 Open with the promise, not the product: a repo whose docs keep up with its code.
@@ -123,7 +101,7 @@ Mixed room: plain-English version first on every slide; the technical detail is 
 
 <div class="stat">56.5%</div>
 
-of 12,374 developers say **outdated information** makes it hard to get the context they need.
+of 12,374 developers say **outdated information** gets in the way of the context they need at work.
 
 <span class="muted">Stack Overflow Developer Survey 2026</span>
 
@@ -143,7 +121,7 @@ Older backup if challenged: about two-thirds of 45 developers agreed docs are "a
 ![Autonomy ladder from L1 Operator to L5 Observer, with gh-aw at L4 Approver w:1136 h:255](img/autonomy-ladder.svg)
 
 - **43.2 million** pull requests merged per month, up 23% year over year.
-- **Nearly 1 billion** commits in 2025, up 25.1%.
+- **Nearly 1 billion** commits pushed in 2025, up 25.1%.
 
 <span class="muted">Measured: GitHub Octoverse 2025. Ladder: Feng et al., arXiv 2506.12469, illustrative; the L4 placement is this deck’s interpretation.</span>
 
@@ -184,7 +162,7 @@ End on the gap, because the next part of the talk answers it.
 **Typical jobs:** maintain the repo (**docs**, triage, dependencies), improve code (reviews, security), report (metrics). <span class="muted">Teammate mapping is this deck's model, not GitHub terminology. Job groupings from the gh-aw home page and gallery.</span>
 
 <!--
-Plain line: a classic Action is a recipe; an agentic workflow is a brief.
+The title is the whole idea. Say it, pause, then: it is still a GitHub Action; the difference is that you brief it instead of scripting it.
 Then the teammate model, which carries the rest of the talk:
 - job description = the markdown body
 - shift = the trigger, on:
@@ -202,9 +180,9 @@ Transition: before I show you the file, the question everyone is already asking.
 
 <style scoped>h2 { margin-bottom: 20px; } p { font-size: 24px; margin: 16px 0; } .muted { font-size: 20px; }</style>
 
-**Wrong edits →** it can only open a **draft** pull request, and a human reviews it. `draft: true` is a policy the agent cannot override. <span class="muted">Never merged automatically: GitHub Blog guidance, not a hard limit.</span>
+**Wrong edits →** it can only open a **draft** pull request, and a human reviews it. `draft: true` is a policy, not a default: the agent cannot override it. <span class="muted">Never merged automatically: GitHub Blog guidance, not a hard limit.</span>
 
-**Prompt injection →** read-only by default, every write checked, threat detection on by default.
+**Prompt injection →** read-only by default, every write checked, threat detection on automatically.
 
 **Cost →** capped per run: 1,000 AI Credits (~$10) by default, and you choose the model. <span class="todo">TODO: our own measured cost per run.</span>
 
@@ -215,22 +193,22 @@ Be honest first: it will sometimes be wrong. The design assumes that.
 Wrong edits: PRs open as drafts; the docs call draft "a policy, not a default", so the agent can't override it. "Never merged automatically" is GitHub Blog guidance, not a hard limit, since an experimental merge output exists.
 Cost: a per-run budget is on by default, 1,000 AI Credits; 1 AIC = $0.01, so about $10. The docs call AIC best-effort, so it may not match the bill exactly.
 If asked about a daily cap: two docs pages disagree on its default, so I've left it out.
-Q: "Could it replace our CI or release pipeline?" No: it's not for build, test or release pipelines; it's for work that needs interpretation. That limit is on the slide now, because naming it early buys trust.
+Q: "Could it replace our CI or release pipeline?" No: it's not for build, test or release pipelines; it's for work that needs interpretation. Say the limit out loud as well as showing it; naming it early buys trust.
 Say the quote out loud rather than putting it on the slide: "Getting an agent to open a pull request was never the hard part. Trusting it enough to merge is." (May Walter, CTO, Hud.io, GitHub changelog, 11 Jun 2026.)
 Transition: so trust is the real question. Here is what the design does about it.
 -->
 
 ---
 
-## The agent never holds a write token: writes happen in a separate, checked job
+## The agent never holds a write token: a separate, checked job does the writing
 
 <style scoped>h2 { margin-bottom: 14px; } p { margin: 10px 0; } ul { font-size: 24px; margin: 10px 0; } .muted { font-size: 20px; }</style>
 
 ![Activation, then a read-only Agent job, then a Detection job with no write access, then a Safe outputs job with a scoped write token, then a draft PR a human reviews w:1136 h:245](img/run-jobs.svg)
 
-- Detection scans every proposed output before anything is written. <span class="muted">A failed check defaults to a caution notice, not a hard block.</span>
+- Detection scans every proposed output before anything is written. <span class="muted">A failed check defaults to a caution notice, not a hard block (continue-on-error is true).</span>
 
-<span class="muted">gh-aw architecture documentation. Status: public preview since 11 Jun 2026 (GitHub changelog).</span>
+<span class="muted">gh-aw architecture documentation; four of its six jobs shown. Status: public preview since 11 Jun 2026 (GitHub changelog).</span>
 
 <!--
 Plain version: the intern drafts it, a checker reviews it, and only then does the post room send it.
@@ -240,12 +218,12 @@ Careful wording: don't say it "always blocks". By default, continue-on-error is 
 Q: "Which AI does the work?" Engine choice is a setting: GitHub Copilot, Claude Code, Codex, Antigravity (experimental) and Pi; Copilot is the usual default. Gemini is listed but deprecated in favour of Antigravity.
 Careful wording: the docs list six jobs (adding pre-activation and conclusion); the diagram simplifies, so don't say "four jobs".
 Q: "Is it GA?" No: public preview since 11 Jun 2026 (GitHub changelog).
-Transition: that separation doesn't make it right, only checkable. And the agent's reach is as narrow as its permissions.
+Transition: that separation doesn't make it right, only checkable. And its reach is as narrow as the list we give it.
 -->
 
 ---
 
-## Even a misled agent can only reach what we put on the list
+## A misled agent is boxed in by layers, not by any single wall
 
 <style scoped>h2 { margin-bottom: 12px; } p { margin: 8px 0; }</style>
 
@@ -259,12 +237,12 @@ Technical: the agent is containerised and its egress goes through a proxy with a
 The API proxy matters for a different reason: it keeps the engine's auth token out of the agent's container, so a prompt-injected agent has no credential to exfiltrate.
 Careful wording: the MCP gateway is drawn dashed on purpose. The docs say it "is not a strong security boundary against a compromised or malicious agent". Say that out loud — the defence is layers, not any one wall. Claiming otherwise is the fastest way to lose a security-minded room.
 Q: "So it can't call out at all?" It can, but only to domains on the list. That list is in the workflow file and gets reviewed like any other code.
-Transition: that is the cage. Here is the whole job, in fifteen lines.
+Transition: that is the cage. Here is the whole job, in thirteen lines.
 -->
 
 ---
 
-## The settings say when it runs, what it can read, and the one thing it can send
+## Thirteen lines say when it runs, what it can read, and the one thing it can send
 
 <style scoped>pre { font-size: 20px; margin: 10px 0; } .cols { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: start; } ul { font-size: 24px; }</style>
 
@@ -293,7 +271,7 @@ tools:
 - **Shift:** every push to `main`
 - **Access badge:** read-only; network limited to basic infrastructure
 - **Outbox:** one draft pull request
-- **Tools:** broad **reads** — `bash` and the GitHub toolsets stay inside the read-only, firewalled job. The outbox above is still the only way out.
+- **Tools:** broad **reads** — `bash` included, all inside the read-only, firewalled job. The outbox is still the only way out.
 
 </div>
 </div>
@@ -302,7 +280,7 @@ tools:
 
 <!--
 This is a real file, trimmed: update-docs.md from githubnext/agentics. Not a made-up example.
-Walk it against the teammate chips from the last slide: shift = every push to main; badge = read-all plus network: defaults (the firewall); outbox = one draft pull request.
+Walk it against the teammate pairs from slide 5: shift = every push to main; badge = read-all plus network: defaults (the firewall); outbox = one draft pull request.
 Transition: that is the entire job description. Now, what does a run like this actually produce?
 Expect the question "bash: true?" Yes, tools are broad, but the agent job is read-only and its network goes through the firewall. Writes happen later, in a separate job (the "never holds a write token" slide).
 -->
@@ -317,7 +295,7 @@ Expect the question "bash: true?" Yes, tools are broad, but the agent job is rea
 
 <div class="stat">57 / 59</div>
 
-Daily Documentation Updater pull requests merged (96%). <span class="muted">gh-aw blog, 13 Jan 2026; reported by GitHub, small sample.</span>
+A 96% merge rate for its Daily Documentation Updater. <span class="muted">gh-aw blog, 13 Jan 2026; reported by GitHub, small sample. Merged is not the same as correct.</span>
 
 <span class="todo">TODO: screenshots and recordings of a real pull request, issue and comment (link and length for each).</span>
 
@@ -327,7 +305,36 @@ The number is GitHub's own, from the gh-aw blog ("Meet the Workflows: Continuous
 Caveat out loud: reported by GitHub, small samples; the post doesn't say which repos. Merged is not the same as correct.
 TODO: show the outcome first (the PR screenshot), then the recording of the run behind it. Runs take minutes, so use recordings; a live run is a bonus only.
 Outside evidence if asked: "Inside of CNCF, we are benefiting from improved documentation automation along with improving team reporting across the organization." Chris Aniszczyk, CNCF, GitHub Blog, 13 Feb 2026.
-Transition: that's GitHub's number. Here's how we'd find ours.
+Transition: that's GitHub's number. Here's what I've already built against it.
+-->
+
+---
+
+## The library is already written and documented; running it is the one step left
+
+<style scoped>h2 { margin-bottom: 18px; } table { font-size: 22px; } td, th { padding: 6px 12px; }</style>
+
+| Already written | Still unproven |
+| --- | --- |
+| **98** workflow briefs in `workflows/`, one file each | **0** have ever run inside GitHub Actions |
+| **98** matching docs pages, one per workflow | **4 of 98** compiled locally; the other 94 are briefs |
+| **6** shared policy and prompt modules, imported rather than copied | No release tagged, and the sandbox repo does not exist |
+
+<span class="muted">`DonalMoloney/Agentic-Workflows-Lib`, private. File counts verified via the GitHub API, 17 Oct 2026. The compile result and the "not yet run" column are the repository's own `agents.md` — a self-report, not a CI result.</span>
+
+<span class="todo">TODO: the one thing building this taught me, and whether the repo goes public before the talk.</span>
+
+<!--
+Plain line to say: I didn't come here with a slide deck. I came with 98 of these already written and documented, and not one of them has ever run. That last part is the ask.
+Say the right-hand column out loud. Do not let the room hear "98" and assume production. The honest sentence is "written and documented, not yet executed".
+Technical detail: 98 markdown briefs in workflows/, each with a docs page in docs/workflows/ carrying the same required-fields table. Six shared modules under workflows/shared/ are imported rather than copy-pasted, so a safety change lands in one place. aw.yml pins min-version v0.83.4.
+Numbers and sources: both 98s and the 6 were verified through the GitHub API on 17 Oct 2026; the two filename sets are identical. "4 compiled, 0 errors" and "0 runs" come from the repo's own agents.md.
+Careful wording, say none of these: not "98 workflows running", not "98 compiled", not "in production", not "the org is using it". Only 4 of 98 were compiled, and no .lock.yml files are committed at all. The acme-org owner and install strings in that repo are placeholders and resolve to nothing, so never show an install line as runnable.
+Q: "So none of this actually works?" Four compile cleanly against the pinned gh-aw version, so the frontmatter and safe-outputs are valid. Runtime behaviour is unproven, and that is exactly what a month of real runs would prove.
+Q: "Why 98 and not 4?" The briefs are the cheap part, they are plain English. Compiling, running and reviewing is the expensive part, and I stopped before spending that without agreement.
+Q: "Can we see it?" It is private. TODO: decide before the talk whether it goes public.
+Q: "How long did this take you?" TODO: answer honestly; it is the question that makes 98 land or sound like padding.
+Transition: so the decision I need is small. Pick one page, and let one of these run for a month.
 -->
 
 ---
@@ -339,7 +346,7 @@ Transition: that's GitHub's number. Here's how we'd find ours.
 **Decision I need:** <span class="todo">TODO: pilot repository, owner, one-month timeframe, and success measure.</span>
 
 1. **Choose** one stale page and its repository.
-2. **Try it safely:** nothing is written to our repo until we choose.
+2. **Try it staged:** `staged: true` runs it for real and writes nothing to our repo.
 3. **Review** every pull request it opens, for a month.
 4. **Decide:** keep, change, or stop.
 
@@ -394,7 +401,7 @@ Update the docs to match the code that changed, and open a draft PR.
 <span class="muted">Body paraphrased; the real file’s instructions are longer.</span>
 
 <!--
-Below the frontmatter is the job description, in plain English. The real body is longer (style rules, what to check); this one line is a paraphrase.
+Below the frontmatter is the job description, in plain English. The real body is a page of style rules — it names the Diataxis framework and forbids pushing to the default branch; this one line is a paraphrase.
 gh aw compile turns the markdown into a .lock.yml, ordinary GitHub Actions YAML. You commit both, and both get reviewed.
 For non-technical listeners: the settings are the rules, the body is the request, and compile turns them into something GitHub already knows how to run.
 Q: "Do I need to edit the YAML?" No: edit the markdown and recompile; the lock file is generated.
@@ -403,7 +410,7 @@ Transition: so when does it run?
 
 ---
 
-## You can start a workflow four ways: on a repo event, on a schedule, by hand, or by asking in a comment
+## You start a workflow four ways: a repo event, a clock, a button, or a comment
 
 <style scoped>h2 { margin-bottom: 14px; } p { margin: 10px 0; } ul { font-size: 23px; margin: 10px 0; }</style>
 

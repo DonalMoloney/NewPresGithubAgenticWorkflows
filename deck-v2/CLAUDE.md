@@ -24,6 +24,7 @@ Run from the project root. `<scratchpad>` is the session scratchpad directory.
 
 ## Visual language
 - Build on `../slide-styling/title-slide.html`: near-black canvas, restrained blue neon accents, pale text, thin borders, generous space. No red theme.
+- Make slide 1 look like `../slide-styling/title-slide.html`: GitHub mark and wordmark, then the deck's title as a large heading with a short glowing blue rule beneath it on the left; the Octocat inside the six-step loop (Plan, Code, Test, Review, Open PR, Monitor) on the right; radial blue glow behind. Reuse its SVG and colours rather than redesigning. Keep "Open PR", never "Deploy": gh-aw does not deploy.
 - Keep all theme CSS in the front-matter `style:` block (background `#050507`, text `#ececec`, accent `#8fb0dc` / `#b9d0ee`, muted `#a3a3a3`, gaps `#e9a35c`). Use `<style scoped>` for one-slide tweaks; never change the global theme to fix one slide.
 - Use one grid, title position, footer, spacing scale and page numbering. Orange is for unresolved details or cautions; green sparingly for permitted outcomes.
 - Headlines 40 px or larger, body at least 20 px, code at least 18 px. Never shrink essential content to keep a slide count.

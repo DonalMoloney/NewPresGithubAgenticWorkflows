@@ -10,7 +10,9 @@
 ## The example-workflow repo (resolves the `AGENTS.md` gotcha)
 - It is **`DonalMoloney/Agentic-Workflows-Lib`** — private, last pushed 23 Sep 2026. Verified 17 Oct 2026 with `gh api`.
 - Contents: 98 agentic workflow Markdown files in `workflows/`, 98 matching pages in `docs/workflows/`, and an `aw.yml` manifest (name "Acme Agentic Workflows", `min-version: v0.83.4`).
-- **Status, per that repo's own `agents.md`:** the seed workflows compile cleanly with `gh aw compile` (v0.83.4, 0 errors, 0 warnings), but they **have never executed in GitHub Actions**, the sandbox repo described in its `docs/sandbox-setup.md` does not exist, and no release is tagged. Never describe them as operational, running, or in production.
+- **Status, per that repo's own `agents.md`:** only the **4 seed workflows** (`issue-triage`, `ci-doctor`, `pr-review`, `weekly-repo-report`) were compiled with `gh aw compile` (v0.83.4, 0 errors, 0 warnings) — the other 94 are briefs. **No `.lock.yml` is committed anywhere**, so "compiled" is a self-report, not an artifact. Nothing has **ever executed in GitHub Actions**, the sandbox repo in its `docs/sandbox-setup.md` does not exist, and no release is tagged. Never say "98 compiled", "running", "operational" or "in production". The honest line is "98 written and documented, 4 compiled, 0 run".
+- **`acme-org` is a placeholder throughout** — owners (`@acme-org/platform-devex`), CODEOWNERS and every `gh aw add acme-org/...` install line. None of it resolves. This is the biggest trap: a screenshot makes the library look like a real org-wide deployment at a company called Acme. Never show an install line as runnable.
+- `aw.yml`'s `files:` list contains only 2 of the 98 workflows, so installing from the manifest does not give you the library.
 - It is **private**, so it cannot be linked from a slide unless the user chooses to make it public. Ask before putting the URL on the appendix slide.
 - Its own `.github/workflows/` holds ordinary CI YAML (`validate`, `release`, `rollout`, `sandbox-smoke`), not agentic workflows.
 
