@@ -7,6 +7,19 @@
 - When creating the deck (in `deck-v1/`: `deck.md` content, `deck.html` slides), build from `slide-styling/title-slide.html`: it is the title slide and the reference for layout, blue neon palette (not red) and styling of every other slide. Reuse its structure and tokens rather than the `-v2` variants.
 - Folder layout is in `AGENTS.md`. Keep `overview.md` at the root; draft HTML lives in `slide-styling/`.
 
+## The example-workflow repo (resolves the `AGENTS.md` gotcha)
+- It is **`DonalMoloney/Agentic-Workflows-Lib`** — private, last pushed 23 Sep 2026. Verified 17 Oct 2026 with `gh api`.
+- Contents: 98 agentic workflow Markdown files in `workflows/`, 98 matching pages in `docs/workflows/`, and an `aw.yml` manifest (name "Acme Agentic Workflows", `min-version: v0.83.4`).
+- **Status, per that repo's own `agents.md`:** the seed workflows compile cleanly with `gh aw compile` (v0.83.4, 0 errors, 0 warnings), but they **have never executed in GitHub Actions**, the sandbox repo described in its `docs/sandbox-setup.md` does not exist, and no release is tagged. Never describe them as operational, running, or in production.
+- It is **private**, so it cannot be linked from a slide unless the user chooses to make it public. Ask before putting the URL on the appendix slide.
+- Its own `.github/workflows/` holds ordinary CI YAML (`validate`, `release`, `rollout`, `sandbox-smoke`), not agentic workflows.
+
+## Running `gh aw` for real
+- `gh aw` v0.83.4 is installed; `gh` is authenticated as `DonalMoloney`.
+- Installing or trialling a workflow pushes files under `.github/workflows/`, which the OAuth token **cannot** do without the `workflow` scope. Symptom: `refusing to allow an OAuth App to create or update workflow ... without 'workflow' scope`. Fix is interactive and must be run by the user: `gh auth refresh -h github.com -s workflow`.
+- `gh aw trial` needs a repository context, and this folder is not a git repo, so pass `--clone-repo <owner/repo>` (clones that repo's contents into a throwaway host repo) or `--logical-repo <owner/repo>` (simulates the context only). The two flags are mutually exclusive.
+- Trial creates and **retains** a private host repo, `DonalMoloney/gh-aw-trial` by default. Use `--delete-host-repo-before` to reuse it and `--delete-host-repo-after` to clean up.
+
 ## Deck design principles (all decks)
 - **One idea per slide.** The title is the claim; the body is the evidence for it. If a slide overflows, split it into two claim-titled slides. Never shrink body text below 20px or code below 18px to make it fit.
 - **Plain English first, technical second.** The room is mixed. Reuse the teammate model throughout: job description = markdown body, shift = `on:`, access badge = `permissions`/`tools`, outbox = `safe-outputs`.

@@ -11,14 +11,15 @@ style: |
     color: #ececec;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     padding: 56px 72px;
+    line-height: 1.5;
   }
   section::after { color: #a3a3a3; }
   header { color: #a3a3a3; font-size: 16px; letter-spacing: 0.12em; text-transform: uppercase; top: 24px; left: 72px; }
   h1, h2 { color: #ececec; letter-spacing: -0.03em; }
-  h1 { font-size: 64px; }
-  h2 { font-size: 40px; }
-  strong { color: #b9d0ee; }
-  code { background: #141414; color: #b9d0ee; padding: .12em .3em; }
+  h1 { font-size: 64px; line-height: 1.1; }
+  h2 { font-size: 40px; line-height: 1.18; }
+  strong { color: #a8c8f0; }
+  code { background: #121720; color: #b9d0ee; padding: .12em .3em; border-radius: 4px; }
   pre { background: #0d0f14; border: 1px solid #23324a; border-radius: 8px; }
   pre code { background: transparent; color: #d6e2f3; padding: 0; }
   pre code span { color: #d6e2f3 !important; }
@@ -40,18 +41,73 @@ style: |
   }
   .lead { text-align: center; justify-content: center; }
   section.lead h1, section.lead h2, section.lead p { text-align: center; }
-  .muted { color: #a3a3a3; }
-  .todo { color: #e9a35c; }
+  .muted { color: #8b9199; font-size: 20px; line-height: 1.4; }
+  .todo { color: #e9a35c; font-size: 20px; }
   .stat { font-size: 120px; font-weight: 700; color: #b9d0ee; line-height: 1; letter-spacing: -0.04em; }
 ---
 
-<!-- _class: lead -->
+<style scoped>
+section {
+  display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; column-gap: 24px;
+  padding: 40px 40px 40px 72px;
+  background:
+    radial-gradient(45% 60% at 70% 50%, rgba(143,176,220,.28), transparent 70%),
+    radial-gradient(30% 40% at 100% 100%, rgba(143,176,220,.18), transparent 70%),
+    #050507;
+}
+.brand { display: flex; align-items: center; gap: 16px; font-size: 40px; font-weight: 700; letter-spacing: -.01em; }
+.brand svg { width: 56px; height: 56px; fill: #ececec; }
+h1 { margin: 48px 0 0; font-size: 60px; line-height: 1.12; letter-spacing: -.025em; font-weight: 800; }
+.rule { margin-top: 32px; width: 52px; height: 6px; border-radius: 12px; background: #8fb0dc; box-shadow: 0 0 18px #8fb0dc; }
+.sub { margin: 32px 0 0; font-size: 24px; line-height: 1.35; color: #b9d0ee; }
+.meta { margin: 20px 0 0; font-size: 20px; }
+.loop { width: 100%; height: auto; display: block; }
+.loop .card { fill: #141414; stroke: #8fb0dc; stroke-width: 2; }
+.loop .ic { fill: none; stroke: #b9d0ee; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.loop .tt { fill: #ececec; font: 700 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .06em; text-anchor: middle; }
+.loop .td { fill: #a3a3a3; font: 12.5px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-anchor: middle; }
+.loop .wire { fill: none; stroke: #8fb0dc; stroke-width: 2.5; }
+.loop .ring { fill: none; stroke: #8fb0dc; }
+.loop .plate { fill: #1b2738; stroke: #8fb0dc; stroke-width: 2; }
+.loop .bot { fill: #dfe7f7; }
+.loop .glow { filter: url(#t1glow); }
+</style>
 
-# Repos that keep themselves up to date
+<div>
+<div class="brand"><svg viewBox="0 0 16 16" role="img" aria-label="GitHub mark"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</div>
+<h1>Repos that keep themselves up to date</h1>
+<div class="rule"></div>
+<p class="sub">GitHub Agentic Workflows: from AI that suggests to AI that does</p>
+<p class="meta"><span class="muted">Donal Moloney</span> · <span class="todo">TODO: talk date and audience</span></p>
+</div>
 
-## GitHub Agentic Workflows: from AI that suggests to AI that does
-
-<span class="muted">Donal Moloney</span> · <span class="todo">TODO: talk date and audience</span>
+<svg class="loop" viewBox="0 0 640 520" role="img" aria-label="Cycle diagram: the GitHub Octocat mark at the centre of a loop of six steps, Plan, Code, Test, Review, Open PR and Monitor, connected by glowing arrows">
+<defs>
+<filter id="t1glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<marker id="t1arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b9d0ee"/></marker>
+</defs>
+<g class="glow">
+<path class="wire" marker-end="url(#t1arr)" d="M175,80 C200,50 220,45 244,60"/>
+<path class="wire" marker-end="url(#t1arr)" d="M385,55 C430,55 470,75 492,98"/>
+<path class="wire" marker-end="url(#t1arr)" d="M590,220 C610,245 610,270 590,292"/>
+<path class="wire" marker-end="url(#t1arr)" d="M470,400 C450,430 430,440 408,440"/>
+<path class="wire" marker-end="url(#t1arr)" d="M268,450 C240,460 220,455 200,440"/>
+<path class="wire" marker-end="url(#t1arr)" d="M70,330 C20,280 20,210 70,172"/>
+</g>
+<g class="glow">
+<ellipse class="ring" cx="320" cy="335" rx="130" ry="34" stroke-width="2" opacity=".55"/>
+<ellipse class="ring" cx="320" cy="335" rx="95" ry="24" stroke-width="3"/>
+<ellipse class="plate" cx="320" cy="328" rx="70" ry="16"/>
+<circle class="ring" cx="320" cy="235" r="88" stroke-width="2.5"/>
+</g>
+<path class="bot glow" transform="translate(248,163) scale(9)" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+<g transform="translate(60,40)"><rect class="card glow" width="120" height="122" rx="16"/><rect class="ic" x="48" y="14" width="24" height="30" rx="3"/><path class="ic" d="M54,24 h12 M54,31 h12 M54,38 h8"/><text class="tt" x="60" y="72">PLAN</text><text class="td" x="60" y="92">Understand</text><text class="td" x="60" y="107">requirements</text></g>
+<g transform="translate(255,8)"><rect class="card glow" width="120" height="122" rx="16"/><path class="ic" d="M50,20 l-10,10 l10,10 M70,20 l10,10 l-10,10 M64,16 l-8,28"/><text class="tt" x="60" y="72">CODE</text><text class="td" x="60" y="92">Write and</text><text class="td" x="60" y="107">generate code</text></g>
+<g transform="translate(490,95)"><rect class="card glow" width="120" height="122" rx="16"/><circle class="ic" cx="60" cy="30" r="15"/><path class="ic" d="M53,30 l5,5 l9,-10"/><text class="tt" x="60" y="72">TEST</text><text class="td" x="60" y="92">Run tests and</text><text class="td" x="60" y="107">validate</text></g>
+<g transform="translate(490,298)"><rect class="card glow" width="120" height="122" rx="16"/><path class="ic" d="M44,16 h32 a4,4 0 0 1 4,4 v18 a4,4 0 0 1 -4,4 h-20 l-8,7 v-7 h-4 a4,4 0 0 1 -4,-4 v-18 a4,4 0 0 1 4,-4 z M50,26 h20 M50,33 h14"/><text class="tt" x="60" y="72">REVIEW</text><text class="td" x="60" y="92">Review and get</text><text class="td" x="60" y="107">feedback</text></g>
+<g transform="translate(275,388)"><rect class="card glow" width="120" height="122" rx="16"/><path class="ic" d="M60,12 c9,7 12,18 8,30 h-16 c-4,-12 -1,-23 8,-30 z M52,36 l-7,7 l8,0 M68,36 l7,7 l-8,0"/><circle class="ic" cx="60" cy="26" r="3"/><text class="tt" x="60" y="72">OPEN PR</text><text class="td" x="60" y="92">Writes checked</text><text class="td" x="60" y="107">before they land</text></g>
+<g transform="translate(70,330)"><rect class="card glow" width="120" height="122" rx="16"/><path class="ic" d="M44,44 v-8 M54,44 v-14 M64,44 v-20 M74,44 v-28 M42,30 l12,-8 l8,5 l14,-12"/><text class="tt" x="60" y="72">MONITOR</text><text class="td" x="60" y="92">Monitor and</text><text class="td" x="60" y="107">improve</text></g>
+</svg>
 
 <!--
 Open with the promise, not the product: a repo whose docs keep up with its code.
@@ -119,18 +175,13 @@ End on the gap, because the next part of the talk answers it.
 
 <!-- header: What it is -->
 
-## An agentic workflow is a GitHub Action whose job is written in plain English and done by an AI agent
+## An agentic workflow is a GitHub Action you brief instead of script
 
-**Classic Action:** you script every step. **Agentic workflow:** you describe the goal, and the agent plans the steps.
+<style scoped>h2 { margin-bottom: 14px; } p { margin: 10px 0; }</style>
 
-| Think of it as a new teammate | In the workflow |
-| --- | --- |
-| Job description | Markdown body |
-| Shift | `on:` |
-| Access badge | `permissions`, `tools`, `network` |
-| Outbox you check | `safe-outputs` |
+![Four pairs: job description to the Markdown body, shift to on, access badge to permissions tools and network, outbox you check to safe-outputs; a classic Action is steps you write, an agentic workflow is a brief w:1136](img/teammate-model.svg)
 
-**Typical jobs:** maintain the repo (**docs**, triage, dependencies), improve code (reviews, security), report (metrics). <span class="muted">gh-aw home page and gallery; grouping is this deck’s.</span>
+**Typical jobs:** maintain the repo (**docs**, triage, dependencies), improve code (reviews, security), report (metrics). <span class="muted">Teammate mapping is this deck's model, not GitHub terminology. Job groupings from the gh-aw home page and gallery.</span>
 
 <!--
 Plain line: a classic Action is a recipe; an agentic workflow is a brief.
@@ -147,7 +198,7 @@ Transition: before I show you the file, the question everyone is already asking.
 
 ---
 
-## It can still get things wrong, so it is built to be checked, not trusted
+## It will get things wrong, so it is built to be checked, not trusted
 
 <style scoped>h2 { margin-bottom: 20px; } p { font-size: 24px; margin: 16px 0; } .muted { font-size: 20px; }</style>
 
@@ -177,8 +228,6 @@ Transition: so trust is the real question. Here is what the design does about it
 
 ![Activation, then a read-only Agent job, then a Detection job with no write access, then a Safe outputs job with a scoped write token, then a draft PR a human reviews w:1136 h:245](img/run-jobs.svg)
 
-- The agent runs in a sandboxed container behind a firewall allowlist.
-- An API proxy keeps the engine’s auth token out of the agent’s container.
 - Detection scans every proposed output before anything is written. <span class="muted">A failed check defaults to a caution notice, not a hard block.</span>
 
 <span class="muted">gh-aw architecture documentation. Status: public preview since 11 Jun 2026 (GitHub changelog).</span>
@@ -191,7 +240,26 @@ Careful wording: don't say it "always blocks". By default, continue-on-error is 
 Q: "Which AI does the work?" Engine choice is a setting: GitHub Copilot, Claude Code, Codex, Antigravity (experimental) and Pi; Copilot is the usual default. Gemini is listed but deprecated in favour of Antigravity.
 Careful wording: the docs list six jobs (adding pre-activation and conclusion); the diagram simplifies, so don't say "four jobs".
 Q: "Is it GA?" No: public preview since 11 Jun 2026 (GitHub changelog).
-Transition: that separation doesn't make it right, only checkable. Here is the whole job, in fifteen lines.
+Transition: that separation doesn't make it right, only checkable. And the agent's reach is as narrow as its permissions.
+-->
+
+---
+
+## Even a misled agent can only reach what we put on the list
+
+<style scoped>h2 { margin-bottom: 12px; } p { margin: 8px 0; }</style>
+
+![The agent sits in a container with opt-in tools; all traffic leaves through a Squid proxy limited to an allowlist, an API proxy holding the engine token, and an MCP gateway the documentation itself calls a weak boundary w:1136](img/agent-blast-radius.svg)
+
+<span class="muted">gh-aw architecture and network reference. The MCP gateway caveat is the documentation's own wording.</span>
+
+<!--
+Plain line: the agent works in a sealed room. It can only talk to the phone numbers we put on the list, and someone else holds the keys.
+Technical: the agent is containerised and its egress goes through a proxy with a domain allowlist. Tools are opt-in under `tools:` — `bash: ["gh issue comment"]` limits bash to that one command. `network: defaults` is basic infrastructure only and is what you get if you omit `network:`; `network: {}` is no access at all.
+The API proxy matters for a different reason: it keeps the engine's auth token out of the agent's container, so a prompt-injected agent has no credential to exfiltrate.
+Careful wording: the MCP gateway is drawn dashed on purpose. The docs say it "is not a strong security boundary against a compromised or malicious agent". Say that out loud — the defence is layers, not any one wall. Claiming otherwise is the fastest way to lose a security-minded room.
+Q: "So it can't call out at all?" It can, but only to domains on the list. That list is in the workflow file and gets reviewed like any other code.
+Transition: that is the cage. Here is the whole job, in fifteen lines.
 -->
 
 ---
@@ -356,6 +424,13 @@ Appendix slide: pull it up if someone asks how a run gets started.
 
 ---
 
+<style scoped>
+section { background: radial-gradient(45% 60% at 75% 55%, #8fb0dc2e, transparent 70%), radial-gradient(30% 40% at 100% 100%, #8fb0dc29, transparent 70%), #050507; }
+h2 { color: #b9d0ee; text-shadow: 0 0 22px #8fb0dc66; }
+li::marker { color: #8fb0dc; }
+li code { background: #0d0f14; border: 1px solid #8fb0dc; border-radius: 6px; box-shadow: 0 0 14px #8fb0dc4d; }
+</style>
+
 ## Try it yourself: my examples and the official docs
 
 - <span class="todo">TODO: My sites and example repository URLs</span>
@@ -371,6 +446,13 @@ TODO: my own examples and URLs.
 -->
 
 ---
+
+<style scoped>
+section { background: radial-gradient(45% 60% at 75% 55%, #8fb0dc24, transparent 70%), radial-gradient(30% 40% at 100% 100%, #8fb0dc29, transparent 70%), #050507; }
+h2 { color: #b9d0ee; text-shadow: 0 0 22px #8fb0dc66; }
+li::marker { color: #8fb0dc; }
+strong { text-shadow: 0 0 16px #8fb0dc99; }
+</style>
 
 ## Status and sources
 

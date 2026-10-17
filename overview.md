@@ -26,54 +26,63 @@ Mixed: technical and non-technical. Titles and pictures are plain language for e
 
 ## Presentation sequence
 
-Main talk: title plus 8 slides. Eight appendix slides hold technical depth and supporting evidence.
+Main talk: title plus 11 slides. Eight appendix slides hold technical depth and supporting evidence.
 
 ### Slide 1 — Shipping faster quietly creates documentation debt
 - **Shows:** 56.5% of 12,374 developers name outdated information as a context blocker (Stack Overflow 2026), plus the earlier attempt; tool and gap TODO.
 
-### Slide 2 — Agents move people from carrying changes to reviewing them
+### Slide 2 — Documentation debt builds up between doc passes
+- **Shows:** illustrative chart (no data): code steps up with each change, docs catch up only at doc passes; the gap is the debt.
+
+### Slide 3 — Agents move people from carrying changes to reviewing them
 - **Shows:** two-row diagram: assistance (person carries the change by hand) versus workflow (agent proposes a draft PR, person reviews).
 
-### Slide 3 — Good agent output is a diff you can judge at a glance
+### Slide 4 — Agents add a third lane beside CI and CD
+- **Shows:** CI "Builds it", CD "Ships it", Continuous AI "Improving your repo, around the clock" (gh-aw docs); predictable versus judgement is this deck's framing.
+
+### Slide 5 — Good agent output is a diff you can judge at a glance
 - **Shows:** real public PR #8716 with a simplified before/after; explicitly a Copilot follow-up, not our run.
 
-### Slide 4 — Guardrails live in reviewable config, not the model
+### Slide 6 — Guardrails live in reviewable config, not the model
 - **Shows:** the verified public Update Docs file, trimmed, with the teammate model.
 
-### Slide 5 — Safety is designed in, not left to the model
+### Slide 7 — Safety is designed in, not left to the model
 - **Shows:** prepare → agent → detection → safe-output pipeline with the write boundary; detection is a layer, not a guarantee (outcomes in the appendix).
 
-### Slide 6 — Price each run in AI credits and reviewer minutes
-- **Shows:** per-run budget and usage tools; pilot limits TODO.
+### Slide 8 — Price each run in AI credits and reviewer minutes
+- **Shows:** equation: (AI credits + Actions minutes + reviewer minutes) ÷ accepted changes = cost per useful change; 1,000 AIC default cap; pilot limits TODO.
 
-### Slide 7 — Four weeks turns opinion into evidence
+### Slide 9 — Four weeks turns opinion into evidence
 - **Shows:** four-week timeline; week 1 previews outputs with `staged: true`; proposed measurements.
 
-### Slide 8 — The ask is small, capped and reversible
+### Slide 10 — The pilot's risk is boxed in on five sides
+- **Shows:** nested bounds: four weeks, capped spend (TODO), one repo and owner (TODO), docs only, draft PRs only; a person decides what merges.
+
+### Slide 11 — The ask is small, capped and reversible
 - **Shows:** proposed candidate, scope and go/no-go criteria; repo, owner, budget and thresholds TODO.
 
-### Appendix 9 — Compilation turns that file into an Actions workflow
+### Appendix 12 — Compilation turns that file into an Actions workflow
 - **Shows:** compile-and-publish details for technical questions.
 
-### Appendix 10 — Detection adds a review gate, not a safety guarantee
+### Appendix 13 — Detection adds a review gate, not a safety guarantee
 - **Shows:** threat, warning and permitted-output branches; failure behaviour qualified.
 
-### Appendix 11 — GitHub reports strong results for selected docs workflows
+### Appendix 14 — GitHub reports strong results for selected docs workflows
 - **Shows:** reported documentation merge counts, with sample caveats.
 
-### Appendix 12 — Use agents where interpretation adds value
+### Appendix 15 — Use agents where interpretation adds value
 - **Shows:** task-fit guidance and autonomy TODO.
 
-### Appendix 13 — Start with one workflow from the example collection
+### Appendix 16 — Start with one workflow from the example collection
 - **Shows:** the user’s example collection (repo/file TODO) and installation.
 
-### Appendix 14 — A trial can run in a temporary private repository
+### Appendix 17 — A trial can run in a temporary private repository
 - **Shows:** experimental trial in a temporary private repository.
 
-### Appendix 15 — Staged mode previews safe outputs before they are applied
+### Appendix 18 — Staged mode previews safe outputs before they are applied
 - **Shows:** staged-mode configuration and steps for technical questions.
 
-### Appendix 16 — The technical claims are grounded in GitHub’s documentation
+### Appendix 19 — The technical claims are grounded in GitHub’s documentation
 - **Shows:** official status, sources and unresolved documentation conflicts.
 
 ## Deck v2 spine (`deck-v2/deck.md`, 17 Oct 2026)
