@@ -164,6 +164,11 @@
       "file": "/private/tmp/claude-501/-Users-donalmoloney-PycharmProjects-NewPresGithubAgenticWorkflows/c5a6bb54-8c6a-4570-951c-d9a70ad589d6/scratchpad/katex-test",
       "rule_matched": "new-top-level-dir",
       "ts": "2026-10-17T23:58:44Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v2/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T00:35:23Z"
     }
   ]
 }
