@@ -30,6 +30,7 @@ Run from the project root. `<scratchpad>` is the session scratchpad directory.
 - Headlines 40 px or larger, body at least 20 px, code at least 18 px. Never shrink essential content to keep a slide count.
 - Process diagram for sequence, paired panels for comparison, code card with adjacent annotations for a file, chart for measured outcomes. Tables only when rows and columns help comparison. Keep tables and code blocks dark: Marp's default theme makes `tr` and `pre` light, so the overrides in `style:` must stay.
 - Use `.muted` for sources, `.todo` for gaps, `.stat` for one big hook number.
+- Slides are top-aligned (`place-content: start` overrides the default theme's centring; `_class: lead` re-centres). Put a slide's source in `<div class="source">` (fixed footer), not inline. For 2–4 parallel points use `.cards` > `.card` with a `.k` label, not bold-led paragraphs.
 - Remove decorative quotes, audience labels and repeated prose. Every visual must explain something.
 - Label conceptual diagrams as illustrative. Show denominators and source dates for statistics. No invented screenshots, logos or demo outcomes.
 - Give diagrams descriptive SVG labels; do not convey meaning by colour alone.
