@@ -51,6 +51,8 @@ style: |
   .bars div::after { content: ""; height: 10px; background: var(--line); position: absolute; bottom: 0; width: 100%; border-radius: 8px; }
   .bars i { position: absolute; z-index: 1; bottom: 0; height: 10px; width: var(--value); background: var(--accent); border-radius: 8px; }
   .bars b, .bars span { font-size: 27px; }
+  .bars u { text-decoration: none; color: var(--muted); font-size: 22px; }
+  .scale { display: flex; justify-content: space-between; font-size: 17px; color: var(--muted); margin: 10px 0 0; }
   .status { font-size: 36px; margin: 0 0 28px; }
   section.title { align-content: center; }
   section.title h1 { margin-bottom: 34px; }
@@ -116,7 +118,7 @@ style: |
   .loop .step  { fill: var(--panel); stroke: var(--accent); stroke-width: 2; }
   .loop .ic    { fill: none; stroke: var(--hi); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
   .loop .tt    { fill: var(--ink); font: 700 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .06em; text-anchor: middle; }
-  .loop .td    { fill: var(--muted); font: 12.5px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-anchor: middle; }
+  .loop .td    { fill: var(--muted); font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-anchor: middle; }
   .loop .wire  { fill: none; stroke: var(--accent); stroke-width: 2.5; }
   .loop .ring  { fill: none; stroke: var(--accent); }
   .loop .plate { fill: var(--neon-soft); stroke: var(--accent); stroke-width: 2; }
@@ -217,7 +219,7 @@ Transition: "Stack Overflow's 2026 survey asked developers what makes context ha
 
 <p class="kicker">01 / THE PROBLEM</p>
 
-## Shipping faster quietly creates documentation debt
+## Outdated documentation already costs developers time
 
 <div class="split"><div><p class="stat">56.5%</p><p>of 12,374 developers say <b>outdated information</b> makes it hard to get the context they need.</p></div><div class="card"><h3>My earlier attempt</h3><p>It tackled part of the problem.</p><p class="todo">TODO: the tool, what it solved, and the gap it left.</p></div></div><p class="caption">Industry survey, not our repositories · our own drift is not yet measured.</p>
 
@@ -266,16 +268,44 @@ Questions:
 Q: Is this our data? A: No, it is illustrative. Measuring our own gap is part of what the pilot does.
 Q: Why not just do more doc passes? A: That is the manual fix we already rely on; the cost is people's time, and it is the step that gets skipped when shipping is busy.
 
-Transition: "So the real question is who carries the repayment. An agent changes that answer."
+Transition: "So the question is who repays it. Before I answer that, I want you to know exactly what I am going to ask for, so you can judge everything that follows against it."
 -->
 
 ---
 
-<p class="kicker">03 / THE SOLUTION</p>
+<p class="kicker">03 / THE ASK</p>
+
+## The ask is four weeks, one repository, and docs only
+
+<p class="large-copy">Four weeks. One repository. Documentation only. Every change arrives as a draft pull request, and a person decides whether it merges.</p><p class="takeaway">Everything after this slide is evidence for or against that ask.</p><p class="todo">TODO · repository, owner, budget and week-four thresholds are still blank.</p>
+
+<p class="caption">This deck's proposal · the blanks are what I need from you · the bounds are on the decision slide.</p>
+
+<!--
+Say: "Before I show you anything, here is what I am going to ask for at the end, so you can weigh every slide against it. Four weeks. One repository. Documentation only. Every change arrives as a draft pull request, and a person decides whether it merges."
+
+Analogy: telling the room the price before the demonstration. If the ask is small, saying it early costs nothing and buys attention; if you hide it, people spend the talk guessing.
+
+Detail: this slide exists because the ask used to arrive only on the last slide, which left the audience with no yardstick for the evidence. Do not go through the bounds here - that is the decision slide. State the shape, say the numbers are still blank, and move on. Thirty seconds at most. If someone asks for the budget now, say it is the last open question and you will come back to it.
+
+Evidence: none required. The shape of the ask - four weeks, one repository, docs only, draft pull requests, human merge - is this deck's proposal, stated on the decision slide. No external claim is made here.
+
+Careful wording: do not present this as agreed or approved. Do not give a budget figure, a repository name or an owner: those are genuinely undecided and the orange line says so. Do not say "small" or "cheap" - cost is the one thing we have not measured.
+
+Questions:
+Q: What will it cost? A: That is the honest gap, and the cost slide is coming. We set explicit caps before anything runs.
+Q: Which repository? A: Not decided. Naming it is part of what I am asking for today.
+
+Transition: "That is the ask. Everything from here is the evidence for and against it, starting with what actually changes."
+-->
+
+---
+
+<p class="kicker">04 / THE SOLUTION</p>
 
 ## Agents shift the human role from execution to review
 
-![AI assistance: you ask, AI suggests, you carry it into the repo by hand. Agentic workflow: task file, agent works in GitHub Actions, draft PR, you review w:1120 h:300](img/suggest-vs-do.svg)
+![AI assistance: you ask, AI suggests, you carry it into the repo by hand. Agentic workflow: task file, agent works in GitHub Actions, draft PR, you review w:1120 h:312](img/suggest-vs-do.svg)
 
 <p class="caption"><b class="fig">Fig. 2</b> · From author to editor · illustrative comparison, this deck's framing.</p>
 
@@ -294,7 +324,7 @@ Questions:
 Q: How is this different from asking Copilot Chat? A: Chat gives you a suggestion to carry into the repo yourself. The workflow runs in GitHub Actions and hands back a PR, issue or comment through the outputs it is allowed.
 Q: Which model runs it? A: Copilot is the default engine. Others can be configured, but that is not the point of this talk.
 
-Transition: "Before the mechanism, consider the artefact a reviewer actually sees."
+Transition: "Shifting the role only helps if the split is unambiguous. So here is exactly who does what."
 
 Sources (checked 17 Oct 2026):
 Architecture: https://github.github.com/gh-aw/introduction/architecture/
@@ -302,16 +332,84 @@ Architecture: https://github.github.com/gh-aw/introduction/architecture/
 
 ---
 
-<p class="kicker">04 / THE REAL EXAMPLE</p>
+<p class="kicker">05 / WHO DOES WHAT</p>
 
-## Good agent output is a diff you can judge at a glance
+## The agent drafts; a person decides what merges
 
-<p class="artifact-label">PUBLIC EXAMPLE · github/gh-aw #8716 · merged 3 Jan 2026 · different workflow, shows output size only</p><div class="diff"><div><p class="eyebrow">BEFORE · UNWANTED TOC ENTRY</p><pre><code>&lt;h3 id="error-modal-title"&gt;
+![The agent reads the repository, drafts the change and opens a draft pull request; a person owns the workflow file, reviews the diff and decides what merges, with two outcomes, merges it or closes it w:1120 h:245](img/who-does-what.svg)
+
+<p class="takeaway">This moves the work from writing to judging; it does not remove it.</p><p class="caption"><b class="fig">Fig. 3</b> · This deck's framing · <code>draft: true</code> is enforced pull-request creation policy · reviewer minutes are not yet measured.</p>
+
+<p class="sources"><a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy (draft: true)</a></p>
+
+<!--
+Say: "There are two unspoken questions in this room right now. Does this replace people, and does it turn review into rubber-stamping? So let me be exact about who does what."
+
+Analogy: a draughtsman and the engineer who signs the drawing. The draughtsman prepares the work; the signature, and the responsibility that comes with it, stays with the engineer.
+
+Detail: read the left column, then the right. The agent reads the repository, drafts a change and opens a draft pull request. A person owns the workflow file, reviews the diff, decides what merges, and can switch the whole thing off. Then say the honest sentence on the slide: this moves work from writing to judging - it does not remove it. If volume rises, review time rises with it, and that is exactly why reviewer minutes are a measured quantity in the pilot rather than an assumption.
+
+Evidence: draft: true is enforced pull-request creation policy (PR policy reference, checked 17 Oct 2026). Everything else here is an argument, labelled on the slide as this deck's framing. Reviewer minutes are not measured yet.
+
+Careful wording: do not promise that nobody's job changes, and do not promise headcount is unaffected - neither is ours to promise, and the deck's own notes say not to imply fewer people. Say only what the pilot does. Human merge is our proposed pilot policy, not a product guarantee; gh-aw does not universally prohibit automatic merging. Do not claim review gets easier.
+
+Questions:
+Q: Does this replace writers or reviewers? A: No. It changes what the work is: less drafting, more judging. Whether that is a net saving is what the pilot measures.
+Q: Won't people just approve whatever it writes? A: That is the real risk, and it is why the pilot is one repository with a named owner and a small number of changes. If we cannot review them properly, that is a result worth having.
+Q: Who is accountable for a bad merge? A: The person who approved it, exactly as today.
+
+Transition: "That is the division of labour. But it raises a fair objection, and I want to meet it head on: why hand this to an agent at all, when we already automate things with scripts?"
+-->
+
+---
+<p class="kicker">06 / WHY AN AGENT</p>
+
+## Only judgement can tell whether the words still match the code
+
+<div class="split"><div class="card"><h3>A script, when the rule is fixed</h3><p>Broken links. Missing API entries. Formatting.<br><br>Cheaper, faster, and it cannot surprise you.</p></div><div class="card"><h3>An agent, when it needs reading</h3><p>Does this paragraph still describe what the function does?<br><br>No rule expresses that.</p></div></div><p class="takeaway">This does not replace the build, test and release pipeline.</p><p class="caption">This deck's framing · task-fit detail is in the appendix · use the deterministic tool whenever one solves the task.</p>
+
+<p class="sources"><a href="https://github.github.com/gh-aw/">gh-aw docs: a third pillar beside CI and CD</a></p>
+
+<!--
+Say: "There is a fair objection here, and I want to meet it head on. We already automate things. Why hand this to an agent instead of writing a script?"
+
+Analogy: a spellchecker versus an editor. A spellchecker applies a fixed rule and is better than a person at it. Deciding whether a paragraph still tells the truth is not a rule, and no spellchecker has ever done it.
+
+Detail: read the left card first and concede it properly - if a deterministic tool solves the task, the tool wins every time. It is cheaper, it is faster, and its failures are predictable. Then the right card: the documentation question is "does this explanation still describe what this code now does", which requires reading the code and the prose and forming a view. There is no rule that expresses it, which is why it has stayed a manual job. Finish on the takeaway: this sits beside CI, it does not replace it. Build, test and release still gate everything the agent proposes.
+
+Evidence: the gh-aw docs position Continuous AI as a third pillar beside CI and CD (docs home, checked 17 Oct 2026). The split between mechanical and judgement work is this deck's framing, labelled as such on the slide, not GitHub's wording.
+
+Careful wording: do not claim agents are better than scripts, or that scripts cannot do documentation work - many documentation chores are mechanical and should stay mechanical. The claim is narrow: the specific task of deciding whether prose still matches code needs interpretation. Do not say this replaces or improves CI.
+
+Questions:
+Q: Couldn't a linter catch this? A: For anything with a fixed rule, yes, and we should use one. A linter cannot tell you that a paragraph describes behaviour the code no longer has.
+Q: Why not generate the docs from the code? A: That works where docs are a projection of code, like API reference. It does not work for explanation, which is the part that goes stale and the part readers rely on.
+Q: Isn't an LLM overkill? A: It may be. That is a cost question, and the cost slide is how we answer it with numbers rather than opinion.
+
+Transition: "So the work needs judgement. Here is what that judgement actually produced, in a real repository."
+-->
+
+---
+
+<style scoped>
+  /* The non-technical half meets raw HTML here; this line says what the
+     change was before they look at it. Sits above the diff deliberately.
+     The diff is tightened to pay for it - code stays above the 20px floor. */
+  .plain { font-size: 26px; margin: 0 0 12px; }
+  .diff pre { padding: 18px 22px; }
+  .diff pre code { font-size: 21px; line-height: 1.35; }
+</style>
+
+<p class="kicker">07 / THE REAL EXAMPLE</p>
+
+## The unit of review is one small diff
+
+<p class="artifact-label">PUBLIC EXAMPLE · github/gh-aw #8716 · merged 3 Jan 2026 · different workflow, shows output size only</p><p class="plain">A dialog title was appearing in the page's navigation menu.</p><div class="diff"><div><p class="eyebrow">BEFORE · UNWANTED TOC ENTRY</p><pre><code>&lt;h3 id="error-modal-title"&gt;
   Error Copying File
 &lt;/h3&gt;</code></pre></div><div><p class="eyebrow">AFTER · ACCESSIBLE MODAL LABEL</p><pre><code>&lt;div role="heading" aria-level="3"
      class="error-modal-title"&gt;
   Error Copying File
-&lt;/div&gt;</code></pre></div></div><p class="takeaway">A modal heading was leaking into the page navigation.</p><p class="caption">Diff simplified · Copilot follow-up from a docs-testing chain, not our pilot.</p>
+&lt;/div&gt;</code></pre></div></div><p class="takeaway">Three lines changed. A reviewer can judge that in seconds.</p><p class="caption">Diff simplified · Copilot follow-up from a docs-testing chain, not our pilot.</p>
 
 <p class="sources"><a href="https://github.com/github/gh-aw/pull/8716">Real PR and diff #8716</a> · <a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/">GitHub documentation report</a></p>
 
@@ -328,13 +426,83 @@ Careful wording: PR #8716 came from a different workflow. It is not evidence tha
 
 Questions:
 Q: Is this our run? A: No. It is an explicitly labelled public example.
-Q: Where is the workflow run? A: TODO: supply the user's completed run and PR URLs before replacing this with the intended end-to-end demo. The public PR alone does not verify an end-to-end execution trace for the next slide's workflow.
+Q: Where is the workflow run? A: TODO: supply the user's completed run and PR URLs before replacing this with the intended end-to-end demo. The public PR alone does not verify an end-to-end execution trace for the workflow slide.
 
-Transition: "That PR came from a different workflow. Here is the file we would actually start from, one built to keep docs in step with code."
+Transition: "That is one pull request, honestly labelled. One is not evidence. Here is what GitHub reports at volume."
 
 Sources (checked 17 Oct 2026):
 https://github.com/github/gh-aw/pull/8716
 https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/
+-->
+
+---
+
+<p class="kicker">08 / THE EVIDENCE</p>
+
+## GitHub reports 57 of 59 documentation pull requests merged
+
+<div class="bars"><div><b>Daily Documentation Updater</b><span>57 / 59 merged <u>· 2 not</u></span><i style="--value:96%"></i></div><div><b>Documentation Unbloat</b><span>88 / 103 merged <u>· 15 not</u></span><i style="--value:85%"></i></div><div><b>Glossary Maintainer</b><span>10 / 10 merged <u>· 0 not</u></span><i style="--value:100%"></i></div></div><p class="scale"><span>0</span><span>100% of proposed pull requests</span></p><p class="caption"><b class="fig">Fig. 4</b> · GitHub report · 13 Jan 2026 · selected small samples, not a forecast for our pilot.</p>
+
+<p class="sources"><a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/">GitHub: Continuous Documentation</a></p>
+
+<!--
+Say: "GitHub reports high merge rates for three of its own documentation workflows. I show them to motivate measurement, not to predict our result."
+
+Detail: this is the only outcome evidence in the main talk, so handle it carefully. The bars use the reported rates, while the visible denominators keep the scale of the samples clear. We are showing three selected workflows; the same post includes others with lower merge rates. Say the denominators out loud - 59 pull requests is a small sample, and saying so is what makes the number usable rather than salesy.
+
+Evidence: reported by GitHub, 13 Jan 2026 (Continuous Documentation post), not independently reproduced. Daily Documentation Updater 57 of 59 merged (96%); Documentation Unbloat 88 of 103 (85%); Glossary Maintainer 10 of 10 (100%).
+
+Careful wording: these are selected small samples, not a forecast for our pilot. A merged PR is evidence of acceptance, not a direct measurement of accuracy, time saved or return on investment. The post does not explicitly identify the repository for these measurements.
+
+Questions:
+Q: Will we get 96%? A: These are small, selected samples reported by GitHub, not a forecast. We will measure our own.
+Q: Which repository were these measured in? A: The post does not explicitly identify it.
+
+Transition: "Those are good numbers, from someone else's repositories. Now the honest part, and the question you should be asking: what happens when it is wrong?"
+
+Sources (checked 17 Oct 2026):
+GitHub: Continuous Documentation: https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/
+-->
+
+---
+
+<style scoped>
+  /* Four cards in one row leaves ~222px of text column each; at the global
+     .four sizes the headings wrap to three lines and the todo line collides
+     with the source rule. Tightened here only, both still above the 20px floor. */
+  .four .card h3 { font-size: 25px; margin-bottom: 14px; }
+  .four .card p { font-size: 24px; }
+</style>
+
+<p class="kicker">09 / THE RISK</p>
+
+## It will be wrong sometimes, and that has to be survivable
+
+<div class="cards four"><div class="card"><h3>Confidently wrong</h3><p>It matches a page to code it misread.</p></div><div class="card"><h3>Too wide a diff</h3><p>A one-page fix touches twenty files.</p></div><div class="card"><h3>Poisoned input</h3><p>Instructions hidden in an issue it reads.</p></div><div class="card"><h3>Spend, no merge</h3><p>Credits burn whether or not anything lands.</p></div></div><p class="takeaway">Trusting the model prevents none of these; each needs a limit we set.</p><p class="caption">Failure modes this deck names · prompt injection is documented by GitHub; the rest follow from the task.</p><p class="todo">TODO · our own error rate is unmeasured — week one's staged preview is the first measurement.</p>
+
+<p class="sources"><a href="https://github.github.com/gh-aw/reference/threat-detection/">Threat detection</a> · <a href="https://github.github.com/gh-aw/reference/cost-management/">Cost management</a></p>
+
+<!--
+Say: "I have shown you a good result. Now the honest part. This will sometimes be wrong, and a pilot that cannot survive being wrong is not worth running. So here are the four ways it fails."
+
+Analogy: hiring a capable new starter. You do not assume their first week is flawless; you scope the work so that a mistake is cheap and visible. Nothing here depends on the agent being right.
+
+Detail: walk the four cards left to right. Confidently wrong is the model misreading code and writing confident prose about it; this is the one a reviewer must catch by reading, and the reason the output is a diff. Too wide a diff is scope creep, which is why the instructions and trigger are narrow. Poisoned input is prompt injection: text planted in an issue or pull request body that the agent reads as instruction. Spend with no merge is the economic failure, and the reason the next slides measure cost per accepted change rather than cost per run. Deliberately do not re-explain the write split or detection here; those are the next two slides and this slide only names what they answer.
+
+Evidence: prompt injection is named in GitHub's own threat-detection reference, which documents the detection job looking for "prompt injection attempts, secret leaks, and malicious code patches" (checked 17 Oct 2026). AI-credit caps are in the cost-management reference. The other three failure modes follow from the nature of the task and are labelled on the slide as this deck's framing, not GitHub's.
+
+Careful wording: do not say the controls prevent these; say they bound them. Detection is a layer, not a guarantee, and continue-on-error defaults to true. Do not give a number for how often any of these happens, in GitHub's repositories or ours - we have not measured it, and the slide says so. Do not promise that a reviewer always catches confidently wrong prose; that is the residual risk the pilot is meant to size.
+
+Questions:
+Q: How often will it be wrong? A: We do not know, and I will not guess. Week one runs with staged: true, which shows what it would have written without writing it. That is the first measurement we get.
+Q: Isn't confidently wrong documentation worse than stale documentation? A: It is the sharpest objection to this whole proposal, and it is why the output is a draft pull request rather than a commit. A wrong draft is closed in the same second it is read. Stale documentation has no such moment.
+Q: Who is accountable when a wrong page gets merged? A: The reviewer who approved it, exactly as with any other pull request. That does not change.
+
+Transition: "Each of those needs a limit rather than a promise. The limits are not in the model - they are in a file we can read."
+
+Sources (checked 17 Oct 2026):
+Threat detection: https://github.github.com/gh-aw/reference/threat-detection/
+Cost management: https://github.github.com/gh-aw/reference/cost-management/
 -->
 
 ---
@@ -346,9 +514,9 @@ https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation
   pre { padding: 20px 24px; }
 </style>
 
-<p class="kicker">05 / THE WORKFLOW</p>
+<p class="kicker">10 / THE WORKFLOW</p>
 
-## Guardrails live in reviewable config, not the model
+## The limits live in a file you can read, not in the model
 
 <div class="split code-layout"><pre><code>---
 on:
@@ -391,13 +559,13 @@ PR policy: https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/
 
 ---
 
-<p class="kicker">06 / THE RUN</p>
+<p class="kicker">11 / THE RUN</p>
 
 ## Only a separate job can write; the agent cannot
 
 ![GitHub Actions workflow run: preparation, read-only agent and detection jobs, then a separate safe-outputs job with scoped write access w:1120 h:280](img/run-pipeline.svg)
 
-<p class="takeaway">Detection runs before the write job, but by default it cautions rather than blocks.</p><p class="caption"><b class="fig">Fig. 3</b> · Default <code>continue-on-error: true</code> · layers of control, not a guarantee · least privilege (Saltzer &amp; Schroeder, 1975).</p>
+<p class="takeaway">Detection runs before the write job, but by default it cautions rather than blocks.</p><p class="caption"><b class="fig">Fig. 5</b> · Default <code>continue-on-error: true</code> · layers of control, not a guarantee · least privilege (Saltzer &amp; Schroeder, 1975).</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/introduction/architecture/">Architecture</a> · <a href="https://github.github.com/gh-aw/reference/threat-detection/">Threat detection</a></p>
 
@@ -426,7 +594,7 @@ Threat detection: https://github.github.com/gh-aw/reference/threat-detection/
 
 ---
 
-<p class="kicker">07 / COST</p>
+<p class="kicker">12 / COST</p>
 
 ## A cheap run nobody merges is still expensive
 
@@ -483,13 +651,13 @@ Transition: "That metric gives us something we can test in a short, measurable p
 
 ---
 
-<p class="kicker">08 / THE PILOT</p>
+<p class="kicker">13 / THE PILOT</p>
 
 ## Four weeks turns opinion into evidence
 
-![Four-week GitHub workflow pilot timeline: review, try, measure, then decide w:1120 h:280](img/pilot-timeline.svg)
+![Four-week GitHub workflow pilot timeline: review, try, measure, then decide w:1040 h:284](img/pilot-timeline.svg)
 
-<p class="takeaway">Review accepted changes, reviewer effort and total cost together.</p><p class="caption"><b class="fig">Fig. 4</b> · Week 1 runs with <code>staged: true</code>: writes are skipped, the run still costs.</p>
+<p class="takeaway">Review accepted changes, reviewer effort and total cost together.</p><p class="caption"><b class="fig">Fig. 6</b> · Week 1 runs with <code>staged: true</code>: writes are skipped, the run still costs.</p>
 
 <!--
 Say: "I propose we treat this as an experiment, not a purchase. Four weeks, with success criteria agreed before we start, so that the result can tell us to stop as readily as to continue."
@@ -506,18 +674,44 @@ Questions:
 Q: What counts as success? A: The decision slide defines the fields and proposed qualitative criteria. Numeric thresholds still require agreement before we start.
 Q: What does week one actually produce? A: Proposed outputs in the Actions step summary, with no writes. The run still costs.
 
-Transition: "So what limits the downside while we learn?"
+Transition: "Four weeks only helps if we agree now what the result has to show. Here is what I propose we decide in advance."
+-->
+
+---
+<p class="kicker">14 / THE DECISION RULE</p>
+
+## Week four ends in a decision we agreed in advance
+
+<div class="cards three"><div class="card"><h3>Useful fixes accepted</h3><p>Problems a reviewer agreed were real.</p></div><div class="card"><h3>Less total effort</h3><p>Lower than the agreed manual baseline.</p></div><div class="card"><h3>Within budget</h3><p>Spend inside the caps we set.</p></div></div><p class="takeaway">Agreed before we start, so the result can tell us to stop.</p><p class="todo">TODO · all three thresholds, and the manual baseline they are measured against, need agreeing before week one.</p><p class="caption">Proposed criteria · this deck's recommendation, not an agreed plan.</p>
+
+<!--
+Say: "Four weeks only helps if we agree now what the result has to show. Otherwise we will argue about the data afterwards, and whoever is most enthusiastic will win that argument. So here is what I propose we decide in advance."
+
+Analogy: pre-registering a trial. You write down what would count as success before you see the data, precisely so the data can disappoint you.
+
+Detail: three criteria. Useful fixes accepted - documentation problems a reviewer agreed were genuinely real, not merely merged. Less total effort than doing it by hand, measured against a baseline we agree before we start. And spend inside the caps. Say plainly that none of the three has a number yet, and that agreeing those numbers is part of what you are asking for today. Then say the sentence that matters: these are set so that the result can tell us to stop.
+
+Evidence: nothing external. These are the proposed qualitative criteria from the decision slide's notes, now stated on a slide. The thresholds, and the manual baseline, are genuinely undecided and the orange line says so.
+
+Careful wording: do not present these as agreed - they are a recommendation. Do not invent thresholds, a baseline, or a budget figure. Note that a merged pull request is evidence of acceptance, not of accuracy, which is why the first criterion says a reviewer agreed the problem was real rather than simply counting merges.
+
+Questions:
+Q: What if we only hit two of the three? A: Then we have a real decision rather than a reflex, and that is the point of agreeing them now.
+Q: Who decides? A: The named owner, with you. Naming that person is one of the open fields on the next-but-one slide.
+Q: What is the manual baseline? A: Undecided, and it is the hardest of the three. We need an honest estimate of what we spend on this today before week one starts.
+
+Transition: "So that is what the upside has to look like. Now the downside."
 -->
 
 ---
 
-<p class="kicker">09 / THE BOUNDS</p>
+<p class="kicker">15 / THE BOUNDS</p>
 
-## The pilot's risk is bounded on five dimensions
+## The downside is capped before anything runs
 
 ![Nested limits: four weeks, then capped spend (TODO), one repo and one owner (TODO), docs only using update-docs.md, draft pull requests only, and at the centre a person decides what merges w:1040 h:353](img/bounded-risk.svg)
 
-<p class="caption"><b class="fig">Fig. 5</b> · Proposed bounds · spend, repository and owner are TODO.</p>
+<p class="caption"><b class="fig">Fig. 7</b> · Proposed bounds · spend, repository and owner are TODO.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy (draft: true)</a></p>
 
@@ -536,7 +730,7 @@ Questions:
 Q: What is the worst case? A: A wrong draft PR that a reviewer closes, plus the spend up to the cap. That is why the cap and owner must be set before week one.
 Q: Can we stop early? A: Yes. Switch the workflow off at any point.
 
-Transition: "With the downside bounded, the ask itself is small. Here are the fields we need to fill."
+Transition: "With the downside bounded, we are back where we started. You already know the ask - here it is with the fields we need to fill in together."
 -->
 
 ---
@@ -550,7 +744,7 @@ Transition: "With the downside bounded, the ask itself is small. Here are the fi
   section::before { height: 6px; width: 140px; background: var(--hi); box-shadow: none; }
 </style>
 
-<p class="kicker">10 / THE DECISION</p>
+<p class="kicker">16 / THE DECISION</p>
 
 ## Approve a four-week, docs-only pilot
 
@@ -610,9 +804,9 @@ CLI: https://github.github.com/gh-aw/setup/cli/
 
 ## Agents add a third lane beside CI and CD
 
-![Three lanes: CI builds it (build, test); CD ships it (release, deploy); Continuous AI improves your repo around the clock (docs, triage, tests, fixes). CI and CD are predictable scripted steps; the third lane needs judgement and a person reviews the result w:1120 h:330](img/third-lane.svg)
+![Three lanes: CI builds it (build, test); CD ships it (release, deploy); Continuous AI improves your repo around the clock (docs, triage, tests, fixes). CI and CD are predictable scripted steps; the third lane needs judgement and a person reviews the result w:1120 h:356](img/third-lane.svg)
 
-<p class="caption"><b class="fig">Fig. 6</b> · Lane captions quoted from the gh-aw docs · the predictable/judgement split is this deck's framing.</p>
+<p class="caption"><b class="fig">Fig. 8</b> · Lane captions quoted from the gh-aw docs · the predictable/judgement split is this deck's framing.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/">gh-aw docs: “A third pillar beside CI and CD”</a></p>
 
@@ -636,9 +830,9 @@ Q: Does it run in our existing Actions? A: Yes, it compiles to an ordinary GitHu
 
 ## Detection adds a review gate, not a safety guarantee
 
-![GitHub Actions detection flow: threats and warnings require explicit verification, while permitted output reaches the separate safe-output job w:1120 h:320](img/detection-gate.svg)
+![GitHub Actions detection flow: threats and warnings require explicit verification, while permitted output reaches the separate safe-output job w:1120 h:358](img/detection-gate.svg)
 
-<p class="caption"><b class="fig">Fig. 7</b> · Failure behaviour is disputed in the docs; test it with explicit settings before relying on it.</p>
+<p class="caption"><b class="fig">Fig. 9</b> · Failure behaviour is disputed in the docs; test it with explicit settings before relying on it.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/introduction/architecture/">Architecture</a> · <a href="https://github.github.com/gh-aw/reference/threat-detection/">Threat detection</a></p>
 
@@ -661,33 +855,6 @@ Sources: https://github.github.com/gh-aw/reference/threat-detection/
 ---
 
 <p class="kicker">APPENDIX 4 / DETAILS FOR QUESTIONS</p>
-
-## GitHub reports strong results for selected docs workflows
-
-<div class="bars"><div><b>Daily Documentation Updater</b><span>57 / 59 merged</span><i style="--value:96%"></i></div><div><b>Documentation Unbloat</b><span>88 / 103 merged</span><i style="--value:85%"></i></div><div><b>Glossary Maintainer</b><span>10 / 10 merged</span><i style="--value:100%"></i></div></div><p class="caption"><b class="fig">Fig. 8</b> · GitHub report · 13 Jan 2026 · selected small samples, not a forecast for our pilot.</p>
-
-<p class="sources"><a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/">GitHub: Continuous Documentation</a></p>
-
-<!--
-Say: "GitHub reports high merge rates for three of its own documentation workflows. I show them to motivate measurement, not to predict our result."
-
-Detail: optional evidence slide if time is short. The bars use the reported rates, while the visible denominators keep the scale of the samples clear. We are showing three selected workflows; the same post includes others with lower merge rates.
-
-Evidence: reported by GitHub, 13 Jan 2026 (Continuous Documentation post), not independently reproduced. Daily Documentation Updater 57 of 59 merged (96%); Documentation Unbloat 88 of 103 (85%); Glossary Maintainer 10 of 10 (100%).
-
-Careful wording: these are selected small samples, not a forecast for our pilot. A merged PR is evidence of acceptance, not a direct measurement of accuracy, time saved or return on investment. The post does not explicitly identify the repository for these measurements.
-
-Questions:
-Q: Will we get 96%? A: These are small, selected samples reported by GitHub, not a forecast. We will measure our own.
-Q: Which repository were these measured in? A: The post does not explicitly identify it.
-
-Sources (checked 17 Oct 2026):
-GitHub: Continuous Documentation: https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/
--->
-
----
-
-<p class="kicker">APPENDIX 5 / DETAILS FOR QUESTIONS</p>
 
 ## Use agents where interpretation adds value
 
@@ -714,7 +881,7 @@ Cost guidance: https://github.github.com/gh-aw/reference/cost-management/
 
 ---
 
-<p class="kicker">APPENDIX 6 / DETAILS FOR QUESTIONS</p>
+<p class="kicker">APPENDIX 5 / DETAILS FOR QUESTIONS</p>
 
 ## Start with one workflow from the example collection
 
@@ -740,7 +907,7 @@ CLI: https://github.github.com/gh-aw/setup/cli/
 
 ---
 
-<p class="kicker">APPENDIX 7 / DETAILS FOR QUESTIONS</p>
+<p class="kicker">APPENDIX 6 / DETAILS FOR QUESTIONS</p>
 
 ## A trial can run in a temporary private repository
 
@@ -768,9 +935,7 @@ TrialOps — experimental: https://github.github.com/gh-aw/experimental/trial-op
 
 ---
 
-
-
-<p class="kicker">APPENDIX 8 / DETAILS FOR QUESTIONS</p>
+<p class="kicker">APPENDIX 7 / DETAILS FOR QUESTIONS</p>
 
 ## Staged mode previews safe outputs before they are applied
 
@@ -801,9 +966,7 @@ CLI: https://github.github.com/gh-aw/setup/cli/
 
 ---
 
-
-
-<p class="kicker">APPENDIX 9 / DETAILS FOR QUESTIONS</p>
+<p class="kicker">APPENDIX 8 / DETAILS FOR QUESTIONS</p>
 
 ## The technical claims are grounded in GitHub’s documentation
 
