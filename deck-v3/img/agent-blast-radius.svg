@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 438" role="img" aria-labelledby="title desc"><title id="title">A misled agent can only reach what is allowlisted</title><desc id="desc">The agent sits in a container with opt-in tools. All outbound traffic leaves through gates: a Squid proxy that allows only listed domains, an API proxy that keeps the engine token out of the container, and an MCP gateway to MCP servers. The MCP gateway is drawn dashed and orange because the docs say it is not a strong security boundary on its own, so defence comes from layers.</desc><style>
+:root{--panel:#141414;--line:#343c49;--ink:#ececec;--muted:#a3a3a3;--blue:#8fb0dc;--hi:#b9d0ee;--warn:#e9a35c;--green:#85c58a}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#101b29;stroke:var(--blue);stroke-width:2}.write{fill:#132218;stroke:var(--green);stroke-width:2}.warn{fill:#241b12;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--blue);stroke-width:2}.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}.rule{fill:none;stroke:var(--line);stroke-width:1.5}.boundary{fill:none;stroke:var(--green);stroke-width:1.5;stroke-dasharray:5 6}.zone{fill:none;stroke:var(--blue);stroke-width:1.5;stroke-dasharray:5 6}
+</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8fb0dc"/></marker><marker id="warrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#e9a35c"/></marker></defs>
+<text x="1" y="24" class="label">INSIDE THE CONTAINER</text>
+<text x="343" y="24" class="label">GATES OUT</text>
+<text x="705" y="24" class="label">OUTSIDE</text>
+<rect x="1" y="40" width="300" height="396" rx="12" class="zone"/>
+<rect x="21" y="52" width="260" height="108" rx="12" class="box"/>
+<text x="41" y="86" class="heading">Tools: opt-in</text>
+<text x="41" y="116" class="text">bash can be limited</text>
+<text x="41" y="144" class="code">to one command</text>
+<path d="M151 160 V198" class="line"/>
+<rect x="21" y="198" width="260" height="80" rx="12" class="focus"/>
+<text x="41" y="232" class="heading">Agent</text>
+<text x="41" y="262" class="text">Reads, plans, drafts</text>
+<text x="21" y="390" class="cap">No direct route out:</text>
+<text x="21" y="416" class="cap">every call uses a gate</text>
+<path d="M281 238 H322 M322 106 V370" class="line"/>
+<path d="M322 106 H342" class="line" marker-end="url(#arrow)"/>
+<path d="M322 238 H342" class="line" marker-end="url(#arrow)"/>
+<path d="M322 370 H342" class="wline" marker-end="url(#warrow)"/>
+<rect x="343" y="52" width="320" height="108" rx="12" class="focus"/>
+<text x="363" y="86" class="heading">Squid proxy</text>
+<text x="363" y="116" class="text">Egress domain allowlist</text>
+<text x="363" y="144" class="text">All else blocked</text>
+<rect x="343" y="184" width="320" height="108" rx="12" class="box"/>
+<text x="363" y="218" class="heading">API proxy</text>
+<text x="363" y="248" class="text">Keeps the engine token</text>
+<text x="363" y="276" class="text">out of the container</text>
+<rect x="343" y="316" width="320" height="108" rx="12" class="warn"/>
+<text x="363" y="350" class="heading">MCP gateway</text>
+<text x="363" y="380" class="wtext">Not a strong boundary</text>
+<text x="363" y="408" class="text">Defence = layers</text>
+<path d="M669 106 H704" class="line" marker-end="url(#arrow)"/>
+<path d="M669 238 H704" class="line" marker-end="url(#arrow)"/>
+<path d="M669 370 H704" class="wline" marker-end="url(#warrow)"/>
+<rect x="705" y="52" width="430" height="108" rx="12" class="box"/>
+<text x="725" y="86" class="heading">Allowlisted domains</text>
+<text x="725" y="116" class="code">network: defaults</text>
+<text x="725" y="144" class="text">network: {} = no access</text>
+<rect x="705" y="198" width="430" height="80" rx="12" class="box"/>
+<text x="725" y="232" class="heading">AI engine</text>
+<text x="725" y="262" class="text">Token stays out here</text>
+<rect x="705" y="330" width="430" height="80" rx="12" class="box"/>
+<text x="725" y="364" class="heading">MCP servers</text>
+<text x="725" y="394" class="text">Reached via the gateway</text>
+</svg>

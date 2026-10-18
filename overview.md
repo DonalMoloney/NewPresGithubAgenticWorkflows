@@ -26,43 +26,43 @@ Mixed: technical and non-technical. Titles and pictures are plain language for e
 
 ## Presentation sequence
 
-Main talk: title plus 11 slides. Eight appendix slides hold technical depth and supporting evidence.
+Main talk: title plus 10 slides. Nine appendix slides hold technical depth and supporting evidence.
 
 ### Slide 1 — Shipping faster quietly creates documentation debt
 - **Shows:** 56.5% of 12,374 developers name outdated information as a context blocker (Stack Overflow 2026), plus the earlier attempt; tool and gap TODO.
 
-### Slide 2 — Documentation debt builds up between doc passes
-- **Shows:** illustrative chart (no data): code steps up with each change, docs catch up only at doc passes; the gap is the debt.
+### Slide 2 — Documentation debt accrues between doc passes
+- **Shows:** illustrative chart (no data): code steps up with each change; each doc pass closes only part of the gap. Cites Cunningham (1992) for the debt metaphor.
 
-### Slide 3 — Agents move people from carrying changes to reviewing them
-- **Shows:** two-row diagram: assistance (person carries the change by hand) versus workflow (agent proposes a draft PR, person reviews).
+### Slide 3 — Agents shift the human role from execution to review
+- **Shows:** two-row diagram: assistance (person carries the change by hand) versus workflow (agent proposes a draft PR, person reviews; review highlighted).
 
-### Slide 4 — Agents add a third lane beside CI and CD
-- **Shows:** CI "Builds it", CD "Ships it", Continuous AI "Improving your repo, around the clock" (gh-aw docs); predictable versus judgement is this deck's framing.
+### Slide 4 — Good agent output is a diff you can judge at a glance
+- **Shows:** real public PR #8716, labelled "different workflow, shows output size only".
 
-### Slide 5 — Good agent output is a diff you can judge at a glance
-- **Shows:** real public PR #8716 with a simplified before/after; explicitly a Copilot follow-up, not our run.
-
-### Slide 6 — Guardrails live in reviewable config, not the model
+### Slide 5 — Guardrails live in reviewable config, not the model
 - **Shows:** the verified public Update Docs file, trimmed, with the teammate model.
 
-### Slide 7 — Safety is designed in, not left to the model
-- **Shows:** prepare → agent → detection → safe-output pipeline with the write boundary; detection is a layer, not a guarantee (outcomes in the appendix).
+### Slide 6 — Only a separate job can write; the agent cannot
+- **Shows:** prepare → agent → detection → safe-output pipeline with the write boundary; cites least privilege and separation of privilege (Saltzer & Schroeder, 1975).
 
-### Slide 8 — Price each run in AI credits and reviewer minutes
-- **Shows:** equation: (AI credits + Actions minutes + reviewer minutes) ÷ accepted changes = cost per useful change; 1,000 AIC default cap; pilot limits TODO.
+### Slide 7 — A cheap run nobody merges is still expensive
+- **Shows:** equation: (AI credits + Actions minutes + reviewer minutes) ÷ accepted changes = cost per useful change; pilot limits TODO.
 
-### Slide 9 — Four weeks turns opinion into evidence
+### Slide 8 — Four weeks turns opinion into evidence
 - **Shows:** four-week timeline; week 1 previews outputs with `staged: true`; proposed measurements.
 
-### Slide 10 — The pilot's risk is boxed in on five sides
+### Slide 9 — The pilot's risk is bounded on five dimensions
 - **Shows:** nested bounds: four weeks, capped spend (TODO), one repo and owner (TODO), docs only, draft PRs only; a person decides what merges.
 
-### Slide 11 — The ask is small, capped and reversible
-- **Shows:** proposed candidate, scope and go/no-go criteria; repo, owner, budget and thresholds TODO.
+### Slide 10 — Approve a four-week, docs-only pilot
+- **Shows:** candidate workflow, "switch off at any time"; repo, owner, budget and thresholds TODO.
 
-### Appendix 12 — Compilation turns that file into an Actions workflow
+### Appendix 11 — Compilation turns that file into an Actions workflow
 - **Shows:** compile-and-publish details for technical questions.
+
+### Appendix 12 — Agents add a third lane beside CI and CD
+- **Shows:** CI "Builds it", CD "Ships it", Continuous AI "Improving your repo, around the clock" (gh-aw docs).
 
 ### Appendix 13 — Detection adds a review gate, not a safety guarantee
 - **Shows:** threat, warning and permitted-output branches; failure behaviour qualified.

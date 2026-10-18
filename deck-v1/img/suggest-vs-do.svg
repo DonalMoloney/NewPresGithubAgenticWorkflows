@@ -1,20 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 300" role="img" aria-labelledby="title desc"><title id="title">AI assistance versus an agentic workflow</title><desc id="desc">Illustrative comparison. With AI assistance, you ask, the AI suggests, and a person carries the suggestion into the repository by hand. With an agentic workflow, a task file starts an agent in GitHub Actions, it proposes a draft pull request, and a person reviews it.</desc><style>
-:root{--panel:#141414;--line:#343c49;--ink:#ececec;--muted:#a3a3a3;--blue:#8fb0dc;--hi:#b9d0ee;--warn:#e9a35c;--green:#85c58a}
-.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#101b29;stroke:var(--blue);stroke-width:2}.write{fill:#132218;stroke:var(--green);stroke-width:2}.warn{fill:#241b12;stroke:var(--warn);stroke-width:1.5}
-.heading{fill:var(--ink);font:600 27px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.text{fill:var(--muted);font:23px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 19px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}.warn-text{fill:var(--warn);font:23px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.line{fill:none;stroke:var(--blue);stroke-width:2}
-</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8fb0dc"/></marker></defs>
-<text x="2" y="22" class="label">AI ASSISTANCE</text>
-<rect x="2" y="36" width="248" height="96" rx="12" class="box"/><text x="22" y="76" class="heading">You ask</text><text x="22" y="111" class="text">in a chat window</text>
-<path d="M256 84 H280" class="line" marker-end="url(#arrow)"/>
-<rect x="290" y="36" width="248" height="96" rx="12" class="box"/><text x="310" y="76" class="heading">AI suggests</text><text x="310" y="111" class="text">text or code</text>
-<path d="M544 84 H568" class="line" marker-end="url(#arrow)"/>
-<rect x="578" y="36" width="540" height="96" rx="12" class="warn"/><text x="598" y="76" class="heading">You carry it into the repo</text><text x="598" y="111" class="warn-text">manual step: copy, edit, open the PR</text>
-<text x="2" y="182" class="label">AGENTIC WORKFLOW</text>
-<rect x="2" y="196" width="248" height="96" rx="12" class="box"/><text x="22" y="236" class="heading">Task file</text><text x="22" y="271" class="text">plain-English job</text>
-<path d="M256 244 H280" class="line" marker-end="url(#arrow)"/>
-<rect x="290" y="196" width="248" height="96" rx="12" class="focus"/><text x="310" y="236" class="heading">Agent works</text><text x="310" y="271" class="text">in GitHub Actions</text>
-<path d="M544 244 H568" class="line" marker-end="url(#arrow)"/>
-<rect x="578" y="196" width="248" height="96" rx="12" class="write"/><text x="598" y="236" class="heading">Draft PR</text><text x="598" y="271" class="text">proposed change</text>
-<path d="M832 244 H856" class="line" marker-end="url(#arrow)"/>
-<rect x="866" y="196" width="252" height="96" rx="12" class="box"/><text x="886" y="236" class="heading">You review</text><text x="886" y="271" class="text">merge or close</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 312" role="img" aria-labelledby="title desc"><title id="title">AI assistance versus an agentic workflow</title><desc id="desc">Illustrative comparison. With AI assistance, you ask, the AI suggests, and a person carries the suggestion into the repository by hand - the step the agentic workflow removes, drawn as a dashed box. With an agentic workflow, a task file starts an agent in GitHub Actions, it proposes a draft pull request, and a person reviews it.</desc><style>
+:root{--panel:#f6f8fa;--line:#6e7781;--ink:#1f2328;--muted:#59636e;--blue:#0969da;--hi:#0550ae;--warn:#bc4c00;--green:#1a7f37}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#ddf4ff;stroke:var(--blue);stroke-width:2}.write{fill:#dafbe1;stroke:var(--green);stroke-width:1.5}.warn{fill:#fff1e5;stroke:var(--warn);stroke-width:1.5;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 27px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.text{fill:var(--muted);font:23px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 19px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}.gone{fill:var(--panel);stroke:var(--line);stroke-width:1.5;stroke-dasharray:7 5}.warn-text{fill:var(--warn);font:23px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.line{fill:none;stroke:var(--blue);stroke-width:2}
+</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#0969da"/></marker></defs>
+<text x="12" y="26" class="label">AI ASSISTANCE</text>
+<rect x="12" y="42" width="244" height="96" rx="12" class="box"/><text x="32" y="82" class="heading">You ask</text><text x="32" y="117" class="text">in a chat window</text>
+<path d="M262 90 H286" class="line" marker-end="url(#arrow)"/>
+<rect x="296" y="42" width="244" height="96" rx="12" class="box"/><text x="316" y="82" class="heading">AI suggests</text><text x="316" y="117" class="text">text or code</text>
+<path d="M546 90 H570" class="line" marker-end="url(#arrow)"/>
+<rect x="580" y="42" width="528" height="96" rx="12" class="gone"/><text x="600" y="82" class="heading">You carry it into the repo</text><text x="600" y="117" class="text">the step the agentic workflow removes</text>
+<text x="12" y="188" class="label">AGENTIC WORKFLOW</text>
+<rect x="12" y="204" width="244" height="96" rx="12" class="box"/><text x="32" y="244" class="heading">Task file</text><text x="32" y="279" class="text">plain-English job</text>
+<path d="M262 252 H286" class="line" marker-end="url(#arrow)"/>
+<rect x="296" y="204" width="244" height="96" rx="12" class="box"/><text x="316" y="244" class="heading">Agent works</text><text x="316" y="279" class="text">in GitHub Actions</text>
+<path d="M546 252 H570" class="line" marker-end="url(#arrow)"/>
+<rect x="580" y="204" width="244" height="96" rx="12" class="box"/><text x="600" y="244" class="heading">Draft PR</text><text x="600" y="279" class="text">proposed change</text>
+<path d="M830 252 H854" class="line" marker-end="url(#arrow)"/>
+<rect x="864" y="204" width="244" height="96" rx="12" class="focus"/><text x="884" y="244" class="heading">You review</text><text x="884" y="279" class="text">merge or close</text>
 </svg>

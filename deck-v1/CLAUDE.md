@@ -7,9 +7,12 @@ Run from the project root. `<scratchpad>` is the session scratchpad directory.
 
 | Command | Description |
 |---------|-------------|
-| `marp --html deck-v1/deck.md -o deck-v1/deck.html` | Render `deck.html` from `deck.md` |
-| `marp deck-v1/deck.md --images png -o <scratchpad>/slide.png` | Render every slide to PNG for checking |
-| `marp deck-v1/deck.md --notes -o <scratchpad>/notes.txt` | Export speaker notes |
+| `marp --html deck-v1/deck.md --allow-local-files -o deck-v1/deck.html </dev/null` | Render `deck.html` from `deck.md` |
+| `marp --html deck-v1/deck.md --allow-local-files --pdf -o deck-v1/deck.pdf </dev/null` | Render `deck.pdf` |
+| `marp --html deck-v1/deck.md --allow-local-files --images png -o <scratchpad>/slide.png </dev/null` | Render every slide to PNG for checking |
+| `marp deck-v1/deck.md --notes -o <scratchpad>/notes.txt </dev/null` | Export speaker notes |
+
+**Every render needs `--html`.** Without it Marp escapes the inline `<svg>`, and slide 1 comes out as raw SVG source on a black canvas instead of the title layout. The other 19 slides look fine without it, so a flagless render silently damages exactly one slide — verified 17 Oct 2026 by rendering both ways. `--allow-local-files` is needed for `img/*.svg`, and `</dev/null` stops marp hanging on stdin.
 
 ## Story and content
 - Arc: documentation problem → earlier attempt → agentic workflow → visible example → controls → safe first use → pilot decision.
@@ -23,11 +26,15 @@ Run from the project root. `<scratchpad>` is the session scratchpad directory.
 - Show `staged: true` on the staged-mode slide and the pilot slide only.
 
 ## Visual language
-- Build on `../slide-styling/title-slide.html`: near-black canvas, restrained blue neon accents, pale text, subtle glow, thin borders, generous space. No red theme.
-- Keep all theme CSS in the front-matter `style:` block (background `#0c0c0c`, text `#ececec`, accent `#8fb0dc` / `#b9d0ee`, muted `#a3a3a3`, gaps `#e9a35c`). Use `<style scoped>` for one-slide tweaks; never change the global theme to fix one slide.
+- Bookend theme (deliberate, user-chosen 17 Oct 2026): the title slide and the decision slide are deep cinematic black (`#050507`, dark vignette) with purple accents (`#a98bf0` / `#d3c4fb`), set in each slide's `<style scoped>`. Every other slide is white. Thin borders, generous space, no red theme.
+- Glow and neon only on the title slide's central Octocat. No glow on rules, bars, boxes or wires.
+- Make slide 1 follow the layout of `../slide-styling/title-slide.html`: GitHub mark and wordmark, then the deck's title as a large heading with a short rule beneath it on the left; the Octocat inside the six-step loop (Plan, Code, Test, Review, Open PR, Monitor) on the right. Reuse its SVG rather than redesigning. Keep "Open PR", never "Deploy": gh-aw does not deploy.
+- Keep all theme CSS in the front-matter `style:` block (inner slides use GitHub's Primer light palette: canvas `#ffffff`, panel `#f6f8fa`, border `#6e7781`, text `#1f2328`, muted `#59636e`, accent `#0969da` / `#0550ae`, caution `#bc4c00`, success `#1a7f37`; tinted fills accent `#ddf4ff`, caution `#fff1e5`, success `#dafbe1`). Code blocks are light (`var(--panel)` `#f6f8fa`, text `var(--ink)` `#1f2328`, 1px `var(--line)` border), matching how GitHub's own docs set code — user-chosen 17 Oct 2026, replacing the earlier dark `#080808` panels, which read as a leftover once the slides went white. Use `<style scoped>` for one-slide tweaks; never change the global theme to fix one slide.
+- `img/*.svg` hardcode the same light palette in their own `:root`; change them together with the front matter.
+- The border token deliberately departs from Primer. Primer's own `borderColor-default` `#d0d7de` is 1.45:1 on white, far below WCAG's 3:1 for non-text, and a projector is dimmer than a monitor, so box strokes and card borders dissolve. `#6e7781` is still a Primer grey and measures 4.55:1 on white, 4.27:1 on panel and 4.00–4.11:1 on the tinted fills. The bookend slides use `#6b6280` (3.57:1 on `#050507`) for the same reason. Do not "correct" either back to the Primer web value. Checked 17 Oct 2026.
 - Use one grid, title position, footer, spacing scale and page numbering. Orange is for unresolved details or cautions; green sparingly for permitted outcomes.
 - At 1280 × 720: 44–54 px headlines, 26–32 px body, at least 20 px code. Compact citations may be smaller. Never shrink essential content to keep a slide count.
-- Process diagram for sequence, paired panels for comparison, code card with adjacent annotations for a file, chart for measured outcomes. Tables only when rows and columns help comparison. Keep tables and code blocks dark.
+- Process diagram for sequence, paired panels for comparison, code card with adjacent annotations for a file, chart for measured outcomes. Tables only when rows and columns help comparison.
 - Use `.muted` for sources, `.todo` for gaps, `.stat` for one big hook number.
 - Remove decorative quotes, audience labels and repeated prose. Every visual must explain something.
 - Label conceptual diagrams as illustrative. Show denominators and source dates for statistics. No invented screenshots, logos or demo outcomes.

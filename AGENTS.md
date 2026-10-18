@@ -10,6 +10,7 @@ Content project, not software. It holds the outline and draft visuals for a talk
 | `slide-styling/` | Title slide and slide-style explorations. `title-slide.html` (blue neon) is the base the final deck is built from; `title-slide-v2.html` and the `slide-styling*.html` files are alternates. |
 | `deck-v1/` | Deck v1: `deck.md` (slide content) and `deck.html` (all slides in one file), built from `slide-styling/title-slide.html`. |
 | `deck-v2/` | Deck v2: same files and shell as v1, new arc (hook, times changing, earlier attempt, what it is: model, parts, ways to run, types, key points, then example videos, images and links). |
+| `deck-v3/` | Deck v3: a copy of `deck-v2/` taken 17 Oct 2026, same files and arc, worked on separately from v2. |
 | `reference/` | Background material (`agents-draft.md`, `img.png`). Not part of the deck. |
 | `.venv/`, `.playwright-mcp/` | Tooling artifacts. Do not edit or commit. |
 
@@ -32,5 +33,5 @@ No build, test or lint commands exist. Preview by opening `draft-overview.html` 
 - Keep the layout working at phone width (max-width 1000px, 16px gutters).
 
 ## Gotchas
-- This directory is not a git repository. Do not assume history or an `origin` remote exists.
+- Git repository on `main`, with `origin` at github.com/DonalMoloney/NewPresGithubAgenticWorkflows (private). Tooling folders are in `.gitignore`.
 - The example-workflow repo is a different project and is not in this folder. Ask for its path or URL rather than guessing its contents.

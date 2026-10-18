@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 300" role="img" aria-labelledby="title desc"><title id="title">Price each run in AI credits and reviewer minutes</title><desc id="desc">Equation: AI credits (inference, estimated) plus Actions minutes (runner time) plus reviewer minutes (human time, not yet measured), divided by accepted changes (merged draft PRs), equals cost per useful change.</desc><style>
+:root{--panel:#f6f8fa;--line:#6e7781;--ink:#1f2328;--muted:#59636e;--blue:#0969da;--hi:#0550ae;--warn:#bc4c00;--green:#1a7f37}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#ddf4ff;stroke:var(--blue);stroke-width:2}.write{fill:#dafbe1;stroke:var(--green);stroke-width:1.5}.warn{fill:#fff1e5;stroke:var(--warn);stroke-width:1.5;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 27px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.text{fill:var(--muted);font:23px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 19px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}.code{fill:var(--hi);font:21px ui-monospace,SFMono-Regular,Consolas,monospace}.num{fill:var(--hi);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.line{fill:none;stroke:var(--blue);stroke-width:2}.boundary{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 6}
+.op{fill:var(--ink);font:300 48px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.bar{fill:none;stroke:var(--ink);stroke-width:2}.warntext{fill:var(--warn);font:23px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#0969da"/></marker></defs>
+<text x="12" y="26" class="label">THE METRIC THE PILOT MEASURES</text>
+<rect x="12" y="40" width="240" height="120" rx="12" class="box"/><text x="132" y="82" class="heading" text-anchor="middle">AI credits</text><text x="132" y="118" class="text" text-anchor="middle">inference,</text><text x="132" y="146" class="text" text-anchor="middle">estimated</text>
+<text x="282" y="116" class="op" text-anchor="middle">+</text>
+<rect x="312" y="40" width="240" height="120" rx="12" class="box"/><text x="432" y="82" class="heading" text-anchor="middle">Actions minutes</text><text x="432" y="118" class="text" text-anchor="middle">runner time</text>
+<text x="582" y="116" class="op" text-anchor="middle">+</text>
+<rect x="612" y="40" width="240" height="120" rx="12" class="box"/><text x="732" y="82" class="heading" text-anchor="middle">Reviewer minutes</text><text x="732" y="118" class="text" text-anchor="middle">human time,</text><text x="732" y="146" class="warntext" text-anchor="middle">not yet measured</text>
+<path d="M12 178 H852" class="bar"/>
+<rect x="292" y="196" width="280" height="96" rx="12" class="box"/><text x="432" y="236" class="heading" text-anchor="middle">Accepted changes</text><text x="432" y="272" class="text" text-anchor="middle">merged draft PRs</text>
+<text x="880" y="194" class="op" text-anchor="middle">=</text>
+<rect x="908" y="118" width="200" height="120" rx="12" class="focus"/><text x="1008" y="170" class="heading" text-anchor="middle">Cost per</text><text x="1008" y="204" class="heading" text-anchor="middle">useful change</text>
+</svg>

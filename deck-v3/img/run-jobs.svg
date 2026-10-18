@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 236" role="img" aria-labelledby="title desc"><title id="title">Separate jobs, separate permissions</title><desc id="desc">Simplified run: prepare, agent, detection and safe outputs. The agent and detector have no write token; the separate output job has scoped permissions.</desc><style>
+:root{--panel:#141414;--line:#343c49;--ink:#ececec;--muted:#a3a3a3;--blue:#8fb0dc;--hi:#b9d0ee;--warn:#e9a35c;--green:#85c58a}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#101b29;stroke:var(--blue);stroke-width:2}.write{fill:#132218;stroke:var(--green);stroke-width:2}.warn{fill:#241b12;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--blue);stroke-width:2}.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}.rule{fill:none;stroke:var(--line);stroke-width:1.5}.boundary{fill:none;stroke:var(--green);stroke-width:1.5;stroke-dasharray:5 6}.zone{fill:none;stroke:var(--blue);stroke-width:1.5;stroke-dasharray:5 6}
+</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8fb0dc"/></marker></defs>
+<text x="1" y="24" class="label">READ / PREPARE</text>
+<text x="883" y="24" class="label">PERMITTED WRITES</text>
+<path d="M862 36 V206" class="boundary"/>
+<rect x="1" y="48" width="252" height="108" rx="12" class="box"/>
+<text x="21" y="82" class="heading">Activation</text>
+<text x="21" y="112" class="text">Context checks</text>
+<text x="21" y="140" class="text">Validate lock file</text>
+<rect x="295" y="48" width="252" height="108" rx="12" class="focus"/>
+<text x="315" y="82" class="heading">Agent</text>
+<text x="315" y="112" class="text">Sandbox + firewall</text>
+<text x="315" y="140" class="text">Read-only access</text>
+<rect x="589" y="48" width="252" height="108" rx="12" class="box"/>
+<text x="609" y="82" class="heading">Detection</text>
+<text x="609" y="112" class="text">Inspect output</text>
+<text x="609" y="140" class="text">and patch</text>
+<rect x="883" y="48" width="252" height="108" rx="12" class="write"/>
+<text x="903" y="82" class="heading">Safe outputs</text>
+<text x="903" y="112" class="text">Scoped write token</text>
+<text x="903" y="140" class="text">Declared outputs</text>
+<path d="M259 102 H294" class="line" marker-end="url(#arrow)"/>
+<path d="M553 102 H588" class="line" marker-end="url(#arrow)"/>
+<path d="M847 102 H882" class="line" marker-end="url(#arrow)"/>
+<path d="M21 170 V194 H821 V170" class="line"/>
+<text x="421" y="227" class="cap" text-anchor="middle">Agent and detection have no write token</text>
+<text x="1009" y="227" class="cap" text-anchor="middle">Separate write job</text>
+</svg>
