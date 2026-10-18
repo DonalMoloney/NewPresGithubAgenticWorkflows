@@ -10,9 +10,12 @@ style: |
     background: #050507;
     color: #ececec;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    padding: 56px 72px;
+    padding: 88px 72px 72px;
     line-height: 1.5;
+    place-content: start;
   }
+  section.lead { place-content: safe center; }
+  h1, h2 { margin-top: 0; }
   section::after { color: #a3a3a3; }
   header { color: #a3a3a3; font-size: 16px; letter-spacing: 0.12em; text-transform: uppercase; top: 24px; left: 72px; }
   h1, h2 { color: #ececec; letter-spacing: -0.03em; }
@@ -43,29 +46,35 @@ style: |
   section.lead h1, section.lead h2, section.lead p { text-align: center; }
   .muted { color: #a3a3a3; font-size: 20px; line-height: 1.4; }
   .todo { color: #e9a35c; font-size: 20px; }
-  .stat { font-size: 120px; font-weight: 700; color: #b9d0ee; line-height: 1; letter-spacing: -0.04em; }
+  .stat { font-size: 120px; font-weight: 700; color: #b9d0ee; line-height: 1; letter-spacing: -0.04em; text-shadow: 0 0 40px rgba(143,176,220,.35); }
+  .source { position: absolute; left: 72px; right: 120px; bottom: 24px; margin: 0; color: #a3a3a3; font-size: 20px; line-height: 1.3; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .card { background: #0c0c0c; border: 1px solid #23324a; border-radius: 10px; padding: 16px 22px; }
+  .card p { margin: 6px 0 0; font-size: 22px; line-height: 1.4; }
+  .card .muted { font-size: 20px; }
+  .k { font-size: 16px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8fb0dc; }
 ---
 
 <style scoped>
 section {
-  display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; column-gap: 24px;
+  display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; align-content: center; column-gap: 24px;
   padding: 40px 40px 40px 72px;
   background:
     radial-gradient(130% 110% at 50% 45%, transparent 40%, rgba(0,0,0,.62) 100%),
-    radial-gradient(64% 3% at 73% 49%, rgba(232,222,255,.40), transparent 70%),
-    radial-gradient(105% 12% at 73% 49%, rgba(163,113,247,.20), transparent 74%),
-    radial-gradient(52% 72% at 72% 48%, rgba(163,113,247,.48), transparent 70%),
-    radial-gradient(42% 56% at 8% 8%, rgba(137,87,229,.28), transparent 72%),
-    radial-gradient(28% 40% at 100% 100%, rgba(210,168,255,.20), transparent 70%),
-    linear-gradient(135deg, #0d061b 0%, #251145 56%, #050507 100%);
+    radial-gradient(64% 3% at 73% 49%, rgba(223,231,247,.36), transparent 70%),
+    radial-gradient(105% 12% at 73% 49%, rgba(143,176,220,.18), transparent 74%),
+    radial-gradient(52% 72% at 72% 48%, rgba(143,176,220,.30), transparent 70%),
+    radial-gradient(42% 56% at 8% 8%, rgba(143,176,220,.14), transparent 72%),
+    radial-gradient(28% 40% at 100% 100%, rgba(185,208,238,.14), transparent 70%),
+    linear-gradient(135deg, #070a10 0%, #0f1828 56%, #050507 100%);
 }
 .brand p { display: flex; align-items: center; gap: 16px; margin: 0; font-size: 40px; font-weight: 700; letter-spacing: -.01em; color: #f0f6fc; }
-h1 { margin: 48px 0 0; font-size: 60px; line-height: 1.12; letter-spacing: -.025em; font-weight: 800; color: #f0f6fc; text-shadow: 0 0 40px rgba(163,113,247,.28); }
-.rule { margin-top: 32px; width: 52px; height: 6px; border-radius: 12px; background: linear-gradient(90deg, #a371f7, #d2a8ff); box-shadow: 0 0 22px rgba(163,113,247,.80); }
-.sub { margin: 32px 0 0; font-size: 24px; line-height: 1.35; color: #d2a8ff; }
+h1 { margin: 48px 0 0; font-size: 60px; line-height: 1.12; letter-spacing: -.025em; font-weight: 800; color: #f0f6fc; text-shadow: 0 0 40px rgba(143,176,220,.28); }
+.rule { margin-top: 32px; width: 52px; height: 6px; border-radius: 12px; background: linear-gradient(90deg, #8fb0dc, #b9d0ee); box-shadow: 0 0 22px rgba(143,176,220,.80); }
+.sub { margin: 32px 0 0; font-size: 24px; line-height: 1.35; color: #b9d0ee; }
 .meta p { margin: 20px 0 0; font-size: 20px; }
 .loop p { margin: 0; }
-.loop img { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 22px rgba(210,168,255,.26)); }
+.loop img { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 22px rgba(185,208,238,.26)); }
 </style>
 
 <div>
@@ -100,6 +109,9 @@ Mixed room: plain-English version first on every slide; the technical detail is 
 ---
 
 <!-- header: Why now -->
+<!-- _class: lead -->
+
+<style scoped>.stat { font-size: 180px; margin: 28px 0 20px; text-align: center; } p { font-size: 28px; }</style>
 
 ## Somewhere in our docs, a page is wrong right now, and nobody knows which one
 
@@ -107,7 +119,7 @@ Mixed room: plain-English version first on every slide; the technical detail is 
 
 of 12,374 developers say **outdated information** gets in the way of the context they need at work.
 
-<span class="muted">Stack Overflow Developer Survey 2026</span>
+<div class="source">Stack Overflow Developer Survey 2026</div>
 
 <!--
 Pause after the title. Let people think of their own stale page.
@@ -120,14 +132,14 @@ Older backup if challenged: about two-thirds of 45 developers agreed docs are "a
 
 ## As AI climbs the autonomy ladder, we ship more code than ever
 
-<style scoped>h2 { margin-bottom: 12px; } p { margin: 10px 0; } ul { font-size: 25px; margin: 10px 0; } .muted { font-size: 20px; }</style>
+<style scoped>h2 { margin-bottom: 12px; } p { margin: 10px 0; } ul { font-size: 25px; margin: 10px 0; }</style>
 
 ![Autonomy ladder from L1 Operator to L5 Observer, with gh-aw at L4 Approver w:1136](img/autonomy-ladder.svg)
 
 - **43.2 million** pull requests merged per month, up 23% year over year.
 - **Nearly 1 billion** commits pushed in 2025, up 25.1%.
 
-<span class="muted">Measured: GitHub Octoverse 2025. Ladder: Feng et al., arXiv 2506.12469, illustrative; the L4 placement is this deck’s interpretation.</span>
+<div class="source">Measured: GitHub Octoverse 2025. Ladder: Feng et al., arXiv 2506.12469, illustrative; the L4 placement is this deck’s interpretation.</div>
 
 <!--
 Plain line: each step up this ladder, the AI does more of the work and we do less, and the volume of code keeps climbing.
@@ -163,7 +175,7 @@ End on the gap, because the next part of the talk answers it.
 
 ![Four pairs: job description to the Markdown body, shift to on, access badge to permissions tools and network, outbox you check to safe-outputs; a classic Action is steps you write, an agentic workflow is a brief w:1136](img/teammate-model.svg)
 
-<span class="muted">The teammate mapping is this deck's model, not GitHub terminology.</span>
+<div class="source">The teammate mapping is this deck's model, not GitHub terminology.</div>
 
 <!--
 The title is the whole idea. Say it, pause, then: it is still a GitHub Action; the difference is that you brief it instead of scripting it.
@@ -184,17 +196,18 @@ Transition: before I show you the file, the question everyone is already asking.
 
 ## It will get things wrong, so it is built to be checked, not trusted
 
-<style scoped>h2 { margin-bottom: 20px; } p { font-size: 24px; margin: 16px 0; } .muted { font-size: 20px; }</style>
+<style scoped>h2 { margin-bottom: 12px; } .lede { font-size: 24px; margin: 0 0 20px; } .card .todo { font-size: 20px; }</style>
 
-You would review a new teammate's first pull request. This one cannot skip that step.
+<p class="lede">You would review a new teammate's first pull request. This one cannot skip that step.</p>
 
-**Wrong edits →** it can only open a **draft** pull request, and a human reviews it. `draft: true` is a policy, not a default: the agent cannot override it. <span class="muted">Never merged automatically: GitHub Blog guidance, not a hard limit.</span>
+<div class="cards">
+<div class="card"><div class="k">Wrong edits</div><p>It can only open a <strong>draft</strong> pull request, and a human reviews it. <code>draft: true</code> is a policy the agent cannot override.</p><p class="muted">Never merged automatically: GitHub Blog guidance, not a hard limit.</p></div>
+<div class="card"><div class="k">Prompt injection</div><p>The agent is read-only and fenced in. The next two slides show how.</p></div>
+<div class="card"><div class="k">Cost</div><p>Capped per run: 1,000 AI Credits (~$10) by default, and you choose the model.</p><p class="todo">TODO: our own measured cost per run.</p></div>
+<div class="card"><div class="k">Not a fit</div><p>It does not replace build, test or release pipelines.</p></div>
+</div>
 
-**Prompt injection →** the agent is read-only and fenced in. The next two slides show how.
-
-**Cost →** capped per run: 1,000 AI Credits (~$10) by default, and you choose the model. <span class="todo">TODO: our own measured cost per run.</span>
-
-**Not a fit →** it does not replace build, test or release pipelines. <span class="muted">gh-aw docs (safe outputs, cost management); GitHub Blog.</span>
+<div class="source">gh-aw docs (safe outputs, cost management); GitHub Blog.</div>
 
 <!--
 Be honest first: it will sometimes be wrong. The design assumes that.
@@ -218,7 +231,7 @@ Transition: so trust is the real question. Here is what the design does about it
 
 - Detection scans every proposed output before anything is written. <span class="muted">A failed check defaults to a caution notice, not a hard block (continue-on-error is true).</span>
 
-<span class="muted">gh-aw architecture documentation; four of its six jobs shown.</span>
+<div class="source">gh-aw architecture documentation; four of its six jobs shown.</div>
 
 <!--
 The postbox line is on the slide; say it, then extend it: the checker in the middle is a separate job that reads what the teammate wrote before anyone posts anything.
@@ -239,7 +252,7 @@ Transition: that separation doesn't make it right, only checkable. And its reach
 
 ![The agent sits in a container with opt-in tools; all traffic leaves through a Squid proxy limited to an allowlist, an API proxy holding the engine token, and an MCP gateway the documentation itself calls a weak boundary w:1136](img/agent-blast-radius.svg)
 
-<span class="muted">gh-aw architecture and network reference. The MCP gateway caveat is the documentation's own wording.</span>
+<div class="source">gh-aw architecture and network reference. The MCP gateway caveat is the documentation's own wording.</div>
 
 <!--
 Plain line: the agent works in a sealed room. It can only talk to the phone numbers we put on the list, and someone else holds the keys.
@@ -286,7 +299,7 @@ tools:
 </div>
 </div>
 
-<span class="muted">Frontmatter trimmed from `workflows/update-docs.md` in githubnext/agentics.</span>
+<div class="source">Frontmatter trimmed from <code>workflows/update-docs.md</code> in githubnext/agentics.</div>
 
 <!--
 This is a real file, trimmed: update-docs.md from githubnext/agentics. Not a made-up example.
@@ -301,13 +314,22 @@ Expect the question "bash: true?" Yes, tools are broad, but the agent job is rea
 
 ## GitHub reports that 57 of 59 pull requests from its docs workflow were merged
 
-<style scoped>.stat { margin-bottom: 28px; }</style>
+<style scoped>
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 16px; }
+.stat { font-size: 160px; margin-bottom: 20px; }
+.cols p { font-size: 26px; margin: 0; }
+.frame { border: 2px dashed #e9a35c; border-radius: 10px; aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; }
+</style>
 
+<div class="cols">
+<div>
 <div class="stat">57 / 59</div>
+<p>A 96% merge rate for its Daily Documentation Updater.</p>
+</div>
+<div class="frame"><span class="todo">TODO: screenshots and recordings of a real pull request, issue and comment (link and length for each).</span></div>
+</div>
 
-A 96% merge rate for its Daily Documentation Updater. <span class="muted">gh-aw blog, 13 Jan 2026; reported by GitHub, small sample. Merged is not the same as correct.</span>
-
-<span class="todo">TODO: screenshots and recordings of a real pull request, issue and comment (link and length for each).</span>
+<div class="source">gh-aw blog, 13 Jan 2026; reported by GitHub, small sample. Merged is not the same as correct.</div>
 
 <!--
 Plain line: when GitHub ran its own docs agent, people reviewed what it proposed and merged almost all of it.
@@ -330,7 +352,7 @@ Transition: that's GitHub's number. Here's what I've already built against it.
 | **98** matching docs pages, one per workflow | **4 of 98** compiled locally; the other 94 are briefs |
 | **6** shared policy and prompt modules, imported rather than copied | No release tagged, and the sandbox repo does not exist |
 
-<span class="muted">`DonalMoloney/Agentic-Workflows-Lib`, private. File counts verified via the GitHub API, 17 Oct 2026. The compile result and the "not yet run" column are the repository's own `agents.md` — a self-report, not a CI result.</span>
+<div class="source"><code>DonalMoloney/Agentic-Workflows-Lib</code>, private. File counts verified via the GitHub API, 17 Oct 2026. The compile result and the "not yet run" column are the repository's own <code>agents.md</code>, a self-report, not a CI result.</div>
 
 <span class="todo">TODO: the one thing building this taught me, and whether the repo goes public before the talk.</span>
 
@@ -353,17 +375,30 @@ Transition: so the decision I need is small. Pick one page, and let one of these
 
 ## Pick one stale page, and let an agent keep it current for a month
 
-<style scoped>h2 { margin-bottom: 16px; } p { font-size: 24px; margin: 14px 0; }</style>
+<style scoped>
+section {
+  background:
+    radial-gradient(130% 110% at 50% 45%, transparent 40%, rgba(0,0,0,.66) 100%),
+    radial-gradient(64% 3% at 72% 86%, rgba(223,231,247,.28), transparent 70%),
+    radial-gradient(105% 14% at 72% 88%, rgba(143,176,220,.16), transparent 74%),
+    radial-gradient(56% 72% at 76% 54%, rgba(143,176,220,.18), transparent 72%),
+    linear-gradient(145deg, #050507 0%, #0c1422 62%, #050507 100%);
+}
+h2 { margin-bottom: 20px; color: #f0f6fc; text-shadow: 0 0 32px rgba(143,176,220,.25); }
+.card { background: rgba(12,12,12,.85); }
+.card .todo { font-size: 20px; }
+.need { margin-top: 18px; padding: 14px 22px; border: 1px solid #8fb0dc; border-radius: 10px; background: rgba(27,39,56,.6); box-shadow: 0 0 24px rgba(143,176,220,.30); font-size: 24px; }
+.need strong { color: #dfe7f7; }
+</style>
 
-**Hypothesis.** An agent can keep one page current at a quality we would merge.
+<div class="cards">
+<div class="card"><div class="k">Hypothesis</div><p>An agent can keep one page current at a quality we would merge.</p></div>
+<div class="card"><div class="k">Method</div><p>One page, one repository, four weeks. Staged first (<code>staged: true</code> runs it for real and writes nothing), then draft pull requests only, every one reviewed.</p></div>
+<div class="card"><div class="k">Measure</div><p>The share of its pull requests we merge without edits.</p><p class="muted">GitHub reports 96% for its own docs workflow: a number to test, not to assume.</p></div>
+<div class="card"><div class="k">Decision rule</div><p class="todo">TODO: the result that means keep, the result that means stop.</p></div>
+</div>
 
-**Method.** One page, one repository, four weeks. Staged first — `staged: true` runs it for real and writes nothing — then draft pull requests only, every one reviewed.
-
-**Measure.** The share of its pull requests we merge without edits. <span class="muted">GitHub reports 96% for its own docs workflow: a number to test, not to assume.</span>
-
-**Decision rule.** <span class="todo">TODO: the result that means keep, the result that means stop.</span>
-
-**What I need today:** <span class="todo">TODO: the pilot repository, its owner, and a budget.</span>
+<div class="need"><strong>What I need today:</strong> <span class="todo">TODO: the pilot repository, its owner, and a budget.</span></div>
 
 <!--
 Callback to slide 2: "a page is wrong right now". Let's pick one and settle it.
