@@ -35,31 +35,31 @@ Main talk: title plus 15 slides. Ten appendix slides hold technical depth and su
 ### Slide 1b — My earlier attempt solved part of the problem, and left a gap
 - **Shows:** the presenter's own earlier tool and the gap it left. Tool, what it solved and the remaining gap are TODO placeholders until supplied.
 
-### Slide 2 — Documentation debt accrues between doc passes
+### Slide 2 — Documentation can fall behind code between doc passes
 - **Shows:** illustrative chart (no data): code steps up with each change; each doc pass closes only part of the gap. Cites Cunningham (1992) for the debt metaphor.
 
 ### Slide 3 — The ask is four weeks, one repository, and docs only
 - **Shows:** the ask stated up front so the audience can weigh the evidence against it: four weeks, one repository, docs only, every change a draft pull request a person decides on. Repository, owner, budget and week-four thresholds TODO.
 
-### Slide 4 — Agents shift the human role from execution to review
+### Slide 4 — An agentic workflow hands the human a prepared change to review
 - **Shows:** two-row diagram: assistance (person carries the change by hand) versus workflow (agent proposes a draft PR, person reviews; review highlighted). Also carries who does what: the agent drafts, a person decides what merges; this moves work from writing to judging rather than removing it; reviewer minutes TODO. The full who-does-what diagram is Appendix 8.
 
 ### Slide 5 — Scripts check fixed rules; an agent is for the part that needs reading
-- **Shows:** a fixed rule (broken links, missing API entries, formatting, doctests, API diffs) belongs in a deterministic tool; deciding whether prose still describes the code is judgement-heavy and only partly checkable. TODO: whether CI runs on agent-opened PRs is unverified.
+- **Shows:** a fixed rule (broken links, missing API entries, formatting, doctests, API diffs) belongs in a deterministic tool; deciding whether prose still describes the code is judgement-heavy and only partly checkable. By default PRs created with the workflow token do not trigger CI; gh-aw documents an optional token that triggers it (decide before week one).
 
-### Slide 6 — The unit of review is one small diff
+### Slide 6 — A documentation agent's real pull request adds two glossary entries in one file
 - **Shows:** real public PR github/gh-aw#68654 ([docs] Update glossary - daily scan, +8/-0 in 1 file, merged 14 Oct 2026): a documentation agent's output at its real size. GitHub's repository, not our pilot.
 
 ### Slide 7 — In three of GitHub's documentation workflows, most pull requests were merged, but not all
-- **Shows:** reported merge counts (57/59, 88/103, 10/10) with denominators, labelled selected samples from other repositories, not a forecast.
+- **Shows:** reported merge counts (57/59, 88/103, 10/10) with denominators, labelled selected samples from other repositories (a lower one, 9/21, is named), not a forecast; the 57/59 workflow opened ready-for-review PRs, not drafts.
 
 ### Slide 8 — It will be wrong sometimes, and that has to be survivable
 - **Shows:** the four ways this fails — wrong prose, an over-wide diff, poisoned input, spend with nothing merged — and that each is bounded by a limit we set rather than by trusting the model. Our own error rate is unmeasured; week one's staged preview is the first measurement.
 
 ### Slide 9 — The limits live in a file you can read, not in the model
-- **Shows:** the real Update Docs frontmatter, trimmed, including bash, web-fetch, network defaults and protected-files (semantics unconfirmed, TODO), with the teammate model.
+- **Shows:** the real Update Docs frontmatter, trimmed, including bash, web-fetch, network defaults and protected-files (a sensitive-file guard, not a docs-only path limit), with the teammate model.
 
-### Slide 10 — The agent job has no write access; writes happen in a separate job
+### Slide 10 — The agent job is read-only; a separate job does the writing
 - **Shows:** prepare → agent → detection → safe-output pipeline with the write boundary; cites least privilege (Saltzer & Schroeder, 1975). Detection is a layer, not a guarantee.
 
 ### Slide 11 — A cheap run nobody merges is still expensive

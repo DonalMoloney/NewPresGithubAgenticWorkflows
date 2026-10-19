@@ -30,3 +30,27 @@ Last updated: 18 Oct 2026
 - `speaker-notes.md` is older than `deck.md`: stale, regenerate or retire.
 - Kicker suffixes `01b` and `09b`: renumber everywhere (slides, notes, `overview.md`) if you want a clean sequence.
 - `deck.html` and `deck.pdf` were regenerated after the final render check; re-run both after any further `deck.md` edit.
+
+## 5. State after the final review pass (stopped 19 Oct 2026 for time)
+The in-depth review (story, accuracy, visual) was followed by a content pass that was **stopped for time**. Full reports are in `review-findings.md` in this folder. "Applied" below was confirmed by searching the current `deck.md`, not from the editors' reports (which had not arrived); everything under "Not confirmed" needs a check against the deck before anyone relies on it.
+
+### Applied (found in the current deck.md)
+- 57/59 draft caveat: GitHub's workflow ran `draft: false`; auto-merge was added 20 Jan 2026 (#10890). Verified 19 Oct 2026.
+- The lower-performing (about 43%) workflow from the same post is shown; `protected-files` is described as a sensitive-file guard, "docs only" as by instruction.
+- Deck is 28 slides; `check_deck.py` shows 0 errors; `deck.html` and `deck.pdf` were current at last check.
+
+### Still needs you
+- Earlier-attempt story, ask values (repository, owner, budget, baseline, keep/stop rule, duration), a real run (PR, `gh aw logs`/`audit` output, committed `.lock.yml`), talk date and audience, library lesson and public/private decision (see sections 1-2).
+- Daily AI Credit cap: re-read both the cost-management and frontmatter pages; state it only if they now agree, else leave it off slides.
+
+### Not confirmed (check against `review-findings.md`)
+- Overclaims: slide 8 "No write access" for prompt injection, run-pipeline "stages 1 to 3 hold no write permission", "closed in the same second it is read".
+- CI-gate TODO (does CI run on the agent's PRs?): verify or keep the TODO.
+- Story: blank slide 3; TODO inside slide 2's spoken transition; the ask repeated (keep two statements); slide 13 note opening; missing Transition lines on appendix slides; slides 6, 10, 11, 13, 14 over ~90 s.
+- Visual: card-row-plus-callout sameness; diagram labels under 18px; right-margin drift; decision slide glow.
+
+### Housekeeping
+- `speaker-notes.md` is older than `deck.md`: regenerate or retire. Kicker suffixes `01b` / `09b`: renumber if wanted.
+
+## 6. Style audit by peer session deck-v3-cc (19 Oct 2026)
+- Nothing changed in deck-v1: its style block already follows the neutral-gap rule.

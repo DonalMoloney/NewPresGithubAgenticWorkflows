@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 416" role="img" aria-labelledby="title desc"><title id="title">A misled agent is boxed in by nested layers, and one layer has a weak opening</title><desc id="desc">Three nested rings. At the core the agent sits inside a sealed container with opt-in tools and no engine token. Around the container is the gate layer, the only openings in the container wall, so there is no direct route out. The Squid proxy gate lets only listed domains through and blocks everything else. The API proxy gate keeps the engine token outside the container, so a prompt-injected agent has no credential to exfiltrate. The MCP gateway is the weak opening: it is drawn dashed with a warning mark because the gh-aw documentation says it is not a strong security boundary against a compromised or malicious agent. Outside the gate layer are the listed domains, the AI engine and the MCP servers. Defence comes from the rings together, not from any single wall.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 416" role="img" aria-labelledby="title desc"><title id="title">A misled agent is boxed in by nested layers, and one layer has a weak opening</title><desc id="desc">Three nested rings. At the core the agent sits inside a sealed container with opt-in tools; the engine token is isolated from it by the API proxy. Around the container is the gate layer, the only openings in the container wall, so there is no direct route out. The Squid proxy gate lets listed domains through, and GitHub domains are always allowed too. The API proxy gate keeps the engine token outside the container, which the docs call agent auth-token isolation; some in-container identifiers are still treated as leaked by design. The MCP gateway is the weak opening: it is drawn dashed with a warning mark because the gh-aw documentation says it is not a strong security boundary against a compromised or malicious agent. Outside the gate layer are the listed domains, the AI engine and the MCP servers. Defence comes from the rings together, not from any single wall.</desc>
 <style>
 :root{--bg:#faf6ee;--panel:#f2ecdf;--line:#b9ad98;--ink:#26211b;--muted:#675d4e;--accent:#3f3fb0;--hi:#2c2c8a;--good:#2a6e3a;--warn:#96470a;--fill-accent:#e4e5f7;--fill-good:#e1f0e0;--fill-warn:#fbeacf}
 .box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
@@ -51,7 +51,7 @@
 <text x="81" y="154" class="heading">Agent</text>
 <text x="81" y="182" class="text">Reads, plans, drafts</text>
 <use href="#g-nokey" x="81" y="192" width="26" height="26" class="i-hi"/>
-<text x="115" y="212" class="itext">No token</text>
+<text x="115" y="212" class="itext">Token isolated</text>
 
 <rect x="61" y="240" width="280" height="98" rx="12" class="box"/>
 <text x="81" y="274" class="heading">Tools: opt-in</text>
@@ -63,7 +63,7 @@
 <rect x="391" y="88" width="360" height="84" rx="12" class="focus"/>
 <use href="#g-lock" x="707" y="96" width="28" height="28" class="i-hi"/>
 <text x="411" y="116" class="heading">Web filter</text>
-<text x="411" y="142" class="itext">Only listed domains out</text>
+<text x="411" y="142" class="itext">Listed domains, plus GitHub's</text>
 <text x="411" y="164" class="cap">Squid proxy</text>
 <rect x="391" y="186" width="360" height="84" rx="12" class="focus"/>
 <use href="#g-nokey" x="707" y="194" width="28" height="28" class="i-hi"/>

@@ -98,5 +98,5 @@
 <text x="36" y="267" class="cap">agent does</text>
 <rect x="170" y="250" width="25" height="20" rx="3" class="rule" style="stroke:var(--muted)"/>
 <text x="205" y="267" class="cap">human decides</text>
-<text x="1135" y="267" class="cap" text-anchor="end">Illustrative ladder (Feng et al., arXiv 2506.12469); bars are not measurements</text>
+
 </svg>

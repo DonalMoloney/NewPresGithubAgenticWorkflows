@@ -201,7 +201,7 @@ style: |
 </svg>
 
 <!--
-Say: [hook, no statistic; it is also on the slide, so pause two seconds before speaking] "When did a page of documentation last mislead you? [pause] You followed the steps. They were wrong. The code had moved on. Was that just you? Today's question is whether an AI agent can fix that, and on what terms we could trust it to." Roadmap: "I will define the problem, show one real change and one real workflow file, explain the controls and the cost, and end with a small proposal."
+Say: [hook, no statistic; it is also on the slide, so pause two seconds before speaking] "When did a page of documentation last mislead you? [pause] You followed the steps. They were wrong. The code had moved on. Was that just you? Today's question is whether an AI agent can fix that, and on what terms we could trust it to." Roadmap: "I will tell you what I am going to ask for early, then show the evidence, the controls and the cost."
 
 Detail: the idea in one line. We describe the task, keep documentation aligned with code, and we review the result. The agent proposes; a person decides what merges. A controlled path from stale docs to a reviewed pull request.
 
@@ -235,11 +235,11 @@ Transition: "Stack Overflow's 2026 survey asked developers what makes context ha
 <p class="sources"><a href="https://survey.stackoverflow.co/2026/knowledge/data#context-challenges">Stack Overflow Developer Survey 2026 · context challenges</a></p>
 
 <!--
-Say: "In that survey, 56.5 percent of developers named outdated information as a reason context is hard to get. I will call the accumulated cost documentation debt, borrowing Ward Cunningham's technical-debt metaphor."
+Say: "Was that just you? In Stack Overflow's 2026 survey, 56.5 percent of developers named outdated information as something that makes context hard to get. I will call the accumulated cost documentation debt, borrowing Ward Cunningham's technical-debt metaphor."
 
 Analogy: interest on a loan nobody is tracking. Each release adds a little; no one sees the balance until a reader trips over it.
 
-Detail: the hook question was asked on the title slide and the closing slide echoes it; this slide gives the number behind it. The earlier-attempt story has its own slide next - do not tell it here. The right-hand bar redraws the same figure: 6,989 named outdated information; 5,385 (12,374 minus 6,989, derived) did not. It adds no claim.
+Detail: the hook question was asked on the title slide and the closing slide echoes it; this slide gives the number behind it. The earlier-attempt story has its own slide next - do not tell it here. The right-hand grid of 100 squares redraws the same figure: 6,989 named outdated information; 5,385 (12,374 minus 6,989, derived) did not. It adds no claim.
 
 Evidence: Stack Overflow Developer Survey 2026, "Which of the following make it difficult to get the context you need for work? Select all that apply." Outdated information: 56.5% (6,989 of 12,374). Checked 17 Oct 2026. The metaphor is Cunningham's technical debt, from his 1992 OOPSLA experience report.
 
@@ -249,7 +249,9 @@ Questions:
 Q: What failed in the earlier approach? A: That is the next slide.
 Q: Is this our data? A: No. It is an industry survey, not our repositories; our own drift is not yet measured.
 
-Transition: "Numbers like that are easy to nod at. Here is how it showed up for me. [TODO: only if the earlier-attempt story is confirmed; otherwise skip to: if that is the cost, how does the debt build up?]"
+Transition: "Numbers like that are easy to nod at. Here is how it showed up for me."
+
+[Presenter only: if the earlier-attempt story is not supplied, skip the next slide and say instead: "If that is the cost, here is how the debt builds up."]
 -->
 
 ---
@@ -265,7 +267,7 @@ Say: "I have tried to fix this before. [TODO: one sentence - the tool, and the p
 
 Analogy: patching one pothole on a road that keeps cracking - the patch holds, the road keeps wearing.
 
-Detail: TODO. Do not describe how the tool worked, who triggered it, or whether it ran manually, unless that is confirmed. The point to land is the limitation. Only link it to the later script-versus-agent slide if that is true of the real tool.
+Detail: TODO. The whole slide waits on the real story; the hook promises it, so do not ship without it. Do not describe how the tool worked, who triggered it, or whether it ran manually, unless that is confirmed. The point to land is the limitation. Only link it to the later script-versus-agent slide if that is true of the real tool.
 
 Evidence: none. This is the presenter's own experience; say so aloud.
 
@@ -282,9 +284,9 @@ Transition: "That gap is not unusual. Here is why it keeps opening."
 
 <p class="kicker">02 / THE MECHANISM</p>
 
-## Documentation debt accrues between doc passes
+## Documentation can fall behind code between doc passes
 
-![Illustrative chart: the code line steps up with every shipped change; the docs line catches up only at occasional doc passes; the gap between them is documentation debt w:1120 h:270](img/docs-debt.svg)
+![Illustrative chart: the code line steps up with every shipped change; the docs line catches up only at occasional doc passes; the gap between them is documentation debt w:1060](img/docs-debt.svg)
 
 <p class="takeaway">Every shipped change adds to it; each doc pass pays only some back.</p><p class="caption"><b class="fig">Fig. 1</b> · Illustrative · no data · extends Cunningham’s (1992) technical-debt metaphor to documentation.</p>
 
@@ -297,13 +299,13 @@ Detail: the blue staircase is shipped changes; the dashed line is documentation,
 
 Evidence: none. This is a conceptual picture, labelled illustrative on the slide. It extends Cunningham's (1992) technical-debt metaphor to documentation. The only number in this part of the talk is the survey on the previous slide.
 
-Careful wording: "documentation debt" is this deck's analogy with technical debt. Do not present the chart shape as measured; we have not measured our own drift.
+Careful wording: "documentation debt" is this deck's analogy with technical debt; the survey measures perceived barriers, not accrual, and the title is hedged ("can fall behind") for that reason. Do not present the chart shape as measured; we have not measured our own drift.
 
 Questions:
 Q: Is this our data? A: No, it is illustrative. Measuring our own gap is part of what the pilot does.
 Q: Why not just do more doc passes? A: That is the manual fix we already rely on; the cost is people's time, and it is the step that gets skipped when shipping is busy.
 
-Transition: "So the question is who repays it. Before I answer that, I want you to know exactly what I am going to ask for, so you can judge everything that follows against it."
+Transition: "Repaying it by hand is the step that gets skipped when shipping is busy. Before I show the alternative, here is exactly what I will ask you for, so you can judge everything that follows against it."
 -->
 
 ---
@@ -349,9 +351,9 @@ Transition: "That is the ask. Everything from here is the evidence for and again
 
 <p class="kicker">04 / THE SOLUTION</p>
 
-## Agents shift the human role from execution to review
+## An agentic workflow hands the human a prepared change to review
 
-![AI assistance: you ask, AI suggests, you carry it into the repo by hand. Agentic workflow: task file, agent works in GitHub Actions, draft PR, you review w:1120 h:312](img/suggest-vs-do.svg)
+![AI assistance: you ask, AI suggests, you carry it into the repo by hand. Agentic workflow: task file, agent works in GitHub Actions, draft PR, you review w:1144](img/suggest-vs-do.svg)
 
 <p class="takeaway">The agent drafts, a person decides what merges: the work moves from writing to judging.</p><p class="caption"><b class="fig">Fig. 2</b> · Illustrative, this deck's framing · <code>draft: true</code> is enforced PR policy · reviewer minutes not yet measured · Actions is GitHub's built-in automation.</p>
 
@@ -366,18 +368,14 @@ Detail: the workflow gives the agent a task and controlled access to repository 
 
 Evidence: illustrative comparison, this deck's framing. Copilot is the default engine.
 
-Who does what (the full diagram is in the appendix): the agent reads the repository, drafts a change and opens a draft pull request. A person owns the workflow file, reviews the diff, decides what merges, and can switch it off. Merge and close are both the system working. If volume rises, review time rises with it, which is why reviewer minutes are measured in the pilot, not assumed.
+If asked exactly who does what, jump to Appendix 8 (the agent drafts; a person decides what merges).
 
 Careful wording: this is not a claim that every chat tool or agent behaves identically. The workflow still needs good instructions, appropriate permissions and a reviewer. Avoid listing alternative engines; the supported set is not the point of this slide. Do not imply fewer people or promise headcount is unaffected; the person still decides what merges. Human merge is our proposed pilot policy, not a product guarantee; gh-aw does not universally prohibit automatic merging. draft: true is enforced PR-creation policy (PR policy reference, checked 17 Oct 2026); the rest is this deck's framing. Reviewer minutes are not measured yet.
 
 Questions:
 Q: How is this different from asking Copilot Chat? A: Chat gives you a suggestion to carry into the repo yourself. The workflow runs in GitHub Actions and hands back a PR, issue or comment through the outputs it is allowed.
 Q: Which model runs it? A: Copilot is the default engine. Others can be configured, but that is not the point of this talk.
-Q: Does this replace writers or reviewers? A: No. It changes what the work is: less drafting, more judging. Whether that is a net saving is what the pilot measures.
-Q: Won't people just approve whatever it writes? A: That is the real risk, and it is why the pilot is one repository with a named owner and a small number of changes. If we cannot review them properly, that is a result worth having.
-Q: Who is accountable for a bad merge? A: The person who approved it, exactly as today.
-
-Transition: "That raises a fair objection, and I want to meet it head on: why hand this to an agent at all, when we already automate things with scripts?"
+Transition: "Fair question: why hand this to an agent at all, when we already automate with scripts?"
 
 Sources (checked 17 Oct 2026):
 Architecture: https://github.github.com/gh-aw/introduction/architecture/
@@ -397,16 +395,16 @@ Architecture: https://github.github.com/gh-aw/introduction/architecture/
 
 ## Scripts check fixed rules; an agent is for the part that needs reading
 
-<p class="large-copy">First ask: can a fixed rule decide this?</p><div class="split"><div class="card"><h3>Yes: use a script</h3><p>Broken links · missing API entries · formatting<br><span class="why">Cheaper, faster, predictable.</span></p></div><div class="card"><h3>No, it needs reading: use an agent</h3><p>“Does this paragraph still describe what the function does?”<br><span class="why">Few fixed rules express that.</span></p></div></div><p class="takeaway">Use the deterministic tool wherever one solves the task.</p><p class="todo">TODO · unverified: whether CI runs on the agent's own pull requests (the default GITHUB_TOKEN usually does not trigger workflows). Check the gh-aw docs first. Framing is this deck's, not GitHub's.</p>
+<p class="large-copy">First ask: can a fixed rule decide this?</p><div class="split"><div class="card"><h3>Yes: use a script</h3><p>Broken links · missing API entries · formatting<br><span class="why">Cheaper, faster, predictable.</span></p></div><div class="card"><h3>No, it needs reading: use an agent</h3><p>“Does this paragraph still describe what the function does?”<br><span class="why">Few fixed rules express that.</span></p></div></div><p class="takeaway">Use the deterministic tool wherever one solves the task.</p><p class="todo">TODO · decide before week one: by default CI does not run on the agent's pull requests (workflow-token PRs do not trigger it); gh-aw documents an optional token that does. Framing is this deck's.</p>
 
-<p class="sources"><a href="https://github.github.com/gh-aw/">gh-aw docs: a third pillar beside CI and CD</a></p>
+<p class="sources"><a href="https://github.github.com/gh-aw/">gh-aw docs: a third pillar beside CI and CD</a> · <a href="https://github.github.com/gh-aw/reference/triggering-ci/">Triggering CI</a></p>
 
 <!--
-Say: "There is a fair objection here, and I want to meet it head on. We already automate things. Why hand this to an agent instead of writing a script?"
+Say: "We already automate things. Why hand this to an agent instead of writing a script?"
 
 Analogy: a spellchecker versus an editor. A spellchecker applies a fixed rule and is better than a person at it. Deciding whether a paragraph still tells the truth is not a rule, and no spellchecker has ever done it.
 
-Detail: doctests and API diffs catch some drift too, so say so aloud (it is off the slide to keep one idea). Read the left card first and concede it properly - if a deterministic tool solves the task, the tool wins every time. It is cheaper, it is faster, and its failures are predictable. Then the right card: the documentation question is "does this explanation still describe what this code now does", which requires reading the code and the prose and forming a view. Few fixed rules express it, which is why it has stayed a manual job. Finish on the takeaway: this sits beside CI, it does not replace it. Whether CI also runs on the agent's own pull requests is unverified (PRs made with GITHUB_TOKEN do not normally trigger workflows) - check before claiming it.
+Detail: doctests and API diffs catch some drift too, so say so aloud (it is off the slide to keep one idea). Read the left card first and concede it properly - if a deterministic tool solves the task, the tool wins every time. It is cheaper, it is faster, and its failures are predictable. Then the right card: the documentation question is "does this explanation still describe what this code now does", which requires reading the code and the prose and forming a view. Few fixed rules express it, which is why it has stayed a manual job. Finish on the takeaway: this sits beside CI, it does not replace it. Whether CI runs on the agent's own pull requests: by default it does not, because pull requests created with the default GITHUB_TOKEN do not trigger CI runs (Triggering CI page, checked 19 Oct 2026). gh-aw documents an optional token (github-token-for-extra-empty-commit) that pushes an extra empty commit so CI runs. Choosing that is a pilot decision, and it is a security decision as well.
 
 Evidence: the gh-aw docs position Continuous AI as a third pillar beside CI and CD (docs home, checked 17 Oct 2026). The split between mechanical and judgement work is this deck's framing, labelled as such on the slide, not GitHub's wording.
 
@@ -439,7 +437,7 @@ Transition: "So some of this work needs reading, not rules. Here is what the thi
 
 <p class="kicker">06 / THE REAL EXAMPLE</p>
 
-## A documentation agent's real pull request is eight added lines in one file
+## A documentation agent's real pull request adds two glossary entries in one file
 
 <p class="plain">A workflow named “[docs] Update glossary - daily scan” opened it. It adds two glossary entries.</p><div class="diff"><div><p class="eyebrow">ADDED · docs/…/reference/glossary.md · +8 −0 · TRIMMED</p><pre class="add"><code>+ ### Work Queue (`tools.work-queue`)
 + A native, Git-backed queue for fair scheduling of
@@ -447,12 +445,12 @@ Transition: "So some of this work needs reading, not rules. Here is what the thi
 +
 + ### Claim (Work Queue)
 + Authorization for one attempt at a Work item in
-+ a native work queue … See Work Queues.</code></pre></div></div><p class="takeaway">The unit of review is one small diff: a reviewer can judge it in minutes.</p><p class="caption">Public example · github/gh-aw #68654, merged 14 Oct 2026 · GitHub's own repository, not our pilot · text trimmed with …</p>
++ a native work queue … See Work Queues.</code></pre></div></div><p class="takeaway">One example, not a rate: it shows the size of a change, not that an agent repairs stale docs.</p><p class="caption">Public example · github/gh-aw #68654, merged 14 Oct 2026 · GitHub's own repository, not our pilot · text trimmed with …</p>
 
 <p class="sources"><a href="https://github.com/github/gh-aw/pull/68654">Real PR and diff #68654</a> · <a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/">GitHub documentation report</a></p>
 
 <!--
-Say: "This is what you would review. Not a rewrite: eight added lines in one file, from a docs agent in GitHub's own repository."
+Say: "This is what you would review. Not a rewrite: two new glossary entries in one file, from a docs agent in GitHub's own repository."
 
 Analogy: a good footnote. Small enough that a reader can check it without having to trust the author.
 
@@ -460,7 +458,7 @@ Detail: open the linked PR and its Files changed tab. The patch adds two glossar
 
 Evidence: github/gh-aw PR #68654 "[docs] Update glossary - daily scan", +8/-0, 1 file, merged 14 Oct 2026 (read with gh, 18 Oct 2026). The PR body says it was generated by the Glossary Maintainer workflow, which is one of the three samples on the evidence slide.
 
-Careful wording: it is GitHub's workflow in GitHub's repository, not the githubnext/agentics Update Docs file and not ours. One PR illustrates size; it is not evidence of quality, and do not say all agent PRs are this small. Say "minutes", not "seconds": the entries are dense prose. Describe only what the diff shows; do not claim it repaired drift.
+Careful wording: it is GitHub's workflow in GitHub's repository, not the githubnext/agentics Update Docs file and not ours. One PR illustrates size; it is not evidence of quality, and do not say all agent PRs are this small. The diff adds documentation for new code; it does not show the agent correcting stale text, which is the problem this talk opened with. Of the 8 added lines, 2 are blank and 2 are headings, so say "two entries", not "eight lines of prose". Say "minutes", not "seconds": the entries are dense prose. Describe only what the diff shows; do not claim it repaired drift.
 
 Questions:
 Q: Is this our run? A: No. It is an explicitly labelled public example.
@@ -485,16 +483,18 @@ https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation
 
 ## In three of GitHub's documentation workflows, most pull requests were merged, but not all
 
-![Each square is one pull request proposed by a GitHub documentation workflow: 57 of 59 merged, 88 of 103 merged, 10 of 10 merged. Filled squares merged, hollow not merged w:1120 h:272](img/merge-squares.svg)<p class="takeaway">Selected samples from other people’s repositories, not a forecast for our pilot.</p><p class="caption"><b class="fig">Fig. 4</b> · GitHub report · 13 Jan 2026 · one square per proposed pull request, so strip length is sample size.</p>
+![Each square is one pull request proposed by a GitHub documentation workflow: 57 of 59 merged, 88 of 103 merged, 10 of 10 merged. Filled squares merged, hollow not merged w:1144](img/merge-squares.svg)<p class="takeaway">Selected samples from other people’s repositories, not a forecast for our pilot.</p><p class="caption"><b class="fig">Fig. 4</b> · Reported by GitHub, 13 Jan 2026, repository not stated · same post, lower: Noob Tester 9 of 21 (43%) · these PRs were ready for review, not drafts: they show quality of changes, not the draft step.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/">GitHub: Continuous Documentation</a></p>
 
 <!--
 Say: "GitHub reports high merge rates for three of its own documentation workflows. I show them to motivate measurement, not to predict our result."
 
-Detail: this is the only outcome evidence in the main talk, so handle it carefully. The bars use the reported rates, while the visible denominators keep the scale of the samples clear. We are showing three selected workflows; the same post includes others with lower merge rates. Say the denominators out loud - 59 pull requests is a small sample, and saying so is what makes the number usable rather than salesy.
+Detail: this is the only outcome evidence in the main talk, so handle it carefully. Each square is one pull request; the strip length is the sample size. We are showing three selected workflows; the same post includes lower ones: Documentation Noob Tester 9 merged of 21 proposed (43%), Slide Deck Maintainer 2 of 5 (40%). Say the denominators out loud - 59 pull requests is a small sample, and saying so is what makes the number usable rather than salesy.
 
-Evidence: reported by GitHub, 13 Jan 2026 (Continuous Documentation post), not independently reproduced. Daily Documentation Updater 57 of 59 merged (96%); Documentation Unbloat 88 of 103 (85%); Glossary Maintainer 10 of 10 (100%). Our own recount with the GitHub search API, 18 Oct 2026: repo:github/gh-aw is:pr author:app/github-actions returned 4,034 PRs, 2,688 of them merged. That filter is every GitHub Actions-authored PR, so say "bot-authored", not "documentation".
+Evidence: reported by GitHub, 13 Jan 2026 (Continuous Documentation post), repository not stated, not independently reproduced. Daily Documentation Updater 57 of 59 merged (96%); Documentation Unbloat 88 of 103 (85%); Glossary Maintainer 10 of 10 (100%). Our own recount (derived, not in the post) with the GitHub search API, 18 Oct 2026: repo:github/gh-aw is:pr author:app/github-actions returned 4,034 PRs, 2,688 of them merged. That filter is every GitHub Actions-authored PR, so say "bot-authored", not "documentation".
+
+Draft caveat (verified 19 Oct 2026): github/gh-aw .github/workflows/daily-doc-updater.md had draft: false in its create-pull-request block on 27 Dec 2025, before the 13 Jan 2026 post; auto-merge support for safe-outputs.create-pull-request was added on 20 Jan 2026 (github/gh-aw #10890) and the current file sets auto-merge: true and draft: false. So the 57/59 PRs were ready-for-review, not draft, PRs. The figure supports the quality of the changes, not the safety of our draft-and-review step; say so if it is used to justify the pilot.
 
 Careful wording: these are selected small samples, not a forecast for our pilot. A merged PR is evidence of acceptance, not a direct measurement of accuracy, time saved or return on investment. The post does not explicitly identify the repository for these measurements.
 
@@ -502,10 +502,11 @@ Questions:
 Q: Will we get 96%? A: These are small, selected samples reported by GitHub, not a forecast. We will measure our own.
 Q: Which repository were these measured in? A: The post does not explicitly identify it.
 
-Transition: "Those are good numbers, from someone else's repositories. Now the honest part, and the question you should be asking: what happens when it is wrong?"
+Transition: "Those are good numbers, from someone else's repositories. The question to ask next is what happens when it is wrong."
 
 Sources (checked 17 Oct 2026):
 GitHub: Continuous Documentation: https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/
+daily-doc-updater.md: https://github.com/github/gh-aw/blob/main/.github/workflows/daily-doc-updater.md (history; PR #10890)
 -->
 
 ---
@@ -530,16 +531,16 @@ GitHub: Continuous Documentation: https://github.github.com/gh-aw/blog/2026-01-1
 
 ## It will be wrong sometimes, and that has to be survivable
 
-<div class="cards four"><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Question mark: misread code" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><path d="M12 12.5a4 4 0 1 1 5.5 3.7c-1 .5-1.5 1.2-1.5 2.3"/><path d="M16 23h.01"/></svg><h3>Confidently wrong</h3><p>It matches a page to code it misread.</p><p class="lim"><b>Limit</b> A person reads the diff.</p></div><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Arrows pointing outward: scope too wide" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16h24M4 16l5-5M4 16l5 5M28 16l-5-5M28 16l-5 5"/></svg><h3>Too wide a diff</h3><p>A one-page fix touches twenty files.</p><p class="lim"><b>Limit</b> Draft PR, docs only by instruction.</p></div><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Speech bubble: instructions planted in text" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6h22v15H15l-6 5v-5H5z"/></svg><h3>Planted instructions</h3><p>A pasted issue says “ignore your rules”.</p><p class="lim"><b>Limit</b> No write access.</p></div><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Coin: spend with nothing merged" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><path d="M16 9v14M12 13.5c0-3 8-3 8 0s-8 2-8 5 8 3 8 0"/></svg><h3>Spend, no merge</h3><p>AI usage charges (credits) burn whether or not anything lands.</p><p class="lim"><b>Limit</b> Spend caps: <span class="gap">TODO</span></p></div></div><p class="takeaway">Each has a limit we set, not trust in the model.</p><p class="caption">Failure modes this deck names · prompt injection is documented by GitHub; the rest follow from the task.</p><p class="todo">TODO · our own error rate is unmeasured — week one's staged preview is the first measurement.</p>
+<div class="cards four"><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Question mark: misread code" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><path d="M12 12.5a4 4 0 1 1 5.5 3.7c-1 .5-1.5 1.2-1.5 2.3"/><path d="M16 23h.01"/></svg><h3>Confidently wrong</h3><p>It matches a page to code it misread.</p><p class="lim"><b>Limit</b> A person reads the diff.</p></div><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Arrows pointing outward: scope too wide" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16h24M4 16l5-5M4 16l5 5M28 16l-5-5M28 16l-5 5"/></svg><h3>Too wide a diff</h3><p>A one-page fix touches twenty files.</p><p class="lim"><b>Limit</b> Draft PR and patch-size limits; docs only by instruction.</p></div><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Speech bubble: instructions planted in text" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6h22v15H15l-6 5v-5H5z"/></svg><h3>Planted instructions</h3><p>A pasted issue says “ignore your rules”.</p><p class="lim"><b>Limit</b> Read-only agent job; checks before any write.</p></div><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Coin: spend with nothing merged" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><path d="M16 9v14M12 13.5c0-3 8-3 8 0s-8 2-8 5 8 3 8 0"/></svg><h3>Spend, no merge</h3><p>AI usage charges (credits) burn whether or not anything lands.</p><p class="lim"><b>Limit</b> Spend caps: <span class="gap">TODO</span></p></div></div><p class="takeaway">Each has a limit we set; none is a guarantee, so a person still reads the diff.</p><p class="caption">Failure modes this deck names · prompt injection is documented by GitHub; the rest follow from the task.</p><p class="todo">TODO · our own error rate is unmeasured — week one's staged preview is the first measurement.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/reference/threat-detection/">Threat detection</a> · <a href="https://github.github.com/gh-aw/reference/cost-management/">Cost management</a></p>
 
 <!--
-Say: "I have shown you a good result. Now the honest part. This will sometimes be wrong, and a pilot that cannot survive being wrong is not worth running. So here are the four ways it fails."
+Say: "I have shown you a good result. This will sometimes be wrong, and a pilot that cannot survive being wrong is not worth running. Here are four ways it fails."
 
 Analogy: hiring a capable new starter. You do not assume their first week is flawless; you scope the work so that a mistake is cheap and visible. Nothing here depends on the agent being right.
 
-Detail: walk the four cards left to right. Confidently wrong is the model misreading code and writing confident prose about it; this is the one a reviewer must catch by reading, and the reason the output is a diff. Too wide a diff is scope creep, which is why the instructions and trigger are narrow. Planted instructions are prompt injection: text planted in an issue or pull request body that the agent reads as instruction. Spend with no merge is the economic failure, and the reason the next slides measure cost per accepted change rather than cost per run. Each card now carries a one-line limit that the later slides prove: a person reads the diff; draft PR with docs-only by instruction (not enforced until protected-files is confirmed); the agent job has no write access (slide 13); spend caps are a TODO. Deliberately do not re-explain the write split or detection here; those are the next two slides and this slide only names what they answer.
+Detail: walk the four cards left to right. Confidently wrong is the model misreading code and writing confident prose about it; this is the one a reviewer must catch by reading, and the reason the output is a diff. Too wide a diff is scope creep, which is why the instructions and trigger are narrow. Planted instructions are prompt injection: text planted in an issue or pull request body that the agent reads as instruction. Spend with no merge is the economic failure, and the reason the next slides measure cost per accepted change rather than cost per run. Each card now carries a one-line limit that the later slides prove: a person reads the diff; draft PR with patch-size limits (max-patch-files default 100, max 1 PR per run) and docs-only by instruction, which nothing enforces; the agent job is read-only and a separate job writes (the run slide); spend caps are a TODO. Deliberately do not re-explain the write split or detection here; those are the next two slides and this slide only names what they answer.
 
 Evidence: prompt injection is named in GitHub's own threat-detection reference, which documents the detection job looking for "prompt injection attempts, secret leaks, and malicious code patches" (checked 17 Oct 2026). AI-credit caps are in the cost-management reference. The other three failure modes follow from the nature of the task and are labelled on the slide as this deck's framing, not GitHub's.
 
@@ -547,7 +548,7 @@ Careful wording: do not say the controls prevent these; say they bound them. Det
 
 Questions:
 Q: How often will it be wrong? A: We do not know, and I will not guess. Week one runs with staged: true, which shows what it would have written without writing it. That is the first measurement we get.
-Q: Isn't confidently wrong documentation worse than stale documentation? A: It is the sharpest objection to this whole proposal, and it is why the output is a draft pull request rather than a commit. A wrong draft is closed in the same second it is read. Stale documentation has no such moment.
+Q: Isn't confidently wrong documentation worse than stale documentation? A: It is the sharpest objection to this proposal, and it is why the output is a draft pull request, not a commit. A wrong draft a reviewer catches costs one close. One a reviewer misses is the residual risk, and sizing it is what week one is for.
 Q: Who is accountable when a wrong page gets merged? A: The reviewer who approved it, exactly as with any other pull request. That does not change.
 
 Transition: "Each of those needs a limit rather than a promise. The limits are not in the model - they are in a file we can read."
@@ -582,18 +583,18 @@ Cost management: https://github.github.com/gh-aw/reference/cost-management/
 
 <div class="split code-layout"><pre><code><span class="ln">---</span><span class="ln">on:<b class="n">1</b></span><span class="ln">  push:</span><span class="ln">    branches: [main]</span><span class="ln">permissions: read-all<b class="n">2</b></span><span class="ln">safe-outputs:<b class="n">3</b></span><span class="ln">  create-pull-request:</span><span class="ln">    draft: true</span><span class="ln">---</span><span class="ln">&num; Update Docs<b class="n">4</b></span><span class="ln">Ensure every code-level change is</span><span class="ln">mirrored by clear, accurate, and</span><span class="ln">stylistically consistent documentation.</span></code></pre><div class="annotations"><p><b class="n">1</b><b>Shift</b> <code>on:</code><br>Every push to main</p><p><b class="n">2</b><b>Access badge</b> <code>permissions</code><br>Reads the repository</p><p><b class="n">3</b><b>Outbox</b> <code>safe-outputs</code><br>Draft pull requests</p><p><b class="n">4</b><b>Job description</b> Markdown body<br>Plain-English instructions</p></div></div>
 
-<p class="sources">Real file, trimmed (description, labels, tools, network, comments cut; see next slide) · <a href="https://github.com/githubnext/agentics/blob/main/workflows/update-docs.md">githubnext/agentics update-docs.md</a> · <a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy</a></p>
+<p class="sources">Trimmed from <a href="https://github.com/githubnext/agentics/blob/main/workflows/update-docs.md">githubnext/agentics update-docs.md</a> · <a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy</a></p>
 
 <!--
 Say: "The design choice that matters is where the limits live. They live in a short file we review like code, not in the model's judgement. Read it as a new teammate's onboarding sheet."
 
 Analogy: the onboarding sheet for a new teammate (shift, access badge, outbox, job description), written by the employer, not by the new hire.
 
-Detail: walk down the file rather than reading it aloud. The shift (on:) says when they work, the access badge (permissions) says what they can touch, the outbox (safe-outputs) says what they may hand in, and the job description (the Markdown body) says what the work is. The tools, network and protected-files settings are cut here and shown on the next slide. read-all is read access to the repository, not zero capability; bash is "all bash commands within the confine of Github Actions VM" per the file's own comment; network: defaults is an allowlist, not no network. Writes leave only through safe-outputs. protected-files: fallback-to-issue is a guard whose exact semantics are unconfirmed (TODO). The body continues with voice, style and step-by-step instructions. There is no budget in this example file; we would add a per-run AI-credit limit for the pilot, as on the cost slide. Compilation details are in the appendix.
+Detail: walk down the file rather than reading it aloud. The shift (on:) says when they work, the access badge (permissions) says what they can touch, the outbox (safe-outputs) says what they may hand in, and the job description (the Markdown body) says what the work is. The tools, network and protected-files settings are cut here and shown on the next slide. read-all is read access to the repository, not zero capability; bash is "all bash commands within the confine of Github Actions VM" per the file's own comment; network: defaults is an allowlist, not no network. Writes leave only through safe-outputs. protected-files: fallback-to-issue is a supply-chain guard: changes to a standard protected set (package manifests, CODEOWNERS, AGENTS.md and CLAUDE.md, README.md, CONTRIBUTING.md, and .github/ and other hidden config directories) push a branch and open a review issue instead of a PR. It is not a path restriction, and notably README.md is in the set, so a docs pilot that edits it would be routed to an issue. allowed-files can restrict a PR to chosen paths and this file does not use it. The body continues with voice, style and step-by-step instructions. There is no budget in this example file; we would add a per-run AI-credit limit for the pilot, as on the cost slide. Compilation details are in the appendix.
 
 Evidence: the real Update Docs workflow from githubnext/agentics, trimmed for the slide. The mission sentence shown is quoted verbatim. draft: true is enforced PR-creation policy (PR policy reference).
 
-Careful wording: "docs only" is by instruction and diff review, not a path mechanism, until protected-files is verified. Draft is not a suggestion the agent can override, but it is not a universal promise that all gh-aw workflows require human merging. Read-all permissions describe the agent job's repository token; writes happen only through the safe-output jobs. The limits (trigger, permissions, allowed outputs) are compiled settings, so they hold regardless of what the model decides. The quality of the work still depends on the model and the instructions.
+Careful wording: "docs only" is by instruction and diff review, not a path mechanism; protected-files is a sensitive-file guard (PR policy page, checked 19 Oct 2026), not a docs-only limit. Draft is not a suggestion the agent can override, but it is not a universal promise that all gh-aw workflows require human merging. Read-all permissions describe the agent job's repository token; writes happen only through the safe-output jobs. The limits (trigger, permissions, allowed outputs) are compiled settings, so they hold regardless of what the model decides. The quality of the work still depends on the model and the instructions.
 
 Questions:
 Q: Is this our file? A: No. It is a public example we would start from and adapt; our repository and file are still to be confirmed.
@@ -620,7 +621,7 @@ PR policy: https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/
 
 <p class="kicker">09b / THE WORKFLOW</p>
 
-## The same file also grants bash, web fetch and a network allowlist, so the other limits matter
+## The same file also lets the agent run commands and fetch pages, so the write limit has to hold
 
 <div class="split code-layout"><pre><code>network: defaults         # 1
 tools:                    # 2
@@ -631,16 +632,16 @@ safe-outputs:
   create-pull-request:
     draft: true
     protected-files: fallback-to-issue   # 3
-timeout-minutes: 15       # 4</code></pre><div class="annotations"><p>1 · <code>network: defaults</code><br>An allowlist of default hosts, not “no network”</p><p>2 · <code>tools</code><br>Bash inside the Actions VM, web fetch, all GitHub toolsets</p><p>3 · <code>protected-files</code><br>A guard on sensitive files; what it enforces is unconfirmed</p><p>4 · <code>timeout-minutes</code><br>Stops a run after 15 minutes</p></div></div>
+timeout-minutes: 15       # 4</code></pre><div class="annotations"><p>1 · <code>network: defaults</code><br>An allowlist of default hosts, not “no network”</p><p>2 · <code>tools</code><br>Bash inside the Actions VM, web fetch, all GitHub toolsets</p><p>3 · <code>protected-files</code><br>Routes changes to sensitive files to a review issue; it does not limit a PR to docs</p><p>4 · <code>timeout-minutes</code><br>Stops a run after 15 minutes</p></div></div>
 
-<p class="todo">TODO · confirm what <code>protected-files</code> enforces before calling “docs only” mechanical; pilot tool list is not chosen.</p>
+<p class="todo">TODO · add <code>allowed-files</code> (a docs path) to the pilot copy if “docs only” is to be enforced, and confirm in a trial; pilot tool list is not chosen.</p>
 
 <p class="sources">Real file, trimmed · <a href="https://github.com/githubnext/agentics/blob/main/workflows/update-docs.md">githubnext/agentics workflows/update-docs.md</a></p>
 
 <!--
 Say: "Read all of the file, including the parts that give the agent more room. It can run shell commands and fetch web pages, inside the Actions VM and a network allowlist. What it cannot do is write to the repository; that is the next slide."
 
-Detail: bash: true carries the file's own comment, "all bash commands within the confine of Github Actions VM". network: defaults is an allowlist of default hosts. toolsets: [all] gives the agent every GitHub read toolset. protected-files: fallback-to-issue is a guard whose exact semantics are unconfirmed (TODO), so do not claim "docs only" is mechanical. The slide compresses the two-line github toolsets YAML to one line.
+Detail: bash: true carries the file's own comment, "all bash commands within the confine of Github Actions VM". network: defaults is an allowlist of default hosts. toolsets: [all] gives the agent every GitHub read toolset. protected-files: fallback-to-issue is a guard on a standard set of sensitive files (manifests, CODEOWNERS, AGENTS.md, README.md, .github/ and hidden config directories); changes there go to a review issue (PR policy page, checked 19 Oct 2026). It is not a docs-only path limit; allowed-files is the documented way to restrict paths. The slide compresses the two-line github toolsets YAML to one line.
 
 Evidence: real update-docs.md, githubnext/agentics, fetched with gh on 18 Oct 2026. timeout-minutes: 15. No budget appears in the file.
 
@@ -662,29 +663,33 @@ Transition: "Configuration sets the limits. The next slide shows how the run its
 
 <p class="kicker">10 / THE RUN</p>
 
-## The agent job has no write access; writes happen in a separate job
+## The agent job is read-only; a separate job does the writing
 
-![GitHub Actions workflow run: preparation, read-only agent and detection jobs, then a separate safe-outputs job with scoped write access w:1120 h:280](img/run-pipeline.svg)
+![GitHub Actions workflow run: preparation, read-only agent and detection jobs, then a separate safe-outputs job with scoped write access w:1080](img/run-pipeline.svg)
 
-<p class="takeaway">A separate step applies outputs; a draft PR and human merge are the backstop.</p><p class="caption"><b class="fig">Fig. 5</b> · Detection defaults to a caution, not a block · layers, not a guarantee · least privilege (Saltzer &amp; Schroeder, 1975).</p>
+<p class="takeaway">A separate step applies outputs; a draft PR and human merge are the backstop.</p><p class="caption"><b class="fig">Fig. 5</b> · Detection is a layer, not a guarantee; by default it cautions, it does not block · Saltzer &amp; Schroeder, 1975.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/introduction/architecture/">Architecture</a> · <a href="https://github.github.com/gh-aw/reference/threat-detection/">Threat detection</a></p>
 
 <!--
-Say: "The part that reasons is not the part that writes. The reasoning part runs with least privilege — an old idea in computer security, from Saltzer and Schroeder in 1975."
+Say: "The part that thinks is not the part that writes. The agent can read and draft, but it cannot change the repository. A separate job, after a check, is the only one that can write."
 
-Analogy: the four-eyes principle in banking. The clerk who prepares a payment is not the one who releases it. Here the agent prepares; a separate job releases.
+Analogy (an analogy for the job split, not a second human): the four-eyes principle in banking. The clerk who prepares a payment is not the one who releases it. Here the agent prepares; a separate job releases.
 
-Detail: the diagram groups five stages into three readable phases. Pre-activation handles role and skip checks. Activation sanitises event text and validates the lock file. The agent then works in its isolated runtime with read-only repository access and a network allowlist; the API proxy isolates authentication tokens, so the agent does not see them. The agent still runs commands (bash) and fetches pages inside a locked-down container with a network allowlist; what it lacks is permission to write to the repository. It can edit its local workspace to prepare a patch; read-only describes repository and API permissions, not an inability to draft file changes. Detection inspects the output and patch before the configured safe-output jobs act with the permissions they need. The docs describe blocking when a threat is detected, and permitting a warning with a human review requirement before merge. The outcome diagram is in the appendix.
+Detail: the diagram shows four of the six documented jobs: Prepare, Agent, Detection, then a separate Safe outputs job that holds the only write permission. Preparation handles role checks, event text and the lock file. The agent then works in its isolated runtime with read-only repository access and a network allowlist; the API proxy isolates authentication tokens, so the agent does not see them. The agent still runs commands (bash) and fetches pages inside a locked-down container with a network allowlist; what it lacks is permission to write to the repository. It can edit its local workspace to prepare a patch; read-only describes repository and API permissions, not an inability to draft file changes. Detection inspects the output and patch before the configured safe-output jobs act with the permissions they need. The docs describe blocking when a threat is detected, and permitting a warning with a human review requirement before merge. The outcome diagram is in the appendix.
 
-Evidence: "The agent job runs with minimal read-only permissions" and "write operations are deferred to separate jobs that execute only after the agent completes" (Architecture, checked 17 Oct 2026). The detection job is documented to look for "prompt injection attempts, secret leaks, and malicious code patches". Saltzer and Schroeder, "The Protection of Information in Computer Systems" (1975).
+Evidence: "The agent job runs with minimal read-only permissions" and "write operations are deferred to separate jobs that execute only after the agent completes" (Architecture, checked 19 Oct 2026). The detection job "has no access to write permissions". The page does not state the preparation job's permissions, so the slide claims read-only for the agent and detection jobs only. Detection is documented to look for "prompt injection attempts, secret leaks, and malicious code patches". Least privilege: Saltzer and Schroeder, "The Protection of Information in Computer Systems" (1975).
 
-Careful wording: the four-eyes comparison is an analogy for the job split; do not imply a second human approves every run. the failure case is deliberately not stated as a rule. The same reference describes fail-safe behaviour and says continue-on-error defaults to true, permitting warnings and failures with a caution notice. Do not say detection always blocks; test explicit settings before relying on either. Say permissions, not tokens: the page does not describe tokens per job. Do not promise that isolation or detection catches every problem; these are layers of control, not a guarantee, with human review still part of our proposed pilot. Least privilege is used in Saltzer and Schroeder's sense and is safe to attribute to them. Do NOT attribute "separation of privilege" to them for the job split: in their 1975 paper that term means requiring two independent keys, which is the four-eyes analogy above, not the read/write split. Call the split privilege separation and mark it as this deck's framing, not GitHub's wording.
+Careful wording:
+- Detection is a layer, not a guarantee. continue-on-error defaults to true, which permits warnings and failures with a caution notice; never say detection always blocks. Test explicit settings before relying on either reading.
+- Say permissions, not tokens: the page does not describe tokens per job.
+- Four-eyes is an analogy for the job split; it does not mean a second human approves every run.
+- Least privilege is Saltzer and Schroeder's term. Do not attribute "separation of privilege" to them for this split (in 1975 it means two independent keys); call the split privilege separation, this deck's framing.
 
 Questions:
 Q: Could a bad PR still get through? A: Yes; detection is a layer, not a guarantee. The pilot keeps draft PRs and human review.
 Q: What if the detector crashes? A: The docs are inconsistent, so verify that case in a trial before enabling writes.
-Q: Does CI run on the PR the safe-outputs job opens? A: Unverified - see the TODO on the script-versus-agent slide.
+Q: Does CI run on the PR the safe-outputs job opens? A: Not by default: PRs created with the default workflow token do not trigger CI. gh-aw documents an optional token that pushes an extra empty commit to trigger it; that choice is on the script-versus-agent slide.
 Q: What if someone plants instructions in an issue or PR? A: That is prompt injection. Detection is documented to look for it, and the agent has no write access either way. A layer, not a guarantee.
 
 Transition: "Those controls limit what a run can write. They say nothing about what it spends, or whether it was worth it."
@@ -692,6 +697,7 @@ Transition: "Those controls limit what a run can write. They say nothing about w
 Sources (checked 17 Oct 2026):
 Architecture: https://github.github.com/gh-aw/introduction/architecture/
 Threat detection: https://github.github.com/gh-aw/reference/threat-detection/
+Triggering CI: https://github.github.com/gh-aw/reference/triggering-ci/
 -->
 
 ---
@@ -725,16 +731,16 @@ Say: "The right unit of cost is not the run but the accepted change. A cheap run
 
 Analogy: measure yield, not throughput. A laboratory judges a method by its cost per valid result, not its cost per experiment run.
 
-Algebra (on Appendix 9, the cost formula slide): C_acc = (p_a·A + p_m·M + w·R) / N_acc, against C_man = w·R_man / N_man; continue if C_acc < C_man. A = AI credits (gh aw logs), p_a ≈ 0.01 per AIC (best-effort), M = Actions minutes (billing), p_m = TODO, R = reviewer minutes (not measured), w = reviewer cost per minute (TODO), N_acc = proposals merged.
+The algebra is on Appendix 9.
 
-Detail: the formula is the metric the pilot measures: credits, Actions minutes and reviewer minutes, divided by accepted changes. AIC is a budgeting and comparison unit, based on model-pricing data. The agentic step defaults to a 20-minute timeout, and max-turns can cap iterations. Skip rules can avoid unnecessary agent execution. Detection has its own AI-credit cap. Use gh aw logs to inspect duration and usage, then gh aw audit <run-id> to understand tool calls and estimated cost for a specific run. Measure review effort as well as inference: a cheap run that creates substantial rework may not be useful.
+Detail: the formula is the metric the pilot measures: credits, Actions minutes and reviewer minutes, divided by accepted changes. AIC is a budgeting and comparison unit, based on model-pricing data. The agentic step defaults to a 20-minute timeout (the example file sets 15), and max-turns can cap iterations. Skip rules can avoid unnecessary agent execution. Detection has its own AI-credit cap. Use gh aw logs to inspect duration and usage, then gh aw audit <run-id> to understand tool calls and estimated cost for a specific run. Measure review effort as well as inference: a cheap run that creates substantial rework may not be useful.
 
-Evidence: 1 AIC is about $0.01, estimated. The documented per-run default is 1,000 AIC, roughly $10 of estimated inference. AIC accounting is best-effort and can differ from the provider's bill; GitHub Actions minutes add another cost component. Reviewer minutes are not yet measured.
+Evidence: cost-management page (checked 19 Oct 2026): "One AIC equals $0.01 USD" and AIC maps to provider billing, so treat dollars as estimates. Documented defaults: 1,000 AIC per workflow run and 5,000 AIC per workflow per 24 hours (the frontmatter page agrees); detection has its own cap, 400 AIC by default. GitHub Actions minutes add another cost component. Reviewer minutes are not yet measured.
 
-Careful wording: do not quote a default for the daily AI-credit cap. Official sources disagree on it, so it is left off the slide and recorded on the appendix; if asked, say we will set our own daily cap explicitly. The 1,000 AIC per-run default (about $10 estimated) is not on the slide because it reads as a recommended budget; it is not one, detection has its own cap, and the real bill can differ. We need limits appropriate to the selected task.
+Careful wording: the defaults are GitHub's guardrails, not a recommended budget, so they are not on the slide. Do not quote "$10 a run": detection has its own 400 AIC budget on top, and the real bill can differ. If asked, say we will set our own per-run and daily caps explicitly, sized to the task.
 
 Questions:
-Q: What will this cost per month? A: We do not know until we measure. We will set explicit per-run and daily caps and read the numbers from gh aw logs and gh aw audit.
+Q: What will this cost per month? A: We do not know until we measure; the defaults are guardrails, not a forecast. We will set explicit per-run and daily caps and read the numbers from gh aw logs and gh aw audit.
 Q: Is AIC our bill? A: No. It is an estimate; billing may differ, and Actions minutes are a separate cost.
 
 Transition: "That metric gives us something we can test in a short, measurable pilot."
@@ -753,14 +759,12 @@ Transition: "That metric gives us something we can test in a short, measurable p
 
 ## Each week of the pilot has one job
 
-![Four-week GitHub workflow pilot timeline: review, try, measure, then decide w:900 h:246](img/pilot-timeline.svg)
+![Four-week GitHub workflow pilot timeline: review, try, measure, then decide w:1144](img/pilot-timeline.svg)
 
 <p class="takeaway">Record accepted changes, reviewer effort and total cost together.</p><p class="todo">TODO · expected pull-request volume · a hard stop rule (for example, pause after N rejected drafts) · a setup-time estimate.</p><p class="caption"><b class="fig">Fig. 6</b> · Week 1 runs with <code>staged: true</code>: writes are skipped, the run still costs.</p>
 
 <!--
-Say: "Four weeks, one job each: look, try with a person in the loop, tune, decide. Success criteria are agreed before we start, so the result can tell us to stop as readily as to continue."
-
-Analogy: a small, pre-registered trial. Decide what success looks like before seeing the data, so the result cannot be argued into shape afterwards.
+Say: "Four weeks, one job each: review, try with a person in the loop, measure, decide. Success criteria are agreed before we start, so the result can tell us to stop as readily as to continue."
 
 Detail: week one reviews configuration and previews results. Week two enables draft PRs with human review. Week three records outcomes and tunes the workflow. Week four produces a continue, change or stop decision. In week one, set staged: true under safe-outputs so proposed outputs appear in the Actions step summary instead of being written. Disable it, recompile and publish before week two. TrialOps is an optional earlier experiment; trial and staged-mode details are in the appendix.
 
@@ -790,7 +794,7 @@ Transition: "So what would the four weeks have to show? That is the next slide."
 
 ## Week four ends in a decision we agreed in advance
 
-![Three gates in a row, each with its own shape: Accepted (threshold TODO), Less effort (baseline TODO), Within budget (budget TODO) w:1120 h:250](img/decision-gates.svg)<p class="takeaway">All three must pass; a miss is a real decision. Agreed before we start, so the result can tell us to stop.</p><p class="todo">TODO · all three thresholds, and the manual baseline they are measured against, need agreeing before week one.</p><p class="caption">Proposed criteria · this deck's recommendation, not an agreed plan.</p>
+![Three gates in a row, each with its own shape: Accepted (threshold TODO), Less effort (baseline TODO), Within budget (budget TODO) w:1144](img/decision-gates.svg)<p class="takeaway">All three must pass; a miss is a real decision. Agreed before we start, so the result can tell us to stop.</p><p class="todo">TODO · all three thresholds, and the manual baseline they are measured against, need agreeing before week one.</p><p class="caption">Proposed criteria · this deck's recommendation, not an agreed plan.</p>
 
 <!--
 Say: "Four weeks only helps if we agree now what the result has to show. Otherwise we will argue about the data afterwards, and whoever is most enthusiastic will win that argument. So here is what I propose we decide in advance."
@@ -808,7 +812,7 @@ Q: What if we only hit two of the three? A: Then we have a real decision rather 
 Q: Who decides? A: The named owner, with you. Naming that person is one of the open fields on the decision slide.
 Q: What is the manual baseline? A: Undecided, and it is the hardest of the three. We need an honest estimate of what we spend on this today before week one starts.
 
-Transition: "So that is what the upside has to look like. Now the downside."
+Transition: "That is what the upside has to look like. The limits you have just seen add up to one picture of the downside."
 -->
 
 ---
@@ -821,22 +825,22 @@ Transition: "So that is what the upside has to look like. Now the downside."
 
 ## The downside is bounded by five proposed limits
 
-![Nested limits: four weeks, then capped spend (TODO), one repo and one owner (TODO), docs only using update-docs.md, draft pull requests only, and at the centre a person decides what merges w:1040 h:353](img/bounded-risk.svg)
+![Nested limits: four weeks, then capped spend (TODO), one repo and one owner (TODO), docs only using update-docs.md, draft pull requests only, and at the centre a person decides what merges w:1144](img/bounded-risk.svg)
 
-<p class="caption"><b class="fig">Fig. 7</b> · Proposed, not yet configured · spend, repository, owner TODO · “docs only” is by instruction and diff review; confirm <code>protected-files</code> before calling it enforced.</p>
+<p class="caption"><b class="fig">Fig. 7</b> · Proposed, not yet configured · spend, repository, owner TODO · “docs only” is by instruction and diff review (<code>protected-files</code> guards sensitive files, not paths) · a person deciding is our pilot policy, not a product guarantee · <span class="gap">TODO</span> branch-protection or required-review setting that enforces it.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy (draft: true)</a></p>
 
 <!--
-Say: "Every way this could go wrong is fenced in, and each ring limits a different kind of failure."
+Say: "Here is why the downside is small. Each ring limits a different kind of failure: time, money, place, scope and output."
 
-Analogy: a containment protocol. Each ring limits a different kind of failure: time, money, place, scope and output.
+Analogy: a containment protocol, one ring inside another.
 
 Detail: time is the pilot length; spend is per-run plus daily caps we set explicitly; scope is the update-docs workflow; output is draft pull requests, which the agent cannot override at runtime; the merge decision stays with a person under pilot policy.
 
 Evidence: four weeks is proposed. Spend limits, repository and owner are TODO. draft: true is enforced PR-creation policy (PR policy reference).
 
-Careful wording: do not say "docs only is enforced"; it is prompt wording plus diff review until protected-files is verified. "Boxed in" describes our proposed configuration and policy, not a guarantee. Detection is a layer, not a fence. Human approval before merge is our policy, not a product limit.
+Careful wording: do not say "docs only is enforced"; it is prompt wording plus diff review (protected-files is a sensitive-file guard; allowed-files would restrict paths). Nothing technical is named that stops someone merging unread, and gh-aw has an experimental merge-pull-request output, so no auto-merge is a configuration choice: the pilot needs branch protection or required review (TODO). "Boxed in" describes our proposed configuration and policy, not a guarantee. Detection is a layer, not a fence. Human approval before merge is our policy, not a product limit.
 
 Questions:
 Q: What is the worst case? A: A wrong draft PR that a reviewer closes, plus the spend up to the cap. That is why the cap and owner must be set before week one.
@@ -862,6 +866,9 @@ Transition: "Those are the limits. Here is the decision."
   h2 { font-size: 72px; min-height: 0; max-width: 1100px; margin-bottom: 12px; color: var(--accent-ink); }
   .status { margin: 0 0 14px; }
   .caption { margin-top: 4px; }
+  /* Echo of the title slide: one soft wash behind the title, none on rules or boxes. */
+  section { background: radial-gradient(ellipse 60% 55% at 22% 18%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%), linear-gradient(155deg, #15151b 0%, #08080b 55%, var(--bg) 100%); }
+  .decision .eyebrow { font-size: 20px; font-weight: 600; color: var(--muted); }
   .checklist { list-style: none; margin: 0; padding: 0; }
   .checklist li { font-size: 24px; margin: 0 0 14px; padding-left: 38px; position: relative; }
   .checklist li::before { content: ""; position: absolute; left: 0; top: 5px; width: 20px; height: 20px; border: 2px solid var(--line); border-radius: 4px; }
@@ -878,7 +885,7 @@ Transition: "Those are the limits. Here is the decision."
 <p class="sources"><a href="https://github.com/githubnext/agentics/blob/main/workflows/update-docs.md">Proposed public starting point</a></p>
 
 <!--
-Say: "The ask, in full and for the last time: approve a four-week, docs-only pilot, with a named owner, explicit spending limits and a decision at week four. And the honest limit: the cost is unknown. The pilot is how we find out."
+Say: "Now the ask I previewed at the start: approve a four-week, docs-only pilot, with a named owner, explicit spending limits and a decision at week four. And the honest limit: the cost is unknown. The pilot is how we find out."
 
 Analogy: a two-way door, in Jeff Bezos's terms (Amazon 2015 letter to shareholders): a reversible decision, so it can be made quickly and walked back if it fails.
 
@@ -892,7 +899,7 @@ Questions:
 Q: What happens if output is unsafe or spend exceeds a limit? A: Proposed policy: pause, inspect and decide whether to resume.
 Q: What must we approve today? A: The exact scope, repository, owner, budget and thresholds. TODO: confirm the decision-maker and fill every decision field before presenting this as a final approval request.
 
-Transition (close the talk): "At the start I asked when a page of documentation last misled you. [pause] Picture the fix arriving as a draft pull request, with a person deciding what merges. The ask: approve a four-week, docs-only pilot. The honest limit: we don't know the cost yet. The pilot is how we find out. [slow] A controlled path from stale docs to a reviewed pull request. [pause]"
+Transition (close the talk): "At the start I asked when a page of documentation last misled you. [pause] Picture the fix arriving as a draft pull request, with a person deciding what merges. [slow] A controlled path from stale docs to a reviewed pull request. [pause]"
 -->
 
 ---
@@ -901,7 +908,7 @@ Transition (close the talk): "At the start I asked when a page of documentation 
 
 ## Compilation turns that file into an Actions workflow
 
-<div class="cards three"><div class="card"><h3>1 · Author</h3><p>Markdown task<br>and frontmatter</p></div><div class="card"><h3>2 · Compile</h3><p><code>gh aw compile</code><br>Generated <code>.lock.yml</code></p></div><div class="card"><h3>3 · Publish</h3><p>Commit both files<br>Run in GitHub Actions</p></div></div><p class="takeaway">Compilation validates configuration and pins Actions to commit SHAs.</p>
+<div class="cards three"><div class="card"><h3>1 · Author</h3><p>Markdown task<br>and frontmatter</p></div><div class="card"><h3>2 · Compile</h3><p><code>gh aw compile</code><br>Generated <code>.lock.yml</code></p></div><div class="card"><h3>3 · Publish</h3><p>Commit both files<br>Run in GitHub Actions</p></div></div><p class="caption">Compilation validates configuration and pins Actions to commit SHAs.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/introduction/architecture/">Architecture</a> · <a href="https://github.github.com/gh-aw/setup/cli/">CLI</a></p>
 
@@ -918,6 +925,8 @@ Questions:
 Q: Why compile instead of running the Markdown directly? A: Actions runs YAML. Compiling validates the configuration and pins actions to commit SHAs, and the lock file can be reviewed like any other workflow.
 Q: What if someone edits the Markdown and forgets to recompile? A: The lock file is what runs, and activation validates it. Recompile and publish after every change.
 
+Transition: "Back to the decision slide."
+
 Sources (checked 17 Oct 2026):
 Architecture: https://github.github.com/gh-aw/introduction/architecture/
 CLI: https://github.github.com/gh-aw/setup/cli/
@@ -929,7 +938,7 @@ CLI: https://github.github.com/gh-aw/setup/cli/
 
 ## Agents add a third lane beside CI and CD
 
-![Three lanes: CI builds it (build, test); CD ships it (release, deploy); Continuous AI improves your repo around the clock (docs, triage, tests, fixes). CI and CD are predictable scripted steps; the third lane needs judgement and a person reviews the result w:1120 h:356](img/third-lane.svg)
+![Three lanes: CI builds it (build, test); CD ships it (release, deploy); Continuous AI improves your repo around the clock (docs, triage, tests, fixes). CI and CD are predictable scripted steps; the third lane needs judgement and a person reviews the result w:1144](img/third-lane.svg)
 
 <p class="caption"><b class="fig">Fig. 8</b> · Lane captions quoted from the gh-aw docs · the predictable/judgement split is this deck's framing.</p>
 
@@ -947,6 +956,8 @@ Careful wording: the split into predictable versus judgement work is this deck's
 Questions:
 Q: Why not just script the docs update? A: When a deterministic tool solves it, use the tool. Deciding whether an explanation still matches the code is the part that needs interpretation.
 Q: Does it run in our existing Actions? A: Yes, it compiles to an ordinary GitHub Actions workflow; details are in the appendix.
+
+Transition: "Back to the slide you came from."
 -->
 
 ---
@@ -955,9 +966,9 @@ Q: Does it run in our existing Actions? A: Yes, it compiles to an ordinary GitHu
 
 ## Detection adds a review gate, not a safety guarantee
 
-![GitHub Actions detection flow: threats and warnings require explicit verification, while permitted output reaches the separate safe-output job w:1120 h:358](img/detection-gate.svg)
+![GitHub Actions detection flow: threats and warnings require explicit verification, while permitted output reaches the separate safe-output job w:1144](img/detection-gate.svg)
 
-<p class="caption"><b class="fig">Fig. 9</b> · Failure behaviour is disputed in the docs; test it with explicit settings before relying on it.</p>
+<p class="caption"><b class="fig">Fig. 9</b> · The threat-detection page describes both caution-only and blocking outcomes when a check fails; test explicit settings before relying on either.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/introduction/architecture/">Architecture</a> · <a href="https://github.github.com/gh-aw/reference/threat-detection/">Threat detection</a></p>
 
@@ -973,6 +984,8 @@ Careful wording: the failure case is deliberately not assigned an unconditional 
 Questions:
 Q: Could a bad PR get through? A: Yes; the pilot keeps human review.
 Q: What if the detector crashes? A: Verify that case in a trial before enabling writes.
+
+Transition: "Back to the run slide."
 
 Sources: https://github.github.com/gh-aw/reference/threat-detection/
 -->
@@ -994,11 +1007,15 @@ Detail: documentation maintenance requires judging whether an explanation still 
 
 Evidence: none beyond the linked cost guidance. TODO: establish our actual current autonomy level and the tasks we would keep entirely with a person.
 
+Do not present unless asked. TODO: merge into the script-versus-agent slide's Q&A (it repeats that point).
+
 Careful wording: if discussing the autonomy ladder, describe L4 Approver only as this deck's interpretation of Feng et al., not a GitHub classification. Do not put an unconfirmed level on the slide.
 
 Questions:
 Q: Why not let it fix code too? A: The pilot keeps scope narrow so a reviewer can tell whether a change is right. Build, test and release stay in deterministic CI.
 Q: What autonomy level are we at today? A: TODO: agree this before presenting; do not guess.
+
+Transition: "Back to the slide you came from."
 
 Sources (checked 17 Oct 2026):
 Cost guidance: https://github.github.com/gh-aw/reference/cost-management/
@@ -1021,10 +1038,14 @@ Detail: this is where the example-workflow repository becomes useful. It is a se
 
 Evidence: none yet. TODO: insert the real repository URL, one verified workflow file, and the specific chore it is intended to address.
 
+Do not present unless asked; it is a TODO shell until the real workflow reference is supplied. Never show the install line as runnable.
+
 Careful wording: introduce the workflow as a starting point to review and adapt, not a plug-in guarantee. Do not display a fabricated directory tree.
 
 Questions:
 Q: Can we use an example workflow unchanged? A: Treat it as a starting point. Review its instructions, permissions, network, outputs and budget before adding it. TODO: name the workflow.
+
+Transition: "Back to the decision slide."
 
 Sources (checked 17 Oct 2026):
 CLI: https://github.github.com/gh-aw/setup/cli/
@@ -1036,7 +1057,7 @@ CLI: https://github.github.com/gh-aw/setup/cli/
 
 ## A trial can run in a temporary private repository
 
-<div class="cards three"><div class="card"><h3>Select</h3><p>Choose the reviewed<br>workflow file.</p></div><div class="card"><h3>Trial</h3><p><code>gh aw trial &lt;workflow&gt;</code><br>Temporary private repo by default.</p></div><div class="card"><h3>Inspect</h3><p>Read the results<br>before choosing the next step.</p></div></div><p class="takeaway">TrialOps is experimental.</p><p class="caption">Isolation changes where the workflow runs; it does not make the run free or risk-free.</p>
+<div class="cards three"><div class="card"><h3>Select</h3><p>Choose the reviewed<br>workflow file.</p></div><div class="card"><h3>Trial</h3><p><code>gh aw trial &lt;workflow&gt;</code><br>Private host repo by default; delete it after.</p></div><div class="card"><h3>Inspect</h3><p>Read the results<br>before choosing the next step.</p></div></div><p class="caption">TrialOps is experimental. Isolation changes where the workflow runs; it does not make the run free or risk-free.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/setup/cli/">CLI</a> · <a href="https://github.github.com/gh-aw/experimental/trial-ops/">TrialOps — experimental</a></p>
 
@@ -1053,6 +1074,8 @@ Questions:
 Q: Does a trial touch our repository? A: Not in the default mode, which runs in a temporary private repository. Do not use the host-repository option if isolation is the point.
 Q: Is a trial free? A: No. It uses Actions minutes and model credits.
 
+Transition: "Back to the pilot slide."
+
 Sources (checked 17 Oct 2026):
 CLI: https://github.github.com/gh-aw/setup/cli/
 TrialOps — experimental: https://github.github.com/gh-aw/experimental/trial-ops/
@@ -1067,7 +1090,7 @@ TrialOps — experimental: https://github.github.com/gh-aw/experimental/trial-op
 <div class="split code-layout"><pre><code>safe-outputs:
   staged: true
   create-pull-request:
-    draft: true</code></pre><div class="annotations"><p><b>Compile and publish</b><br>Commit the Markdown and lock file.</p><p><b>Run and inspect</b><br>Read the Actions step summary.</p><p><b>Then decide</b><br>Enable draft PRs only after review.</p></div></div><p class="takeaway">Staged safe-output writes are skipped; the workflow still runs.</p>
+    draft: true</code></pre><div class="annotations"><p><b>Compile and publish</b><br>Commit the Markdown and lock file.</p><p><b>Run and inspect</b><br>Read the Actions step summary.</p><p><b>Then decide</b><br>Enable draft PRs only after review.</p></div></div><p class="caption">Staged safe-output writes are skipped; the workflow still runs.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/reference/safe-outputs/#staged-mode">Staged mode</a> · <a href="https://github.github.com/gh-aw/setup/cli/">CLI</a></p>
 
@@ -1084,6 +1107,8 @@ Questions:
 Q: Does staged mode stop the agent running? A: No. The workflow still runs and costs; only the safe-output writes are skipped and shown in the step summary.
 Q: Can staging apply to only some outputs? A: Yes, it can be scoped to individual output types, but the pilot uses the global setting shown.
 
+Transition: "Back to the pilot slide."
+
 Sources (checked 17 Oct 2026):
 Staged mode: https://github.github.com/gh-aw/reference/safe-outputs/#staged-mode
 CLI: https://github.github.com/gh-aw/setup/cli/
@@ -1095,7 +1120,7 @@ CLI: https://github.github.com/gh-aw/setup/cli/
 
 ## The agent drafts; a person decides what merges
 
-![The agent reads the repository, drafts the change and opens a draft pull request; a person owns the workflow file, reviews the diff and decides what merges, with two outcomes, merges it or closes it w:1120 h:245](img/who-does-what.svg)
+![The agent reads the repository, drafts the change and opens a draft pull request; a person owns the workflow file, reviews the diff and decides what merges, with two outcomes, merges it or closes it w:1144](img/who-does-what.svg)
 
 <p class="caption"><b class="fig">Fig. 10</b> · This deck's framing · <code>draft: true</code> is enforced pull-request creation policy · reviewer minutes are not yet measured.</p>
 
@@ -1117,7 +1142,7 @@ Q: Does this replace writers or reviewers? A: No. It changes what the work is: l
 Q: Won't people just approve whatever it writes? A: That is the real risk, and it is why the pilot is one repository with a named owner and a small number of changes. If we cannot review them properly, that is a result worth having.
 Q: Who is accountable for a bad merge? A: The person who approved it, exactly as today.
 
-Transition: "Back to the question you were asked."
+Transition: "Back to the slide you came from."
 -->
 
 ---
@@ -1160,7 +1185,7 @@ Questions:
 Q: What will a month cost? A: We do not know until the pilot measures it. We set caps first and read gh aw logs and gh aw audit.
 Q: Why divide by accepted changes? A: A cheap run nobody merges still costs credits, minutes and a reviewer's attention.
 
-Transition: "Back to the question you were asked."
+Transition: "Back to the cost slide."
 -->
 
 ---
@@ -1169,22 +1194,24 @@ Transition: "Back to the question you were asked."
 
 ## The technical claims are grounded in GitHub’s documentation
 
-<p class="status">Public preview since <strong>11 Jun 2026</strong></p><div class="cards "><div class="card"><h3>Product and controls</h3><p>Official changelog<br>Architecture and threat detection<br>PR policy and staged mode</p></div><div class="card"><h3>Operating and measuring</h3><p>CLI and schedule syntax<br>Cost management<br>Reported documentation results</p></div></div><p class="todo caution">Unresolved conflicts · daily AI-credit cap default · whether a failed detection run blocks safe outputs</p><p class="caption">Technical fact check: 17 Oct 2026; re-checked 18 Oct 2026. Sources are linked on the relevant slides and in speaker notes.</p>
+<p class="status">Public preview since <strong>11 Jun 2026</strong></p><div class="cards "><div class="card"><h3>Product and controls</h3><p>Official changelog<br>Architecture and threat detection<br>PR policy and staged mode</p></div><div class="card"><h3>Operating and measuring</h3><p>CLI and schedule syntax<br>Cost management<br>Reported documentation results</p></div></div><p class="todo caution">Unresolved conflict · whether a failed detection run blocks safe outputs</p><p class="caption">Technical fact check: 17 Oct 2026; re-checked 19 Oct 2026. Sources are linked on the relevant slides and in speaker notes.</p>
 
 <p class="sources"><a href="https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview/">Public-preview changelog</a> · <a href="https://github.github.com/gh-aw/">Official docs</a></p>
 
 <!--
-Say: "Every technical claim in the talk traces to GitHub's own documentation, checked on 17 October 2026. Where official sources disagree, I have left the fact off the slides."
+Say: "Every technical claim in the talk traces to GitHub's own documentation, checked on 17 October 2026. Where the official pages describe a case two ways, I have said so."
 
 Detail: this is a reference appendix, not a second closing slide. For questions, return to the specific slide and use its linked official documentation. Local background material remains in overview.md and reference/. The unresolved TODOs are intentional and require project details before delivery.
 
-Evidence: the official June 11 changelog establishes public-preview status; technical preview began earlier. Two facts are deliberately off the main slides because official sources conflict. First, the default daily AI-credit cap. Second, the threat-detection page says both that with continue-on-error true (the default) detection failures "produce a caution notice instead of blocking safe outputs", and that if detection itself fails "safe outputs are not applied".
+Evidence: the official June 11 changelog establishes public-preview status; technical preview began earlier. One fact stays qualified because the official page conflicts with itself: the threat-detection page says both that with continue-on-error true (the default) detection failures "produce a caution notice instead of blocking safe outputs", and that if detection itself fails "safe outputs are not applied".
 
-Careful wording: do not repeat the old technical-preview-only claim from earlier drafts. The feature set and defaults can change, so recheck these sources before presenting at a later date. The evidence slide has its own report date and must not be described as current pilot results. Test the detection failure case in a trial before relying on either reading.
+Careful wording: do not repeat the old technical-preview-only claim from earlier drafts. The feature set and defaults can change, so recheck these sources before presenting at a later date. The evidence slide has its own report date and must not be described as current pilot results. Test the detection failure case in a trial before relying on either reading. The daily AI-credit cap is no longer a conflict: the cost-management and frontmatter pages both give 5,000 AI credits per workflow per day as the default (checked 19 Oct 2026); it is still not on the main slides, because it would read as a recommended budget.
 
 Questions:
 Q: Is this generally available? A: No. It has been in public preview since 11 Jun 2026, so features and defaults can change.
-Q: What is the default daily AI-credit cap? A: Official sources disagree, so we will set our own explicitly.
+Q: What is the default daily AI-credit cap? A: 5,000 AI credits per workflow per day, about $50 estimated, per the cost-management and frontmatter pages (19 Oct 2026). It is a guardrail, not a recommended budget; we will set our own explicitly.
+
+Transition: "Back to the decision slide."
 
 Sources (checked 17 Oct 2026):
 Public-preview changelog: https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview/

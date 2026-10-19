@@ -1,31 +1,36 @@
-# Deck v4: outstanding work
+# Deck v4: what is still left
 
-**Version:** deck-v4, dark stage with one red accent and a TED-style spine. Copy of deck-v3 taken 18 Oct 2026, redesigned the same day.
-Last updated: 18 Oct 2026
+**Version:** deck-v4, dark stage, one red accent, bigger and bolder type, TED-style spine. Copy of deck-v3 taken 18 Oct 2026.
+**State:** design, order, wording and notes are finished. Visible TODO markers were removed from the slides on request, so the gaps below are only recorded here and in the speaker notes. Slide numbers are current as of the last build (23 slides: 16 main, 7 appendix).
 
-## 1. Needs your content
-- Earlier-attempt story (slide 5): three beats plus screenshot. The third beat must land on "it only ran when a person remembered to run it", or change the transition into the turn.
-- The ask (slide 15): repository, page owner, credit budget, baseline, keep/stop rule.
-- Pilot workflow: `update-docs` or `readme-auto-updater`; make the file slide, spec slide (appendix) and ask slide match.
-- Talk date and audience (title slide).
-- What building the 98 taught you, time taken, and whether the library repo goes public (slide 14).
-- One real linked PR plus a recording (slide 7); candidates `github/gh-aw` #69936, #69394, #68929.
-- Your own example and repo URLs (links slide).
+## 1. Content only you can supply
+- **Slide 5, earlier attempt:** the three cards (what I built, what worked, what was missing) are empty. The third beat must land on "it only ran when a person remembered to run it", or change the transition into the turn. If the story will not be ready, cut the slide; nothing else depends on it.
+- **Slide 15, the ask:** the five answers (repository, page owner, credit budget, how stale it is now, keep or stop rule).
+- **Slide 16, the month:** the actual keep/stop rule. Also confirm the split (one staged week, three review weeks) is what you want; it is this deck's proposal, not GitHub's guidance.
+- **Pilot workflow:** choose `update-docs` or `readme-auto-updater`, then make the file slide (9), the one-page spec (appendix, 20) and the ask match.
+- **Title slide:** talk date and audience.
+- **Slide 14, what I've built:** the one thing building the 98 taught you, how long it took, and whether the library repo goes public. Do not put its URL on a slide until it does.
+- **Slide 7, the result:** one real linked pull request and a recording of the run behind it (candidates in `RESOURCES.md`: `github/gh-aw` #69936, #69394, #68929 as of 18 Oct 2026). Never show a screenshot that is not a real PR.
+- **Links slide (22):** your own sites and example repository URLs.
 
 ## 2. Verify before the talk
-- Can an injected agent send data to an allowlisted domain? Shown as the open question in the layers diagram.
-- Push and fork-PR behaviour for the role check (triggers slide, appendix).
-- Daily AI Credit cap default (status slide lists the conflict).
-- `environment:` and `protected-files:` semantics before either is claimed.
-- The one documented hard block (failed redaction) before saying it; see `RESOURCES.md`.
-- Ladder L1 to L5 labels against the full paper (appendix).
-- The 72.6% trustworthiness line stays notes-only until a source URL is found.
+- Can an injected agent send data to a domain that is on the allowlist? It is the open question inside the layers diagram (slide 13); say "I don't have a documented answer" until confirmed.
+- Push and fork-PR behaviour for the role check (triggers, appendix 18). Currently only documented for comment and dispatch triggers.
+- The daily AI Credit cap default: the two docs pages disagree, so it is left off the slides and recorded on the status slide.
+- `environment:` as an approval gate and `protected-files:` as path enforcement: unverified on purpose, do not claim either.
+- The one documented hard block (a failed or skipped redaction stops publication): re-verify in the docs before saying it.
+- Autonomy ladder L1 to L5 labels against the full paper (appendix 19), or show names only.
+- The "72.6% say recent information is trustworthy" line stays in notes only until a source URL is found.
+- Cost: runs per month times the per-run cap (default 1,000 AI Credits, about $10, best-effort) before stating any total or calling it small.
 
-## 3. Design follow-ups to try
-- Photo or full-bleed image for the hook slide if a real, rights-cleared one exists (never an invented screenshot).
-- Recordings of one real run to replace the gap slot on the proof slide.
-- Rehearse with the notes as spoken lines; cut any slide whose spoken line you cannot say in one breath.
+## 3. Housekeeping not done
+- `sources.md` is carried over from v3 and keyed to v3 slide numbers. Rekey it by claim text.
+- No PDF or speaker-notes export has been made for v4. Run `marp deck-v4/deck.md --allow-local-files --pdf </dev/null` and `marp deck-v4/deck.md --notes -o <path>` when the content is final.
+- `RESOURCES.md` sections below the v4 block still use v3 slide numbers; match by title.
+- Re-run `python3 deck-v4/check_deck.py` and regenerate `deck.html` after any edit (`marp deck-v4/deck.md --allow-local-files -o deck-v4/deck.html </dev/null`).
+- Rehearse with the notes as spoken lines; the first line of each note is what you say out loud.
 
-## 4. Housekeeping
-- `sources.md` is carried over from v3 and keyed to v3 slide numbers; rekey by claim text.
-- Regenerate `deck.html` after every edit; no PDF or speaker-notes export has been made for v4 yet.
+## 4. Ideas not built
+- A "what we will see" slide pulling the `gh aw logs` and `gh aw audit` commands out of the appendix.
+- A "what we won't do" slide listing the limits.
+- A real, rights-cleared image for the hook slide (never an invented screenshot).

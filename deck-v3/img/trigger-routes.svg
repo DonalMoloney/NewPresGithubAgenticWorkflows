@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 250" role="img" aria-labelledby="title desc"><title id="title">Four ways to start a run; the three a person can start pass a role check</title><desc id="desc">A workflow can start from a repository event, a schedule, a manual dispatch or a comment command. The repository event, manual and comment routes pass through the pre-activation job, which checks that a person starting a run has admin, maintainer or write role. The schedule route has no person starting it, so it reaches the workflow run directly.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 250" role="img" aria-labelledby="title desc"><title id="title">Four ways to start a run; the three a person can start pass a permission check</title><desc id="desc">A workflow can start from a repository event, a schedule, a manual dispatch or a comment command. The repository event, manual and comment routes pass through the pre-activation job, which permission-checks a person starting a run. The schedule route has no person starting it, so it reaches the workflow run directly.</desc>
 <style>
 :root{--bg:#faf6ee;--panel:#f2ecdf;--line:#b9ad98;--ink:#26211b;--muted:#675d4e;--accent:#3f3fb0;--hi:#2c2c8a;--good:#2a6e3a;--warn:#96470a;--fill-accent:#e4e5f7;--fill-good:#e1f0e0;--fill-warn:#fbeacf}
 .box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
@@ -59,8 +59,8 @@
 <path d="M1009 73 V90" class="line" marker-end="url(#arrow)"/>
 <rect x="295" y="91" width="840" height="98" rx="12" class="focus"/>
 <use href="#g-lock" x="315" y="103" width="28" height="28" class="i-hi"/><text x="357" y="125" class="heading">Pre-activation check</text>
-<text x="315" y="154" class="itext">A person starting a run needs</text>
-<text x="315" y="178" class="itext">admin, maintainer or write role</text>
+<text x="315" y="154" class="itext">A person starting a run is</text>
+<text x="315" y="178" class="itext">permission-checked first</text>
 <text x="113" y="142" class="cap" text-anchor="end">no person</text>
 <text x="113" y="166" class="cap" text-anchor="end">starts it</text>
 <path d="M715 189 V208" class="line" marker-end="url(#arrow)"/>
