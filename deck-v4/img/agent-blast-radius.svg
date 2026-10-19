@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 483" role="img" aria-labelledby="title desc"><title id="title">A misled agent is boxed in by nested layers, and one layer has a weak opening</title><desc id="desc">Three nested rings. At the core the agent sits inside a sealed container with opt-in tools and no engine token. Around the container is the gate layer, the only openings in the container wall, so there is no direct route out. The Squid proxy gate lets only listed domains through and blocks everything else. The API proxy gate keeps the engine token outside the container, so a prompt-injected agent has no credential to exfiltrate. The MCP gateway is the weak opening: it is drawn dashed with a warning mark because the gh-aw documentation says it is not a strong security boundary against a compromised or malicious agent. Outside the gate layer are the listed domains, the AI engine and the MCP servers. Defence comes from the rings together, not from any single wall.</desc>
+<style>
+:root{--bg:#0b0f14;--panel:#161c25;--line:#475467;--ink:#f3efe6;--muted:#a3adbb;--accent:#ff5a45;--hi:#ff9a8c;--good:#4cc38a;--warn:#f2b134;--fill-accent:#2b1a1c;--fill-good:#13291f;--fill-warn:#33270f}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+.focus{fill:var(--fill-accent);stroke:var(--accent);stroke-width:2}
+.write{fill:var(--fill-good);stroke:var(--good);stroke-width:2.5}
+.warn{fill:var(--fill-warn);stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}
+.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.itext{fill:var(--ink);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.gtext{fill:var(--good);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}
+.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.label{fill:var(--muted);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.glabel{fill:var(--good);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--accent);stroke-width:2}
+.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.gline{fill:none;stroke:var(--good);stroke-width:2}
+.rule{fill:none;stroke:var(--line);stroke-width:1.5}
+.boundary{fill:none;stroke:var(--good);stroke-width:1.5;stroke-dasharray:5 6}
+.zone{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 6}
+.seal{fill:none;stroke:var(--accent);stroke-width:2}
+.i-accent{color:var(--accent)}.i-hi{color:var(--hi)}.i-warn{color:var(--warn)}
+.i-good{color:var(--good)}.i-muted{color:var(--muted)}.i-ink{color:var(--ink)}
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ff5a45"/></marker>
+<marker id="warrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#f2b134"/></marker>
+<marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4cc38a"/></marker>
+<symbol id="g-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5M18.5 18.5l2-2"/></g></symbol>
+<symbol id="g-nokey" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5"/></g><path d="M2.5 21.5L21.5 2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="g-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="g-warn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 22.2 20.6H1.8Z"/><path d="M12 9v5"/></g><circle cx="12" cy="17.4" r="1.25" fill="currentColor"/></symbol>
+<symbol id="g-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="10.5" width="17" height="11" rx="2.5"/><path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5"/></g></symbol>
+<symbol id="g-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.4l3.2 3.2 6-6.4"/></g></symbol>
+<symbol id="g-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="4"/><path d="M3.8 21c0-4.5 3.7-7.2 8.2-7.2S20.2 16.5 20.2 21"/></g></symbol>
+<symbol id="g-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.6V12l4 2.4"/></g></symbol>
+</defs>
+<rect x="1" y="1" width="1134" height="412" rx="16" class="rule"/>
+<text x="21" y="30" class="label">3 · OUTSIDE</text>
+<rect x="21" y="40" width="750" height="348" rx="14" class="rule"/>
+<text x="41" y="68" class="label">2 · GATE LAYER</text>
+<path d="M441 86A10 10 0 0 0 431 76H51A10 10 0 0 0 41 86V370A10 10 0 0 0 51 380H361" class="seal"/>
+<path d="M441 174V184" class="seal"/>
+<path d="M361 380H431A10 10 0 0 0 441 370M441 272V288" class="wline"/>
+<use href="#g-lock" x="57" y="84" width="28" height="28" class="i-accent"/>
+<text x="93" y="106" class="label">1 · SEALED CONTAINER</text>
+<rect x="61" y="120" width="280" height="108" rx="12" class="focus"/>
+<text x="81" y="154" class="heading">Agent</text>
+<text x="81" y="182" class="text">Reads, plans, drafts</text>
+<use href="#g-nokey" x="81" y="192" width="26" height="26" class="i-hi"/>
+<text x="115" y="212" class="itext">No token</text>
+
+<rect x="61" y="240" width="280" height="98" rx="12" class="box"/>
+<text x="81" y="274" class="heading">Tools: opt-in</text>
+<text x="81" y="308" class="text">bash: one command</text>
+<path d="M341 174 H366 M366 130 V326" class="line"/>
+<path d="M366 130 H390" class="line" marker-end="url(#arrow)"/>
+<path d="M366 228 H390" class="line" marker-end="url(#arrow)"/>
+<path d="M366 326 H390" class="wline" marker-end="url(#warrow)"/>
+<rect x="391" y="88" width="360" height="84" rx="12" class="focus"/>
+<use href="#g-lock" x="707" y="96" width="28" height="28" class="i-hi"/>
+<text x="411" y="116" class="heading">Web filter</text>
+<text x="411" y="142" class="itext">Only listed domains out</text>
+<text x="411" y="164" class="cap">Squid proxy</text>
+<rect x="391" y="186" width="360" height="84" rx="12" class="focus"/>
+<use href="#g-nokey" x="707" y="194" width="28" height="28" class="i-hi"/>
+<text x="411" y="214" class="heading">API proxy</text>
+<text x="411" y="240" class="itext">Token stays outside</text>
+<rect x="391" y="284" width="360" height="84" rx="12" class="warn"/>
+<use href="#g-warn" x="707" y="292" width="28" height="28" class="i-warn"/>
+<text x="411" y="312" class="heading">Tool connector</text>
+<text x="411" y="338" class="wtext">Not a strong boundary</text>
+<text x="411" y="360" class="cap">MCP gateway</text>
+<path d="M751 130 H850" class="line" marker-end="url(#arrow)"/>
+<path d="M751 228 H850" class="line" marker-end="url(#arrow)"/>
+<path d="M751 326 H850" class="wline" marker-end="url(#warrow)"/>
+<rect x="851" y="92" width="270" height="76" rx="12" class="box"/>
+<text x="871" y="124" class="heading">Listed domains</text>
+<text x="871" y="154" class="code">network: defaults</text>
+<rect x="851" y="190" width="270" height="76" rx="12" class="box"/>
+<text x="871" y="222" class="heading">AI engine</text>
+<text x="871" y="252" class="text">Holds the token</text>
+<rect x="851" y="288" width="270" height="76" rx="12" class="box"/>
+<text x="871" y="320" class="heading">MCP servers</text>
+<text x="871" y="350" class="text">Reached via gateway</text>
+<text x="21" y="406" class="cap">No direct route out: every call uses a gate.</text>
+<text x="851" y="406" class="cap">network: {} = no access</text>
+<rect x="1" y="424" width="1134" height="56" rx="12" class="warn"/>
+<use href="#g-warn" x="17" y="438" width="28" height="28" class="i-warn"/>
+<text x="57" y="459" class="wtext">Open question: can an allowlisted domain still receive data?</text>
+</svg>

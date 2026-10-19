@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 201" role="img" aria-labelledby="title desc"><title id="title">Author, compile, then run</title><desc id="desc">Two files, one rule. You write and edit the Markdown file update-docs.md. The command gh aw compile generates the lock file update-docs.lock.yml, which is ordinary GitHub Actions YAML and is never hand-edited: to change behaviour you edit the Markdown and recompile. Both files are committed and reviewed together in a pull request like any other code, and once merged GitHub Actions runs the YAML.</desc>
+<style>
+:root{--bg:#0b0f14;--panel:#161c25;--line:#475467;--ink:#f3efe6;--muted:#a3adbb;--accent:#ff5a45;--hi:#ff9a8c;--good:#4cc38a;--warn:#f2b134;--fill-accent:#2b1a1c;--fill-good:#13291f;--fill-warn:#33270f}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+.focus{fill:var(--fill-accent);stroke:var(--accent);stroke-width:2}
+.write{fill:var(--fill-good);stroke:var(--good);stroke-width:2.5}
+.warn{fill:var(--fill-warn);stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}
+.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.itext{fill:var(--ink);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.gtext{fill:var(--good);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}
+.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.label{fill:var(--muted);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.glabel{fill:var(--good);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--accent);stroke-width:2}
+.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.gline{fill:none;stroke:var(--good);stroke-width:2}
+.rule{fill:none;stroke:var(--line);stroke-width:1.5}
+.boundary{fill:none;stroke:var(--good);stroke-width:1.5;stroke-dasharray:5 6}
+.zone{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 6}
+.seal{fill:none;stroke:var(--accent);stroke-width:2}
+.i-accent{color:var(--accent)}.i-hi{color:var(--hi)}.i-warn{color:var(--warn)}
+.i-good{color:var(--good)}.i-muted{color:var(--muted)}.i-ink{color:var(--ink)}
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ff5a45"/></marker>
+<marker id="warrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#f2b134"/></marker>
+<marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4cc38a"/></marker>
+<symbol id="g-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5M18.5 18.5l2-2"/></g></symbol>
+<symbol id="g-nokey" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5"/></g><path d="M2.5 21.5L21.5 2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="g-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="g-warn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 22.2 20.6H1.8Z"/><path d="M12 9v5"/></g><circle cx="12" cy="17.4" r="1.25" fill="currentColor"/></symbol>
+<symbol id="g-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="10.5" width="17" height="11" rx="2.5"/><path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5"/></g></symbol>
+<symbol id="g-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.4l3.2 3.2 6-6.4"/></g></symbol>
+<symbol id="g-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="4"/><path d="M3.8 21c0-4.5 3.7-7.2 8.2-7.2S20.2 16.5 20.2 21"/></g></symbol>
+<symbol id="g-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.6V12l4 2.4"/></g></symbol>
+</defs>
+<rect x="1" y="1" width="280" height="104" rx="12" class="box"/>
+<use href="#g-person" x="21" y="12" width="24" height="24" class="i-ink"/><text x="55" y="32" class="label">YOU WRITE</text>
+<text x="21" y="66" class="code">update-docs.md</text>
+<text x="21" y="94" class="cap">the file you edit</text>
+<text x="381" y="40" class="code" text-anchor="middle">gh aw compile</text>
+<path d="M287 53 H474" class="line" marker-end="url(#arrow)"/>
+<rect x="481" y="1" width="310" height="104" rx="12" class="focus"/>
+<text x="501" y="32" class="label">GENERATED</text>
+<text x="501" y="66" class="code">update-docs.lock.yml</text>
+<text x="501" y="94" class="cap">never hand-edited</text>
+<path d="M797 53 H844" class="line" marker-end="url(#arrow)"/>
+<rect x="851" y="1" width="284" height="104" rx="12" class="box"/>
+<text x="871" y="46" class="heading">GitHub Actions</text>
+<text x="871" y="80" class="text">runs the YAML</text>
+<path d="M141 105 V135" class="line" marker-end="url(#arrow)"/><path d="M636 105 V135" class="line" marker-end="url(#arrow)"/>
+<rect x="1" y="136" width="790" height="64" rx="12" class="focus"/>
+<use href="#g-check" x="21" y="154" width="28" height="28" class="i-hi"/><text x="63" y="175" class="heading">Commit both files, review both</text>
+<text x="500" y="175" class="text">like any other code</text>
+<path d="M791 168 H993 V106" class="line" marker-end="url(#arrow)"/>
+<text x="892" y="158" class="cap" text-anchor="middle">merge</text>
+</svg>

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 408" role="img" aria-labelledby="title desc"><title id="title">Hiring a teammate maps to the workflow file</title><desc id="desc">Four pairs, each joined by a symbol. Person: the job description, what they are asked to do, is the Markdown body of plain-English instructions. Clock: the shift, when they work, is the on: trigger. Lock: the access badge, what they may touch, is permissions, tools and network. Check mark: the outbox you check, what they hand back, is safe-outputs, approved writes that are reviewed. A closing line states the difference: a classic GitHub Action has steps you write; an agentic workflow is a brief you write while the agent plans the steps. The teammate mapping is this deck's own model, not official GitHub terminology.</desc>
+<style>
+:root{--bg:#0b0f14;--panel:#161c25;--line:#475467;--ink:#f3efe6;--muted:#a3adbb;--accent:#ff5a45;--hi:#ff9a8c;--good:#4cc38a;--warn:#f2b134;--fill-accent:#2b1a1c;--fill-good:#13291f;--fill-warn:#33270f}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+.focus{fill:var(--fill-accent);stroke:var(--accent);stroke-width:2}
+.write{fill:var(--fill-good);stroke:var(--good);stroke-width:2.5}
+.warn{fill:var(--fill-warn);stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}
+.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.itext{fill:var(--ink);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.gtext{fill:var(--good);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}
+.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.label{fill:var(--muted);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.glabel{fill:var(--good);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--accent);stroke-width:2}
+.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.gline{fill:none;stroke:var(--good);stroke-width:2}
+.rule{fill:none;stroke:var(--line);stroke-width:1.5}
+.boundary{fill:none;stroke:var(--good);stroke-width:1.5;stroke-dasharray:5 6}
+.zone{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 6}
+.seal{fill:none;stroke:var(--accent);stroke-width:2}
+.i-accent{color:var(--accent)}.i-hi{color:var(--hi)}.i-warn{color:var(--warn)}
+.i-good{color:var(--good)}.i-muted{color:var(--muted)}.i-ink{color:var(--ink)}
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ff5a45"/></marker>
+<marker id="warrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#f2b134"/></marker>
+<marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4cc38a"/></marker>
+<symbol id="g-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5M18.5 18.5l2-2"/></g></symbol>
+<symbol id="g-nokey" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5"/></g><path d="M2.5 21.5L21.5 2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="g-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="g-warn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 22.2 20.6H1.8Z"/><path d="M12 9v5"/></g><circle cx="12" cy="17.4" r="1.25" fill="currentColor"/></symbol>
+<symbol id="g-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="10.5" width="17" height="11" rx="2.5"/><path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5"/></g></symbol>
+<symbol id="g-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.4l3.2 3.2 6-6.4"/></g></symbol>
+<symbol id="g-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="4"/><path d="M3.8 21c0-4.5 3.7-7.2 8.2-7.2S20.2 16.5 20.2 21"/></g></symbol>
+<symbol id="g-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.6V12l4 2.4"/></g></symbol>
+</defs>
+<text x="1" y="20" class="label">HIRING A TEAMMATE</text>
+<text x="655" y="20" class="label">IN THE WORKFLOW FILE</text>
+<rect x="1" y="32" width="480" height="60" rx="12" class="box"/>
+<text x="21" y="59" class="heading">Job description</text>
+<text x="21" y="84" class="text">what they are asked to do</text>
+<path d="M481 62 H538" class="line"/>
+<circle cx="568" cy="62" r="26" class="focus"/>
+<use href="#g-person" x="550" y="44" width="36" height="36" class="i-hi"/>
+<path d="M598 62 H653" class="line" marker-end="url(#arrow)"/>
+<rect x="655" y="32" width="480" height="60" rx="12" class="box"/>
+<text x="675" y="59" class="heading">Markdown body</text>
+<text x="675" y="84" class="text">plain-English instructions</text>
+<rect x="1" y="106" width="480" height="60" rx="12" class="box"/>
+<text x="21" y="133" class="heading">Shift</text>
+<text x="21" y="158" class="text">when they work</text>
+<path d="M481 136 H538" class="line"/>
+<circle cx="568" cy="136" r="26" class="focus"/>
+<use href="#g-clock" x="550" y="118" width="36" height="36" class="i-hi"/>
+<path d="M598 136 H653" class="line" marker-end="url(#arrow)"/>
+<rect x="655" y="106" width="480" height="60" rx="12" class="box"/>
+<text x="675" y="133" class="mono-h">on:</text>
+<text x="675" y="158" class="text">when the workflow runs</text>
+<rect x="1" y="180" width="480" height="60" rx="12" class="box"/>
+<text x="21" y="207" class="heading">Access badge</text>
+<text x="21" y="232" class="text">what they may touch</text>
+<path d="M481 210 H538" class="line"/>
+<circle cx="568" cy="210" r="26" class="focus"/>
+<use href="#g-lock" x="550" y="192" width="36" height="36" class="i-hi"/>
+<path d="M598 210 H653" class="line" marker-end="url(#arrow)"/>
+<rect x="655" y="180" width="480" height="60" rx="12" class="box"/>
+<text x="675" y="207" class="mono-h">permissions, tools, network</text>
+<text x="675" y="232" class="text">what it can read and reach</text>
+<rect x="1" y="254" width="480" height="60" rx="12" class="box"/>
+<text x="21" y="281" class="heading">Outbox you check</text>
+<text x="21" y="306" class="text">what they hand back</text>
+<path d="M481 284 H538" class="line"/>
+<circle cx="568" cy="284" r="26" class="focus"/>
+<use href="#g-check" x="550" y="266" width="36" height="36" class="i-hi"/>
+<path d="M598 284 H653" class="line" marker-end="url(#arrow)"/>
+<rect x="655" y="254" width="480" height="60" rx="12" class="box"/>
+<text x="675" y="281" class="mono-h">safe-outputs</text>
+<text x="675" y="306" class="text">approved writes, reviewed</text>
+<rect x="1" y="328" width="1134" height="76" rx="12" class="focus"/>
+<text x="21" y="358" class="text">Classic Action: you write the steps.</text>
+<text x="21" y="390" class="heading">Agentic workflow: you write the brief, the agent plans the steps.</text>
+</svg>

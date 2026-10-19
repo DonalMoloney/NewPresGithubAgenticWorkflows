@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 316" role="img" aria-labelledby="title desc"><title id="title">Only the safe-outputs job holds a write key</title><desc id="desc">Left to right, five stages. Activation, Agent and Detection each carry a crossed-out key: none holds a write credential. The Agent is read-only and sandboxed. Detection scans the proposed output but is drawn dashed with a warning mark because its failure becomes a caution notice, not a hard block. A boundary then separates these from Safe outputs, the only stage with a key, a scoped write token that can emit only outputs declared in the workflow and opens a draft pull request. A human then reviews the draft. Four of the six jobs are shown.</desc>
+<style>
+:root{--bg:#0b0f14;--panel:#161c25;--line:#475467;--ink:#f3efe6;--muted:#a3adbb;--accent:#ff5a45;--hi:#ff9a8c;--good:#4cc38a;--warn:#f2b134;--fill-accent:#2b1a1c;--fill-good:#13291f;--fill-warn:#33270f}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+.focus{fill:var(--fill-accent);stroke:var(--accent);stroke-width:2}
+.write{fill:var(--fill-good);stroke:var(--good);stroke-width:2.5}
+.warn{fill:var(--fill-warn);stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}
+.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.itext{fill:var(--ink);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.gtext{fill:var(--good);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}
+.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.label{fill:var(--muted);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.glabel{fill:var(--good);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--accent);stroke-width:2}
+.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.gline{fill:none;stroke:var(--good);stroke-width:2}
+.rule{fill:none;stroke:var(--line);stroke-width:1.5}
+.boundary{fill:none;stroke:var(--good);stroke-width:1.5;stroke-dasharray:5 6}
+.zone{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 6}
+.seal{fill:none;stroke:var(--accent);stroke-width:2}
+.i-accent{color:var(--accent)}.i-hi{color:var(--hi)}.i-warn{color:var(--warn)}
+.i-good{color:var(--good)}.i-muted{color:var(--muted)}.i-ink{color:var(--ink)}
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ff5a45"/></marker>
+<marker id="warrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#f2b134"/></marker>
+<marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4cc38a"/></marker>
+<symbol id="g-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5M18.5 18.5l2-2"/></g></symbol>
+<symbol id="g-nokey" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5"/></g><path d="M2.5 21.5L21.5 2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="g-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="g-warn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 22.2 20.6H1.8Z"/><path d="M12 9v5"/></g><circle cx="12" cy="17.4" r="1.25" fill="currentColor"/></symbol>
+<symbol id="g-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="10.5" width="17" height="11" rx="2.5"/><path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5"/></g></symbol>
+<symbol id="g-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.4l3.2 3.2 6-6.4"/></g></symbol>
+<symbol id="g-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="4"/><path d="M3.8 21c0-4.5 3.7-7.2 8.2-7.2S20.2 16.5 20.2 21"/></g></symbol>
+<symbol id="g-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.6V12l4 2.4"/></g></symbol>
+</defs>
+<text x="2" y="24" class="label">READ / PREPARE</text>
+<text x="704" y="24" class="glabel">PERMITTED WRITES</text>
+<path d="M686 34 V274" class="boundary"/>
+<rect x="2" y="44" width="198" height="202" rx="12" class="box"/>
+<use href="#g-nokey" x="18" y="56" width="28" height="28" class="i-ink"/>
+<text x="18" y="118" class="heading">Activation</text>
+<text x="18" y="146" class="text">Checks inputs</text>
+<text x="18" y="172" class="text">Runs first</text>
+<rect x="236" y="44" width="198" height="202" rx="12" class="focus"/>
+<use href="#g-nokey" x="252" y="56" width="28" height="28" class="i-ink"/>
+<use href="#g-eye" x="294" y="56" width="28" height="28" class="i-hi"/>
+<text x="252" y="118" class="heading">Agent</text>
+<text x="252" y="146" class="text">Read-only</text>
+<text x="252" y="172" class="text">Sandboxed</text>
+<rect x="470" y="44" width="198" height="202" rx="12" class="warn"/>
+<use href="#g-nokey" x="486" y="56" width="28" height="28" class="i-ink"/>
+<use href="#g-warn" x="528" y="56" width="28" height="28" class="i-warn"/>
+<text x="486" y="118" class="heading">Detection</text>
+<text x="486" y="146" class="text">Scans output</text>
+<text x="486" y="172" class="wtext">Caution by</text>
+<text x="486" y="198" class="wtext">default, not</text>
+<text x="486" y="224" class="wtext">a block</text>
+<rect x="704" y="44" width="198" height="202" rx="12" class="write"/>
+<use href="#g-key" x="720" y="56" width="28" height="28" class="i-good"/>
+<text x="720" y="118" class="heading">Safe outputs</text>
+<text x="720" y="146" class="text">Scoped key</text>
+<text x="720" y="172" class="gtext">Opens draft PR</text>
+<rect x="938" y="44" width="198" height="202" rx="12" class="box"/>
+<use href="#g-person" x="954" y="56" width="28" height="28" class="i-ink"/>
+<use href="#g-check" x="996" y="56" width="28" height="28" class="i-good"/>
+<text x="954" y="118" class="heading">Human</text>
+<text x="954" y="146" class="text">Reviews the</text>
+<text x="954" y="172" class="text">draft PR</text>
+<path d="M201 145 H235" class="line" marker-end="url(#arrow)"/>
+<path d="M435 145 H469" class="line" marker-end="url(#arrow)"/>
+<path d="M669 145 H703" class="line" marker-end="url(#arrow)"/>
+<path d="M903 145 H937" class="line" marker-end="url(#arrow)"/>
+<path d="M2 258 V272 H668 V258" class="line"/>
+<text x="335" y="304" class="cap" text-anchor="middle">No write key in any of these three</text>
+<path d="M704 258 V272 H902 V258" class="gline"/>
+<text x="803" y="304" class="cap" text-anchor="middle">The only key</text>
+</svg>
