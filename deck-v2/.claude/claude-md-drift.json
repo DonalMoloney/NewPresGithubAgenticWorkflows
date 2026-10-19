@@ -109,6 +109,11 @@
       "file": "/private/tmp/claude-501/-Users-donalmoloney-PycharmProjects-NewPresGithubAgenticWorkflows-deck-v2/99003caf-1caa-410c-9a05-718f83f71f5a/scratchpad/final",
       "rule_matched": "new-top-level-dir",
       "ts": "2026-10-18T19:27:17Z"
+    },
+    {
+      "file": "/private/tmp/claude-501/-Users-donalmoloney-PycharmProjects-NewPresGithubAgenticWorkflows-deck-v2/99003caf-1caa-410c-9a05-718f83f71f5a/scratchpad/v",
+      "rule_matched": "new-top-level-dir",
+      "ts": "2026-10-19T15:10:37Z"
     }
   ]
 }

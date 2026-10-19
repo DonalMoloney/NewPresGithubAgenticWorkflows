@@ -44,7 +44,7 @@ A dark stage: near-black canvas, off-white heavy sans type, one hot accent. Big 
 - Use `<style scoped>` for one-slide tweaks; never change the global theme to fix one slide.
 
 ### Layout
-- Headlines 44 px or larger (slides that carry a diagram use 44 to 46 px so the picture fits), body at least 20 px, code at least 18 px. Never shrink essential content to keep a slide count.
+- Bigger and bolder: base headlines are 66 px (statement slides 124 px, big numbers 190 px). Slides with a diagram or a three-line title scope the headline down to 44 to 56 px so everything fits; never below 44 px. Body at least 20 px, code at least 18 px. Never shrink essential content to keep a slide count.
 - Classes: `say` (one huge statement, left-aligned, vertically centred), `num` (centred block for a big number), `.stat` (the number), `.muted` (sources), `.todo` (gap), `.k` (small caps label), `.card`/`.cards` (panels), `.source` (pinned footer line).
 - Slide 1 carries the GitHub mark and wordmark, the deck title large with a short accent rule beneath, and the Octocat inside the six-step loop on the right. Keep "Open PR", never "Deploy".
 - Diagram slides: set `section { padding-top: 80px }`, keep the title to two lines, and size the image with `w:` (1136 fits the full width). Always render and check the bottom edge.

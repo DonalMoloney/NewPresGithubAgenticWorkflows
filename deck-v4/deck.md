@@ -35,9 +35,9 @@ style: |
   section::after { color: var(--muted); font-size: 18px; font-variant-numeric: tabular-nums; opacity: .7; }
   header { color: var(--accent); font-size: 18px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; top: 40px; left: 72px; }
   h1, h2 { color: var(--ink); font-family: var(--sans); font-weight: 800; letter-spacing: -0.03em; }
-  h1 { font-size: 80px; line-height: 1.04; }
-  h2 { font-size: 56px; line-height: 1.1; margin-bottom: 26px; }
-  section.say h2 { font-size: 104px; line-height: 1.02; letter-spacing: -0.04em; margin-bottom: 36px; }
+  h1 { font-size: 92px; line-height: 1.02; }
+  h2 { font-size: 66px; line-height: 1.06; margin-bottom: 28px; }
+  section.say h2 { font-size: 124px; line-height: 1; letter-spacing: -0.04em; margin-bottom: 36px; }
   strong { color: var(--ink); font-weight: 800; }
   li::marker { color: var(--accent); }
   code { background: var(--chip); color: var(--ink); padding: .1em .32em; border-radius: 4px; }
@@ -57,7 +57,7 @@ style: |
   .muted { color: var(--muted); font-size: 20px; line-height: 1.4; }
   .todo { color: var(--muted); font-size: 20px; font-weight: 600; border: 1px dashed var(--line); border-radius: 6px; padding: 2px 10px; display: inline-block; }
   .todo::before { content: "TODO  "; letter-spacing: .12em; font-size: .8em; }
-  .stat { font-size: 150px; font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: -0.05em; }
+  .stat { font-size: 190px; font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: -0.05em; }
   .source { position: absolute; left: 72px; right: 120px; bottom: 24px; margin: 0; color: var(--muted); font-size: 20px; line-height: 1.3; opacity: .85; }
   .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   .card { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 10px; padding: 18px 24px; }
@@ -72,7 +72,7 @@ section {
   padding: 40px 40px 40px 72px;
 }
 .brand p { display: flex; align-items: center; gap: 16px; margin: 0; font-size: 36px; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
-h1 { margin: 56px 0 0; font-size: 74px; line-height: 1.04; letter-spacing: -.04em; font-weight: 800; }
+h1 { margin: 56px 0 0; font-size: 84px; line-height: 1.02; letter-spacing: -.04em; font-weight: 800; }
 .rule { margin-top: 36px; width: 88px; height: 8px; background: var(--accent); }
 .sub { margin: 32px 0 0; font-size: 26px; line-height: 1.35; color: var(--muted); }
 .meta p { margin: 22px 0 0; font-size: 20px; }
@@ -530,9 +530,9 @@ Transition: that's the design. Reading about it is cheap, so here is how far I h
 ## Ninety-eight of these are written and documented, and not one has ever run
 
 <style scoped>
-h2 { margin-bottom: 24px; }
+h2 { margin-bottom: 20px; font-size: 56px; }
 .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; font-size: 26px; line-height: 1.4; }
-.duo .stat { font-size: 150px; margin-bottom: 8px; }
+.duo .stat { font-size: 160px; margin-bottom: 8px; }
 p { margin: 20px 0; }
 </style>
 
@@ -599,7 +599,7 @@ Transition: and here is what the month would look like.
 ## The month: one week of rehearsal, three weeks of drafts someone reviews
 
 <style scoped>
-h2 { margin-bottom: 26px; }
+h2 { margin-bottom: 26px; font-size: 54px; }
 .tl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; position: relative; margin-top: 30px; }
 .tl::before { content: ""; position: absolute; left: 0; right: 0; top: 14px; height: 4px; background: var(--line); }
 .tl > div { position: relative; padding-top: 48px; font-size: 24px; line-height: 1.35; }
@@ -644,7 +644,7 @@ Transition: thank you. The slides after this are reference and stay up for quest
 ## It does three kinds of work, and documentation is the safest corner to start in
 
 <style scoped>
-h2 { margin-bottom: 26px; }
+h2 { margin-bottom: 26px; font-size: 54px; }
 .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
 .card p { margin: 8px 0 0; font-size: 24px; line-height: 1.45; }
 .card .k { display: block; margin-bottom: 4px; }

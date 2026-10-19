@@ -79,7 +79,11 @@ style: |
     max-width: 980px; margin: 0 0 var(--space);
   }
   .muted { color: var(--dim); font-size: 20px; line-height: 1.4; }
-  .todo { color: var(--caution); font-size: 20px; font-weight: 600; background: var(--caution-soft); border: 1.5px dashed var(--caution); border-radius: 8px; padding: 2px 10px; width: fit-content; max-width: 1000px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  /* Outstanding work is neutral, never warm: the dashed chip still finds the
+     eye without colour, but no longer outranks the argument. This keeps
+     --caution for the places GitHub's own docs warn or conflict, which is the
+     only thing it should mean on a slide. */
+  .todo { color: var(--dim); font-size: 20px; font-weight: 600; background: var(--surface); border: 1.5px dashed var(--dim); border-radius: 8px; padding: 2px 10px; width: fit-content; max-width: 1000px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
   .stat {
     font-size: 120px; font-weight: 800; color: var(--accent); line-height: 1;
     letter-spacing: -0.04em;

@@ -39,7 +39,7 @@ style: |
   h1, h2 { color: var(--ink); font-family: var(--serif); font-weight: 700; letter-spacing: -0.02em; }
   h1 { font-size: 68px; line-height: 1.08; }
   h2 { font-size: 44px; line-height: 1.16; margin-bottom: 24px; text-wrap: balance; }
-  strong { color: var(--hi); font-weight: 650; }
+  strong { color: var(--ink); font-weight: 650; }
   li::marker { color: var(--accent); }
   code { background: var(--chip); color: var(--ink); padding: .1em .32em; border-radius: 4px; }
   pre { background: var(--panel); border: 1px solid var(--line-soft); border-left: 6px solid var(--accent); border-radius: 6px; padding: 16px 24px; }
@@ -66,7 +66,11 @@ style: |
   .lead { text-align: center; justify-content: center; }
   section.lead h1, section.lead h2, section.lead p { text-align: center; }
   .muted { color: var(--muted); font-size: 20px; line-height: 1.4; }
-  .todo { color: var(--warn); font-size: 20px; font-weight: 600; }
+  /* Outstanding work is neutral, never warm: a gap the room can still find by
+     its glyph and weight, but one that no longer outranks the argument. This
+     keeps --warn for the places GitHub's own docs warn or conflict, which is
+     the only thing it should ever mean on a slide. */
+  .todo { color: var(--muted); font-size: 20px; font-weight: 600; }
   .todo::before { content: "\25B2"; display: inline-block; margin-right: 8px; font-size: .75em; vertical-align: .08em; }
   .stat { font-family: var(--serif); font-size: 120px; font-weight: 700; color: var(--accent); line-height: 1; letter-spacing: -0.03em; }
   .source { position: absolute; left: 72px; right: 120px; bottom: 24px; margin: 0; color: var(--muted); font-size: 20px; line-height: 1.3; opacity: .85; }
@@ -633,7 +637,7 @@ h2 { margin-bottom: 14px; }
 .stat { font-size: 110px; margin: 0; }
 .cards .card p { font-size: 24px; }
 .muted { font-size: 20px; } .todo { font-size: 20px; }
-.slot { margin: 14px 0 0; border: 2px dashed var(--warn); border-radius: 10px; padding: 10px 16px; }
+.slot { margin: 14px 0 0; border: 2px dashed var(--line); border-radius: 10px; padding: 10px 16px; }
 </style>
 
 <div class="row">
@@ -731,7 +735,7 @@ h2 { margin-bottom: 12px; color: var(--ink); }
 p { font-size: 24px; margin: 10px 0; }
 code { background: var(--bg); }
 .need { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 10px 0; }
-.need div { background: var(--bg); border: 2px dashed var(--warn); border-radius: 8px; padding: 6px 10px; font-size: 20px; line-height: 1.3; color: var(--warn); font-weight: 600; }
+.need div { background: var(--bg); border: 2px dashed var(--line); border-radius: 8px; padding: 6px 10px; font-size: 20px; line-height: 1.3; color: var(--muted); font-weight: 600; }
 .muted { font-size: 20px; }
 .todo { font-size: 20px; }
 </style>
