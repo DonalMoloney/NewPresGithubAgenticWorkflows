@@ -79,3 +79,12 @@ Status key: **verified** = source says it today · **changed** = source now says
 | 13 | "Start with low-risk outputs…" (GitHub Blog) | https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/ | 2026-10-17 | verified | |
 | 14 | `github.github.com/gh-aw`, `/gallery`, `github.com/githubnext/agentics` | URLs as listed | 2026-10-17 | verified | All resolve. |
 | 15 | gh-aw docs site still links a technical-preview deck | https://github.github.com/gh-aw/ | 2026-10-17 | verified | "The technical preview deck: concepts, security model and examples" (PDF). |
+
+## Re-check 18 Oct 2026 (gh-aw docs, changelog, blog)
+
+Re-verified against the live pages: public preview since 11 Jun 2026; `continue-on-error` default `true`; `draft` is "a policy, not a default"; read-only agent job with writes deferred; "leaked by design" and MCP gateway "not a strong security boundary" wording; `network: defaults`; engines (Copilot default, `gemini` deprecated for `agy`); 1000 AI Credits per run; staged mode "not a sandbox"; 57/59, 88/103, 10/10; update-docs.md excerpt; May Walter quote; "never merged automatically", "Treat the workflow Markdown as code", "Start with low-risk outputs"; TrialOps experimental, default `gh-aw-trial`.
+
+- **Changed, slide 8:** the triggers page says "Workflows with unsafe triggers (`push`, `issues`, `pull_request`) automatically enforce permission checks" (default roles `[admin, maintainer, write]`), and `pull_request` blocks forks by default. `repository_dispatch` senders are role-checked too. The trigger-routes diagram shows repository events with "no role check"; it needs redrawing (not done).
+- **Could not verify:** Chris Aniszczyk (CNCF) quote, not on the cited 13 Feb 2026 blog page as fetched.
+- **Still conflicting:** daily AI Credit cap (cost-management 5000/workflow/day vs frontmatter disabled by default). Kept off the slides.
+- **Not re-checked:** Stack Overflow, Octoverse, Feng et al., the home-page/gallery grouping.

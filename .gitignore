@@ -11,3 +11,6 @@ trials/
 # Editor and OS
 .idea/
 .DS_Store
+
+# Superpowers brainstorming session files
+.superpowers/

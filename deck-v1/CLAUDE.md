@@ -26,16 +26,16 @@ Run from the project root. `<scratchpad>` is the session scratchpad directory.
 - Show `staged: true` on the staged-mode slide and the pilot slide only.
 
 ## Visual language
-- Bookend theme (deliberate, user-chosen 17 Oct 2026): the title slide and the decision slide are deep cinematic black (`#050507`, dark vignette) with purple accents (`#a98bf0` / `#d3c4fb`), set in each slide's `<style scoped>`. Every other slide is white. Thin borders, generous space, no red theme.
+- Bookend theme (deliberate, user-chosen 17 Oct 2026): the title slide and the decision slide share one dark surface and one accent, set in each slide's `<style scoped>`; every other slide is white. Thin borders, generous space.
 - Glow and neon only on the title slide's central Octocat. No glow on rules, bars, boxes or wires.
 - Make slide 1 follow the layout of `../slide-styling/title-slide.html`: GitHub mark and wordmark, then the deck's title as a large heading with a short rule beneath it on the left; the Octocat inside the six-step loop (Plan, Code, Test, Review, Open PR, Monitor) on the right. Reuse its SVG rather than redesigning. Keep "Open PR", never "Deploy": gh-aw does not deploy.
-- Keep all theme CSS in the front-matter `style:` block (inner slides use GitHub's Primer light palette: canvas `#ffffff`, panel `#f6f8fa`, border `#6e7781`, text `#1f2328`, muted `#59636e`, accent `#0969da` / `#0550ae`, caution `#bc4c00`, success `#1a7f37`; tinted fills accent `#ddf4ff`, caution `#fff1e5`, success `#dafbe1`). Code blocks are light (`var(--panel)` `#f6f8fa`, text `var(--ink)` `#1f2328`, 1px `var(--line)` border), matching how GitHub's own docs set code — user-chosen 17 Oct 2026, replacing the earlier dark `#080808` panels, which read as a leftover once the slides went white. Use `<style scoped>` for one-slide tweaks; never change the global theme to fix one slide.
-- `img/*.svg` hardcode the same light palette in their own `:root`; change them together with the front matter.
-- The border token deliberately departs from Primer. Primer's own `borderColor-default` `#d0d7de` is 1.45:1 on white, far below WCAG's 3:1 for non-text, and a projector is dimmer than a monitor, so box strokes and card borders dissolve. `#6e7781` is still a Primer grey and measures 4.55:1 on white, 4.27:1 on panel and 4.00–4.11:1 on the tinted fills. The bookend slides use `#6b6280` (3.57:1 on `#050507`) for the same reason. Do not "correct" either back to the Primer web value. Checked 17 Oct 2026.
-- Use one grid, title position, footer, spacing scale and page numbering. Orange is for unresolved details or cautions; green sparingly for permitted outcomes.
+- Keep all theme CSS in the front-matter `style:` block. **The palette is defined there and only there** — read the `section` token block for the current values rather than restating them in this file. Code blocks follow the light panel tokens, matching how GitHub's own docs set code (user-chosen 17 Oct 2026, replacing earlier dark panels, which read as a leftover once the slides went white). Use `<style scoped>` for one-slide tweaks; never change the global theme to fix one slide.
+- `img/*.svg` restate the same tokens in their own `:root`, so the diagrams and the front matter must be changed together.
+- Contrast is the constraint, not a particular swatch. Every foreground token clears 4.5:1 on every surface it sits on and borders clear 3:1, because a projector is dimmer than a monitor and hairline borders dissolve on one. Re-measure before changing any token; do not swap in a web-default border grey, which is typically far below 3:1 on white. Checked 18 Oct 2026.
+- Use one grid, title position, footer, spacing scale and page numbering. Colour carries meaning, not decoration: the accent marks the one idea of a slide, neutral carries all structure, and the reserved caution token appears at most once on a slide and only where GitHub's own docs warn or conflict — never on housekeeping.
 - At 1280 × 720: 44–54 px headlines, 26–32 px body, at least 20 px code. Compact citations may be smaller. Never shrink essential content to keep a slide count.
 - Process diagram for sequence, paired panels for comparison, code card with adjacent annotations for a file, chart for measured outcomes. Tables only when rows and columns help comparison.
-- Use `.muted` for sources, `.todo` for gaps, `.stat` for one big hook number.
+- Use `.muted` for sources, `.todo` for a line of outstanding work, `.gap` for an inline gap marker in a table or field, `.stat` for one big hook number.
 - Remove decorative quotes, audience labels and repeated prose. Every visual must explain something.
 - Label conceptual diagrams as illustrative. Show denominators and source dates for statistics. No invented screenshots, logos or demo outcomes.
 - Give diagrams descriptive SVG labels; do not convey meaning by colour alone.
@@ -47,6 +47,13 @@ Run from the project root. `<scratchpad>` is the session scratchpad directory.
 - Keep `speaker-notes.md` in sync as the rehearsal copy.
 
 ## Verification
-- After any edit, render and look at every changed slide. Nothing may run off the bottom edge or overlap; table and code text must be readable. Check dense code and data slides at full size and at phone width. Compiling is not a visual check.
+- After any edit, render and look at every changed slide. Nothing may run off the bottom edge or overlap; table and code text must be readable. Check dense code and data slides at full size. Compiling is not a visual check.
 - Confirm every slide has a note.
 - `deck.html` is generated from `deck.md`: never edit it directly. Re-render it, and update `deck.pdf`, after `deck.md` changes.
+
+## Pending work
+- `todo.md` in this folder is the consolidated list of patches and proposed slides not yet applied. Check it before starting any editing session.
+- `RESOURCES.md` is the research companion to `todo.md`: where `todo.md` records **what is wrong**, `RESOURCES.md` records **what better material exists to put there**, every item with a primary source and a check date. Read it before editing the cost slide, the evidence slide, or any slide carrying a `TODO` number.
+- It is scoped to **this deck's business case** — money, risk, baseline, decision. `../deck-v2/RESOURCES.md` (audience and survey evidence) and `../deck-v3/RESOURCES.md` (mechanism and frontmatter detail) hold deliberately different material, and each deck uses a different real pull request as its example so no two decks show the same screenshot. Do not copy between them; if a fact is needed in two decks, cite the source, not the other file.
+- Its §9 "Do not use" list exists to stop retired claims coming back: notably "~$10 per run" (omits detection's separate 400 AIC budget, so the real ceiling is ~$14) and the daily-AI-credit-cap "conflict", which the docs resolved on 18 Oct 2026.
+- `todo.md` §7 is the index of which `RESOURCES.md` findings beat which existing item. Start there rather than re-reading both files.

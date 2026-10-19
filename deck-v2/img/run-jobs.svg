@@ -1,38 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 262" role="img" aria-labelledby="title desc"><title id="title">Only the last job holds a write token</title><desc id="desc">Simplified run: activation, agent, detection and safe outputs. A write-token row under the jobs shows the agent job has none, the detection job has none, and only the separate safe outputs job has a scoped write token. Only the proposed output is handed from job to job.</desc><style>
-:root{--panel:#f6f8fa;--line:#d0d7de;--ink:#1f2328;--muted:#59636e;--blue:#0969da;--hi:#0550ae;--warn:#9a6700;--green:#1a7f37}
-.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#ddf4ff;stroke:var(--blue);stroke-width:2}.write{fill:#dafbe1;stroke:var(--green);stroke-width:2}.warn{fill:#fff8c5;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
-.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
-.line{fill:none;stroke:var(--blue);stroke-width:2}.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}.rule{fill:none;stroke:var(--line);stroke-width:1.5}.boundary{fill:none;stroke:var(--green);stroke-width:1.5;stroke-dasharray:5 6}.zone{fill:none;stroke:var(--blue);stroke-width:1.5;stroke-dasharray:5 6}
-.chip{fill:#ffffff;stroke:var(--line);stroke-width:1.5}.none{fill:var(--muted);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.yes{fill:var(--green);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#0969da"/></marker></defs>
-<text x="1" y="24" class="label">READ / PREPARE</text>
-<text x="883" y="24" class="label">PERMITTED WRITES</text>
-<path d="M862 36 V232" class="boundary"/>
-<rect x="1" y="48" width="252" height="108" rx="12" class="box"/>
-<text x="21" y="82" class="heading">Activation</text>
-<text x="21" y="112" class="text">Context checks</text>
-<text x="21" y="140" class="text">Validate lock file</text>
-<rect x="295" y="48" width="252" height="108" rx="12" class="focus"/>
-<text x="315" y="82" class="heading">Agent</text>
-<text x="315" y="112" class="text">Sandbox + firewall</text>
-<text x="315" y="140" class="text">Drafts proposals</text>
-<rect x="589" y="48" width="252" height="108" rx="12" class="box"/>
-<text x="609" y="82" class="heading">Detection</text>
-<text x="609" y="112" class="text">Scans proposals for</text>
-<text x="609" y="140" class="text">injection and leaks</text>
-<rect x="883" y="48" width="252" height="108" rx="12" class="write"/>
-<text x="903" y="82" class="heading">Safe outputs</text>
-<text x="903" y="112" class="text">Applies only the</text>
-<text x="903" y="140" class="text">declared outputs</text>
-<path d="M259 102 H294" class="line" marker-end="url(#arrow)"/>
-<path d="M553 102 H588" class="line" marker-end="url(#arrow)"/>
-<path d="M847 102 H882" class="line" marker-end="url(#arrow)"/>
-<text x="21" y="203" class="label">WRITE TOKEN →</text>
-<rect x="295" y="172" width="252" height="48" rx="24" class="chip"/>
-<text x="421" y="203" class="none" text-anchor="middle">✗ none</text>
-<rect x="589" y="172" width="252" height="48" rx="24" class="chip"/>
-<text x="715" y="203" class="none" text-anchor="middle">✗ none</text>
-<rect x="883" y="172" width="252" height="48" rx="24" class="write"/>
-<text x="1009" y="203" class="yes" text-anchor="middle">✓ scoped, write</text>
-<text x="568" y="256" class="cap" text-anchor="middle">Only the proposed output is handed on from job to job</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290" role="img" aria-labelledby="title desc"><title id="title">Only the last job holds a write token</title><desc id="desc">Simplified run shown as four stacked jobs: get ready (activation), draft (agent), check (detection) and write (safe outputs). A padlock beside each shows the agent job and the detection job have no write token; only the separate safe outputs job has a scoped write token. Only the proposed output is handed from job to job. Detection is caution by default, not a block.</desc><style>
+:root{--panel:#f6f8fa;--line:#d0d7de;--ink:#1f2328;--muted:#59636e;--blue:#0969da;--hi:#0550ae;--warn:#9a6700;--green:#1a7f37;--blue-soft:#ddf4ff;--green-soft:#dafbe1;--warn-soft:#fff8c5;--white:#ffffff}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:2}.focus{fill:var(--blue-soft);stroke:var(--blue);stroke-width:2}.write{fill:var(--green-soft);stroke:var(--green);stroke-width:2}.warn{fill:var(--warn-soft);stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}.card{fill:var(--white);stroke:var(--line);stroke-width:2}
+.h{fill:var(--ink);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.t{fill:var(--muted);font:18px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.m{fill:var(--hi);font:600 20px ui-monospace,SFMono-Regular,Consolas,monospace}.mt{fill:var(--hi);font:18px ui-monospace,SFMono-Regular,Consolas,monospace}.w{fill:var(--warn);font:600 18px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.g{fill:var(--green);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.lab{fill:var(--hi);font:600 18px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--blue);stroke-width:2}.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}.zone{fill:none;stroke:var(--blue);stroke-width:2;stroke-dasharray:6 6}.ring{fill:var(--white);stroke:var(--line);stroke-width:2}
+.n{fill:var(--blue)}.nw{fill:var(--warn)}.ng{fill:var(--green)}.nt{fill:var(--white);font:700 16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;text-anchor:middle}
+</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#0969da"/></marker><marker id="warrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#9a6700"/></marker></defs>
+<text x="2" y="16" class="lab">JOB</text><text x="388" y="16" class="lab">WRITE TOKEN</text>
+<rect x="2" y="24" width="636" height="56" rx="12" class="box"/><text x="18" y="49" class="h">Get ready</text><text x="18" y="70" class="t">Activation</text>
+<rect x="2" y="92" width="636" height="56" rx="12" class="focus"/><text x="18" y="117" class="h">Draft</text><text x="18" y="138" class="t">Agent: sandbox + firewall</text>
+<rect x="388" y="98" width="236" height="44" rx="22" class="card"/><g transform="translate(414,112)" fill="none" stroke="#59636e" stroke-width="2.5" stroke-linecap="round"><path d="M-7 0 V-7 a7 7 0 0 1 14 0 V0" transform=""/><rect x="-11" y="0" width="22" height="16" rx="3" fill="#59636e"/></g><text x="438" y="126" class="t" style="font-weight:600">no write token</text>
+<rect x="2" y="160" width="636" height="56" rx="12" class="warn"/><text x="18" y="185" class="h">Check</text><text x="18" y="206" class="t">Detection: caution, not a block</text>
+<rect x="388" y="166" width="236" height="44" rx="22" class="card"/><g transform="translate(414,180)" fill="none" stroke="#59636e" stroke-width="2.5" stroke-linecap="round"><path d="M-7 0 V-7 a7 7 0 0 1 14 0 V0" transform=""/><rect x="-11" y="0" width="22" height="16" rx="3" fill="#59636e"/></g><text x="438" y="194" class="t" style="font-weight:600">no write token</text>
+<rect x="2" y="228" width="636" height="56" rx="12" class="write"/><text x="18" y="253" class="h">Write</text><text x="18" y="274" class="t">Safe outputs: declared outputs only</text>
+<rect x="388" y="234" width="236" height="44" rx="22" class="card" style="stroke:var(--green)"/><g transform="translate(414,248)" fill="none" stroke="#1a7f37" stroke-width="2.5" stroke-linecap="round"><path d="M-7 0 V-7 a7 7 0 0 1 14 0 V-3" transform="translate(0,-3) rotate(-18 -7 0)"/><rect x="-11" y="0" width="22" height="16" rx="3" fill="#1a7f37"/></g><text x="438" y="262" class="g" style="font-size:18px">scoped write token</text>
+<path d="M200 80 V92" class="line" marker-end="url(#arrow)"/><path d="M200 148 V160" class="line" marker-end="url(#arrow)"/><path d="M200 216 V228" class="line" marker-end="url(#arrow)"/><circle cx="366" cy="120" r="13" class="n"/><text x="366" y="126" class="nt">1</text><circle cx="366" cy="256" r="13" class="ng"/><text x="366" y="262" class="nt">2</text>
 </svg>

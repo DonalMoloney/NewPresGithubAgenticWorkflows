@@ -19,6 +19,7 @@
 - **Title:** GitHub Agentic Workflows
 - **Subtitle:** From AI that suggests to AI that does
 - **Shows:** dark `#0d1117` background, title in `#e6edf3`, subtitle in `#7d8590`, a thin blue-to-purple (`#2f81f7` → `#a371f7`) accent line, a small terminal-style snippet in monospace, e.g. `gh aw run update-docs`
+- **Hook (visible on slide):** "When did a page of documentation last mislead you?"
 - **Footer:** my name · date
 
 ## Audience
@@ -26,10 +27,13 @@ Mixed: technical and non-technical. Titles and pictures are plain language for e
 
 ## Presentation sequence
 
-Main talk: title plus 16 slides. Eight appendix slides hold technical depth and supporting evidence.
+Main talk: title plus 15 slides. Ten appendix slides hold technical depth and supporting evidence.
 
 ### Slide 1 — Outdated documentation already costs developers time
-- **Shows:** 56.5% of 12,374 developers name outdated information as a context blocker (Stack Overflow 2026), plus the earlier attempt; tool and gap TODO.
+- **Shows:** 56.5% of 12,374 developers name outdated information as a context blocker (Stack Overflow 2026), with the caveat that it is a multi-select survey about context in general, not our repositories.
+
+### Slide 1b — My earlier attempt solved part of the problem, and left a gap
+- **Shows:** the presenter's own earlier tool and the gap it left. Tool, what it solved and the remaining gap are TODO placeholders until supplied.
 
 ### Slide 2 — Documentation debt accrues between doc passes
 - **Shows:** illustrative chart (no data): code steps up with each change; each doc pass closes only part of the gap. Cites Cunningham (1992) for the debt metaphor.
@@ -38,66 +42,69 @@ Main talk: title plus 16 slides. Eight appendix slides hold technical depth and 
 - **Shows:** the ask stated up front so the audience can weigh the evidence against it: four weeks, one repository, docs only, every change a draft pull request a person decides on. Repository, owner, budget and week-four thresholds TODO.
 
 ### Slide 4 — Agents shift the human role from execution to review
-- **Shows:** two-row diagram: assistance (person carries the change by hand) versus workflow (agent proposes a draft PR, person reviews; review highlighted).
+- **Shows:** two-row diagram: assistance (person carries the change by hand) versus workflow (agent proposes a draft PR, person reviews; review highlighted). Also carries who does what: the agent drafts, a person decides what merges; this moves work from writing to judging rather than removing it; reviewer minutes TODO. The full who-does-what diagram is Appendix 8.
 
-### Slide 5 — The agent drafts; a person decides what merges
-- **Shows:** who does what - the agent reads, drafts and opens a draft PR; a person owns the workflow file, reviews and decides what merges, and can switch it off. Two outcomes, merge or close, both correct. States plainly that this moves work from writing to judging rather than removing it; reviewer minutes TODO.
+### Slide 5 — Scripts check fixed rules; an agent is for the part that needs reading
+- **Shows:** a fixed rule (broken links, missing API entries, formatting, doctests, API diffs) belongs in a deterministic tool; deciding whether prose still describes the code is judgement-heavy and only partly checkable. TODO: whether CI runs on agent-opened PRs is unverified.
 
-### Slide 6 — Only judgement can tell whether the words still match the code
-- **Shows:** why an agent rather than a script - a fixed rule (broken links, missing API entries, formatting) belongs in a deterministic tool; deciding whether prose still describes the code needs reading both sides. States that this does not replace build, test or release.
+### Slide 6 — The unit of review is one small diff
+- **Shows:** real public PR github/gh-aw#68654 ([docs] Update glossary - daily scan, +8/-0 in 1 file, merged 14 Oct 2026): a documentation agent's output at its real size. GitHub's repository, not our pilot.
 
-### Slide 7 — The unit of review is one small diff
-- **Shows:** real public PR #8716, labelled "different workflow, shows output size only".
+### Slide 7 — In three of GitHub's documentation workflows, most pull requests were merged, but not all
+- **Shows:** reported merge counts (57/59, 88/103, 10/10) with denominators, labelled selected samples from other repositories, not a forecast.
 
-### Slide 8 — GitHub reports 57 of 59 documentation pull requests merged
-- **Shows:** reported documentation merge counts, with sample caveats.
-
-### Slide 9 — It will be wrong sometimes, and that has to be survivable
+### Slide 8 — It will be wrong sometimes, and that has to be survivable
 - **Shows:** the four ways this fails — wrong prose, an over-wide diff, poisoned input, spend with nothing merged — and that each is bounded by a limit we set rather than by trusting the model. Our own error rate is unmeasured; week one's staged preview is the first measurement.
 
-### Slide 10 — The limits live in a file you can read, not in the model
-- **Shows:** the verified public Update Docs file, trimmed, with the teammate model.
+### Slide 9 — The limits live in a file you can read, not in the model
+- **Shows:** the real Update Docs frontmatter, trimmed, including bash, web-fetch, network defaults and protected-files (semantics unconfirmed, TODO), with the teammate model.
 
-### Slide 11 — Only a separate job can write; the agent cannot
-- **Shows:** prepare → agent → detection → safe-output pipeline with the write boundary; cites least privilege and separation of privilege (Saltzer & Schroeder, 1975).
+### Slide 10 — The agent job has no write access; writes happen in a separate job
+- **Shows:** prepare → agent → detection → safe-output pipeline with the write boundary; cites least privilege (Saltzer & Schroeder, 1975). Detection is a layer, not a guarantee.
 
-### Slide 12 — A cheap run nobody merges is still expensive
-- **Shows:** equation: (AI credits + Actions minutes + reviewer minutes) ÷ accepted changes = cost per useful change; pilot limits TODO.
+### Slide 11 — A cheap run nobody merges is still expensive
+- **Shows:** plain visual: (AI credits + compute + reviewer time) ÷ changes accepted, each term marked NOT MEASURED; pilot limits TODO. Plain sentence first (cost per accepted change); the equation and 7-row symbol table are Appendix 9.
 
-### Slide 13 — Four weeks turns opinion into evidence
+### Slide 12 — Each week of the pilot has one job
 - **Shows:** four-week timeline; week 1 previews outputs with `staged: true`; proposed measurements.
 
-### Slide 14 — Week four ends in a decision we agreed in advance
-- **Shows:** the three proposed success criteria - useful fixes a reviewer agreed were real, less total effort than the agreed manual baseline, spend within the caps - agreed before week one so the result can say stop. Thresholds and baseline TODO.
+### Slide 13 — Week four ends in a decision we agreed in advance
+- **Shows:** three gates in a row - useful fixes a reviewer agreed were real, less total effort than the agreed manual baseline, spend within the caps - all must pass; agreed before week one so the result can say stop. Thresholds and baseline TODO.
 
-### Slide 15 — The downside is capped before anything runs
-- **Shows:** nested bounds: four weeks, capped spend (TODO), one repo and owner (TODO), docs only, draft PRs only; a person decides what merges.
+### Slide 14 — The downside is bounded by five proposed limits
+- **Shows:** nested proposed bounds: four weeks, spend limit (TODO), one repo and owner (TODO), docs only by instruction and reviewed in the diff, draft PRs only; a person decides what merges. Proposals, not enforced yet.
 
-### Slide 16 — Approve a four-week, docs-only pilot
-- **Shows:** candidate workflow, "switch off at any time"; repo, owner, budget and thresholds TODO.
+### Slide 15 — Approve a four-week, docs-only pilot
+- **Shows:** hero ask; public preview since 11 Jun 2026; candidate workflow, "switch off at any time"; checklist "to decide before week one": repo + owner, budget, thresholds + baseline (all TODO).
 
-### Appendix 17 — Compilation turns that file into an Actions workflow
+### Appendix 16 — Compilation turns that file into an Actions workflow
 - **Shows:** compile-and-publish details for technical questions.
 
-### Appendix 18 — Agents add a third lane beside CI and CD
+### Appendix 17 — Agents add a third lane beside CI and CD
 - **Shows:** CI "Builds it", CD "Ships it", Continuous AI "Improving your repo, around the clock" (gh-aw docs).
 
-### Appendix 19 — Detection adds a review gate, not a safety guarantee
+### Appendix 18 — Detection adds a review gate, not a safety guarantee
 - **Shows:** threat, warning and permitted-output branches; failure behaviour qualified.
 
-### Appendix 20 — Use agents where interpretation adds value
+### Appendix 19 — Use agents where interpretation adds value
 - **Shows:** task-fit guidance and autonomy TODO.
 
-### Appendix 21 — Start with one workflow from the example collection
+### Appendix 20 — Start with one workflow from the example collection
 - **Shows:** the user’s example collection (repo/file TODO) and installation.
 
-### Appendix 22 — A trial can run in a temporary private repository
+### Appendix 21 — A trial can run in a temporary private repository
 - **Shows:** experimental trial in a temporary private repository.
 
-### Appendix 23 — Staged mode previews safe outputs before they are applied
+### Appendix 22 — Staged mode previews safe outputs before they are applied
 - **Shows:** staged-mode configuration and steps for technical questions.
 
-### Appendix 24 — The technical claims are grounded in GitHub’s documentation
+### Appendix 8 — The agent drafts; a person decides what merges
+- **Shows:** full who-does-what diagram: the agent reads, drafts and opens a draft PR; a person owns the workflow file, reviews, decides, and merge or close are both correct.
+
+### Appendix 9 — Cost per accepted change is a formula the pilot fills in, not a number we have
+- **Shows:** the equation and a 7-row symbol table (A, p_a, M, p_m, R, w, N_acc); every value TODO or not measured except the estimated 0.01 per AI credit.
+
+### Appendix 25 — The technical claims are grounded in GitHub’s documentation
 - **Shows:** official status, sources and unresolved documentation conflicts.
 
 ## Deck v2 spine (`deck-v2/deck.md`, 17 Oct 2026)

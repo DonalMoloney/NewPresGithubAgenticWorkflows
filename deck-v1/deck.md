@@ -7,73 +7,74 @@ title: GitHub Agentic Workflows
 description: A controlled documentation pilot
 math: katex
 style: |
+  /* One neutral ramp, one accent, one reserved caution. Accent marks the single
+     idea of a slide; neutral carries all structure; caution appears at most once
+     on a slide and never on housekeeping. Measured on white: ink 17.8:1,
+     muted 6.0:1, accent 6.0:1, caution 6.7:1, borders 4.7:1. */
   section {
-    --bg: #ffffff; --panel: #f6f8fa; --line: #6e7781; --ink: #1f2328;
-    --muted: #59636e; --accent: #0969da; --hi: #0550ae; --warn: #bc4c00; --good: #1a7f37;
+    --bg: #ffffff; --panel: #f5f7f9; --chip: #eceff3; --hairline: #d9dee4;
+    --line: #6b7580; --ink: #14181d; --muted: #5a6470;
+    --accent: #0b5cd4; --accent-ink: #0a3f8f; --accent-tint: #e7f0fd;
+    --caution: #8f4a0f; --caution-tint: #fbf0e6;
     background: var(--bg);
     color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 28px; line-height: 1.35; padding: 58px 68px 80px; align-content: start;
   }
   section::before { content: ""; position: absolute; left: 68px; top: 0; width: 84px; height: 4px; background: var(--accent); }
-  section::after { color: var(--muted); font-size: 16px; right: 36px; bottom: 20px; }
-  h1, h2 { color: var(--ink); letter-spacing: -.035em; line-height: 1.12; margin: 14px 0 34px; }
+  section::after { content: "GitHub Agentic Workflows  ·  " attr(data-marpit-pagination); color: var(--muted); font-size: 16px; letter-spacing: .04em; right: 36px; bottom: 20px; font-variant-numeric: tabular-nums; opacity: .85; }
+  h1, h2 { color: var(--ink); letter-spacing: -.035em; line-height: 1.12; margin: 14px 0 32px; font-weight: 750; }
   h1 { font-size: 76px; max-width: 900px; }
   h2 { font-size: 48px; max-width: 1100px; min-height: 108px; }
   h1, h2 { text-wrap: balance; }
-  h3 { font-size: 28px; line-height: 1.2; color: var(--hi); margin: 0 0 20px; }
+  h3 { font-size: 28px; line-height: 1.2; color: var(--ink); margin: 0 0 20px; }
   p { margin: 0 0 20px; }
-  strong, b { color: var(--hi); }
+  strong, b { color: var(--ink); font-weight: 650; }
   a { color: var(--accent); }
-  .kicker { font-size: 17px; letter-spacing: .12em; color: var(--accent); margin: 0; font-weight: 650; }
+  .kicker { display: flex; align-items: center; gap: 12px; font-size: 18px; letter-spacing: .14em; color: var(--accent-ink); margin: 0; font-weight: 700; text-transform: uppercase; }
+  .kicker::before { content: ""; width: 24px; height: 3px; border-radius: 2px; background: var(--accent); flex: none; }
   .cards, .split { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
   .cards.three { grid-template-columns: repeat(3,minmax(0,1fr)); }
   .cards.four { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 12px; padding: 28px; }
+  .card { background: linear-gradient(180deg, var(--accent-tint) 0, var(--panel) 56px); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 14px; padding: 28px; }
   .card p { margin: 0; font-size: 27px; }
   .four .card { padding: 24px 20px; }
   .four .card p { font-size: 25px; }
-  .takeaway { margin: 30px 0 0; padding-left: 20px; border-left: 3px solid var(--accent); font-size: 30px; }
+  .takeaway { margin: 30px 0 0; padding: 14px 20px; border-left: 4px solid var(--accent); background: linear-gradient(90deg, var(--accent-tint), var(--bg)); border-radius: 0 14px 14px 0; font-size: 30px; }
   .caption { color: var(--muted); font-size: 20px; margin: 24px 0 0; }
   .caption .fig { color: var(--ink); font-weight: 650; }
-  .todo { color: var(--warn); font-size: 21px; margin: 22px 0 0; }
-  .card .todo { font-size: 25px; }
-  code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--hi); background: transparent; font-size: .86em; }
+  /* Outstanding work is neutral, never warm: a gap the room can still see, but
+     one that no longer outranks the argument. .todo is a line of owed work;
+     .gap is an inline marker inside a table or a field. --caution is spent only
+     where GitHub's own docs conflict or warn, at most once on a slide. */
+  .todo { color: var(--muted); font-size: 21px; margin: 22px 0 0; border-left: 2px solid var(--line); padding-left: 14px; }
+  .card .todo { font-size: 25px; margin: 0; }
+  .gap { display: inline-block; color: var(--muted); background: var(--chip); border: 1px solid var(--line);
+         border-radius: 6px; border-style: dashed; padding: 2px 10px; font-size: .84em; font-weight: 650; letter-spacing: .02em; }
+  .todo.caution, .caution { color: var(--caution); }
+  .todo.caution { border-left-color: var(--caution); }
+  code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--accent-ink); background: transparent; font-size: .86em; }
   :not(pre) > code { padding: 0; border-radius: 0; white-space: nowrap; }
-  pre { padding: 24px 28px; margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+  pre { padding: 24px 28px; margin: 0; background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 14px; }
   pre code { font-size: 22px; line-height: 1.4; color: var(--ink); }
   .code-layout { grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
   .annotations p { font-size: 26px; margin: 0 0 24px; }
   .annotations p:last-child { margin-bottom: 0; }
   .sources { position: absolute; bottom: 24px; left: 68px; right: 100px; font-size: 15px; color: var(--muted); margin: 0; }
-  .sources a { text-decoration: none; }
+  .sources a { text-decoration: none; color: var(--muted); }
   .bars { display: grid; gap: 28px; }
-  .bars div { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 12px; padding-bottom: 24px; }
-  .bars div::after { content: ""; height: 10px; background: var(--line); position: absolute; bottom: 0; width: 100%; border-radius: 8px; }
-  .bars i { position: absolute; z-index: 1; bottom: 0; height: 10px; width: var(--value); background: var(--accent); border-radius: 8px; }
+  .bars div { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 12px; padding-bottom: 38px; }
+  .bars div::after { content: ""; height: 24px; background: var(--hairline); position: absolute; bottom: 0; width: 100%; border-radius: 8px; }
+  .bars i { position: absolute; z-index: 1; bottom: 0; height: 24px; width: var(--value); background: var(--accent); border-radius: 8px; }
   .bars b, .bars span { font-size: 27px; }
   .bars u { text-decoration: none; color: var(--muted); font-size: 22px; }
   .scale { display: flex; justify-content: space-between; font-size: 17px; color: var(--muted); margin: 10px 0 0; }
   .status { font-size: 36px; margin: 0 0 28px; }
   section.title { align-content: center; }
   section.title h1 { margin-bottom: 34px; }
-  section.title .card { background: #141414aa; }
   .diagram { width: 100%; height: auto; display: block; margin: 12px 0; }
-  .diagram-box { fill: var(--panel); stroke: var(--accent); stroke-width: 1.5; }
-  .diagram-box-agent { fill: #ddf4ff; stroke: var(--accent); stroke-width: 2; }
-  .diagram-box-warn { fill: #fff1e5; stroke: var(--warn); stroke-width: 2; }
-  .diagram-box-good { fill: #dafbe1; stroke: var(--good); stroke-width: 2; }
-  .diagram-line { fill: none; stroke: var(--accent); stroke-width: 2; }
-  .diagram-line-warn { fill: none; stroke: var(--warn); stroke-width: 2; }
-  .diagram-line-good { fill: none; stroke: var(--good); stroke-width: 2; }
-  .diagram-text { fill: var(--ink); font: 24px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-  .diagram-heading { fill: var(--hi); font: 600 29px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-  .diagram-label { fill: var(--muted); font: 600 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .08em; }
-  .diagram-note { fill: var(--accent); font: 600 19px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-  .diagram-note-warn { fill: var(--warn); font: 600 19px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-  .diagram-note-good { fill: var(--good); font: 600 19px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-  .eyebrow, .artifact-label { color: var(--accent); font-size: 18px; letter-spacing: .05em; }
+  .eyebrow, .artifact-label { color: var(--muted); font-size: 18px; letter-spacing: .05em; }
   .large-copy { font-size: 42px; line-height: 1.25; }
-  .stat { font-size: 120px; font-weight: 700; color: var(--hi); line-height: 1; letter-spacing: -.04em; margin: 8px 0 18px; }
+  .stat { font-size: 120px; font-weight: 700; color: var(--accent-ink); line-height: 1; letter-spacing: -.04em; margin: 8px 0 18px; }
   .diff { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .diff pre { padding: 24px; }
   .diff pre code { font-size: 22px; }
@@ -81,13 +82,13 @@ style: |
   .decision > div + div { border-left: 1px solid var(--line); padding-left: 38px; }
   .decision p { font-size: 25px; }
   .decision dl { margin: 0; }
-  .decision dt { font-size: 23px; color: var(--hi); font-style: normal; }
+  .decision dt { font-size: 23px; color: var(--ink); font-weight: 650; font-style: normal; }
   .decision dd { margin: 6px 0 20px; font-size: 23px; }
-  table { border-collapse: collapse; font-size: 19px; margin: 0; }
+  table { border-collapse: collapse; font-size: 20px; margin: 0; }
   table tr, table tr:nth-child(2n) { background: transparent; border: 0; }
-  table th { text-align: left; color: var(--hi); font-size: 16px; letter-spacing: .06em; border: 0; border-bottom: 1px solid var(--line); padding: 0 16px 6px 0; }
-  table td { border: 0; border-bottom: 1px solid var(--line); padding: 6px 16px 6px 0; vertical-align: baseline; }
-  table .todo { font-size: inherit; margin: 0; }
+  table th { text-align: left; color: var(--muted); font-size: 16px; letter-spacing: .06em; border: 0; border-bottom: 1px solid var(--line); padding: 0 16px 6px 0; }
+  table td { border: 0; border-bottom: 1px solid var(--hairline); padding: 6px 16px 6px 0; vertical-align: baseline; }
+  table .gap { font-size: 15px; padding: 1px 8px; }
   .eqrow { display: grid; grid-template-columns: 1.02fr 1fr; gap: 46px; align-items: center; }
   .eqrow .katex-display { margin: 0 0 18px; }
   .eqrow .katex { font-size: 1.1em; }
@@ -98,27 +99,26 @@ style: |
 
 <style scoped>
   section {
-    --neon-soft: #2a1b45; --panel: #0e0e12; --accent: #a98bf0; --hi: #d3c4fb;
+    --neon-soft: #2a1b45; --panel: #0e0e12; --accent: #a98bf0; --accent-ink: #d3c4fb;
     --bg: #050507; --line: #6b6280; --ink: #ececec; --muted: #a3a3a3; color: var(--ink);
     display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; column-gap: 0;
     padding: 0 38px 0 64px;
-    background:
-      radial-gradient(45% 60% at 68% 50%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 70%),
-      radial-gradient(30% 40% at 100% 100%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%),
-      radial-gradient(120% 90% at 50% 50%, transparent 55%, #000 100%),
-      var(--bg);
+    /* A flat graphite-to-black wash. The purple radial blooms that used to sit
+       behind the diagram muddied the whole right half on a projector; the accent
+       now appears only on the rule, the wires and the centre. */
+    background: linear-gradient(155deg, #15151b 0%, #08080b 55%, var(--bg) 100%);
   }
   section::before { display: none; }
   .brand { display: flex; align-items: center; gap: 18px; font-size: 46px; font-weight: 700; letter-spacing: -.01em; }
   .brand svg { width: 64px; height: 64px; fill: var(--ink); }
   h1 { margin: 64px 0 0; font-size: 69px; line-height: 1.12; letter-spacing: -.025em; font-weight: 800; }
   .rule { margin-top: 51px; width: 51px; height: 6px; border-radius: 13px; background: var(--accent); }
-  .kicker { margin-top: 30px; }
+  .kicker { margin-top: 30px; color: var(--accent); }
   .loop { width: 100%; height: auto; display: block; }
-  .loop .step  { fill: var(--panel); stroke: var(--accent); stroke-width: 2; }
-  .loop .ic    { fill: none; stroke: var(--hi); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .loop .step  { fill: var(--panel); stroke: var(--line); stroke-width: 2; }
+  .loop .ic    { fill: none; stroke: var(--accent-ink); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
   .loop .tt    { fill: var(--ink); font: 700 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .06em; text-anchor: middle; }
-  .loop .td    { fill: var(--muted); font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-anchor: middle; }
+  .loop .td    { display: none; fill: var(--muted); font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-anchor: middle; }
   .loop .wire  { fill: none; stroke: var(--accent); stroke-width: 2.5; }
   .loop .ring  { fill: none; stroke: var(--accent); }
   .loop .plate { fill: var(--neon-soft); stroke: var(--accent); stroke-width: 2; }
@@ -134,6 +134,7 @@ style: |
   <h1>GitHub Agentic Workflows</h1>
   <div class="rule"></div>
   <p class="kicker">FROM AI THAT SUGGESTS TO AI THAT DOES</p>
+  <p style="margin-top:22px;font-size:26px;color:var(--ink)">When did a page of documentation last mislead you?</p>
 </div>
 
 <svg class="loop" viewBox="0 0 640 520" role="img" aria-label="Illustrative cycle diagram: the GitHub Octocat mark at the centre of a loop of six steps, Plan, Code, Test, Review, Open PR and Monitor, connected by glowing arrows">
@@ -200,7 +201,7 @@ style: |
 </svg>
 
 <!--
-Say: [hook, no statistic] "When did a page of documentation last mislead you? [pause] You followed the steps. They were wrong. The code had moved on. Was that just you? Today's question is whether an AI agent can fix that, and on what terms we could trust it to." Roadmap: "I will define the problem, show one real change and one real workflow file, explain the controls and the cost, and end with a small proposal."
+Say: [hook, no statistic; it is also on the slide, so pause two seconds before speaking] "When did a page of documentation last mislead you? [pause] You followed the steps. They were wrong. The code had moved on. Was that just you? Today's question is whether an AI agent can fix that, and on what terms we could trust it to." Roadmap: "I will define the problem, show one real change and one real workflow file, explain the controls and the cost, and end with a small proposal."
 
 Detail: the idea in one line. We describe the task, keep documentation aligned with code, and we review the result. The agent proposes; a person decides what merges. A controlled path from stale docs to a reviewed pull request.
 
@@ -217,11 +218,19 @@ Transition: "Stack Overflow's 2026 survey asked developers what makes context ha
 
 ---
 
+<style scoped>
+  .prop h3 { margin-bottom: 18px; }
+  .sq { width: 100%; height: auto; display: block; }
+  .plab { display: flex; justify-content: space-between; font-size: 22px; color: var(--muted); margin: 0 0 18px; }
+  .plab b { color: var(--ink); }
+  .prop p { font-size: 25px; }
+</style>
+
 <p class="kicker">01 / THE PROBLEM</p>
 
 ## Outdated documentation already costs developers time
 
-<div class="split"><div><p class="stat">56.5%</p><p>of 12,374 developers say <b>outdated information</b> makes it hard to get the context they need.</p></div><div class="card"><h3>My earlier attempt</h3><p>It tackled part of the problem.</p><p class="todo">TODO: the tool, what it solved, and the gap it left.</p></div></div><p class="caption">Industry survey, not our repositories · our own drift is not yet measured.</p>
+<div class="split"><div><p class="stat">56.5%</p><p>of 12,374 developers say <b>outdated information</b> makes it hard to get the context they need.</p></div><div class="card prop"><h3>In plain words: more than half</h3><img class="sq" src="img/survey-squares.svg" alt="100 squares, each about 1 percent of 12,374 respondents: 56 filled and one half filled for the 6,989 who named outdated information; 5,385 did not"></div></div><p class="caption">Industry survey (multi-select, about context in general), not our repositories · our own drift is not yet measured.</p>
 
 <p class="sources"><a href="https://survey.stackoverflow.co/2026/knowledge/data#context-challenges">Stack Overflow Developer Survey 2026 · context challenges</a></p>
 
@@ -230,17 +239,43 @@ Say: "In that survey, 56.5 percent of developers named outdated information as a
 
 Analogy: interest on a loan nobody is tracking. Each release adds a little; no one sees the balance until a reader trips over it.
 
-Detail: tell the earlier-project story here in one sentence, using a real limitation. TODO: supply the tool, what it solved and the remaining gap. Do not claim manual copying, manual triggering or any other behaviour unless confirmed. The two opening slides are combined so the audience reaches the example quickly.
+Detail: the hook question was asked on the title slide and the closing slide echoes it; this slide gives the number behind it. The earlier-attempt story has its own slide next - do not tell it here. The right-hand bar redraws the same figure: 6,989 named outdated information; 5,385 (12,374 minus 6,989, derived) did not. It adds no claim.
 
 Evidence: Stack Overflow Developer Survey 2026, "Which of the following make it difficult to get the context you need for work? Select all that apply." Outdated information: 56.5% (6,989 of 12,374). Checked 17 Oct 2026. The metaphor is Cunningham's technical debt, from his 1992 OOPSLA experience report.
 
 Careful wording: it is a multi-select industry survey about context in general, not a measurement of our documentation or of documentation alone. "Documentation debt" is this deck's framing, by analogy with technical debt; the survey shows the cost (outdated information blocks people), not a rate of drift. Our own drift is not yet measured.
 
 Questions:
-Q: What failed in the earlier approach? A: Answer with the confirmed limitation; until it is supplied, keep the gap marked TODO.
+Q: What failed in the earlier approach? A: That is the next slide.
 Q: Is this our data? A: No. It is an industry survey, not our repositories; our own drift is not yet measured.
 
-Transition: "If that is the cost, the next question is the mechanism: how does the debt build up?"
+Transition: "Numbers like that are easy to nod at. Here is how it showed up for me. [TODO: only if the earlier-attempt story is confirmed; otherwise skip to: if that is the cost, how does the debt build up?]"
+-->
+
+---
+
+<p class="kicker">01b / THE PROBLEM</p>
+
+## My earlier attempt solved part of the problem, and left a gap
+
+<div class="split"><div class="card"><h3>What I built</h3><p><span class="gap">tool name</span> <span class="gap">what it did</span></p></div><div class="card"><h3>What it left undone</h3><p><span class="gap">the remaining gap, one concrete instance</span></p></div></div><p class="todo">Still blank: my own story. Nothing here is a claim until I supply it. Keep it to one tool, one limitation, one moment.</p>
+
+<!--
+Say: "I have tried to fix this before. [TODO: one sentence - the tool, and the part of the problem it solved.] It did not close the gap. [TODO: one concrete moment where a page was still out of date after the tool had run.]"
+
+Analogy: patching one pothole on a road that keeps cracking - the patch holds, the road keeps wearing.
+
+Detail: TODO. Do not describe how the tool worked, who triggered it, or whether it ran manually, unless that is confirmed. The point to land is the limitation. Only link it to the later script-versus-agent slide if that is true of the real tool.
+
+Evidence: none. This is the presenter's own experience; say so aloud.
+
+Careful wording: do not invent the tool, its results or the moment. Say what it left undone, not that it failed unless it did. Keep it under 45 seconds - a story, not a post-mortem.
+
+Questions:
+Q: Why did it stop short? A: TODO - answer with the real limitation only.
+Q: Is this the same thing you are proposing now? A: No. This is the starting point; the ask is on the ask slide.
+
+Transition: "That gap is not unusual. Here is why it keeps opening."
 -->
 
 ---
@@ -249,7 +284,7 @@ Transition: "If that is the cost, the next question is the mechanism: how does t
 
 ## Documentation debt accrues between doc passes
 
-![Illustrative chart: the code line steps up with every shipped change; the docs line catches up only at occasional doc passes; the gap between them is documentation debt w:1120 h:320](img/docs-debt.svg)
+![Illustrative chart: the code line steps up with every shipped change; the docs line catches up only at occasional doc passes; the gap between them is documentation debt w:1120 h:270](img/docs-debt.svg)
 
 <p class="takeaway">Every shipped change adds to it; each doc pass pays only some back.</p><p class="caption"><b class="fig">Fig. 1</b> · Illustrative · no data · extends Cunningham’s (1992) technical-debt metaphor to documentation.</p>
 
@@ -273,24 +308,29 @@ Transition: "So the question is who repays it. Before I answer that, I want you 
 
 ---
 
+<style scoped>
+  .tiles .card b { display: block; font-size: 44px; line-height: 1.1; letter-spacing: -.02em; color: var(--accent-ink); margin-bottom: 12px; }
+  .tiles .card p { font-size: 23px; color: var(--muted); }
+</style>
+
 <p class="kicker">03 / THE ASK</p>
 
 ## The ask is four weeks, one repository, and docs only
 
-<p class="large-copy">Four weeks. One repository. Documentation only. Every change arrives as a draft pull request, and a person decides whether it merges.</p><p class="takeaway">Everything after this slide is evidence for or against that ask.</p><p class="todo">TODO · repository, owner, budget and week-four thresholds are still blank.</p>
+<div class="cards four tiles"><div class="card"><b>4 weeks</b><p>then a stop-or-go decision</p></div><div class="card"><b>1 repository</b><p>not yet chosen</p></div><div class="card"><b>Docs only</b><p>by instruction, reviewed in the diff</p></div><div class="card"><b>Draft PR</b><p>a proposed change, not yet merged; a person decides</p></div></div><p class="takeaway">Everything after this slide is evidence for or against that ask. The cost is unknown; the pilot measures it.</p><p class="todo">Still blank: <span class="gap">repository</span> <span class="gap">owner</span> <span class="gap">budget</span> <span class="gap">week-four thresholds</span></p>
 
-<p class="caption">This deck's proposal · the blanks are what I need from you · the bounds are on the decision slide.</p>
+<p class="caption">This deck's proposal · public preview since 11 Jun 2026 · bounds: slide 14.</p>
 
 <!--
 Say: "Before I show you anything, here is what I am going to ask for at the end, so you can weigh every slide against it. Four weeks. One repository. Documentation only. Every change arrives as a draft pull request, and a person decides whether it merges."
 
 Analogy: telling the room the price before the demonstration. If the ask is small, saying it early costs nothing and buys attention; if you hide it, people spend the talk guessing.
 
-Detail: this slide exists because the ask used to arrive only on the last slide, which left the audience with no yardstick for the evidence. Do not go through the bounds here - that is the decision slide. State the shape, say the numbers are still blank, and move on. Thirty seconds at most. If someone asks for the budget now, say it is the last open question and you will come back to it.
+Detail: this slide exists because the ask used to arrive only on the last slide, which left the audience with no yardstick for the evidence. Do not go through the bounds here - that is the bounds slide. State the shape, say the numbers are still blank, and move on. Thirty seconds at most. If someone asks for the budget now, say it is the last open question and you will come back to it.
 
-Evidence: none required. The shape of the ask - four weeks, one repository, docs only, draft pull requests, human merge - is this deck's proposal, stated on the decision slide. No external claim is made here.
+Evidence: none required. The shape of the ask - four weeks, one repository, docs only, draft pull requests, human merge - is this deck's proposal, stated on the bounds slide. No external claim is made here.
 
-Careful wording: do not present this as agreed or approved. Do not give a budget figure, a repository name or an owner: those are genuinely undecided and the orange line says so. Do not say "small" or "cheap" - cost is the one thing we have not measured.
+Careful wording: do not present this as agreed or approved. Do not give a budget figure, a repository name or an owner: those are genuinely undecided and the gap line at the foot of the slide says so. Do not say "small" or "cheap" - cost is the one thing we have not measured.
 
 Questions:
 Q: What will it cost? A: That is the honest gap, and the cost slide is coming. We set explicit caps before anything runs.
@@ -301,30 +341,43 @@ Transition: "That is the ask. Everything from here is the evidence for and again
 
 ---
 
+<style scoped>
+  h2 { min-height: 0; margin-bottom: 8px; }
+  .takeaway { margin-top: 12px; font-size: 28px; }
+  .caption { margin-top: 14px; }
+</style>
+
 <p class="kicker">04 / THE SOLUTION</p>
 
 ## Agents shift the human role from execution to review
 
 ![AI assistance: you ask, AI suggests, you carry it into the repo by hand. Agentic workflow: task file, agent works in GitHub Actions, draft PR, you review w:1120 h:312](img/suggest-vs-do.svg)
 
-<p class="caption"><b class="fig">Fig. 2</b> · From author to editor · illustrative comparison, this deck's framing.</p>
+<p class="takeaway">The agent drafts, a person decides what merges: the work moves from writing to judging.</p><p class="caption"><b class="fig">Fig. 2</b> · Illustrative, this deck's framing · <code>draft: true</code> is enforced PR policy · reviewer minutes not yet measured · Actions is GitHub's built-in automation.</p>
+
+<p class="sources"><a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy (draft: true)</a> · <a href="https://github.github.com/gh-aw/introduction/architecture/">Architecture</a></p>
 
 <!--
 Say: "The change is one of role, not headcount. Today a person carries each change into the repository by hand; with an agentic workflow, the person reviews a change that has already been prepared."
 
 Analogy: from author to editor. A journal editor does not write the paper; they decide whether it is fit to publish. The agent drafts; you edit and decide.
 
-Detail: the workflow gives the agent a task and controlled access to repository context. The agent can inspect information, use tools, and propose an output through the configured mechanism. The output can be a pull request, issue or comment; for this talk, keep the example on a documentation draft pull request. Point at the dashed orange box: that manual step is the one the workflow removes. The blue box is where the person now sits: reviewing.
+Detail: the workflow gives the agent a task and controlled access to repository context. The agent can inspect information, use tools, and propose an output through the configured mechanism. The output can be a pull request, issue or comment; for this talk, keep the example on a documentation draft pull request. Point at the dashed box: that manual step is the one the workflow removes. The blue box is where the person now sits: reviewing.
 
 Evidence: illustrative comparison, this deck's framing. Copilot is the default engine.
 
-Careful wording: this is not a claim that every chat tool or agent behaves identically. The workflow still needs good instructions, appropriate permissions and a reviewer. Avoid listing alternative engines; the supported set is not the point of this slide. Do not imply fewer people; the person still decides what merges.
+Who does what (the full diagram is in the appendix): the agent reads the repository, drafts a change and opens a draft pull request. A person owns the workflow file, reviews the diff, decides what merges, and can switch it off. Merge and close are both the system working. If volume rises, review time rises with it, which is why reviewer minutes are measured in the pilot, not assumed.
+
+Careful wording: this is not a claim that every chat tool or agent behaves identically. The workflow still needs good instructions, appropriate permissions and a reviewer. Avoid listing alternative engines; the supported set is not the point of this slide. Do not imply fewer people or promise headcount is unaffected; the person still decides what merges. Human merge is our proposed pilot policy, not a product guarantee; gh-aw does not universally prohibit automatic merging. draft: true is enforced PR-creation policy (PR policy reference, checked 17 Oct 2026); the rest is this deck's framing. Reviewer minutes are not measured yet.
 
 Questions:
 Q: How is this different from asking Copilot Chat? A: Chat gives you a suggestion to carry into the repo yourself. The workflow runs in GitHub Actions and hands back a PR, issue or comment through the outputs it is allowed.
 Q: Which model runs it? A: Copilot is the default engine. Others can be configured, but that is not the point of this talk.
+Q: Does this replace writers or reviewers? A: No. It changes what the work is: less drafting, more judging. Whether that is a net saving is what the pilot measures.
+Q: Won't people just approve whatever it writes? A: That is the real risk, and it is why the pilot is one repository with a named owner and a small number of changes. If we cannot review them properly, that is a result worth having.
+Q: Who is accountable for a bad merge? A: The person who approved it, exactly as today.
 
-Transition: "Shifting the role only helps if the split is unambiguous. So here is exactly who does what."
+Transition: "That raises a fair objection, and I want to meet it head on: why hand this to an agent at all, when we already automate things with scripts?"
 
 Sources (checked 17 Oct 2026):
 Architecture: https://github.github.com/gh-aw/introduction/architecture/
@@ -332,41 +385,19 @@ Architecture: https://github.github.com/gh-aw/introduction/architecture/
 
 ---
 
-<p class="kicker">05 / WHO DOES WHAT</p>
+<style scoped>
+  h2 { min-height: 0; margin-bottom: 14px; }
+  .card p { font-size: 24px; }
+  .takeaway { margin: 8px 0 4px; }
+  .large-copy { font-size: 30px; margin: 0 0 14px; color: var(--muted); }
+  .why { display: block; margin-top: 14px; color: var(--muted); font-size: 22px; }
+</style>
 
-## The agent drafts; a person decides what merges
+<p class="kicker">05 / WHY AN AGENT</p>
 
-![The agent reads the repository, drafts the change and opens a draft pull request; a person owns the workflow file, reviews the diff and decides what merges, with two outcomes, merges it or closes it w:1120 h:245](img/who-does-what.svg)
+## Scripts check fixed rules; an agent is for the part that needs reading
 
-<p class="takeaway">This moves the work from writing to judging; it does not remove it.</p><p class="caption"><b class="fig">Fig. 3</b> · This deck's framing · <code>draft: true</code> is enforced pull-request creation policy · reviewer minutes are not yet measured.</p>
-
-<p class="sources"><a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy (draft: true)</a></p>
-
-<!--
-Say: "There are two unspoken questions in this room right now. Does this replace people, and does it turn review into rubber-stamping? So let me be exact about who does what."
-
-Analogy: a draughtsman and the engineer who signs the drawing. The draughtsman prepares the work; the signature, and the responsibility that comes with it, stays with the engineer.
-
-Detail: read the left column, then the right. The agent reads the repository, drafts a change and opens a draft pull request. A person owns the workflow file, reviews the diff, decides what merges, and can switch the whole thing off. Then say the honest sentence on the slide: this moves work from writing to judging - it does not remove it. If volume rises, review time rises with it, and that is exactly why reviewer minutes are a measured quantity in the pilot rather than an assumption.
-
-Evidence: draft: true is enforced pull-request creation policy (PR policy reference, checked 17 Oct 2026). Everything else here is an argument, labelled on the slide as this deck's framing. Reviewer minutes are not measured yet.
-
-Careful wording: do not promise that nobody's job changes, and do not promise headcount is unaffected - neither is ours to promise, and the deck's own notes say not to imply fewer people. Say only what the pilot does. Human merge is our proposed pilot policy, not a product guarantee; gh-aw does not universally prohibit automatic merging. Do not claim review gets easier.
-
-Questions:
-Q: Does this replace writers or reviewers? A: No. It changes what the work is: less drafting, more judging. Whether that is a net saving is what the pilot measures.
-Q: Won't people just approve whatever it writes? A: That is the real risk, and it is why the pilot is one repository with a named owner and a small number of changes. If we cannot review them properly, that is a result worth having.
-Q: Who is accountable for a bad merge? A: The person who approved it, exactly as today.
-
-Transition: "That is the division of labour. But it raises a fair objection, and I want to meet it head on: why hand this to an agent at all, when we already automate things with scripts?"
--->
-
----
-<p class="kicker">06 / WHY AN AGENT</p>
-
-## Only judgement can tell whether the words still match the code
-
-<div class="split"><div class="card"><h3>A script, when the rule is fixed</h3><p>Broken links. Missing API entries. Formatting.<br><br>Cheaper, faster, and it cannot surprise you.</p></div><div class="card"><h3>An agent, when it needs reading</h3><p>Does this paragraph still describe what the function does?<br><br>No rule expresses that.</p></div></div><p class="takeaway">This does not replace the build, test and release pipeline.</p><p class="caption">This deck's framing · task-fit detail is in the appendix · use the deterministic tool whenever one solves the task.</p>
+<p class="large-copy">First ask: can a fixed rule decide this?</p><div class="split"><div class="card"><h3>Yes: use a script</h3><p>Broken links · missing API entries · formatting<br><span class="why">Cheaper, faster, predictable.</span></p></div><div class="card"><h3>No, it needs reading: use an agent</h3><p>“Does this paragraph still describe what the function does?”<br><span class="why">Few fixed rules express that.</span></p></div></div><p class="takeaway">Use the deterministic tool wherever one solves the task.</p><p class="todo">TODO · unverified: whether CI runs on the agent's own pull requests (the default GITHUB_TOKEN usually does not trigger workflows). Check the gh-aw docs first. Framing is this deck's, not GitHub's.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/">gh-aw docs: a third pillar beside CI and CD</a></p>
 
@@ -375,7 +406,7 @@ Say: "There is a fair objection here, and I want to meet it head on. We already 
 
 Analogy: a spellchecker versus an editor. A spellchecker applies a fixed rule and is better than a person at it. Deciding whether a paragraph still tells the truth is not a rule, and no spellchecker has ever done it.
 
-Detail: read the left card first and concede it properly - if a deterministic tool solves the task, the tool wins every time. It is cheaper, it is faster, and its failures are predictable. Then the right card: the documentation question is "does this explanation still describe what this code now does", which requires reading the code and the prose and forming a view. There is no rule that expresses it, which is why it has stayed a manual job. Finish on the takeaway: this sits beside CI, it does not replace it. Build, test and release still gate everything the agent proposes.
+Detail: doctests and API diffs catch some drift too, so say so aloud (it is off the slide to keep one idea). Read the left card first and concede it properly - if a deterministic tool solves the task, the tool wins every time. It is cheaper, it is faster, and its failures are predictable. Then the right card: the documentation question is "does this explanation still describe what this code now does", which requires reading the code and the prose and forming a view. Few fixed rules express it, which is why it has stayed a manual job. Finish on the takeaway: this sits beside CI, it does not replace it. Whether CI also runs on the agent's own pull requests is unverified (PRs made with GITHUB_TOKEN do not normally trigger workflows) - check before claiming it.
 
 Evidence: the gh-aw docs position Continuous AI as a third pillar beside CI and CD (docs home, checked 17 Oct 2026). The split between mechanical and judgement work is this deck's framing, labelled as such on the slide, not GitHub's wording.
 
@@ -386,7 +417,7 @@ Q: Couldn't a linter catch this? A: For anything with a fixed rule, yes, and we 
 Q: Why not generate the docs from the code? A: That works where docs are a projection of code, like API reference. It does not work for explanation, which is the part that goes stale and the part readers rely on.
 Q: Isn't an LLM overkill? A: It may be. That is a cost question, and the cost slide is how we answer it with numbers rather than opinion.
 
-Transition: "So the work needs judgement. Here is what that judgement actually produced, in a real repository."
+Transition: "So some of this work needs reading, not rules. Here is what the thing you would review looks like, from a real repository."
 -->
 
 ---
@@ -395,53 +426,66 @@ Transition: "So the work needs judgement. Here is what that judgement actually p
   /* The non-technical half meets raw HTML here; this line says what the
      change was before they look at it. Sits above the diff deliberately.
      The diff is tightened to pay for it - code stays above the 20px floor. */
-  .plain { font-size: 26px; margin: 0 0 12px; }
-  .diff pre { padding: 18px 22px; }
-  .diff pre code { font-size: 21px; line-height: 1.35; }
+  .plain { font-size: 24px; margin: 0 0 8px; }
+  h2 { min-height: 0; margin-bottom: 12px; }
+  .diff { grid-template-columns: 1fr; gap: 8px; }
+  .diff pre { padding: 8px 20px; margin: 0; }
+  .diff pre code { font-size: 20px; line-height: 1.2; }
+  .diff .eyebrow { margin: 0 0 4px; }
+  .takeaway { margin: 22px 0 6px; padding-top: 8px; padding-bottom: 8px; }
+  .diff pre.add { background: var(--accent-tint); border-color: var(--accent); }
+  .diff pre.add code { color: var(--accent-ink); }
 </style>
 
-<p class="kicker">07 / THE REAL EXAMPLE</p>
+<p class="kicker">06 / THE REAL EXAMPLE</p>
 
-## The unit of review is one small diff
+## A documentation agent's real pull request is eight added lines in one file
 
-<p class="artifact-label">PUBLIC EXAMPLE · github/gh-aw #8716 · merged 3 Jan 2026 · different workflow, shows output size only</p><p class="plain">A dialog title was appearing in the page's navigation menu.</p><div class="diff"><div><p class="eyebrow">BEFORE · UNWANTED TOC ENTRY</p><pre><code>&lt;h3 id="error-modal-title"&gt;
-  Error Copying File
-&lt;/h3&gt;</code></pre></div><div><p class="eyebrow">AFTER · ACCESSIBLE MODAL LABEL</p><pre><code>&lt;div role="heading" aria-level="3"
-     class="error-modal-title"&gt;
-  Error Copying File
-&lt;/div&gt;</code></pre></div></div><p class="takeaway">Three lines changed. A reviewer can judge that in seconds.</p><p class="caption">Diff simplified · Copilot follow-up from a docs-testing chain, not our pilot.</p>
+<p class="plain">A workflow named “[docs] Update glossary - daily scan” opened it. It adds two glossary entries.</p><div class="diff"><div><p class="eyebrow">ADDED · docs/…/reference/glossary.md · +8 −0 · TRIMMED</p><pre class="add"><code>+ ### Work Queue (`tools.work-queue`)
++ A native, Git-backed queue for fair scheduling of
++ Work with immutable task dependency graphs. …
++
++ ### Claim (Work Queue)
++ Authorization for one attempt at a Work item in
++ a native work queue … See Work Queues.</code></pre></div></div><p class="takeaway">The unit of review is one small diff: a reviewer can judge it in minutes.</p><p class="caption">Public example · github/gh-aw #68654, merged 14 Oct 2026 · GitHub's own repository, not our pilot · text trimmed with …</p>
 
-<p class="sources"><a href="https://github.com/github/gh-aw/pull/8716">Real PR and diff #8716</a> · <a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/">GitHub documentation report</a></p>
+<p class="sources"><a href="https://github.com/github/gh-aw/pull/68654">Real PR and diff #68654</a> · <a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/">GitHub documentation report</a></p>
 
 <!--
-Say: "The unit of review is the diff. Here is a real one: a modal heading was leaking into the page navigation, and the whole fix can be judged in a few seconds."
+Say: "This is what you would review. Not a rewrite: eight added lines in one file, from a docs agent in GitHub's own repository."
 
 Analogy: a good footnote. Small enough that a reader can check it without having to trust the author.
 
-Detail: open the linked PR and its Files changed tab. The patch replaces an h3 with a styled div, keeping heading semantics through ARIA attributes. The slide condenses the source to emphasise that change; it is not the complete literal patch. Use the actual PR as the demonstration, not a fabricated screenshot. Fallback: keep the real PR open before presenting; the on-slide excerpts remain if the network fails. Do not wait for a live run.
+Detail: open the linked PR and its Files changed tab. The patch adds two glossary entries under docs/src/content/docs/reference/glossary.md and removes nothing. The slide trims the long definition text with "…". Fallback: keep the PR open before presenting; the excerpt remains if the network fails. Do not wait for a live run.
 
-Evidence: github/gh-aw PR #8716, merged 3 Jan 2026. GitHub's 13 Jan Continuous Documentation post links it as an outcome in the Documentation Noob Tester causal chain. It is a Copilot coding-agent follow-up.
+Evidence: github/gh-aw PR #68654 "[docs] Update glossary - daily scan", +8/-0, 1 file, merged 14 Oct 2026 (read with gh, 18 Oct 2026). The PR body says it was generated by the Glossary Maintainer workflow, which is one of the three samples on the evidence slide.
 
-Careful wording: PR #8716 came from a different workflow. It is not evidence that the githubnext/agentics Update Docs file produced this PR. It improves documentation usability; it does not demonstrate code-to-prose drift repair. "Judge at a glance" is a design principle we propose, illustrated by one real PR, not a claim that all agent PRs are small.
+Careful wording: it is GitHub's workflow in GitHub's repository, not the githubnext/agentics Update Docs file and not ours. One PR illustrates size; it is not evidence of quality, and do not say all agent PRs are this small. Say "minutes", not "seconds": the entries are dense prose. Describe only what the diff shows; do not claim it repaired drift.
 
 Questions:
 Q: Is this our run? A: No. It is an explicitly labelled public example.
-Q: Where is the workflow run? A: TODO: supply the user's completed run and PR URLs before replacing this with the intended end-to-end demo. The public PR alone does not verify an end-to-end execution trace for the workflow slide.
+Q: Was it correct? A: It merged. Merge is acceptance, not proof of accuracy.
+Q: Where is your own run? A: TODO: supply the completed run and PR URLs to replace this slide when they exist.
 
 Transition: "That is one pull request, honestly labelled. One is not evidence. Here is what GitHub reports at volume."
 
-Sources (checked 17 Oct 2026):
-https://github.com/github/gh-aw/pull/8716
+Sources (checked 18 Oct 2026):
+https://github.com/github/gh-aw/pull/68654
 https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/
 -->
 
 ---
 
-<p class="kicker">08 / THE EVIDENCE</p>
+<style scoped>
+  .bars { gap: 12px; }
+  h2 { min-height: 0; margin-bottom: 20px; }
+</style>
 
-## GitHub reports 57 of 59 documentation pull requests merged
+<p class="kicker">07 / THE EVIDENCE</p>
 
-<div class="bars"><div><b>Daily Documentation Updater</b><span>57 / 59 merged <u>· 2 not</u></span><i style="--value:96%"></i></div><div><b>Documentation Unbloat</b><span>88 / 103 merged <u>· 15 not</u></span><i style="--value:85%"></i></div><div><b>Glossary Maintainer</b><span>10 / 10 merged <u>· 0 not</u></span><i style="--value:100%"></i></div></div><p class="scale"><span>0</span><span>100% of proposed pull requests</span></p><p class="caption"><b class="fig">Fig. 4</b> · GitHub report · 13 Jan 2026 · selected small samples, not a forecast for our pilot.</p>
+## In three of GitHub's documentation workflows, most pull requests were merged, but not all
+
+![Each square is one pull request proposed by a GitHub documentation workflow: 57 of 59 merged, 88 of 103 merged, 10 of 10 merged. Filled squares merged, hollow not merged w:1120 h:272](img/merge-squares.svg)<p class="takeaway">Selected samples from other people’s repositories, not a forecast for our pilot.</p><p class="caption"><b class="fig">Fig. 4</b> · GitHub report · 13 Jan 2026 · one square per proposed pull request, so strip length is sample size.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/">GitHub: Continuous Documentation</a></p>
 
@@ -450,7 +494,7 @@ Say: "GitHub reports high merge rates for three of its own documentation workflo
 
 Detail: this is the only outcome evidence in the main talk, so handle it carefully. The bars use the reported rates, while the visible denominators keep the scale of the samples clear. We are showing three selected workflows; the same post includes others with lower merge rates. Say the denominators out loud - 59 pull requests is a small sample, and saying so is what makes the number usable rather than salesy.
 
-Evidence: reported by GitHub, 13 Jan 2026 (Continuous Documentation post), not independently reproduced. Daily Documentation Updater 57 of 59 merged (96%); Documentation Unbloat 88 of 103 (85%); Glossary Maintainer 10 of 10 (100%).
+Evidence: reported by GitHub, 13 Jan 2026 (Continuous Documentation post), not independently reproduced. Daily Documentation Updater 57 of 59 merged (96%); Documentation Unbloat 88 of 103 (85%); Glossary Maintainer 10 of 10 (100%). Our own recount with the GitHub search API, 18 Oct 2026: repo:github/gh-aw is:pr author:app/github-actions returned 4,034 PRs, 2,688 of them merged. That filter is every GitHub Actions-authored PR, so say "bot-authored", not "documentation".
 
 Careful wording: these are selected small samples, not a forecast for our pilot. A merged PR is evidence of acceptance, not a direct measurement of accuracy, time saved or return on investment. The post does not explicitly identify the repository for these measurements.
 
@@ -472,13 +516,21 @@ GitHub: Continuous Documentation: https://github.github.com/gh-aw/blog/2026-01-1
      with the source rule. Tightened here only, both still above the 20px floor. */
   .four .card h3 { font-size: 25px; margin-bottom: 14px; }
   .four .card p { font-size: 24px; }
+  h2 { min-height: 0; margin-bottom: 12px; }
+  .lim { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--hairline); color: var(--accent-ink); }
+  .lim b { display: block; font-size: 20px; letter-spacing: .1em; text-transform: uppercase; }
+  .four .card p.lim { font-size: 22px; }
+  .four .card { padding: 16px 18px; }
+  .caption, .todo { margin-top: 6px; }
+  .takeaway { margin: 10px 0 6px; padding-top: 8px; padding-bottom: 8px; }
+  .ico { width: 28px; height: 28px; display: block; margin-bottom: 6px; color: var(--accent-ink); }
 </style>
 
-<p class="kicker">09 / THE RISK</p>
+<p class="kicker">08 / THE RISK</p>
 
 ## It will be wrong sometimes, and that has to be survivable
 
-<div class="cards four"><div class="card"><h3>Confidently wrong</h3><p>It matches a page to code it misread.</p></div><div class="card"><h3>Too wide a diff</h3><p>A one-page fix touches twenty files.</p></div><div class="card"><h3>Poisoned input</h3><p>Instructions hidden in an issue it reads.</p></div><div class="card"><h3>Spend, no merge</h3><p>Credits burn whether or not anything lands.</p></div></div><p class="takeaway">Trusting the model prevents none of these; each needs a limit we set.</p><p class="caption">Failure modes this deck names · prompt injection is documented by GitHub; the rest follow from the task.</p><p class="todo">TODO · our own error rate is unmeasured — week one's staged preview is the first measurement.</p>
+<div class="cards four"><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Question mark: misread code" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><path d="M12 12.5a4 4 0 1 1 5.5 3.7c-1 .5-1.5 1.2-1.5 2.3"/><path d="M16 23h.01"/></svg><h3>Confidently wrong</h3><p>It matches a page to code it misread.</p><p class="lim"><b>Limit</b> A person reads the diff.</p></div><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Arrows pointing outward: scope too wide" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16h24M4 16l5-5M4 16l5 5M28 16l-5-5M28 16l-5 5"/></svg><h3>Too wide a diff</h3><p>A one-page fix touches twenty files.</p><p class="lim"><b>Limit</b> Draft PR, docs only by instruction.</p></div><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Speech bubble: instructions planted in text" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6h22v15H15l-6 5v-5H5z"/></svg><h3>Planted instructions</h3><p>A pasted issue says “ignore your rules”.</p><p class="lim"><b>Limit</b> No write access.</p></div><div class="card"><svg class="ico" viewBox="0 0 32 32" role="img" aria-label="Coin: spend with nothing merged" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><path d="M16 9v14M12 13.5c0-3 8-3 8 0s-8 2-8 5 8 3 8 0"/></svg><h3>Spend, no merge</h3><p>AI usage charges (credits) burn whether or not anything lands.</p><p class="lim"><b>Limit</b> Spend caps: <span class="gap">TODO</span></p></div></div><p class="takeaway">Each has a limit we set, not trust in the model.</p><p class="caption">Failure modes this deck names · prompt injection is documented by GitHub; the rest follow from the task.</p><p class="todo">TODO · our own error rate is unmeasured — week one's staged preview is the first measurement.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/reference/threat-detection/">Threat detection</a> · <a href="https://github.github.com/gh-aw/reference/cost-management/">Cost management</a></p>
 
@@ -487,7 +539,7 @@ Say: "I have shown you a good result. Now the honest part. This will sometimes b
 
 Analogy: hiring a capable new starter. You do not assume their first week is flawless; you scope the work so that a mistake is cheap and visible. Nothing here depends on the agent being right.
 
-Detail: walk the four cards left to right. Confidently wrong is the model misreading code and writing confident prose about it; this is the one a reviewer must catch by reading, and the reason the output is a diff. Too wide a diff is scope creep, which is why the instructions and trigger are narrow. Poisoned input is prompt injection: text planted in an issue or pull request body that the agent reads as instruction. Spend with no merge is the economic failure, and the reason the next slides measure cost per accepted change rather than cost per run. Deliberately do not re-explain the write split or detection here; those are the next two slides and this slide only names what they answer.
+Detail: walk the four cards left to right. Confidently wrong is the model misreading code and writing confident prose about it; this is the one a reviewer must catch by reading, and the reason the output is a diff. Too wide a diff is scope creep, which is why the instructions and trigger are narrow. Planted instructions are prompt injection: text planted in an issue or pull request body that the agent reads as instruction. Spend with no merge is the economic failure, and the reason the next slides measure cost per accepted change rather than cost per run. Each card now carries a one-line limit that the later slides prove: a person reads the diff; draft PR with docs-only by instruction (not enforced until protected-files is confirmed); the agent job has no write access (slide 13); spend caps are a TODO. Deliberately do not re-explain the write split or detection here; those are the next two slides and this slide only names what they answer.
 
 Evidence: prompt injection is named in GitHub's own threat-detection reference, which documents the detection job looking for "prompt injection attempts, secret leaks, and malicious code patches" (checked 17 Oct 2026). AI-credit caps are in the cost-management reference. The other three failure modes follow from the nature of the task and are labelled on the slide as this deck's framing, not GitHub's.
 
@@ -511,61 +563,110 @@ Cost management: https://github.github.com/gh-aw/reference/cost-management/
   /* The 12-line frontmatter is the tallest block in the deck; at the global
      22px it runs under the source line once the headline band is reserved. */
   pre code { font-size: 20px; line-height: 1.35; }
-  pre { padding: 20px 24px; }
+  pre { padding: 16px 24px; }
+  h2 { min-height: 0; margin-bottom: 12px; }
+  .plain { font-size: 24px; margin: 0 0 12px; color: var(--muted); }
+  .annotations p { font-size: 24px; margin: 0 0 16px; }
+  .ln { display: block; white-space: pre; position: relative; min-height: 1.35em; }
+  .ln:has(.n) { background: var(--accent-tint); margin: 0 -24px; padding: 0 24px; }
+  .n { display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: var(--accent-ink); color: #fff; font: 700 17px/24px -apple-system, sans-serif; }
+  .ln .n { position: absolute; right: 12px; top: 0; }
+  .annotations .n { margin-right: 12px; }
 </style>
 
-<p class="kicker">10 / THE WORKFLOW</p>
+<p class="kicker">09 / THE WORKFLOW</p>
 
 ## The limits live in a file you can read, not in the model
 
-<div class="split code-layout"><pre><code>---
-on:
-  push:
-    branches: [main]
-permissions: read-all
-safe-outputs:
-  create-pull-request:
-    draft: true
----
-# Update Docs
-Ensure every code-level change is
-mirrored by clear, accurate, and
-stylistically consistent documentation.</code></pre><div class="annotations"><p><b>Shift</b> · <code>on:</code><br>Every push to main</p><p><b>Access badge</b> · <code>permissions</code><br>Read-only</p><p><b>Outbox</b> · <code>safe-outputs</code><br>Draft pull requests only</p><p><b>Job description</b> · Markdown body<br>Plain-English instructions</p></div></div>
+<p class="plain">Think of it as a new colleague's onboarding sheet: when they work, what they can touch, what they can hand in. The block on top of the file is its settings (&ldquo;frontmatter&rdquo;); the text below is the job description.</p>
 
-<p class="sources">Real file, trimmed · <a href="https://github.com/githubnext/agentics/blob/main/workflows/update-docs.md">githubnext/agentics workflows/update-docs.md</a> · <a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy</a></p>
+<div class="split code-layout"><pre><code><span class="ln">---</span><span class="ln">on:<b class="n">1</b></span><span class="ln">  push:</span><span class="ln">    branches: [main]</span><span class="ln">permissions: read-all<b class="n">2</b></span><span class="ln">safe-outputs:<b class="n">3</b></span><span class="ln">  create-pull-request:</span><span class="ln">    draft: true</span><span class="ln">---</span><span class="ln">&num; Update Docs<b class="n">4</b></span><span class="ln">Ensure every code-level change is</span><span class="ln">mirrored by clear, accurate, and</span><span class="ln">stylistically consistent documentation.</span></code></pre><div class="annotations"><p><b class="n">1</b><b>Shift</b> <code>on:</code><br>Every push to main</p><p><b class="n">2</b><b>Access badge</b> <code>permissions</code><br>Reads the repository</p><p><b class="n">3</b><b>Outbox</b> <code>safe-outputs</code><br>Draft pull requests</p><p><b class="n">4</b><b>Job description</b> Markdown body<br>Plain-English instructions</p></div></div>
+
+<p class="sources">Real file, trimmed (description, labels, tools, network, comments cut; see next slide) · <a href="https://github.com/githubnext/agentics/blob/main/workflows/update-docs.md">githubnext/agentics update-docs.md</a> · <a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy</a></p>
 
 <!--
 Say: "The design choice that matters is where the limits live. They live in a short file we review like code, not in the model's judgement. Read it as a new teammate's onboarding sheet."
 
 Analogy: the onboarding sheet for a new teammate (shift, access badge, outbox, job description), written by the employer, not by the new hire.
 
-Detail: walk down the file rather than reading it aloud. The shift (on:) says when they work, the access badge (permissions) says what they can touch, the outbox (safe-outputs) says what they may hand in, and the job description (the Markdown body) says what the work is. The full file also declares workflow_dispatch for manual runs, network: defaults, the github, web-fetch and bash tools, PR labels, protected-files: fallback-to-issue and a 15-minute timeout; the body continues with voice, style and step-by-step instructions. There is no budget in this example file; we would add a per-run AI-credit limit for the pilot, as on the cost slide. Compilation details are in the appendix.
+Detail: walk down the file rather than reading it aloud. The shift (on:) says when they work, the access badge (permissions) says what they can touch, the outbox (safe-outputs) says what they may hand in, and the job description (the Markdown body) says what the work is. The tools, network and protected-files settings are cut here and shown on the next slide. read-all is read access to the repository, not zero capability; bash is "all bash commands within the confine of Github Actions VM" per the file's own comment; network: defaults is an allowlist, not no network. Writes leave only through safe-outputs. protected-files: fallback-to-issue is a guard whose exact semantics are unconfirmed (TODO). The body continues with voice, style and step-by-step instructions. There is no budget in this example file; we would add a per-run AI-credit limit for the pilot, as on the cost slide. Compilation details are in the appendix.
 
 Evidence: the real Update Docs workflow from githubnext/agentics, trimmed for the slide. The mission sentence shown is quoted verbatim. draft: true is enforced PR-creation policy (PR policy reference).
 
-Careful wording: draft is not a suggestion the agent can override, but it is not a universal promise that all gh-aw workflows require human merging. Read-all permissions describe the agent job's repository token; writes happen only through the safe-output jobs. The limits (trigger, permissions, allowed outputs) are compiled settings, so they hold regardless of what the model decides. The quality of the work still depends on the model and the instructions.
+Careful wording: "docs only" is by instruction and diff review, not a path mechanism, until protected-files is verified. Draft is not a suggestion the agent can override, but it is not a universal promise that all gh-aw workflows require human merging. Read-all permissions describe the agent job's repository token; writes happen only through the safe-output jobs. The limits (trigger, permissions, allowed outputs) are compiled settings, so they hold regardless of what the model decides. The quality of the work still depends on the model and the instructions.
 
 Questions:
 Q: Is this our file? A: No. It is a public example we would start from and adapt; our repository and file are still to be confirmed.
 Q: Can the agent change its own permissions or turn off draft? A: Not at runtime. The frontmatter is compiled into the workflow, and changing it means editing, recompiling and reviewing the file.
 Q: Will it open a PR on every push? A: It runs on every push to main; whether it proposes a change depends on what it finds. For the pilot we can narrow the trigger, and week one's staged preview shows the volume before any PR is written.
 
-Transition: "Configuration sets the limits. The next slide shows how the run itself is divided, so that the agent never holds write access."
+Transition: "That is the tidy version. Here is the rest of the same file, including the parts that give the agent more room."
 
 Sources (checked 17 Oct 2026):
 update-docs.md: https://github.com/githubnext/agentics/blob/main/workflows/update-docs.md
 PR policy: https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/
 -->
+---
+
+<style scoped>
+  /* The 12-line frontmatter is the tallest block in the deck; at the global
+     22px it runs under the source line once the headline band is reserved. */
+  pre code { font-size: 18px; line-height: 1.3; }
+  pre { padding: 14px 20px; }
+  h2 { min-height: 0; margin-bottom: 12px; }
+  .plain { font-size: 22px; margin: 0 0 10px; color: var(--muted); }
+  .annotations p { font-size: 20px; margin: 0 0 10px; }
+</style>
+
+<p class="kicker">09b / THE WORKFLOW</p>
+
+## The same file also grants bash, web fetch and a network allowlist, so the other limits matter
+
+<div class="split code-layout"><pre><code>network: defaults         # 1
+tools:                    # 2
+  github: {toolsets: [all]}
+  web-fetch:
+  bash: true
+safe-outputs:
+  create-pull-request:
+    draft: true
+    protected-files: fallback-to-issue   # 3
+timeout-minutes: 15       # 4</code></pre><div class="annotations"><p>1 · <code>network: defaults</code><br>An allowlist of default hosts, not “no network”</p><p>2 · <code>tools</code><br>Bash inside the Actions VM, web fetch, all GitHub toolsets</p><p>3 · <code>protected-files</code><br>A guard on sensitive files; what it enforces is unconfirmed</p><p>4 · <code>timeout-minutes</code><br>Stops a run after 15 minutes</p></div></div>
+
+<p class="todo">TODO · confirm what <code>protected-files</code> enforces before calling “docs only” mechanical; pilot tool list is not chosen.</p>
+
+<p class="sources">Real file, trimmed · <a href="https://github.com/githubnext/agentics/blob/main/workflows/update-docs.md">githubnext/agentics workflows/update-docs.md</a></p>
+
+<!--
+Say: "Read all of the file, including the parts that give the agent more room. It can run shell commands and fetch web pages, inside the Actions VM and a network allowlist. What it cannot do is write to the repository; that is the next slide."
+
+Detail: bash: true carries the file's own comment, "all bash commands within the confine of Github Actions VM". network: defaults is an allowlist of default hosts. toolsets: [all] gives the agent every GitHub read toolset. protected-files: fallback-to-issue is a guard whose exact semantics are unconfirmed (TODO), so do not claim "docs only" is mechanical. The slide compresses the two-line github toolsets YAML to one line.
+
+Evidence: real update-docs.md, githubnext/agentics, fetched with gh on 18 Oct 2026. timeout-minutes: 15. No budget appears in the file.
+
+Careful wording: "docs only" is by instruction and diff review. Do not say the agent cannot do anything beyond what the file shows. Not our file.
+
+Questions:
+Q: What can bash do? A: Anything in the VM within the network allowlist; that is why the agent job has no write token and why detection exists. TODO: confirm.
+Q: Is this our file? A: No. A public example we would adapt and narrow.
+
+Transition: "Configuration sets the limits. The next slide shows how the run itself is divided, so that the agent never holds write access."
+-->
+
 
 ---
 
-<p class="kicker">11 / THE RUN</p>
+<style scoped>
+  h2 { min-height: 0; margin-bottom: 12px; }
+</style>
 
-## Only a separate job can write; the agent cannot
+<p class="kicker">10 / THE RUN</p>
+
+## The agent job has no write access; writes happen in a separate job
 
 ![GitHub Actions workflow run: preparation, read-only agent and detection jobs, then a separate safe-outputs job with scoped write access w:1120 h:280](img/run-pipeline.svg)
 
-<p class="takeaway">Detection runs before the write job, but by default it cautions rather than blocks.</p><p class="caption"><b class="fig">Fig. 5</b> · Default <code>continue-on-error: true</code> · layers of control, not a guarantee · least privilege (Saltzer &amp; Schroeder, 1975).</p>
+<p class="takeaway">A separate step applies outputs; a draft PR and human merge are the backstop.</p><p class="caption"><b class="fig">Fig. 5</b> · Detection defaults to a caution, not a block · layers, not a guarantee · least privilege (Saltzer &amp; Schroeder, 1975).</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/introduction/architecture/">Architecture</a> · <a href="https://github.github.com/gh-aw/reference/threat-detection/">Threat detection</a></p>
 
@@ -574,7 +675,7 @@ Say: "The part that reasons is not the part that writes. The reasoning part runs
 
 Analogy: the four-eyes principle in banking. The clerk who prepares a payment is not the one who releases it. Here the agent prepares; a separate job releases.
 
-Detail: the diagram groups five stages into three readable phases. Pre-activation handles role and skip checks. Activation sanitises event text and validates the lock file. The agent then works in its isolated runtime with read-only repository access and a network allowlist; the API proxy isolates authentication tokens, so the agent does not see them. The agent can edit its local workspace to prepare a patch; read-only describes repository and API permissions, not an inability to draft file changes. Detection inspects the output and patch before the configured safe-output jobs act with the permissions they need. The docs describe blocking when a threat is detected, and permitting a warning with a human review requirement before merge. The outcome diagram is in the appendix.
+Detail: the diagram groups five stages into three readable phases. Pre-activation handles role and skip checks. Activation sanitises event text and validates the lock file. The agent then works in its isolated runtime with read-only repository access and a network allowlist; the API proxy isolates authentication tokens, so the agent does not see them. The agent still runs commands (bash) and fetches pages inside a locked-down container with a network allowlist; what it lacks is permission to write to the repository. It can edit its local workspace to prepare a patch; read-only describes repository and API permissions, not an inability to draft file changes. Detection inspects the output and patch before the configured safe-output jobs act with the permissions they need. The docs describe blocking when a threat is detected, and permitting a warning with a human review requirement before merge. The outcome diagram is in the appendix.
 
 Evidence: "The agent job runs with minimal read-only permissions" and "write operations are deferred to separate jobs that execute only after the agent completes" (Architecture, checked 17 Oct 2026). The detection job is documented to look for "prompt injection attempts, secret leaks, and malicious code patches". Saltzer and Schroeder, "The Protection of Information in Computer Systems" (1975).
 
@@ -583,6 +684,7 @@ Careful wording: the four-eyes comparison is an analogy for the job split; do no
 Questions:
 Q: Could a bad PR still get through? A: Yes; detection is a layer, not a guarantee. The pilot keeps draft PRs and human review.
 Q: What if the detector crashes? A: The docs are inconsistent, so verify that case in a trial before enabling writes.
+Q: Does CI run on the PR the safe-outputs job opens? A: Unverified - see the TODO on the script-versus-agent slide.
 Q: What if someone plants instructions in an issue or PR? A: That is prompt injection. Detection is documented to look for it, and the agent has no write access either way. A layer, not a guarantee.
 
 Transition: "Those controls limit what a run can write. They say nothing about what it spends, or whether it was worth it."
@@ -594,53 +696,42 @@ Threat detection: https://github.github.com/gh-aw/reference/threat-detection/
 
 ---
 
-<p class="kicker">12 / COST</p>
+<style scoped>
+  h2 { min-height: 0; margin-bottom: 12px; }
+  .large-copy { margin: 0 0 12px; }
+  .caption, .todo { margin-top: 12px; }
+  .eq { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 10px; align-items: stretch; margin: 6px 0 10px; }
+  .eq .card { padding: 16px 14px; }
+  .eq .card h3 { font-size: 24px; margin: 0 0 6px; }
+  .eq .card p { font-size: 20px; color: var(--muted); margin: 0 0 8px; }
+  .eq .card.out { background: var(--accent-tint); border-color: var(--accent); }
+  .eq .op { font-size: 40px; color: var(--accent-ink); align-self: center; font-weight: 700; }
+</style>
+
+<p class="kicker">11 / COST</p>
 
 ## A cheap run nobody merges is still expensive
 
-<div class="eqrow">
-<div>
+<p class="large-copy">The right unit is cost per <strong>accepted</strong> change.</p>
 
-$$
-C_{\mathrm{acc}}=\frac{p_a A+p_m M+w R}{N_{\mathrm{acc}}}
-$$
+<div class="eq"><div class="card"><h3>AI credits</h3><p>from <code>gh aw logs</code></p><span class="gap">NOT MEASURED</span></div><span class="op">+</span><div class="card"><h3>Actions minutes</h3><p>from billing</p><span class="gap">NOT MEASURED</span></div><span class="op">+</span><div class="card"><h3>Reviewer time</h3><p>from the pilot</p><span class="gap">NOT MEASURED</span></div><span class="op">÷</span><div class="card out"><h3>Accepted changes</h3><p>a reviewer said yes</p><span class="gap">NOT MEASURED</span></div></div>
 
-$$
-C_{\mathrm{man}}=\frac{w R_{\mathrm{man}}}{N_{\mathrm{man}}}
-\qquad
-\text{continue if } C_{\mathrm{acc}}<C_{\mathrm{man}}
-$$
-
-</div>
-<div>
-
-| SYMBOL | QUANTITY | STATUS |
-| --- | --- | --- |
-| $A$ | AI credits, AIC | measured, `gh aw logs` |
-| $p_a$ | price per credit | ≈0.01, best-effort |
-| $M$ | Actions minutes | measured, billing |
-| $p_m$ | price per minute | <b class="todo">TODO</b> |
-| $R$ | reviewer minutes | <b class="todo">not measured</b> |
-| $w$ | reviewer cost/min | <b class="todo">TODO</b> |
-| $N_{\mathrm{acc}}$ | proposals merged | measured |
-
-</div>
-</div>
-
-<p class="caption"><b class="fig">Eq. 1</b> · 1 AIC ≈ $0.01 estimated · default cap 1,000 AIC per run (≈ $10) · billing may differ.</p><p class="todo">TODO · Agree pilot limits; measure cost per run and review time.</p>
+<p class="takeaway">Cost per accepted change: add the three, divide by what a reviewer accepted.</p><p class="caption"><b class="fig">Fig. 6a</b> · no run yet, so nothing here is measured · AIC = AI credit, 1 AIC ≈ $0.01 estimated · billing may differ.</p><p class="todo">TODO · Agree pilot limits; measure cost and review time · formula and symbols: Appendix 9.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/reference/cost-management/">Cost management</a> · <a href="https://github.github.com/gh-aw/setup/cli/">CLI</a></p>
 
 <!--
-Say: "The right unit of cost is not the run but the accepted change. A cheap run that nobody merges still costs credits, Actions minutes and a reviewer's attention."
+Say: "The right unit of cost is not the run but the accepted change. A cheap run that nobody merges still costs credits, Actions minutes and a reviewer's attention. Add those three, divide by the changes a reviewer accepted. We have not measured any of them yet."
 
 Analogy: measure yield, not throughput. A laboratory judges a method by its cost per valid result, not its cost per experiment run.
 
-Detail: the equation is the metric the pilot measures: credits, Actions minutes and reviewer minutes, divided by accepted changes. AIC is a budgeting and comparison unit, based on model-pricing data. The agentic step defaults to a 20-minute timeout, and max-turns can cap iterations. Skip rules can avoid unnecessary agent execution. Detection has its own AI-credit cap. Use gh aw logs to inspect duration and usage, then gh aw audit <run-id> to understand tool calls and estimated cost for a specific run. Measure review effort as well as inference: a cheap run that creates substantial rework may not be useful.
+Algebra (on Appendix 9, the cost formula slide): C_acc = (p_a·A + p_m·M + w·R) / N_acc, against C_man = w·R_man / N_man; continue if C_acc < C_man. A = AI credits (gh aw logs), p_a ≈ 0.01 per AIC (best-effort), M = Actions minutes (billing), p_m = TODO, R = reviewer minutes (not measured), w = reviewer cost per minute (TODO), N_acc = proposals merged.
+
+Detail: the formula is the metric the pilot measures: credits, Actions minutes and reviewer minutes, divided by accepted changes. AIC is a budgeting and comparison unit, based on model-pricing data. The agentic step defaults to a 20-minute timeout, and max-turns can cap iterations. Skip rules can avoid unnecessary agent execution. Detection has its own AI-credit cap. Use gh aw logs to inspect duration and usage, then gh aw audit <run-id> to understand tool calls and estimated cost for a specific run. Measure review effort as well as inference: a cheap run that creates substantial rework may not be useful.
 
 Evidence: 1 AIC is about $0.01, estimated. The documented per-run default is 1,000 AIC, roughly $10 of estimated inference. AIC accounting is best-effort and can differ from the provider's bill; GitHub Actions minutes add another cost component. Reviewer minutes are not yet measured.
 
-Careful wording: do not quote a default for the daily AI-credit cap. Official sources disagree on it, so it is left off the slide and recorded on the appendix; if asked, say we will set our own daily cap explicitly. The 1,000 AIC default is not a recommended spend for our pilot, and the real bill can differ. We need limits appropriate to the selected task.
+Careful wording: do not quote a default for the daily AI-credit cap. Official sources disagree on it, so it is left off the slide and recorded on the appendix; if asked, say we will set our own daily cap explicitly. The 1,000 AIC per-run default (about $10 estimated) is not on the slide because it reads as a recommended budget; it is not one, detection has its own cap, and the real bill can differ. We need limits appropriate to the selected task.
 
 Questions:
 Q: What will this cost per month? A: We do not know until we measure. We will set explicit per-run and daily caps and read the numbers from gh aw logs and gh aw audit.
@@ -651,16 +742,23 @@ Transition: "That metric gives us something we can test in a short, measurable p
 
 ---
 
-<p class="kicker">13 / THE PILOT</p>
+<style scoped>
+  h2 { margin-bottom: 0; }
+  .takeaway { margin-top: 8px; }
+  .caption, .todo { margin-top: 8px; }
+  img { display: block; margin-left: auto; margin-right: auto; }
+</style>
 
-## Four weeks turns opinion into evidence
+<p class="kicker">12 / THE PILOT</p>
 
-![Four-week GitHub workflow pilot timeline: review, try, measure, then decide w:1040 h:284](img/pilot-timeline.svg)
+## Each week of the pilot has one job
 
-<p class="takeaway">Review accepted changes, reviewer effort and total cost together.</p><p class="caption"><b class="fig">Fig. 6</b> · Week 1 runs with <code>staged: true</code>: writes are skipped, the run still costs.</p>
+![Four-week GitHub workflow pilot timeline: review, try, measure, then decide w:900 h:246](img/pilot-timeline.svg)
+
+<p class="takeaway">Record accepted changes, reviewer effort and total cost together.</p><p class="todo">TODO · expected pull-request volume · a hard stop rule (for example, pause after N rejected drafts) · a setup-time estimate.</p><p class="caption"><b class="fig">Fig. 6</b> · Week 1 runs with <code>staged: true</code>: writes are skipped, the run still costs.</p>
 
 <!--
-Say: "I propose we treat this as an experiment, not a purchase. Four weeks, with success criteria agreed before we start, so that the result can tell us to stop as readily as to continue."
+Say: "Four weeks, one job each: look, try with a person in the loop, tune, decide. Success criteria are agreed before we start, so the result can tell us to stop as readily as to continue."
 
 Analogy: a small, pre-registered trial. Decide what success looks like before seeing the data, so the result cannot be argued into shape afterwards.
 
@@ -668,21 +766,31 @@ Detail: week one reviews configuration and previews results. Week two enables dr
 
 Evidence: four weeks is a proposed duration, not a measured outcome. Record accepted versus proposed changes, verified documentation problems, reviewer minutes and total run costs. Compare effort against an agreed manual baseline; record rejected or reworked proposals too.
 
-Careful wording: describing the pilot as a falsifiable experiment is our recommendation, not an agreed plan. Numeric thresholds still require agreement. Staged mode still runs the workflow and consumes resources; only the writes are skipped.
+Careful wording: do not re-pitch the ask here; it is on the ask slide and the decision slide. Describing the pilot as a falsifiable experiment is our recommendation, not an agreed plan. Numeric thresholds still require agreement. Staged mode still runs the workflow and consumes resources; only the writes are skipped.
 
 Questions:
 Q: What counts as success? A: The decision slide defines the fields and proposed qualitative criteria. Numeric thresholds still require agreement before we start.
 Q: What does week one actually produce? A: Proposed outputs in the Actions step summary, with no writes. The run still costs.
 
-Transition: "Four weeks only helps if we agree now what the result has to show. Here is what I propose we decide in advance."
+Transition: "So what would the four weeks have to show? That is the next slide."
 -->
 
 ---
-<p class="kicker">14 / THE DECISION RULE</p>
+<style scoped>
+  h2 { min-height: 0; margin-bottom: 12px; }
+  .gates { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 14px; margin: 8px 0 8px; }
+  .gate { background: var(--panel); border: 2px solid var(--accent); border-radius: 12px; padding: 16px 20px; }
+  .gate .n { font-size: 20px; color: var(--muted); letter-spacing: .08em; font-weight: 650; }
+  .gate h3 { font-size: 28px; margin: 6px 0 8px; }
+  .gate p { font-size: 22px; margin: 0 0 12px; }
+  .arrow { font-size: 36px; color: var(--accent); align-self: center; }
+</style>
+
+<p class="kicker">13 / THE DECISION RULE</p>
 
 ## Week four ends in a decision we agreed in advance
 
-<div class="cards three"><div class="card"><h3>Useful fixes accepted</h3><p>Problems a reviewer agreed were real.</p></div><div class="card"><h3>Less total effort</h3><p>Lower than the agreed manual baseline.</p></div><div class="card"><h3>Within budget</h3><p>Spend inside the caps we set.</p></div></div><p class="takeaway">Agreed before we start, so the result can tell us to stop.</p><p class="todo">TODO · all three thresholds, and the manual baseline they are measured against, need agreeing before week one.</p><p class="caption">Proposed criteria · this deck's recommendation, not an agreed plan.</p>
+![Three gates in a row, each with its own shape: Accepted (threshold TODO), Less effort (baseline TODO), Within budget (budget TODO) w:1120 h:250](img/decision-gates.svg)<p class="takeaway">All three must pass; a miss is a real decision. Agreed before we start, so the result can tell us to stop.</p><p class="todo">TODO · all three thresholds, and the manual baseline they are measured against, need agreeing before week one.</p><p class="caption">Proposed criteria · this deck's recommendation, not an agreed plan.</p>
 
 <!--
 Say: "Four weeks only helps if we agree now what the result has to show. Otherwise we will argue about the data afterwards, and whoever is most enthusiastic will win that argument. So here is what I propose we decide in advance."
@@ -691,13 +799,13 @@ Analogy: pre-registering a trial. You write down what would count as success bef
 
 Detail: three criteria. Useful fixes accepted - documentation problems a reviewer agreed were genuinely real, not merely merged. Less total effort than doing it by hand, measured against a baseline we agree before we start. And spend inside the caps. Say plainly that none of the three has a number yet, and that agreeing those numbers is part of what you are asking for today. Then say the sentence that matters: these are set so that the result can tell us to stop.
 
-Evidence: nothing external. These are the proposed qualitative criteria from the decision slide's notes, now stated on a slide. The thresholds, and the manual baseline, are genuinely undecided and the orange line says so.
+Evidence: nothing external. These are the proposed qualitative criteria from the decision slide's notes, now stated on a slide. The thresholds, and the manual baseline, are genuinely undecided and the gap line says so.
 
 Careful wording: do not present these as agreed - they are a recommendation. Do not invent thresholds, a baseline, or a budget figure. Note that a merged pull request is evidence of acceptance, not of accuracy, which is why the first criterion says a reviewer agreed the problem was real rather than simply counting merges.
 
 Questions:
 Q: What if we only hit two of the three? A: Then we have a real decision rather than a reflex, and that is the point of agreeing them now.
-Q: Who decides? A: The named owner, with you. Naming that person is one of the open fields on the next-but-one slide.
+Q: Who decides? A: The named owner, with you. Naming that person is one of the open fields on the decision slide.
 Q: What is the manual baseline? A: Undecided, and it is the hardest of the three. We need an honest estimate of what we spend on this today before week one starts.
 
 Transition: "So that is what the upside has to look like. Now the downside."
@@ -705,18 +813,22 @@ Transition: "So that is what the upside has to look like. Now the downside."
 
 ---
 
-<p class="kicker">15 / THE BOUNDS</p>
+<style scoped>
+  h2 { min-height: 0; margin-bottom: 12px; }
+</style>
 
-## The downside is capped before anything runs
+<p class="kicker">14 / THE BOUNDS</p>
+
+## The downside is bounded by five proposed limits
 
 ![Nested limits: four weeks, then capped spend (TODO), one repo and one owner (TODO), docs only using update-docs.md, draft pull requests only, and at the centre a person decides what merges w:1040 h:353](img/bounded-risk.svg)
 
-<p class="caption"><b class="fig">Fig. 7</b> · Proposed bounds · spend, repository and owner are TODO.</p>
+<p class="caption"><b class="fig">Fig. 7</b> · Proposed, not yet configured · spend, repository, owner TODO · “docs only” is by instruction and diff review; confirm <code>protected-files</code> before calling it enforced.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy (draft: true)</a></p>
 
 <!--
-Say: "Every way this could go wrong is fenced in. Four weeks, a capped budget, one repository with one owner, docs only, draft PRs only, and a person decides what merges."
+Say: "Every way this could go wrong is fenced in, and each ring limits a different kind of failure."
 
 Analogy: a containment protocol. Each ring limits a different kind of failure: time, money, place, scope and output.
 
@@ -724,44 +836,57 @@ Detail: time is the pilot length; spend is per-run plus daily caps we set explic
 
 Evidence: four weeks is proposed. Spend limits, repository and owner are TODO. draft: true is enforced PR-creation policy (PR policy reference).
 
-Careful wording: "boxed in" describes our proposed configuration and policy, not a guarantee. Detection is a layer, not a fence. Human approval before merge is our policy, not a product limit.
+Careful wording: do not say "docs only is enforced"; it is prompt wording plus diff review until protected-files is verified. "Boxed in" describes our proposed configuration and policy, not a guarantee. Detection is a layer, not a fence. Human approval before merge is our policy, not a product limit.
 
 Questions:
 Q: What is the worst case? A: A wrong draft PR that a reviewer closes, plus the spend up to the cap. That is why the cap and owner must be set before week one.
 Q: Can we stop early? A: Yes. Switch the workflow off at any point.
 
-Transition: "With the downside bounded, we are back where we started. You already know the ask - here it is with the fields we need to fill in together."
+Transition: "Those are the limits. Here is the decision."
 -->
 
 ---
 
 <style scoped>
+  /* The closing half of the bookend: same ink wash and same accent as slide 1,
+     with every inherited token restated for a dark surface so the shared rules
+     (chips, code, captions, sources) keep working without a second palette. */
   section {
-    --bg: #050507; --panel: #0e0e12; --line: #6b6280; --ink: #ececec; --muted: #a3a3a3;
-    --accent: #a98bf0; --hi: #d3c4fb; --warn: #e9a35c; --good: #85c58a; color: var(--ink);
-    background: radial-gradient(120% 90% at 50% 50%, transparent 55%, #000 100%), var(--bg);
+    --bg: #050507; --panel: #0e0e12; --chip: #1b1b22; --hairline: #2a2a33;
+    --line: #6b6280; --ink: #ececec; --muted: #a3a3a3;
+    --accent: #a98bf0; --accent-ink: #d3c4fb; --accent-tint: #241a3a;
+    --caution: #e0a66a; --caution-tint: #2a2015; color: var(--ink);
+    background: linear-gradient(155deg, #15151b 0%, #08080b 55%, var(--bg) 100%);
   }
-  section::before { height: 6px; width: 140px; background: var(--hi); box-shadow: none; }
+  section::before { height: 6px; width: 140px; background: var(--accent); box-shadow: none; }
+  h2 { font-size: 72px; min-height: 0; max-width: 1100px; margin-bottom: 12px; color: var(--accent-ink); }
+  .status { margin: 0 0 14px; }
+  .caption { margin-top: 4px; }
+  .checklist { list-style: none; margin: 0; padding: 0; }
+  .checklist li { font-size: 24px; margin: 0 0 14px; padding-left: 38px; position: relative; }
+  .checklist li::before { content: ""; position: absolute; left: 0; top: 5px; width: 20px; height: 20px; border: 2px solid var(--line); border-radius: 4px; }
 </style>
 
-<p class="kicker">16 / THE DECISION</p>
+<p class="kicker">15 / THE DECISION</p>
 
-## Approve a four-week, docs-only pilot
+## Approve a <span style="white-space:nowrap">four-week</span>, docs-only pilot
 
-<div class="decision"><div><p class="eyebrow">PROPOSED STARTING POINT</p><p>Candidate: <code>githubnext/agentics</code><br><code>workflows/update-docs.md</code></p><p>Bounds as on the previous slide.<br>Switch off at any time.</p></div><div><dl><dt>Pilot repository + owner</dt><dd class="todo">TODO: name both</dd><dt>Per-run + total pilot budget</dt><dd class="todo">TODO: agree explicit limits</dd><dt>Week-four success thresholds</dt><dd class="todo">TODO: set before starting</dd></dl></div></div><p class="caption">A two-way door: reversible by design · pause on unsafe output or a breached limit.</p>
+<p class="status">Public preview since <strong>11 Jun 2026</strong>: features and defaults can change.</p>
+
+<div class="decision"><div><p class="eyebrow">PROPOSED STARTING POINT</p><p>Candidate, a public third-party template, not our repository: <code>githubnext/agentics</code><br><code>workflows/update-docs.md</code></p><p>Every change is a draft pull request; a person decides what merges. Switch off at any time.</p></div><div><p class="eyebrow">TO DECIDE BEFORE WEEK ONE</p><ul class="checklist"><li>Pilot repository + owner <span class="gap">TODO</span></li><li>Per-run + total pilot budget <span class="gap">TODO</span></li><li>Week-four thresholds + baseline <span class="gap">TODO</span></li></ul></div></div><p class="caption">Reversible by design · pause on unsafe output or a breached limit · proposal, not yet approved.</p>
 
 <p class="sources"><a href="https://github.com/githubnext/agentics/blob/main/workflows/update-docs.md">Proposed public starting point</a></p>
 
 <!--
-Say: "The ask: approve a four-week, docs-only pilot, with a named owner, explicit spending limits and a decision at week four."
+Say: "The ask, in full and for the last time: approve a four-week, docs-only pilot, with a named owner, explicit spending limits and a decision at week four. And the honest limit: the cost is unknown. The pilot is how we find out."
 
 Analogy: a two-way door, in Jeff Bezos's terms (Amazon 2015 letter to shareholders): a reversible decision, so it can be made quickly and walked back if it fails.
 
-Detail: propose adapting the public githubnext/agentics workflows/update-docs.md already shown. It is a candidate, not the user's confirmed workflow. Name the repository and accountable reviewer before enabling runs. Set explicit per-run and daily limits plus a total pilot budget; a named owner monitors total spend and pauses the workflow when needed. After the close, take questions; the appendix holds compilation, where agents fit beside CI and CD, detection outcomes, evidence, task selection, installation, trials, staged mode and source conflicts.
+Detail: propose adapting the public githubnext/agentics workflows/update-docs.md already shown. It is a candidate, not the user's confirmed workflow. Name the repository and accountable reviewer before enabling runs. Set explicit per-run and daily limits plus a total pilot budget; a named owner monitors total spend and pauses the workflow when needed.
 
-Evidence: four weeks is proposed. All monetary values and success thresholds remain TODO pending the user's decisions. The candidate file is linked on the slide. Proposed qualitative criteria are useful accepted documentation fixes, lower total effort than the agreed baseline and spending within budget; these are recommendations, not agreed commitments.
+Evidence: public preview since 11 Jun 2026 (GitHub changelog 2026-06-11). Four weeks is proposed. All monetary values and success thresholds remain TODO pending the user's decisions. The candidate file is linked on the slide. Proposed qualitative criteria are useful accepted documentation fixes, lower total effort than the agreed baseline and spending within budget; these are recommendations, not agreed commitments.
 
-Careful wording: attribute "two-way door" to Bezos (Amazon 2015 shareholder letter, Type 1 vs Type 2 decisions); it is an analogy, not evidence. do not call it capped until the budget fields are filled. It is reversible because the workflow can be switched off at any time and anything merged went through normal review. Do not imply that a four-week total budget is automatically enforced by a per-run setting. The closing below is recommended ending A in deck-v1/hook-and-ending.md, not yet ticked there. TODO: once slide 1's earlier-attempt story exists, name its gap here as the first thing the pilot tests.
+Careful wording: attribute "two-way door" to Bezos (Amazon 2015 shareholder letter, Type 1 vs Type 2 decisions); it is an analogy, not evidence. do not use "capped" until the budget fields are filled. It is reversible because the workflow can be switched off at any time and anything merged went through normal review. Do not imply that a four-week total budget is automatically enforced by a per-run setting. The closing below is recommended ending A in deck-v1/hook-and-ending.md, not yet ticked there. TODO: once slide 1's earlier-attempt story exists, name its gap here as the first thing the pilot tests.
 
 Questions:
 Q: What happens if output is unsafe or spend exceeds a limit? A: Proposed policy: pause, inspect and decide whether to resume.
@@ -885,7 +1010,7 @@ Cost guidance: https://github.github.com/gh-aw/reference/cost-management/
 
 ## Start with one workflow from the example collection
 
-<div class="split"><div class="card"><h3>Example collection</h3><p class="todo">TODO: repository URL<br>TODO: workflow file<br>TODO: recommended first task</p></div><div class="card"><h3>Review before adding</h3><p>Instructions and scope<br>Permissions and network<br>Outputs and budget</p></div></div><p class="takeaway"><code>gh aw add-wizard owner/repo/workflow</code></p><p class="caption">Command template · replace it with the confirmed workflow reference.</p>
+<div class="split"><div class="card"><h3>Example collection</h3><p class="todo">TODO: repository URL<br>TODO: workflow file<br>TODO: recommended first task</p></div><div class="card"><h3>Review before adding</h3><p>Instructions and scope<br>Permissions and network<br>Outputs and budget</p></div></div><p class="takeaway"><code>gh aw add-wizard owner/repo/workflow</code></p><p class="caption">Template, not runnable · replace it with the confirmed workflow reference.</p>
 
 <p class="sources"><a href="https://github.github.com/gh-aw/setup/cli/">CLI</a></p>
 
@@ -968,9 +1093,83 @@ CLI: https://github.github.com/gh-aw/setup/cli/
 
 <p class="kicker">APPENDIX 8 / DETAILS FOR QUESTIONS</p>
 
+## The agent drafts; a person decides what merges
+
+![The agent reads the repository, drafts the change and opens a draft pull request; a person owns the workflow file, reviews the diff and decides what merges, with two outcomes, merges it or closes it w:1120 h:245](img/who-does-what.svg)
+
+<p class="caption"><b class="fig">Fig. 10</b> · This deck's framing · <code>draft: true</code> is enforced pull-request creation policy · reviewer minutes are not yet measured.</p>
+
+<p class="sources"><a href="https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/">PR policy (draft: true)</a></p>
+
+<!--
+Say: "If someone asks exactly who does what: the agent drafts, a person decides, and merge or close are both the system working. The headline is on the role-shift slide; this is the detail."
+
+Analogy: a draughtsman and the engineer who signs the drawing. The draughtsman prepares the work; the signature, and the responsibility that comes with it, stays with the engineer.
+
+Detail: read the left column, then the right. The agent reads the repository, drafts a change and opens a draft pull request. A person owns the workflow file, reviews the diff, decides what merges, and can switch the whole thing off. Then say the honest sentence on the slide: this moves work from writing to judging - it does not remove it. If volume rises, review time rises with it, and that is exactly why reviewer minutes are a measured quantity in the pilot rather than an assumption.
+
+Evidence: draft: true is enforced pull-request creation policy (PR policy reference, checked 17 Oct 2026). Everything else here is an argument, labelled on the slide as this deck's framing. Reviewer minutes are not measured yet.
+
+Careful wording: do not promise that nobody's job changes, and do not promise headcount is unaffected - neither is ours to promise, and the deck's own notes say not to imply fewer people. Say only what the pilot does. Human merge is our proposed pilot policy, not a product guarantee; gh-aw does not universally prohibit automatic merging. Do not claim review gets easier.
+
+Questions:
+Q: Does this replace writers or reviewers? A: No. It changes what the work is: less drafting, more judging. Whether that is a net saving is what the pilot measures.
+Q: Won't people just approve whatever it writes? A: That is the real risk, and it is why the pilot is one repository with a named owner and a small number of changes. If we cannot review them properly, that is a result worth having.
+Q: Who is accountable for a bad merge? A: The person who approved it, exactly as today.
+
+Transition: "Back to the question you were asked."
+-->
+
+---
+<p class="kicker">APPENDIX 9 / DETAILS FOR QUESTIONS</p>
+
+## Cost per accepted change is a formula the pilot fills in, not a number we have
+
+<div class="eqrow"><div>
+
+$$C_{acc}=\frac{p_a A+p_m M+wR}{N_{acc}}$$
+
+$$C_{man}=\frac{wR_{man}}{N_{man}}$$
+
+<p>Continue only if <b>C<sub>acc</sub> &lt; C<sub>man</sub></b>. The manual baseline is <span class="gap">TODO</span>.</p></div><div>
+
+<table><thead><tr><th>Symbol</th><th>Meaning</th><th>Value</th></tr></thead><tbody>
+<tr><td>A</td><td>AI credits used (<code>gh aw logs</code>)</td><td><span class="gap">NOT MEASURED</span></td></tr>
+<tr><td>p<sub>a</sub></td><td>price per credit</td><td>≈ $0.01, estimated</td></tr>
+<tr><td>M</td><td>Actions minutes (billing)</td><td><span class="gap">NOT MEASURED</span></td></tr>
+<tr><td>p<sub>m</sub></td><td>price per Actions minute</td><td><span class="gap">TODO</span></td></tr>
+<tr><td>R</td><td>reviewer minutes</td><td><span class="gap">NOT MEASURED</span></td></tr>
+<tr><td>w</td><td>reviewer cost per minute</td><td><span class="gap">TODO</span></td></tr>
+<tr><td>N<sub>acc</sub></td><td>proposals merged</td><td><span class="gap">NOT MEASURED</span></td></tr>
+</tbody></table></div></div>
+
+<p class="caption">This deck's formulation · no run yet, so nothing here is measured · AI credit (AIC) accounting is best-effort and billing may differ.</p>
+
+<p class="sources"><a href="https://github.github.com/gh-aw/reference/cost-management/">Cost management</a> · <a href="https://github.github.com/gh-aw/setup/cli/">CLI</a></p>
+
+<!--
+Say: "For the people who want the algebra: cost per accepted change is credits plus Actions minutes plus reviewer time, divided by the changes a reviewer accepted, compared with doing the same work by hand."
+
+Detail: C_acc = (p_a·A + p_m·M + w·R) / N_acc, against C_man = w·R_man / N_man; continue if C_acc < C_man. A comes from gh aw logs, M from billing, R from reviewer time logged in the pilot, N_acc from merged proposals. R_man and N_man form the manual baseline, which nobody has estimated yet.
+
+Evidence: p_a is about $0.01 per AIC, estimated (cost management docs). Every other value is either TODO or not yet measured; do not fill in any of them on stage.
+
+Careful wording: the formula is this deck's framing, not a GitHub metric. AIC accounting is best-effort and can differ from the provider's bill.
+
+Questions:
+Q: What will a month cost? A: We do not know until the pilot measures it. We set caps first and read gh aw logs and gh aw audit.
+Q: Why divide by accepted changes? A: A cheap run nobody merges still costs credits, minutes and a reviewer's attention.
+
+Transition: "Back to the question you were asked."
+-->
+
+---
+
+<p class="kicker">APPENDIX 10 / DETAILS FOR QUESTIONS</p>
+
 ## The technical claims are grounded in GitHub’s documentation
 
-<p class="status">Public preview since <strong>11 Jun 2026</strong></p><div class="cards "><div class="card"><h3>Product and controls</h3><p>Official changelog<br>Architecture and threat detection<br>PR policy and staged mode</p></div><div class="card"><h3>Operating and measuring</h3><p>CLI and schedule syntax<br>Cost management<br>Reported documentation results</p></div></div><p class="todo">Unresolved conflicts · daily AI-credit cap default · whether a failed detection run blocks safe outputs</p><p class="caption">Technical fact check: 17 Oct 2026. Sources are linked on the relevant slides and in speaker notes.</p>
+<p class="status">Public preview since <strong>11 Jun 2026</strong></p><div class="cards "><div class="card"><h3>Product and controls</h3><p>Official changelog<br>Architecture and threat detection<br>PR policy and staged mode</p></div><div class="card"><h3>Operating and measuring</h3><p>CLI and schedule syntax<br>Cost management<br>Reported documentation results</p></div></div><p class="todo caution">Unresolved conflicts · daily AI-credit cap default · whether a failed detection run blocks safe outputs</p><p class="caption">Technical fact check: 17 Oct 2026; re-checked 18 Oct 2026. Sources are linked on the relevant slides and in speaker notes.</p>
 
 <p class="sources"><a href="https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview/">Public-preview changelog</a> · <a href="https://github.github.com/gh-aw/">Official docs</a></p>
 

@@ -69,7 +69,7 @@ Detail: this slide exists because the ask used to arrive only on the last slide,
 
 Evidence: none required. The shape of the ask - four weeks, one repository, docs only, draft pull requests, human merge - is this deck's proposal, stated on the decision slide. No external claim is made here.
 
-Careful wording: do not present this as agreed or approved. Do not give a budget figure, a repository name or an owner: those are genuinely undecided and the orange line says so. Do not say "small" or "cheap" - cost is the one thing we have not measured.
+Careful wording: do not present this as agreed or approved. Do not give a budget figure, a repository name or an owner: those are genuinely undecided and the gap line at the foot of the slide says so. Do not say "small" or "cheap" - cost is the one thing we have not measured.
 
 Questions:
 Q: What will it cost? A: That is the honest gap, and the cost slide is coming. We set explicit caps before anything runs.
@@ -84,7 +84,7 @@ Say: "The change is one of role, not headcount. Today a person carries each chan
 
 Analogy: from author to editor. A journal editor does not write the paper; they decide whether it is fit to publish. The agent drafts; you edit and decide.
 
-Detail: the workflow gives the agent a task and controlled access to repository context. The agent can inspect information, use tools, and propose an output through the configured mechanism. The output can be a pull request, issue or comment; for this talk, keep the example on a documentation draft pull request. Point at the dashed orange box: that manual step is the one the workflow removes. The blue box is where the person now sits: reviewing.
+Detail: the workflow gives the agent a task and controlled access to repository context. The agent can inspect information, use tools, and propose an output through the configured mechanism. The output can be a pull request, issue or comment; for this talk, keep the example on a documentation draft pull request. Point at the dashed box: that manual step is the one the workflow removes. The blue box is where the person now sits: reviewing.
 
 Evidence: illustrative comparison, this deck's framing. Copilot is the default engine.
 
@@ -120,7 +120,7 @@ Q: Who is accountable for a bad merge? A: The person who approved it, exactly as
 Transition: "That is the division of labour. But it raises a fair objection, and I want to meet it head on: why hand this to an agent at all, when we already automate things with scripts?"
 
 
-## 7 · Only judgement can tell whether the words still match the code
+## 7 · Judging whether the words still match the code is where an agent earns its place
 
 Say: "There is a fair objection here, and I want to meet it head on. We already automate things. Why hand this to an agent instead of writing a script?"
 
@@ -140,7 +140,7 @@ Q: Isn't an LLM overkill? A: It may be. That is a cost question, and the cost sl
 Transition: "So the work needs judgement. Here is what that judgement actually produced, in a real repository."
 
 
-## 8 · The unit of review is one small diff
+## 8 · A dialog title leaked into a menu, and the fix is three lines
 
 Say: "The unit of review is the diff. Here is a real one: a modal heading was leaking into the page navigation, and the whole fix can be judged in a few seconds."
 
@@ -163,7 +163,7 @@ https://github.com/github/gh-aw/pull/8716
 https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/
 
 
-## 9 · GitHub reports 57 of 59 documentation pull requests merged
+## 9 · GitHub reports 85–100% of documentation pull requests merged in three of its workflows
 
 Say: "GitHub reports high merge rates for three of its own documentation workflows. I show them to motivate measurement, not to predict our result."
 
@@ -231,7 +231,7 @@ update-docs.md: https://github.com/githubnext/agentics/blob/main/workflows/updat
 PR policy: https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/
 
 
-## 12 · Only a separate job can write; the agent cannot
+## 12 · The agent job is read-only; writes happen in a separate job
 
 Say: "The part that reasons is not the part that writes. The reasoning part runs with least privilege — an old idea in computer security, from Saltzer and Schroeder in 1975."
 
@@ -301,7 +301,7 @@ Analogy: pre-registering a trial. You write down what would count as success bef
 
 Detail: three criteria. Useful fixes accepted - documentation problems a reviewer agreed were genuinely real, not merely merged. Less total effort than doing it by hand, measured against a baseline we agree before we start. And spend inside the caps. Say plainly that none of the three has a number yet, and that agreeing those numbers is part of what you are asking for today. Then say the sentence that matters: these are set so that the result can tell us to stop.
 
-Evidence: nothing external. These are the proposed qualitative criteria from the decision slide's notes, now stated on a slide. The thresholds, and the manual baseline, are genuinely undecided and the orange line says so.
+Evidence: nothing external. These are the proposed qualitative criteria from the decision slide's notes, now stated on a slide. The thresholds, and the manual baseline, are genuinely undecided and the gap line says so.
 
 Careful wording: do not present these as agreed - they are a recommendation. Do not invent thresholds, a baseline, or a budget figure. Note that a merged pull request is evidence of acceptance, not of accuracy, which is why the first criterion says a reviewer agreed the problem was real rather than simply counting merges.
 
@@ -313,7 +313,7 @@ Q: What is the manual baseline? A: Undecided, and it is the hardest of the three
 Transition: "So that is what the upside has to look like. Now the downside."
 
 
-## 16 · The downside is capped before anything runs
+## 16 · The downside is bounded by five proposed limits
 
 Say: "Every way this could go wrong is fenced in. Four weeks, a capped budget, one repository with one owner, docs only, draft PRs only, and a person decides what merges."
 

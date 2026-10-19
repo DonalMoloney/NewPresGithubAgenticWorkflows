@@ -1,28 +1,102 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 266" role="img" aria-labelledby="title desc"><title id="title">Five illustrative autonomy levels</title><desc id="desc">L1 Operator through L5 Observer. L4 Approver is highlighted as this deck’s interpretation of gh-aw, not a classification from GitHub or the paper.</desc><style>
-:root{--panel:#141414;--line:#343c49;--ink:#ececec;--muted:#a3a3a3;--blue:#8fb0dc;--hi:#b9d0ee;--warn:#e9a35c;--green:#85c58a}
-.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#101b29;stroke:var(--blue);stroke-width:2}.write{fill:#132218;stroke:var(--green);stroke-width:2}.warn{fill:#241b12;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
-.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
-.line{fill:none;stroke:var(--blue);stroke-width:2}.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}.rule{fill:none;stroke:var(--line);stroke-width:1.5}.boundary{fill:none;stroke:var(--green);stroke-width:1.5;stroke-dasharray:5 6}.zone{fill:none;stroke:var(--blue);stroke-width:1.5;stroke-dasharray:5 6}
-</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8fb0dc"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 278" role="img" aria-labelledby="title desc"><title id="title">Five illustrative autonomy levels: the agent does more, the human decides less</title><desc id="desc">Five illustrative autonomy levels from Feng et al., arXiv 2506.12469, left to right: L1 Operator, L2 Collaborator, L3 Consultant, L4 Approver, L5 Observer. Each level has a bar of six cells. Filled cells are the share the agent does; outlined cells are the share the human decides. Each level sits higher than the one before it, so L1 is lowest and L5 highest. Moving up and right, filled cells rise from one to five and outlined cells fall from five to one. The bars are illustrative, not measurements. L4 Approver, where the human signs off, is marked with a check symbol and the tab gh-aw: our reading, because placing gh-aw at L4 is this deck's own interpretation, not a classification by the paper or by GitHub. A dashed line separates L3 from L4.</desc>
+<style>
+:root{--bg:#faf6ee;--panel:#f2ecdf;--line:#b9ad98;--ink:#26211b;--muted:#675d4e;--accent:#3f3fb0;--hi:#2c2c8a;--good:#2a6e3a;--warn:#96470a;--fill-accent:#e4e5f7;--fill-good:#e1f0e0;--fill-warn:#fbeacf}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+.focus{fill:var(--fill-accent);stroke:var(--accent);stroke-width:2}
+.write{fill:var(--fill-good);stroke:var(--good);stroke-width:2.5}
+.warn{fill:var(--fill-warn);stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}
+.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.itext{fill:var(--ink);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.gtext{fill:var(--good);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}
+.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.label{fill:var(--muted);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.glabel{fill:var(--good);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--accent);stroke-width:2}
+.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.gline{fill:none;stroke:var(--good);stroke-width:2}
+.rule{fill:none;stroke:var(--line);stroke-width:1.5}
+.boundary{fill:none;stroke:var(--good);stroke-width:1.5;stroke-dasharray:5 6}
+.zone{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 6}
+.seal{fill:none;stroke:var(--accent);stroke-width:2}
+.i-accent{color:var(--accent)}.i-hi{color:var(--hi)}.i-warn{color:var(--warn)}
+.i-good{color:var(--good)}.i-muted{color:var(--muted)}.i-ink{color:var(--ink)}
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#3f3fb0"/></marker>
+<marker id="warrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#bc4c00"/></marker>
+<marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#1a7f37"/></marker>
+<symbol id="g-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5M18.5 18.5l2-2"/></g></symbol>
+<symbol id="g-nokey" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5"/></g><path d="M2.5 21.5L21.5 2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="g-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="g-warn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 22.2 20.6H1.8Z"/><path d="M12 9v5"/></g><circle cx="12" cy="17.4" r="1.25" fill="currentColor"/></symbol>
+<symbol id="g-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="10.5" width="17" height="11" rx="2.5"/><path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5"/></g></symbol>
+<symbol id="g-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.4l3.2 3.2 6-6.4"/></g></symbol>
+<symbol id="g-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="4"/><path d="M3.8 21c0-4.5 3.7-7.2 8.2-7.2S20.2 16.5 20.2 21"/></g></symbol>
+<symbol id="g-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.6V12l4 2.4"/></g></symbol>
+</defs>
 <text x="1" y="24" class="label">MORE AGENT AUTONOMY →</text>
-<rect x="1" y="152" width="214" height="108" rx="12" class="box"/>
-<text x="21" y="186" class="label">L1</text>
-<text x="21" y="216" class="heading">Operator</text>
-<text x="21" y="244" class="text">Human drives</text>
-<rect x="231" y="124" width="214" height="108" rx="12" class="box"/>
-<text x="251" y="158" class="label">L2</text>
-<text x="251" y="188" class="heading">Collaborator</text>
-<rect x="461" y="96" width="214" height="108" rx="12" class="box"/>
-<text x="481" y="130" class="label">L3</text>
-<text x="481" y="160" class="heading">Consultant</text>
-<rect x="691" y="68" width="214" height="108" rx="12" class="focus"/>
-<text x="711" y="102" class="label">L4</text>
-<text x="711" y="132" class="heading">Approver</text>
-<text x="711" y="160" class="text">Human signs off</text>
-<rect x="921" y="40" width="214" height="108" rx="12" class="box"/>
-<text x="941" y="74" class="label">L5</text>
-<text x="941" y="104" class="heading">Observer</text>
-<text x="941" y="132" class="text">Human watches</text>
-<text x="798" y="254" class="cap" text-anchor="middle">gh-aw: this deck’s interpretation</text>
-<path d="M798 232 V177" class="line" marker-end="url(#arrow)"/>
+<path d="M684 48 V234" class="zone"/>
+<rect x="1" y="108" width="207" height="126" rx="12" class="box"/>
+<text x="21" y="134" class="label">L1</text>
+<text x="21" y="162" class="heading">Operator</text>
+<rect x="21" y="174" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="49" y="174" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<rect x="77" y="174" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<rect x="105" y="174" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<rect x="133" y="174" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<rect x="161" y="174" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<text x="21" y="224" class="text">Human drives</text>
+<rect x="233" y="88" width="207" height="126" rx="12" class="box"/>
+<text x="253" y="114" class="label">L2</text>
+<text x="253" y="142" class="heading">Collaborator</text>
+<rect x="253" y="154" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="281" y="154" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="309" y="154" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<rect x="337" y="154" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<rect x="365" y="154" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<rect x="393" y="154" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<text x="253" y="204" class="text">Human steers</text>
+<rect x="465" y="68" width="207" height="126" rx="12" class="box"/>
+<text x="485" y="94" class="label">L3</text>
+<text x="485" y="122" class="heading">Consultant</text>
+<rect x="485" y="134" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="513" y="134" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="541" y="134" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="569" y="134" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<rect x="597" y="134" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<rect x="625" y="134" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<text x="485" y="184" class="text">Agent proposes</text>
+<rect x="697" y="16" width="207" height="44" rx="12" class="focus"/>
+<text x="800" y="40" class="cap" text-anchor="middle" style="fill:var(--hi)">gh-aw: our reading</text>
+<rect x="697" y="48" width="207" height="126" rx="12" class="focus"/>
+<rect x="699" y="46" width="203" height="17" class="focus" style="stroke:none"/>
+<text x="717" y="74" class="label">L4</text>
+<text x="717" y="102" class="heading">Approver</text>
+<use href="#g-check" x="856" y="56" width="28" height="28" class="i-hi"/>
+<rect x="717" y="114" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="745" y="114" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="773" y="114" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="801" y="114" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="829" y="114" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<rect x="857" y="114" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<text x="717" y="164" class="itext">Human signs off</text>
+<rect x="929" y="28" width="207" height="126" rx="12" class="box"/>
+<text x="949" y="54" class="label">L5</text>
+<text x="949" y="82" class="heading">Observer</text>
+<rect x="949" y="94" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="977" y="94" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="1005" y="94" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="1033" y="94" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="1061" y="94" width="25" height="22" rx="3" class="seal" style="fill:var(--accent)"/>
+<rect x="1089" y="94" width="25" height="22" rx="3" class="rule" style="stroke:var(--muted)"/>
+<text x="949" y="144" class="text">Human watches</text>
+<rect x="1" y="250" width="25" height="20" rx="3" class="seal" style="fill:var(--accent)"/>
+<text x="36" y="267" class="cap">agent does</text>
+<rect x="170" y="250" width="25" height="20" rx="3" class="rule" style="stroke:var(--muted)"/>
+<text x="205" y="267" class="cap">human decides</text>
+<text x="1135" y="267" class="cap" text-anchor="end">Illustrative ladder (Feng et al., arXiv 2506.12469); bars are not measurements</text>
 </svg>

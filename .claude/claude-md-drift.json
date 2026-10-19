@@ -169,6 +169,36 @@
       "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v2/CLAUDE.md",
       "rule_matched": "sub-claude-md",
       "ts": "2026-10-18T00:35:23Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v1/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T01:20:03Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v2/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T01:20:13Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v1/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T01:20:29Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v2/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T01:20:36Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v3/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T16:56:09Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v3/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T16:59:00Z"
     }
   ]
 }

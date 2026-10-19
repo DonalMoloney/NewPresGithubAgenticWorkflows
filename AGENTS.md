@@ -10,7 +10,8 @@ Content project, not software. It holds the outline and draft visuals for a talk
 | `slide-styling/` | Title slide and slide-style explorations. `title-slide.html` (blue neon) is the base the final deck is built from; `title-slide-v2.html` and the `slide-styling*.html` files are alternates. |
 | `deck-v1/` | Deck v1: `deck.md` (slide content) and `deck.html` (all slides in one file), built from `slide-styling/title-slide.html`. |
 | `deck-v2/` | Deck v2: same files and shell as v1, new arc (hook, times changing, earlier attempt, what it is: model, parts, ways to run, types, key points, then example videos, images and links). |
-| `deck-v3/` | Deck v3: a copy of `deck-v2/` taken 17 Oct 2026, same files and arc, worked on separately from v2. |
+| `deck-v3/` | Deck v3: started as a copy of `deck-v2/` on 17 Oct 2026, same files and arc, worked on separately from v2. It now has its own light visual identity, defined by the tokens in its own `deck.md`; do not re-sync its styling from v1 or v2. |
+| `deck-v4/` | Deck v4: copy of `deck-v3/` taken 18 Oct 2026, redesigned as a TED-style talk: dark stage canvas, one red accent, big type, a tighter story spine (15 main slides plus appendix) and a refreshed `RESOURCES.md`. Its own tokens live in its `deck.md`; do not re-sync from other decks. |
 | `reference/` | Background material (`agents-draft.md`, `img.png`). Not part of the deck. |
 | `.venv/`, `.playwright-mcp/` | Tooling artifacts. Do not edit or commit. |
 

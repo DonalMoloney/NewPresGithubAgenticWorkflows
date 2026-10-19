@@ -1,0 +1,69 @@
+{
+  "changes": [
+    {
+      "file": "/private/tmp/claude-501/-Users-donalmoloney-PycharmProjects-NewPresGithubAgenticWorkflows-deck-v3/82e9ab01-ca3a-4926-a30e-cf23106e1dc0/scratchpad",
+      "rule_matched": "new-top-level-dir",
+      "ts": "2026-10-18T00:39:25Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v3/img",
+      "rule_matched": "new-top-level-dir",
+      "ts": "2026-10-18T00:42:24Z"
+    },
+    {
+      "file": "/private/tmp/claude-501/-Users-donalmoloney-PycharmProjects-NewPresGithubAgenticWorkflows-deck-v3/82e9ab01-ca3a-4926-a30e-cf23106e1dc0/scratchpad/cf",
+      "rule_matched": "new-top-level-dir",
+      "ts": "2026-10-18T00:42:33Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v3/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T00:50:11Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v3/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T00:50:14Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v3/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T00:50:21Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v3/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T01:41:03Z"
+    },
+    {
+      "file": "/private/tmp/claude-501/-Users-donalmoloney-PycharmProjects-NewPresGithubAgenticWorkflows-deck-v3/5b5f8925-5c9f-4d2b-b92f-a08487d9973d/scratchpad",
+      "rule_matched": "new-top-level-dir",
+      "ts": "2026-10-18T17:11:20Z"
+    },
+    {
+      "file": "/private/tmp/claude-501/-Users-donalmoloney-PycharmProjects-NewPresGithubAgenticWorkflows-deck-v3/5b5f8925-5c9f-4d2b-b92f-a08487d9973d/scratchpad",
+      "rule_matched": "new-top-level-dir",
+      "ts": "2026-10-18T17:15:42Z"
+    },
+    {
+      "file": "/Users/donalmoloney/PycharmProjects/NewPresGithubAgenticWorkflows/deck-v4/CLAUDE.md",
+      "rule_matched": "sub-claude-md",
+      "ts": "2026-10-18T18:39:27Z"
+    },
+    {
+      "file": "/private/tmp/claude-501/-Users-donalmoloney-PycharmProjects-NewPresGithubAgenticWorkflows-deck-v3/e273da3a-3c20-4753-87bd-7792c447a0dd/scratchpad/v1png",
+      "rule_matched": "new-top-level-dir",
+      "ts": "2026-10-18T19:26:42Z"
+    },
+    {
+      "file": "/private/tmp/claude-501/-Users-donalmoloney-PycharmProjects-NewPresGithubAgenticWorkflows-deck-v3/e273da3a-3c20-4753-87bd-7792c447a0dd/scratchpad/v2shots",
+      "rule_matched": "new-top-level-dir",
+      "ts": "2026-10-18T19:26:51Z"
+    },
+    {
+      "file": "/private/tmp/claude-501/-Users-donalmoloney-PycharmProjects-NewPresGithubAgenticWorkflows-deck-v3/e273da3a-3c20-4753-87bd-7792c447a0dd/scratchpad",
+      "rule_matched": "new-top-level-dir",
+      "ts": "2026-10-18T19:26:56Z"
+    }
+  ]
+}

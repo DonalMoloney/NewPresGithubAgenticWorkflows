@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Cycle diagram: the GitHub Octocat mark at the centre of a loop of six steps, Plan, Code, Test, Review, Open PR and Monitor, connected by glowing arrows">
 <style>
-.card { fill: #141414; stroke: #8fb0dc; stroke-width: 2; }
-.ic { fill: none; stroke: #b9d0ee; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.tt { fill: #ececec; font: 700 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .06em; text-anchor: middle; }
-.td { fill: #a3a3a3; font: 12.5px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-anchor: middle; }
-.wire { fill: none; stroke: #8fb0dc; stroke-width: 2.5; }
-.ring { fill: none; stroke: #8fb0dc; }
-.plate { fill: #1b2738; stroke: #8fb0dc; stroke-width: 2; }
-.bot { fill: #dfe7f7; }
-.glow { filter: url(#glow); }
+.card { fill: #f6f8fa; stroke: #afb8c1; stroke-width: 2; }
+.ic { fill: none; stroke: #0969da; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.tt { fill: #1f2328; font: 700 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .06em; text-anchor: middle; }
+.td { fill: #59636e; font: 12.5px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-anchor: middle; }
+.wire { fill: none; stroke: #0969da; stroke-width: 2.5; }
+.ring { fill: none; stroke: #afb8c1; }
+.plate { fill: #ddf4ff; stroke: #afb8c1; stroke-width: 2; }
+.bot { fill: #1f2328; }
+.glow { }
 </style>
 <defs>
 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<marker id="arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b9d0ee"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0969da"/></marker>
 </defs>
 <g class="glow">
 <path class="wire" marker-end="url(#arr)" d="M175,80 C200,50 220,45 244,60"/>

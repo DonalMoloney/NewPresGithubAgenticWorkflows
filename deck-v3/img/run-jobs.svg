@@ -1,32 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 236" role="img" aria-labelledby="title desc"><title id="title">Separate jobs, separate permissions</title><desc id="desc">Simplified run: prepare, agent, detection and safe outputs. The agent and detector have no write token; the separate output job has scoped permissions.</desc><style>
-:root{--panel:#141414;--line:#343c49;--ink:#ececec;--muted:#a3a3a3;--blue:#8fb0dc;--hi:#b9d0ee;--warn:#e9a35c;--green:#85c58a}
-.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}.focus{fill:#101b29;stroke:var(--blue);stroke-width:2}.write{fill:#132218;stroke:var(--green);stroke-width:2}.warn{fill:#241b12;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
-.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.label{fill:var(--hi);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
-.line{fill:none;stroke:var(--blue);stroke-width:2}.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}.rule{fill:none;stroke:var(--line);stroke-width:1.5}.boundary{fill:none;stroke:var(--green);stroke-width:1.5;stroke-dasharray:5 6}.zone{fill:none;stroke:var(--blue);stroke-width:1.5;stroke-dasharray:5 6}
-</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8fb0dc"/></marker></defs>
-<text x="1" y="24" class="label">READ / PREPARE</text>
-<text x="883" y="24" class="label">PERMITTED WRITES</text>
-<path d="M862 36 V206" class="boundary"/>
-<rect x="1" y="48" width="252" height="108" rx="12" class="box"/>
-<text x="21" y="82" class="heading">Activation</text>
-<text x="21" y="112" class="text">Context checks</text>
-<text x="21" y="140" class="text">Validate lock file</text>
-<rect x="295" y="48" width="252" height="108" rx="12" class="focus"/>
-<text x="315" y="82" class="heading">Agent</text>
-<text x="315" y="112" class="text">Sandbox + firewall</text>
-<text x="315" y="140" class="text">Read-only access</text>
-<rect x="589" y="48" width="252" height="108" rx="12" class="box"/>
-<text x="609" y="82" class="heading">Detection</text>
-<text x="609" y="112" class="text">Inspect output</text>
-<text x="609" y="140" class="text">and patch</text>
-<rect x="883" y="48" width="252" height="108" rx="12" class="write"/>
-<text x="903" y="82" class="heading">Safe outputs</text>
-<text x="903" y="112" class="text">Scoped write token</text>
-<text x="903" y="140" class="text">Declared outputs</text>
-<path d="M259 102 H294" class="line" marker-end="url(#arrow)"/>
-<path d="M553 102 H588" class="line" marker-end="url(#arrow)"/>
-<path d="M847 102 H882" class="line" marker-end="url(#arrow)"/>
-<path d="M21 170 V194 H821 V170" class="line"/>
-<text x="421" y="227" class="cap" text-anchor="middle">Agent and detection have no write token</text>
-<text x="1009" y="227" class="cap" text-anchor="middle">Separate write job</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 340" role="img" aria-labelledby="title desc">
+<title id="title">Who holds the write key</title>
+<desc id="desc">Five numbered stages, left to right. 1 Activation, 2 Agent and 3 Detection each carry a struck-through key, meaning no write credential; Detection is dashed and marked with a warning because a failed check becomes a caution notice rather than a hard block. Only 4 Safe outputs carries a key, a scoped write token, and it opens a draft pull request that 5 a human then reviews.</desc>
+<style>
+:root{--bg:#faf6ee;--panel:#f2ecdf;--line:#b9ad98;--ink:#26211b;--muted:#675d4e;--accent:#3f3fb0;--hi:#2c2c8a;--good:#2a6e3a;--warn:#96470a;--fill-accent:#e4e5f7;--fill-good:#e1f0e0;--fill-warn:#fbeacf}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+.focus{fill:var(--fill-accent);stroke:var(--accent);stroke-width:2}
+.write{fill:var(--fill-good);stroke:var(--good);stroke-width:2.5}
+.warn{fill:var(--fill-warn);stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}
+.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.itext{fill:var(--ink);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.gtext{fill:var(--good);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}
+.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.label{fill:var(--muted);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.glabel{fill:var(--good);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--accent);stroke-width:2}
+.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.gline{fill:none;stroke:var(--good);stroke-width:2}
+.rule{fill:none;stroke:var(--line);stroke-width:1.5}
+.boundary{fill:none;stroke:var(--good);stroke-width:1.5;stroke-dasharray:5 6}
+.zone{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 6}
+.seal{fill:none;stroke:var(--accent);stroke-width:2}
+.i-accent{color:var(--accent)}.i-hi{color:var(--hi)}.i-warn{color:var(--warn)}
+.i-good{color:var(--good)}.i-muted{color:var(--muted)}.i-ink{color:var(--ink)}
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#3f3fb0"/></marker>
+<marker id="warrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#bc4c00"/></marker>
+<marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#1a7f37"/></marker>
+<symbol id="g-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5M18.5 18.5l2-2"/></g></symbol>
+<symbol id="g-nokey" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5"/></g><path d="M2.5 21.5L21.5 2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="g-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="g-warn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 22.2 20.6H1.8Z"/><path d="M12 9v5"/></g><circle cx="12" cy="17.4" r="1.25" fill="currentColor"/></symbol>
+<symbol id="g-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="10.5" width="17" height="11" rx="2.5"/><path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5"/></g></symbol>
+<symbol id="g-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.4l3.2 3.2 6-6.4"/></g></symbol>
+<symbol id="g-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="4"/><path d="M3.8 21c0-4.5 3.7-7.2 8.2-7.2S20.2 16.5 20.2 21"/></g></symbol>
+<symbol id="g-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.6V12l4 2.4"/></g></symbol>
+</defs>
+<text x="2" y="24" class="label">READ AND PREPARE</text><text x="726" y="24" class="glabel">PERMITTED WRITES</text><path d="M685 36 V298" class="boundary"/><rect x="2" y="44" width="206" height="232" rx="10" class="box"/><circle cx="34" cy="44" r="15" style="fill:var(--accent)"/><text x="34" y="50.5" text-anchor="middle" style="fill:var(--bg);font:700 19px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">1</text><use href="#g-nokey" x="164" y="62" width="28" height="28" class="i-ink"/><text x="18" y="124" text-anchor="start" style="font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-weight:700;font-size:23px;fill:var(--ink);letter-spacing:-.01em">Opens the shift</text><text x="18" y="148" class="cap">Activation</text><path d="M18 160 H192" class="rule"/><text x="18" y="186" class="text">Checks inputs.</text><text x="18" y="212" class="text">Runs first.</text><rect x="234" y="44" width="206" height="232" rx="10" class="focus"/><circle cx="266" cy="44" r="15" style="fill:var(--accent)"/><text x="266" y="50.5" text-anchor="middle" style="fill:var(--bg);font:700 19px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">2</text><use href="#g-nokey" x="358" y="62" width="28" height="28" class="i-ink"/><use href="#g-eye" x="396" y="62" width="28" height="28" class="i-hi"/><text x="250" y="124" text-anchor="start" style="font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-weight:700;font-size:23px;fill:var(--ink);letter-spacing:-.01em">Drafts the letter</text><text x="250" y="148" class="cap">Agent</text><path d="M250 160 H424" class="rule"/><text x="250" y="186" class="text">Read-only.</text><text x="250" y="212" class="text">Sandboxed.</text><rect x="466" y="44" width="206" height="232" rx="10" class="warn"/><circle cx="498" cy="44" r="15" style="fill:var(--warn)"/><text x="498" y="50.5" text-anchor="middle" style="fill:var(--bg);font:700 19px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">3</text><use href="#g-nokey" x="590" y="62" width="28" height="28" class="i-ink"/><use href="#g-warn" x="628" y="62" width="28" height="28" class="i-warn"/><text x="482" y="124" text-anchor="start" style="font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-weight:700;font-size:23px;fill:var(--ink);letter-spacing:-.01em">Reads it over</text><text x="482" y="148" class="cap">Detection</text><path d="M482 160 H656" class="rule"/><text x="482" y="186" class="text">Scans output.</text><rect x="698" y="44" width="206" height="232" rx="10" class="write"/><circle cx="730" cy="44" r="15" style="fill:var(--accent)"/><text x="730" y="50.5" text-anchor="middle" style="fill:var(--bg);font:700 19px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">4</text><use href="#g-key" x="860" y="62" width="28" height="28" class="i-good"/><text x="714" y="124" text-anchor="start" style="font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-weight:700;font-size:23px;fill:var(--ink);letter-spacing:-.01em">Posts it</text><text x="714" y="148" class="cap">Safe outputs</text><path d="M714 160 H888" class="rule"/><text x="714" y="186" class="text">Scoped key.</text><rect x="930" y="44" width="206" height="232" rx="10" class="box"/><circle cx="962" cy="44" r="15" style="fill:var(--accent)"/><text x="962" y="50.5" text-anchor="middle" style="fill:var(--bg);font:700 19px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">5</text><use href="#g-person" x="1054" y="62" width="28" height="28" class="i-ink"/><use href="#g-check" x="1092" y="62" width="28" height="28" class="i-good"/><text x="946" y="124" text-anchor="start" style="font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-weight:700;font-size:23px;fill:var(--ink);letter-spacing:-.01em">Signs it off</text><text x="946" y="148" class="cap">Human</text><path d="M946 160 H1120" class="rule"/><text x="946" y="186" class="text">Reviews the</text><text x="946" y="212" class="text">draft PR.</text><text x="482" y="212" class="wtext" style="font-size:20px">Caution by</text><text x="482" y="236" class="wtext" style="font-size:20px">default, not</text><text x="482" y="260" class="wtext" style="font-size:20px">a block.</text><text x="714" y="212" class="gtext">Opens draft PR</text><path d="M209 156 H232" class="line" marker-end="url(#arrow)"/><path d="M441 156 H464" class="line" marker-end="url(#arrow)"/><path d="M673 156 H696" class="line" marker-end="url(#arrow)"/><path d="M905 156 H928" class="line" marker-end="url(#arrow)"/><path d="M2 288 V302 H686 V288" class="line"/><text x="344" y="332" class="cap" text-anchor="middle">No write key in any of these three</text><path d="M698 288 V302 H904 V288" class="gline"/><text x="801" y="332" class="cap" text-anchor="middle">The only key</text>
 </svg>

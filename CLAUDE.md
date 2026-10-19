@@ -4,7 +4,7 @@
 - After editing `draft-overview.html`, open it with Playwright and screenshot light and dark mode plus a phone-width viewport before saying it is done.
 - The HTML is draft material for slides. When the user asks to build the final deck, use the `slides` skill and reuse the draft diagrams and wording rather than redesigning them.
 - Keep edits surgical: change only the slide the user named.
-- When creating the deck (in `deck-v1/`: `deck.md` content, `deck.html` slides), build from `slide-styling/title-slide.html`: it is the title slide and the reference for layout, blue neon palette (not red) and styling of every other slide. Reuse its structure and tokens rather than the `-v2` variants.
+- When creating the deck (in `deck-v1/`: `deck.md` content, `deck.html` slides), build from `slide-styling/title-slide.html`: it is the title slide and the reference for layout and styling of every other slide. The deck's palette is defined in `deck-v1/deck.md`'s front-matter `style:` block and nowhere else; read it there rather than assuming values. Reuse its structure and tokens rather than the `-v2` variants.
 - Folder layout is in `AGENTS.md`. Keep `overview.md` at the root; draft HTML lives in `slide-styling/`.
 
 ## The example-workflow repo (resolves the `AGENTS.md` gotcha)
@@ -31,7 +31,7 @@
 - **Never overclaim safety.** Do not say detection "always blocks" (`continue-on-error` defaults to `true`). Present "never merged automatically" as GitHub Blog guidance, not a hard limit.
 - **When official sources conflict, leave the fact off the slide** and record the conflict on the deck's status and sources slide (e.g. the daily AI Credit cap default).
 - **Say each fact once.** Do not repeat a point across slides.
-- **Keep gaps visible** as orange TODO markers until the user supplies real content.
+- **Keep gaps visible** as TODO markers until the user supplies real content. Mark them with the deck's neutral gap styling, never with the caution colour — the loudest thing on a slide should be the argument, not the homework.
 
 ## Speaker notes (all decks)
 - Give every slide a note. Write it in this order: the plain-English line to say, the technical detail, exact numbers and quotes with sources, then likely audience questions with answers.

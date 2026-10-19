@@ -1,0 +1,202 @@
+Open with the promise, not the product: a repo whose docs keep up with its code.
+"Today: what GitHub Agentic Workflows are, how they stay safe, and a one-month pilot I'd like us to try."
+Mixed room: plain-English version first on every slide; the technical detail is there for those who want it.
+Shape of the hour, so nobody is lost: why this matters now, what the thing actually is, why you can check it, what it has already done, and the one decision I want at the end.
+Transition: start with something true of almost every repository in this company.
+
+---
+
+Pause after the title. Let people think of their own stale page. Do not fill the silence.
+56.5% of 12,374 developers name outdated information as a blocker. That is the measured claim; the rest of the sentence is mine.
+TODO: the "72.6% say recent or clearly up to date makes information trustworthy (n=12,996)" line could not be found in the 2026 survey on 17 Oct 2026; don't say it until a source URL is found.
+Older backup if challenged: about two-thirds of 45 developers agreed docs are "always outdated" (Lethbridge et al., IEEE Software, 2003). The problem is old; what's new is the speed.
+Q: "Is this really our problem?" I'm not claiming a measured gap in our repos — I'm claiming nobody in this room can name which page it is. That is the whole point.
+Transition: and the gap is widening, because of how much faster we now write the code the docs describe.
+
+---
+
+Plain line: each step up this ladder, the agent does more of the work and we do less of the deciding — and the volume of code keeps climbing either way.
+Technical: the ladder runs L1 Operator to L5 Observer (Feng et al.). L4 Approver is my reading of gh-aw: the agent does the work, a human approves the consequential step, the pull request. It is not the paper's classification of gh-aw.
+Numbers: only the Octoverse figures are measured: 43.2M PRs merged per month (+23%), nearly 1 billion commits in 2025 (+25.1%). Don't claim a measured docs gap; slide 2's survey is the docs evidence. The link from more code to staler docs is my interpretation and the slide says so.
+The bars are illustrative proportions, not measurements. If someone reads a number off them, correct it.
+Delivery note, because this slide carries two things and can split in the room's head: the ladder is where this is GOING, the two numbers are where we ALREADY ARE. Say it in that order and join them with one sentence — "the tools are climbing that ladder, and this is the volume they are already producing" — then stop. If you narrate the ladder level by level you will lose the non-technical half of the room here, and they do not come back until the safety slide.
+Q: "Is AI really behind the growth?" Octoverse reports the growth; don't attribute all of it to AI.
+TODO: say which level we are at today.
+Transition: I've tried to close this gap before, and it's worth telling you how that went.
+
+---
+
+TODO: tell the story of the earlier project in three beats: what I built, what worked, what it could never do.
+IMPORTANT, the hidden contract with the next slide: the third column must land on "it only ran when a person remembered to run it". The turn on slide 5 is "it stopped waiting to be asked", so if column three is really about quality, cost or adoption instead, slide 4 to slide 5 becomes a non-sequitur. Either make the third column about who had to start it, or change slide 5's transition to match the gap you actually name.
+If this story will not be ready, CUT this slide rather than show three empty cells. The arc survives: slide 3 runs into slide 5 as a "but". What you lose is the only human moment in the deck, so cutting is the worse of two acceptable options — but an empty table at the hinge is the unacceptable one.
+Keep it to ninety seconds. This slide exists to buy credibility, not to relive the project.
+End hard on the third column, because the next slide is the thing that answers it. If the third column is weak, the whole talk is a product demo instead of a story.
+Q: "Why didn't that one work?" Answer honestly; a real limitation named here makes everything after it more believable.
+Transition: what changed since then is not that the AI got smarter. It's that it stopped waiting to be asked.
+
+---
+
+Plain line: every AI tool we use today waits for a human to ask. You type, it answers, and if you are not there, nothing happens. This one has a trigger instead of a prompt, so the work happens whether or not anyone is at the keyboard — and your job changes from asking to reviewing.
+This is the hinge of the talk. It is also the deck's subtitle finally on screen: from AI that suggests, to AI that does.
+Careful wording: "works a shift" means a scheduled or event-driven shift. It is NOT self-directed and it is NOT always-on. It runs when a trigger fires, and a human still reviews the output. Say that plainly if anyone hears "autonomous".
+Name no products here. Specific assistants have specific configurable behaviours, and a wrong claim about one of them loses the room for free. Keep it at the level of "an assistant you ask" versus "a workflow with a trigger".
+Do NOT say "every AI tool waits to be asked" — it is false and the first technical objector wins the room with it. Dependabot, scheduled bots and any Action that calls a model already run unprompted. The claim is about assistants, the things we type at, which is why the title says "an assistant".
+Q: "Isn't that just Dependabot?" Fair, and the honest answer is that Dependabot runs one fixed task; this takes a brief in plain English and does work that needs interpretation. Concede the scheduling point rather than fighting it.
+The diagram is illustrative, not measured. No hours, no counts.
+Q: "So it's a cron job with an AI in it?" Close enough to be a fair question, and the honest answer is yes — plus a brief, a sandbox and a checked outbox.
+Park the worry before anyone has to raise it, because this slide is where it starts: "You should be asking what stops it breaking something. That's the two slides after I've shown you the file, and I won't skip them." Then the mechanism slides can do their job instead of the room composing an objection through all four.
+Transition: so what is it, concretely? It is something you already have, briefed differently.
+
+---
+
+The title is the whole idea. Say it, pause, then: it is still a GitHub Action; the difference is that you brief it instead of scripting it.
+Then the teammate model, which carries the rest of the talk. Four pairs, and I will reuse these exact four words on every slide that follows:
+- job description = the markdown body
+- shift = the trigger, on:
+- access badge = permissions, tools and network
+- outbox you check = safe-outputs. It cannot send anything you haven't allowed.
+Say the typical jobs out loud rather than listing them on the slide: maintain the repo (docs, triage, dependencies), improve code (reviews, security), report (metrics). Those three groups are from the gh-aw home page and the tasks are from the gallery, but the grouping is mine — say so. Then point at docs: that's this talk's job and the lowest-risk place to start.
+Careful wording: the teammate mapping is mine, not GitHub's vocabulary. Don't let it get quoted back as official terminology.
+Q: "Is this just Copilot in CI?" No: Copilot is one of several engines; what's new is the read-only agent plus checked outputs.
+Aside if asked, not on the slide: the docs also name patterns like ChatOps, IssueOps and LabelOps.
+Transition: so before the machinery, the obvious question — what kind of work would we actually give it?
+
+---
+
+Plain line: the same mechanism does three kinds of work. Read the three headings, give one example each, and stop — this slide is a breather, not a catalogue.
+This is deliberately the least technical slide in this part of the talk. The two slides either side are a compiler and a trigger table, so slow down here and let the non-technical half of the room back in. If you rush it, you lose them until the safety slide.
+Technical detail: the three groups — Maintain, Improve code, Report and plan — are the gh-aw home page's own grouping. The six example tasks are from its gallery: Documentation Maintenance, Issue Triage, Dependency Analysis, Pull Request Review, Security Review, Metrics and Analytics. Which task sits in which group is my sorting, and the slide says so.
+Why this matters for the ask: it makes the pilot look chosen rather than arbitrary. Docs is where being wrong is cheapest — the cost of a bad suggestion is a reviewer's comment, not a broken build or a missed vulnerability. Say that out loud; it is the argument that makes a sceptic comfortable.
+Careful wording: do not imply we have run any of these, and do not promise the other two groups. The ask is one job in the first box. If someone asks "could it do security review?", the honest answer is that the mechanism is the same and the risk is not, so that is a later conversation.
+Q: "Why not start with code review, that's where the money is?" Because a wrong code review costs reviewer trust, and we have no measured accuracy yet. Earn the data on the cheap job first.
+Transition: so if the brief is plain English, what turns it into something GitHub will actually run?
+
+---
+
+Below the frontmatter is the job description, in plain English. The real body is a page of style rules — it names the Diataxis framework and forbids pushing to the default branch; this one line is a paraphrase, and the slide says so.
+gh aw compile turns the markdown into a .lock.yml, ordinary GitHub Actions YAML. You commit both, and both get reviewed.
+For non-technical listeners: the settings are the rules, the body is the request, and compile turns them into something GitHub already knows how to run.
+Q: "Do I need to edit the YAML?" No — the diagram answers this: you author the markdown and recompile, and the lock file is generated. Never hand-edit it.
+Q: "So a change to the agent's instructions goes through review?" Yes, and that is the governance answer worth repeating: the brief is code, and it arrives as a pull request like anything else.
+Transition: that's the job description written. Now, who or what starts the shift?
+
+---
+
+Four ways to start a shift: something happens in the repo, a clock, a button, or someone asks in a comment.
+The gate is the part worth saying out loud, because it is the first thing a security-minded person wants to know: a passer-by cannot comment our agent into action. By default the allowlist is admin, maintainer or write, and the pre-activation job performs that check (gh-aw triggers and architecture docs).
+Careful wording, and the diagram is drawn to match: the verified claim covers a PERSON starting a run — sources.md records it as the pre-activation job role-checking the commenter on command triggers. Do not say a scheduled run is role-checked; a schedule has no triggering user, and neither docs page ties the allowlist to schedules. If pressed on push or fork behaviour, say you will check rather than improvising — we have no source for it.
+Schedules can be fuzzy ("daily") rather than exact cron times.
+Two safety nets before it can touch our repo: gh aw trial uses a throwaway private repo, which the docs mark experimental; staged: true runs for real but only previews what it would write, in the run summary. I'll come back to staged: true in the ask, because it is how I'd start week one.
+Q: "Could an outside contributor trigger it on a fork PR?" The role check is the control; say the roles, and offer to show the triggers page rather than guessing at fork-specific edge cases.
+Transition: that's when it runs and who can start it. Here is the whole job, in thirteen lines.
+
+---
+
+This is a real file, trimmed: update-docs.md from githubnext/agentics. Not a made-up example. Say "trimmed".
+Walk it against the teammate pairs from the model slide, in the same order and the same words: shift = every push to main; badge = read-all plus network: defaults; outbox = one draft pull request.
+Expect "bash: true?" — it is the right question and the slide answers it in bold on purpose. Do NOT call bash a "read": it runs arbitrary commands, and a security-minded listener will catch that instantly and stop trusting the rest. The honest answer is that the commands run in a job holding no write permissions, with egress through a firewall, and that writes happen later in a separate job. The separate job is two slides away, so do not promise it as "next".
+Q: "toolsets: [all] sounds like a lot." It is, and it is still read-only. The thing to inspect in review is safe-outputs, not tools — the outbox is the only way anything leaves.
+Transition: that's the whole job description. Before I show you what enforces it, the uncomfortable part out loud — it will get things wrong.
+
+---
+
+Be honest first: it will sometimes be wrong. The design assumes that. Saying this before anyone asks is what buys the next three slides.
+Wrong edits: PRs open as drafts; the docs call draft "a policy, not a default", so the agent can't override it. "Never merged automatically" is GitHub Blog guidance, not a hard limit, since an experimental merge output exists. Do not upgrade that into a guarantee.
+Cost: a per-run budget is on by default, 1,000 AI Credits; 1 AIC = $0.01, so about $10. The docs call AIC best-effort, so it may not match the bill exactly.
+Q: "Ten dollars times how many runs?" This is the question a manager will actually ask, and the per-run cap is the only figure I have. TODO: work out runs per week for the pilot trigger × the cap, and bring that number. Do not improvise a total on stage, and do not wave it away as small.
+If asked about a daily cap: two docs pages disagree on its default, so I've left it off the slide deliberately. It's on the status and sources slide.
+Q: "Could it replace our CI or release pipeline?" No: it's not for build, test or release pipelines; it's for work that needs interpretation. Say the limit out loud as well as showing it; naming it early buys trust.
+Say the quote out loud rather than putting it on the slide: "Getting an agent to open a pull request was never the hard part. Trusting it enough to merge is." (May Walter, CTO, Hud.io, GitHub changelog, 11 Jun 2026.)
+Transition: so trust is the real question. Here is the single design decision that does the most work.
+
+---
+
+The postbox line is on the slide; say it, then extend it: the checker in the middle is a separate job that reads what the teammate wrote before anyone posts anything.
+Point at the keys. Three stages carry a crossed-out key and exactly one carries a real one. That single difference is the slide, and it is the answer to "bash: true" from two slides ago.
+Technical version: least privilege by job boundary. "The agent job runs with minimal read-only permissions, while write operations are deferred to separate jobs" (gh-aw architecture docs). The model never runs in a job that has write scopes.
+Detection looks for prompt injection, secret leaks and malicious patches.
+Careful wording: don't say it "always blocks". By default, continue-on-error is true, so a detection warning or failure becomes a caution notice rather than a block. The diagram draws it dashed and warned for exactly this reason — if you claim a hard gate, the diagram contradicts you.
+Q: "Which AI does the work?" Engine choice is a setting: GitHub Copilot, Claude Code, Codex, Antigravity (experimental) and Pi; Copilot is the usual default. Gemini is listed but deprecated in favour of Antigravity.
+Careful wording: the docs list six jobs (adding pre-activation and conclusion); the diagram simplifies, so don't say "four jobs" as if that were all of them.
+Q: "Is it GA?" No: public preview since 11 Jun 2026 (GitHub changelog).
+Transition: separating the token doesn't make the agent right, only checkable. And its reach is as narrow as the list we give it.
+
+---
+
+Plain line: the agent works in a sealed room. It can only talk to the phone numbers we put on the list, and someone else holds the keys.
+Technical: the agent is containerised and its egress goes through a proxy with a domain allowlist. Tools are opt-in under `tools:` — `bash: ["gh issue comment"]` limits bash to that one command. `network: defaults` is basic infrastructure only and is what you get if you omit `network:`; `network: {}` is no access at all.
+The API proxy matters for a different reason, and it's the most interesting idea on the slide: it keeps the engine's auth token out of the agent's container, so a prompt-injected agent has no credential to exfiltrate.
+Careful wording: the MCP gateway is drawn dashed and marked on purpose. The docs say it "is not a strong security boundary against a compromised or malicious agent". Say that out loud — the defence is layers, not any one wall. Claiming otherwise is the fastest way to lose a security-minded room, and volunteering the weak spot is what makes the rest credible.
+Q: "So it can't call out at all?" It can, but only to domains on the list. That list is in the workflow file and gets reviewed like any other code. Never say "no network" — `network: defaults` is an allowlist, not an absence, and the slide shows that.
+Q: "Could an injected prompt send our data OUT to a domain that IS on the allowlist?" This is the sharpest question on the slide and the deck does not currently answer it. TODO: get the documented answer before the talk. Until then, say honestly that the allowlist limits where it can reach, the API proxy keeps the engine token out of the container, and the draft pull request is reviewed before anything lands — and that you will come back with the precise answer rather than improvising one. The deck volunteers its other weaknesses, so guessing here is the one thing that would cost the credibility the rest of this act has bought.
+Transition: that's the design. The fair question now is whether it actually produces anything worth reviewing.
+
+---
+
+Plain line: when GitHub ran its own docs agent, people reviewed what it proposed and merged almost all of it.
+The number is GitHub's own, from the gh-aw blog ("Meet the Workflows: Continuous Documentation", 13 Jan 2026): 57 of 59 docs PRs merged. Also reported there: Documentation Unbloat 88 of 103, Glossary Maintainer 10 of 10.
+Caveat out loud, not just on the slide: reported by GitHub, small samples, and the post doesn't say which repos. Merged is not the same as correct. If I present this as a target we will hit, I have oversold it.
+TODO: show the outcome first (the PR screenshot), then the recording of the run behind it. Runs take minutes, so use recordings; a live run is a bonus only.
+Outside evidence if asked: "Inside of CNCF, we are benefiting from improved documentation automation along with improving team reporting across the organization." Chris Aniszczyk, CNCF, GitHub Blog, 13 Feb 2026.
+Transition: that's GitHub's number, on GitHub's repos, and we have none of our own. Here's how far I've already got towards getting one.
+
+---
+
+Plain line to say: I didn't come here with a slide deck. I came with 98 of these already written and documented, and not one of them has ever run. That last part is the ask.
+Say the right-hand column out loud. Do not let the room hear "98" and assume production. The honest sentence is "written and documented, not yet executed".
+Technical detail: 98 markdown briefs in workflows/, each with a docs page in docs/workflows/ carrying the same required-fields table. Six shared modules under workflows/shared/ are imported rather than copy-pasted, so a safety change lands in one place. aw.yml pins min-version v0.83.4.
+Numbers and sources: both 98s and the 6 were verified through the GitHub API on 17 Oct 2026; the two filename sets are identical. "4 compiled, 0 errors" and "0 runs" come from the repo's own agents.md.
+Careful wording, say none of these: not "98 workflows running", not "98 compiled", not "in production", not "the org is using it". Only 4 of 98 were compiled, and no .lock.yml files are committed at all. The acme-org owner and install strings in that repo are placeholders and resolve to nothing, so never show an install line as runnable.
+Q: "So none of this actually works?" Four compile cleanly against the pinned gh-aw version, so the frontmatter and safe-outputs are valid. Runtime behaviour is unproven, and that is exactly what a month of real runs would prove.
+Q: "Why 98 and not 4?" The briefs are the cheap part, they are plain English. Compiling, running and reviewing is the expensive part, and I stopped before spending that without agreement.
+Q: "Can we see it?" It is private. TODO: decide before the talk whether it goes public.
+Q: "How long did this take you?" TODO: answer honestly; it is the question that makes 98 land or sound like padding.
+Transition: and a pile of 98 files is only worth anything if each one tells you what it does and who answers for it.
+
+---
+
+Plain line to say: this is the job description for one teammate out of 98 — and the page tells you, before you hire it, what it can touch, what it can send, and whose phone rings when it gets it wrong.
+Deliberate callback: the row labels are the same four words as the teammate model — purpose, shift, access badge, outbox. Fourth time the room has heard them. That repetition is the point.
+Technical detail: every one of the 98 docs pages uses this same required-fields table — purpose, triggers, writes, required secrets, shared imports, customization points, owner, maturity. The frontmatter backs it: permissions is contents: read only, and the single safe-output is capped at max: 1, so one run cannot open a pile of pull requests.
+On draft: this file does not set draft: true, but it does not need to — the safe-outputs pull request page records draft as "a policy, not a default" with default true (verified 17 Oct 2026), so an omitted draft still yields a draft PR. Safe to say "it opens a draft" about this workflow.
+Careful wording: the owner on the page is @acme-org/platform-devex, a placeholder, and the install command on that page points at a namespace that does not exist. Say "placeholder" out loud if it is on screen. Never show that install line as if someone could run it.
+All 98 docs pages carry "Maturity: Experimental" — that is the library's own label on itself, not modesty for this room.
+Q: "Could this have written to our README already?" No. It has never run anywhere, and permissions are read-only — the pull request would be a proposal, reviewed like any other.
+Q: "Experimental means what, exactly?" Compiled and documented, never executed. Same honest line as the previous slide.
+Head off a confusion this slide can cause: the room has now heard two workflow names — `update-docs` from githubnext/agentics on the file slide, and `readme-auto-updater` here from my library. Say which one the pilot would actually run, and say it plainly, or people will leave unsure what they just agreed to. TODO: decide which, and name it here and on the ask slide so the two match.
+Careful wording on the owner row, and do not get this backwards: every one of the 98 has an owner field and every single one currently reads `acme-org`, a placeholder. I cannot fill in ANY of them. That is precisely what separates a library from a deployment, and saying it plainly is what makes the next slide an honest ask rather than a sales close.
+Transition: ninety-eight owner fields, and not one real name in them. The first real name is the thing I'm here to ask for.
+
+---
+
+Callback to the opening: "a page is wrong right now, and nobody knows which one". Let's pick one and settle it.
+Frame it as an experiment, not a project: one hypothesis, one method, one measure, one decision rule. That is also the honest framing — we do not know the answer yet, and this is the cheapest way to find out.
+Week one is staged: true, so the first week writes nothing at all and we read what it would have done. That is the part that makes this an easy yes.
+The ask: TODO (pilot repo, owner, budget, and the decision rule). Do not present the 96% as a target we expect to hit; it is GitHub's figure for GitHub's repos, reported by them, on a small sample.
+Commands for engineers, if asked: gh extension install github/gh-aw; gh aw init, then gh aw new update-docs; gh aw trial, then staged: true; approve the first PR. The first two take minutes.
+Supporting guidance: "Start with low-risk outputs such as comments, drafts, or reports before enabling pull request creation." (GitHub Blog)
+Q: "What does it cost?" The per-run default is 1,000 AI Credits (about $10); TODO: the pilot budget.
+Q: "Who reviews the PRs?" Whoever owns the page today. The pilot adds a reviewer's queue, not a new team.
+Q: "What if it's rubbish?" Then we have spent four weeks and a capped amount of credits, and I will say so on this slide next time. TODO: the actual four-week credit figure — do not characterise it as trivial without it.
+Transition: thank you; the next three slides are reference, and they stay up for questions.
+
+---
+
+Backup for "how would we know what it did?". Nothing new to learn operationally: it's an Actions run.
+Three levels: review the workflow change in a PR, watch the jobs in the Actions UI, then use the CLI.
+gh aw logs analyzes logs and artifacts across runs; the home page says it lists tokens, AIC and turns per run. gh aw audit gives a detailed report for one run.
+For managers: there's a receipt for every run, and the receipt is the same kind of receipt every other Action already leaves.
+Transition: and if you want to try it after this, these are the links.
+
+---
+
+Leave this up during questions.
+The agentics repo is where today's update-docs.md came from, so anyone can read the full version of the file I trimmed.
+TODO: my own examples and URLs. Note the library repo is private, so do not put its URL here unless the decision is made to open it — a link that 404s in front of the room costs more than the slide gains.
+Transition: and the last slide is just the fact-check trail, if anyone wants to audit me.
+
+---
+
+Backup slide; don't present it. Render with: marp deck-v3/deck.md
+It exists so that anything contested can be settled from the deck itself rather than from memory.
+The last bullet is the one to point at if someone accuses the deck of dressing up its own framing as vendor documentation.

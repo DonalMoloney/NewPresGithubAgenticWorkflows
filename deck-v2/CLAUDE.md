@@ -46,7 +46,7 @@ Run from the project root. `<scratchpad>` is the session scratchpad directory.
 - Put technical depth, commands, source qualifications, preparation TODOs and fallback demo steps in notes. Keep essential qualifications on the slide too.
 
 ## Verification
-- After any edit, render and look at every changed slide. Nothing may run off the bottom edge or overlap; table and code text must be readable. Check dense code and data slides at full size and at phone width. Compiling is not a visual check.
+- After any edit, render and look at every changed slide. Nothing may run off the bottom edge or overlap; table and code text must be readable. Check dense code and data slides at full size. Compiling is not a visual check.
 - Confirm every slide has a note.
 - `deck.md` is the only source. `deck.html` is **generated from it** — never hand-edit `deck.html`, and regenerate it after changing `deck.md`:
   `marp deck-v2/deck.md --allow-local-files -o deck-v2/deck.html </dev/null`
@@ -54,3 +54,8 @@ Run from the project root. `<scratchpad>` is the session scratchpad directory.
 
 ## Pending work
 - `todo.md` in this folder is the consolidated list of patches and proposed slides not yet applied. Check it before starting any editing session.
+- `RESOURCES.md` is the research companion to `todo.md`: where `todo.md` records **what is wrong**, `RESOURCES.md` records **what better material exists to put there**, every item with a primary source and a check date. Read it before editing the hook, the "nobody's job" slide, the evidence slide or the cost slide.
+- It is scoped to **this deck's story**, and draws mostly on the one source the deck already cites (Stack Overflow Developer Survey 2026) because a narrative deck is stronger with fewer sources to explain. `../deck-v1/RESOURCES.md` (cost arithmetic, Actions pricing, peer-reviewed documentation research) and `../deck-v3/RESOURCES.md` (mechanism, frontmatter, dogfooding counts) hold deliberately different material. Do not copy between them; cite the source, not the other file.
+- Each deck uses a **different real pull request** as its example. v2's is `githubnext/agentics#394` plus the five sibling PRs closed unmerged the same day — that six-proposals-one-merge story is this deck's, and v3 uses three other PRs on purpose.
+- Watch the survey year: the 2026 results are a different sample from 2025. Widely-quoted figures such as "66% say AI is almost right but not quite" are **2025**. Never mix years on one slide.
+- `todo.md` §7 is the index of which `RESOURCES.md` findings beat which existing item. Start there rather than re-reading both files. The §3/§4 patch lists above it are untouched by that pass.

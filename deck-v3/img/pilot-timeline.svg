@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 228" role="img" aria-labelledby="title desc">
+<title id="title">A four-step pilot</title>
+<desc id="desc">Four numbered steps on one timeline. 1, week 0: find the page, the one whose code changed after the page did. 2, weeks 1 to 4: run it, with staged: true first, which writes nothing to our repo, then draft pull requests that are all reviewed. 3, judge: was it right, measured as the share the page owner accepts as accurate, not the share merged. 4, decide keep or stop: TODO, the result that means keep and the result that means stop.</desc>
+<style>
+:root{--bg:#faf6ee;--panel:#f2ecdf;--line:#b9ad98;--ink:#26211b;--muted:#675d4e;--accent:#3f3fb0;--hi:#2c2c8a;--good:#2a6e3a;--warn:#96470a;--fill-accent:#e4e5f7;--fill-good:#e1f0e0;--fill-warn:#fbeacf}
+.box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+.focus{fill:var(--fill-accent);stroke:var(--accent);stroke-width:2}
+.write{fill:var(--fill-good);stroke:var(--good);stroke-width:2.5}
+.warn{fill:var(--fill-warn);stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.heading{fill:var(--ink);font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.mono-h{fill:var(--hi);font:600 26px ui-monospace,SFMono-Regular,Consolas,monospace}
+.text{fill:var(--muted);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.itext{fill:var(--ink);font:22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wtext{fill:var(--warn);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.gtext{fill:var(--good);font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.code{fill:var(--hi);font:20px ui-monospace,SFMono-Regular,Consolas,monospace}
+.cap{fill:var(--muted);font:20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.label{fill:var(--muted);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.glabel{fill:var(--good);font:600 20px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}
+.line{fill:none;stroke:var(--accent);stroke-width:2}
+.wline{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5}
+.gline{fill:none;stroke:var(--good);stroke-width:2}
+.rule{fill:none;stroke:var(--line);stroke-width:1.5}
+.boundary{fill:none;stroke:var(--good);stroke-width:1.5;stroke-dasharray:5 6}
+.zone{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 6}
+.seal{fill:none;stroke:var(--accent);stroke-width:2}
+.i-accent{color:var(--accent)}.i-hi{color:var(--hi)}.i-warn{color:var(--warn)}
+.i-good{color:var(--good)}.i-muted{color:var(--muted)}.i-ink{color:var(--ink)}
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#3f3fb0"/></marker>
+<marker id="warrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#bc4c00"/></marker>
+<marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#1a7f37"/></marker>
+<symbol id="g-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5M18.5 18.5l2-2"/></g></symbol>
+<symbol id="g-nokey" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5M16 16l2.5-2.5"/></g><path d="M2.5 21.5L21.5 2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="g-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="g-warn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 22.2 20.6H1.8Z"/><path d="M12 9v5"/></g><circle cx="12" cy="17.4" r="1.25" fill="currentColor"/></symbol>
+<symbol id="g-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="10.5" width="17" height="11" rx="2.5"/><path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5"/></g></symbol>
+<symbol id="g-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.4l3.2 3.2 6-6.4"/></g></symbol>
+<symbol id="g-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="4"/><path d="M3.8 21c0-4.5 3.7-7.2 8.2-7.2S20.2 16.5 20.2 21"/></g></symbol>
+<symbol id="g-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.6V12l4 2.4"/></g></symbol>
+</defs>
+<path d="M0 48 H1136" class="rule"/><circle cx="16" cy="22" r="15" style="fill:var(--accent)"/><text x="16" y="28.5" text-anchor="middle" style="fill:var(--bg);font:700 19px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">1</text><text x="40" y="29" class="label">WEEK 0</text><text x="0" y="80" text-anchor="start" style="font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-weight:700;font-size:26px;fill:var(--ink);letter-spacing:-.01em">Find the page</text><text x="0" y="116" class="text" style="font-size:20px">The one whose code</text><text x="0" y="141" class="text" style="font-size:20px">changed after the</text><text x="0" y="166" class="text" style="font-size:20px">page did.</text><circle cx="304" cy="22" r="15" style="fill:var(--accent)"/><text x="304" y="28.5" text-anchor="middle" style="fill:var(--bg);font:700 19px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">2</text><text x="328" y="29" class="label">WEEKS 1 TO 4</text><text x="288" y="80" text-anchor="start" style="font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-weight:700;font-size:26px;fill:var(--ink);letter-spacing:-.01em">Run it</text><text x="288" y="116" class="code" style="font-size:20px;font-weight:600">staged: true</text><text x="288" y="142" class="text" style="font-size:20px">first: writes nothing</text><text x="288" y="167" class="text" style="font-size:20px">to our repo. Then draft</text><text x="288" y="192" class="text" style="font-size:20px">PRs, all reviewed.</text><circle cx="592" cy="22" r="15" style="fill:var(--accent)"/><text x="592" y="28.5" text-anchor="middle" style="fill:var(--bg);font:700 19px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">3</text><text x="616" y="29" class="label">JUDGE</text><text x="576" y="80" text-anchor="start" style="font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-weight:700;font-size:26px;fill:var(--ink);letter-spacing:-.01em">Was it right?</text><text x="576" y="116" class="text" style="font-size:20px">The share the page</text><text x="576" y="141" class="text" style="font-size:20px">owner accepts as accurate,</text><text x="576" y="166" class="text" style="font-size:20px">not the share merged.</text><circle cx="880" cy="22" r="15" style="fill:var(--warn)"/><text x="880" y="28.5" text-anchor="middle" style="fill:var(--bg);font:700 19px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">4</text><text x="904" y="29" class="label">DECIDE</text><text x="864" y="80" text-anchor="start" style="font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-weight:700;font-size:26px;fill:var(--ink);letter-spacing:-.01em">Keep or stop</text><rect x="864" y="96" width="272" height="124" rx="10" class="warn" style="fill:none"/><use href="#g-warn" x="876" y="108" width="24" height="24" class="i-warn"/><text x="908" y="126" class="wtext" style="font-size:20px">TODO: the result</text><text x="908" y="152" class="wtext" style="font-size:20px">that means keep,</text><text x="908" y="178" class="wtext" style="font-size:20px">the result that</text><text x="908" y="204" class="wtext" style="font-size:20px">means stop.</text>
+</svg>
